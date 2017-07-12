@@ -1,0 +1,15 @@
+
+WXPAYLOG_BEGIN-----------------------------------------------------------
+2017-02-08 16:03:41    dcrep_dh
+get:    /dh_work/interface/rep/dcrep_dh.php?siteid=180002&phone=17346523550&only_orderid=100196865408687075647105&site_orderid=dh20170208160108165535&stat=FAIL&ystatus=3
+post:    
+
+WXPAYLOG_BEGIN-----------------------------------------------------------
+2017-02-08 16:18:08    dcrep_dh
+get:    /dh_work/interface/rep/dcrep_dh.php?siteid=180002&phone=18601941577&only_orderid=100076865416961216147012&site_orderid=dh20170208161456422174&stat=DELIVRD&ystatus=1
+post:    
+
+WXPAYLOG_BEGIN-----------------------------------------------------------
+2017-02-08 16:40:27    dcrep_dh
+get:    /dh_work/interface/rep/dcrep_dh.php?siteid=180002&phone=18601941577&only_orderid=100186865432166141581420&site_orderid=dh20170208164016321407&stat=DELIVRD&ystatus=0
+post:    
