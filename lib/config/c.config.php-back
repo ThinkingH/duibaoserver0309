@@ -1,0 +1,27 @@
+<?php
+
+
+/** 
+ * c.config.php 业务接口配置
+ * author yu
+ * 
+ */
+
+
+//与上家对接数据日志存放路径
+//define( 'LOGPATH' , '/data/www/xianbing/log/xb_log/' );
+
+//接收回传数据后，即时写入日志文件存放目录
+define( 'LOGPATH' , BASE_XBWORK_TURE_PATH.'xb_log/' );
+
+//客户端校验值
+define('MD5KEY','527aa50704b8e9e2529e1a03e6ccd912');
+
+//轮播图片
+//define('PICPATH',TURE_PATH.'picture/');
+
+//图片访问的链接地址
+//define('URLPATH','http://127.0.0.1:8001/');
+define('URLPATH','http://120.27.34.239:8009/duidui/picture/');
+
+
