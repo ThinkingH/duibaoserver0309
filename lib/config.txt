@@ -1,1 +1,0 @@
-a:7:{s:10:"systemtype";s:6:"安卓";s:11:"versioninfo";s:3:"2";s:6:"uptype";s:1:"1";s:7:"apk_url";s:37:"http://127.0.0.1/apk/testpro1.0.6.apk";s:13:"updescription";s:17:"最新版本1.0.3";s:10:"upshuoming";s:18:"测试版本升级";s:13:"up_createtime";s:24:"版本信息获取时间";}
