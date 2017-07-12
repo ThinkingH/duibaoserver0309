@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<load href="../../Xheditor/xheditor-1.1.14-zh-cn.min.js" />
+<script type="text/javascript">
+$(pageInit);
+function pageInit()
+{
+	$('#changecontent').xheditor({tools:'Source,|,Cut,Copy,Paste,Pastetext,|,Align,List,Outdent,Indent,|,Blocktag,Fontface,FontSize,|,Bold,Italic,Underline,Strikethrough,|,FontColor,BackColor,|,Emot,Table,Removeformat,Link,Unlink,|,Source,Preview,SelectAll,Hr,|,|,Img,|,|',upImgUrl:"../../Xheditor/demos/upload.php",upImgExt:"jpg,jpeg,gif,png"});
+}
+function submitForm(){$('#frmDemo').submit();}
+</script>
+
+
+<script type="text/javascript">
+$("document").ready(function(){
+	//数据添加确认
+	$("#update_submit").click(function() {
+		
+		var flag = $("#flag").val();
+		var status = $("#status").val();
+		var siteid = $("#siteid").val();
+		var name   = $("#name").val();
+		var kucun  = $("#kucun").val();
+		var daymax = $("#daymax").val();
+		var userdaymax    = $("#userdaymax").val();
+		var usermonthmax  = $("#usermonthmax").val();
+		var userallmax    = $("#userallmax").val();
+		
+		if(flag==''){
+			alert('是否启用不能为空!');
+			return false;
+		}
+		
+		if(status==''){
+			alert('状态不能为空!');
+			return false;
+		}
+		
+		if(name==''){
+			alert('商品名称不能为空!');
+			return false;
+		}
+		
+		if(kucun==''){
+			alert('商品库存不能为空!');
+			return false;
+		}
+		
+		if(daymax==''){
+			alert('每日允许最大库存不能为空!');
+			return false;
+		}
+		
+		if(userdaymax==''){
+			alert('允许用户每日兑换最大次数不能为空！');
+			return false;
+		}
+		
+		if(usermonthmax==''){
+			alert('允许用户每月兑换最大次数不能为空！');
+			return false;
+		}
+		
+		if(userallmax==''){
+			alert('允许用户每年兑换最大次数不能为空！');
+			return false;
+		} 
+		
+		
+		
+		if(confirm("您确认要修改数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+	});
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" >
+	<tr height="28"><td background="__PUBLIC__/Images/title_bg1.jpg">
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;商城配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;商品的添加管理#&nbsp;&nbsp;#&nbsp;</b></font></td></tr>
+	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
+</table>
+
+<br/>
+
+<a href="__APP__/Shopadd/index{$yuurl}" class="yubutton yuwhite">返回商品添加查询页面</a>
+<br/><br/><br/>
+
+
+<form action="__APP__/Shopadd/adddata{$yuurl}" method="post" enctype="multipart/form-data">
+
+<table class="mainTabled">
+	
+	<tr>
+		<td width="200" align="right">是否启用:</td>
+		<td width="800">
+			<select name="flag" id="flag">
+				<option value="1">启用</option>
+				<option value="9">关闭</option>
+			</select>
+		
+			&nbsp;&nbsp;<font color="red" size="-1">用户信息启用总开关</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right">是否审核:</td>
+		<td>
+			<select name="status" id="status">
+				{$optionstatus}
+			</select>
+			&nbsp;&nbsp;<font color="red" size="-1">用户信息启用总开关</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right">是否上架:</td>
+		<td>
+			<select name="onsales" id="onsales">
+				{$optiononsales}
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right">是否推荐:</td>
+		<td>
+			<select name="hottypeid" id="hottypeid">
+				{$optionhottypeid}
+			</select>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">渠道编号:</td>
+		<td>
+			<select name="siteid" id="siteid">
+				{$optionsiteid}
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">类型编号:</td>
+		<td>
+			<select name="type" id="type" >
+			{$optiontype}
+			</select>
+			--
+			<select name="typeid" id="typeid" >
+			{$optionchildtype}
+			</select>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品名称:</td>
+		<td>
+		<input type="text" name="name" id="name" size="60" maxlength="60" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="right">有效期:</td>
+		<td>
+			<input type="text" size="15" maxlength="15" name="stop_datetime" value="" onclick="WdatePicker()"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">流量运营商:</td>
+		<td>
+		<input type="text" name="gateway" id="gateway" size="10" maxlength="10" >
+		<font size="-1" color="red">*填写为数字，1-移动，2-联通，3-电信</font>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">流量大小:</td>
+		<td>
+		<input type="text" name="mbps" id="mbps" size="10" maxlength="10" >
+		<font size="-1" color="red">*流量单位为兆数</font>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">流量使用范围:</td>
+		<td>
+		<input type="text" name="ttype" id="ttype" size="10" maxlength="10" >
+		<font size="-1" color="red">*填写为数字1-全国</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">秘钥有效期:</td>
+		<td>
+		<input type="text" name="youxiaoqi" id="youxiaoqi" size="10" maxlength="10" value="">天
+		</td>
+	</tr>
+	
+	<!-- <tr>
+		<td width="200" align="right">商品描述:</td>
+		<td>
+		<textarea rows="40" cols="120" name="miaoshu" id="miaoshu"></textarea>
+		</td>
+	</tr> -->
+	<tr>
+		<td width="200" align="right">商品详情页:</td>
+		<td width="800">
+			<textarea id="changecontent" name="goods_content" rows="32" cols="120">{$list['goods_content']}</textarea>
+			
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品金额价格:</td>
+		<td>
+		<input type="text" name="price" id="price" size="30" maxlength="30" >
+		<font size="-1" color="red">*单位为分</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品积分价格:</td>
+		<td>
+		<input type="text" name="score" id="score" size="30" maxlength="30" >
+		<font size="-1" color="red">*单位为分</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">支付类型:</td>
+		<td>
+			<select name="feetype" id="feetype">
+			{$optionfeetype}
+			</select>
+		</td>
+	</tr>
+	
+	<!-- <tr>
+		<td width="200" align="right">详情内容页外链:</td>
+		<td width="800">
+		<input type='text' name='xiangqingurl' id='xiangqingurl' size="150" maxlength="150" >
+		&nbsp;&nbsp;<font color="red" size="-1"></font>
+		</td>
+	</tr> -->
+	
+	
+	<tr>
+		<td width="200" align="right">商品主图片:</td>
+		<td>
+		<input type="file" name="mainpic" id="mainpic">
+		&nbsp;&nbsp;<font color="red" size="-1">*必填</font>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">商品详细页图1:</td>
+		<td>
+		<input type="file" name="showpic1" id="showpic1">
+		&nbsp;&nbsp;<font color="red" size="-1">*必填</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品详细页图2:</td>
+		<td>
+		<input type="file" name="showpic2" id="showpic2">
+		&nbsp;&nbsp;<font color="red" size="-1">*必填</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品详细页图3:</td>
+		<td>
+		<input type="file" name="showpic3" id="showpic3">
+		&nbsp;&nbsp;<font color="red" size="-1">*必填</font>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">商品库存:</td>
+		<td>
+		<input type="text" name="kucun" id="kucun" size="20" maxlength="20" >
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">每日允许最大库存:</td>
+		<td>
+		<input type="text" name="daymax" id="daymax" size="20" maxlength="20" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">允许用户每日兑换最大次数:</td>
+		<td>
+		<input type="text" name="userdaymax" id="userdaymax" size="20" maxlength="20" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">允许用户每月兑换最大次数:</td>
+		<td>
+		<input type="text" name="usermonthmax" id="usermonthmax" size="20" maxlength="20" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">允许用户终身兑换最大次数:</td>
+		<td>
+		<input type="text" name="userallmax" id="userallmax" size="20" maxlength="20" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">排序:</td>
+		<td>
+		<input type="text" name="orderbyid" id="orderbyid" size="10" maxlength="10" value="100" >
+		<font size="-1" color="red">*按倒序排序</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">热点排序:</td>
+		<td>
+		<input type="text" name="hottypeid" id="hottypeid" size="10" maxlength="10" value="100">
+		<font size="-1" color="red">*按升序排序</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">审核说明:</td>
+		<td>
+		<input type="text" name="statusmsg" id="statusmsg" size="60" maxlength="60" >
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">备注:</td>
+		<td>
+		<input type="text" name="remark" id="remark" size="60" maxlength="60" >
+		</td>
+	</tr>
+	
+	<!-- <tr>
+		<td width="200" align="right">商品详情页:</td>
+		<td width="800">
+			<textarea id="changecontent" name="xiangqing" rows="32" cols="120"></textarea>
+			
+		</td>
+	</tr> -->
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="update_submit" class="yubutton yuwhite" name="update_submit" style="margin:15px 0px 0px 10px;" value="确认修改" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>

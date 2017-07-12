@@ -1,0 +1,1443 @@
+[ 2017-06-07T14:21:00+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.017001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.011001s ]
+INFO: [ view_template ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.086005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.086005s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.010001s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.012001s ]
+INFO: [ view_end ] --END-- [ RunTime:0.012001s ]
+
+[ 2017-06-07T14:21:02+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Login/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.023001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.003000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:21:48+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Login/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.003000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:21:54+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Index/index/userxr/root
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002001s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:21:54+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.018001s ]
+INFO: [ view_template ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: tishi D:\www\www2\admin_duidui\Index\Runtime\Cache\e5ff1c65bdd157f7e2dcf878282a73c7.php 第 37 行.
+NOTIC: [8] Undefined variable: spectrum D:\www\www2\admin_duidui\Index\Runtime\Cache\e5ff1c65bdd157f7e2dcf878282a73c7.php 第 40 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.003000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:21:54+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Main/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.006000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.007000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+SQL: SELECT `lastLoginTime`,`lastLoginIp`,`qq` FROM `user_admin` WHERE ( username='root' ) LIMIT 1   [ RunTime:0.001000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004001s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004001s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.054003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.054003s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.005000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T14:21:54+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Menu/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.005000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.028002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029002s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.004000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T14:22:06+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:22:06+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 14:22:06',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T14:22:24+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Shanghu/index?userxr=root
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_site` LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `shop_site` ORDER BY  id desc  LIMIT 0,30   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.016001s ]
+INFO: [ view_template ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 148 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 149 行.
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 157 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 158 行.
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 148 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 149 行.
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 157 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 158 行.
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 148 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 149 行.
+NOTIC: [8] Undefined index: userid D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 157 行.
+NOTIC: [8] Undefined index: reamrk D:\www\www2\admin_duidui\Index\Runtime\Cache\d8485090e2c63e1b755caafae41431dd.php 第 158 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.031002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031002s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.003000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T14:22:24+08:00 ] ERR: (ThinkException) 非法操作:upload
+[ 2017-06-07T14:22:24+08:00 ] ERR: (ThinkException) 非法操作:upload
+[ 2017-06-07T14:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:32:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 14:32:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T14:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T14:43:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 14:43:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T14:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T14:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T14:54:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 14:54:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T14:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T15:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T15:05:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 15:05:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T15:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T15:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-06-07T15:16:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 15:16:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T15:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T15:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 15:27:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T15:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T15:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T15:38:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 15:38:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001001s ]
+
+[ 2017-06-07T15:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T15:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T15:49:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 15:49:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001001s ]
+
+[ 2017-06-07T15:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T15:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T16:00:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:00:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T16:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T16:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T16:11:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.013001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.013001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:11:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T16:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-06-07T16:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-06-07T16:22:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:22:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T16:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T16:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:33:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T16:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T16:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T16:44:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:44:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T16:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T16:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T16:55:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 16:55:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T16:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:06:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 17:06:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T17:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T17:17:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 17:17:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T17:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+
+[ 2017-06-07T17:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:28:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 17:28:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T17:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 17:39:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T17:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+
+[ 2017-06-07T17:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-06-07T17:50:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 17:50:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T17:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T17:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-06-07T18:01:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:01:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T18:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+
+[ 2017-06-07T18:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T18:12:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.007001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:12:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T18:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T18:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T18:23:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:23:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.002000s ]
+
+[ 2017-06-07T18:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T18:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T18:34:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:34:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T18:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T18:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+
+[ 2017-06-07T18:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:45:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T18:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T18:56:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 18:56:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T18:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.006000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T19:02:58+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.010000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.045003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045003s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.011001s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.009000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.010001s ]
+INFO: [ view_end ] --END-- [ RunTime:0.010001s ]
+
+[ 2017-06-07T19:02:58+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.005000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: tishi D:\www\www2\admin_duidui\Index\Runtime\Cache\e5ff1c65bdd157f7e2dcf878282a73c7.php 第 37 行.
+NOTIC: [8] Undefined variable: spectrum D:\www\www2\admin_duidui\Index\Runtime\Cache\e5ff1c65bdd157f7e2dcf878282a73c7.php 第 40 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053003s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.004001s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:02:58+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Main/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SELECT `lastLoginTime`,`lastLoginIp`,`qq` FROM `user_admin` WHERE ( username='root' ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.005000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.003000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.003001s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:02:58+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Menu/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.007001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.006000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.023001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002001s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T19:03:02+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Passwdrewrite/index?userxr=root
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.029002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029002s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.003000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:03:10+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:03:10+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:03:10',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T19:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-06-07T19:07:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:07:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:08:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:13:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:13:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:14:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T19:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:18:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:18:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T19:20:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:24:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:24:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:26:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.006001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:29:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:29:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:32:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-06-07T19:35:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:35:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:38:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-06-07T19:40:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:40:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T19:44:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:46:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:46:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T19:50:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.043002s ]
+INFO: [ route_check ] --END-- [ RunTime:0.044002s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:51:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T19:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+
+[ 2017-06-07T19:56:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T19:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T19:57:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 19:57:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='root' ) [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:02:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:02:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:02:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:03:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:08:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:08:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:08:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:09:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:13:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:13:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:14:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:15:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.005001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:19:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:19:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:20:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+
+[ 2017-06-07T20:21:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:24:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:24:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:26:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:27:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:30:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:30:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.001000s ]
+
+[ 2017-06-07T20:32:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T20:33:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:35:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:35:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.001001s ]
+
+[ 2017-06-07T20:38:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-06-07T20:39:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:41:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:41:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:44:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:45:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-06-07T20:46:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:46:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.000000s ]
+
+[ 2017-06-07T20:50:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-06-07T20:51:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-07T20:52:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:52:59',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.001001s ]
+
+[ 2017-06-07T20:56:59+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-06-07T20:57:55+08:00 ] 127.0.0.1 /admin_duidui/admin_y.php/Header/ajax
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: UPDATE `user_admin` SET `lastLoginTime`='2017-06-07 20:57:55',`lastLoginIp`='127.0.0.1',`loginflag`=loginflag+1 WHERE ( username='18236137465' ) [ RunTime:0.001000s ]
+
