@@ -1,0 +1,45 @@
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 00:03:04    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493136183000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14930448817766|userkey=>a9a55be7616058fb33d46cd2dbd06fc7|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>1|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=1&count=20&quantype=undefined&quanshow=undefined&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493136183000&usertype=2&userid=14930448817766&userkey=a9a55be7616058fb33d46cd2dbd06fc7|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>undefined|quanshow=>undefined|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>|lng=>|
+error-----商品查询模糊字段不能为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 00:11:24    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493136684000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14930448817766|userkey=>a9a55be7616058fb33d46cd2dbd06fc7|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>1|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=1&count=20&proname=代金券&lat=undefined&lng=undefined&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493136684000&usertype=2&userid=14930448817766&userkey=a9a55be7616058fb33d46cd2dbd06fc7|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>undefined|lng=>undefined|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 00:13:40    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493136819000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14930448817766|userkey=>a9a55be7616058fb33d46cd2dbd06fc7|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>1|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=1&count=20&proname=代金券&lat=undefined&lng=undefined&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493136819000&usertype=2&userid=14930448817766&userkey=a9a55be7616058fb33d46cd2dbd06fc7|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>undefined|lng=>undefined|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 00:21:29    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493137289000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14930448817766|userkey=>a9a55be7616058fb33d46cd2dbd06fc7|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>1|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=1&count=20&proname=代金券&lat=40.048721&lng=37&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493137289000&usertype=2&userid=14930448817766&userkey=a9a55be7616058fb33d46cd2dbd06fc7|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>40.048721|lng=>37|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 14:10:58    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1463384184|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>1|userid=>1|userkey=>c22fdaf088d8f1369c3f4c8ec80c96a3|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>|page=>|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&nowtime=1463384184&md5key=527aa50704b8e9e2529e1a03e6ccd912&usertype=1&userid=1&userkey=c22fdaf088d8f1369c3f4c8ec80c96a3&lat=39.886693906557&lng=116.4046743417&proname=大海碗|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>大海碗|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>39.886693906557|lng=>116.4046743417|
+success-----搜索列表获取成功
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 14:43:59    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493189038000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>1|userid=>28|userkey=>daf080e8785209245290bcfed6fdf2bb|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>2|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=2&count=20&proname=代金券&lat=0&lng=0&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493189038000&usertype=1&userid=28&userkey=daf080e8785209245290bcfed6fdf2bb|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>0|lng=>0|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 15:28:25    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493191704000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>1|userid=>28|userkey=>daf080e8785209245290bcfed6fdf2bb|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>2|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=2&count=20&proname=代金券&lat=0&lng=0&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493191704000&usertype=1&userid=28&userkey=daf080e8785209245290bcfed6fdf2bb|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>0|lng=>0|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 23:12:37    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493219558000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14932195286764|userkey=>9b2c410cdd518e8453a6dcb955b61aea|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>2|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=2&count=20&proname=代金券&lat=0&lng=0&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493219558000&usertype=2&userid=14932195286764&userkey=9b2c410cdd518e8453a6dcb955b61aea|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>0|lng=>0|
+success-----搜索为空
+
+BEGINXB--------------------BEGIN--------------------BEGIN
+2017-04-26 23:12:37    request_uri:    /duidui/interface/xbinit.php
+thetype=>801|nowtime=>1493219558000|md5key=>527aa50704b8e9e2529e1a03e6ccd912|usertype=>2|userid=>14932195286764|userkey=>9b2c410cdd518e8453a6dcb955b61aea|phone=>|vcode=>|yijian=>|keyong_jifen=>|dongjie_jifen=>|sex=>|birthday=>|userlevel=>|nickname=>|mobile=>|shouhuoren=>|province=>|city=>|address=>|zipcode=>|is_default=>|address_id=>|count=>20|page=>1|taskid=>|tid=>|geturl=>/duidui/interface/xbinit.php|posturl=>thetype=801&page=1&count=20&proname=代金券&lat=40.048656&lng=5e-324&md5key=527aa50704b8e9e2529e1a03e6ccd912&nowtime=1493219558000&usertype=2&userid=14932195286764&userkey=9b2c410cdd518e8453a6dcb955b61aea|tasktype=>|houzhui=>|imgdata=>|jiguangid=>|openid=>|quantype=>|quanshow=>|quanid=>|collect=>|kindtype=>|libao=>|typeid=>|proname=>代金券|type=>|productid=>|keyong_money=>|shoptype=>|shopchildtype=>|sharequan=>|sharefriend=>|lat=>40.048656|lng=>5e-324|
+success-----搜索为空
