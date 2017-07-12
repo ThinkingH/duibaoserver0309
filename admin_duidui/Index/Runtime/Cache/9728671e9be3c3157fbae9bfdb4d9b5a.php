@@ -1,0 +1,180 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	
+	//数据添加确认
+	$("#insert_submit").click(function() {
+		
+		var name = $("#name").val();
+		var gateway = $("#gateway").val();
+		var mbps = $("#mbps").val();
+		var ttype = $("#ttype").val();
+		var province = $("#province").val();
+		var productid = $("#productid").val();
+		var yuan_price = $("#yuan_price").val();
+		var now_price = $("#now_price").val();
+		
+		if(name=='') {
+			alert('产品名称不能为空');
+			return false;
+		}
+		if(gateway=='') {
+			alert('运营商不能为空');
+			return false;
+		}
+		if(mbps=='') {
+			alert('流量兆数不能为空');
+			return false;
+		}
+		if(ttype=='') {
+			alert('可用范围不能为空');
+			return false;
+		}
+		if(productid=='') {
+			alert('上家产品编号不能为空');
+			return false;
+		}
+		if(yuan_price=='') {
+			alert('原始价格不能为空');
+			return false;
+		}
+		if(now_price=='') {
+			alert('拿到成本价格不能为空');
+			return false;
+		}
+		
+		
+		if(confirm("您确认要添加数据吗？")) {
+			//alert('ok');
+			
+			
+		}else {
+			return false;
+		}
+		
+	});
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" >
+	<tr height="28"><td background="__PUBLIC__/Images/title_bg1.jpg">
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;产品信息管理&nbsp;#&nbsp;产品信息添加</b></font></td></tr>
+	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
+</table>
+
+<br/>
+
+<a href="__APP__/Codelist/index<?php echo ($yuurl); ?>" class="yubutton yuwhite">返回产品信息查询页面</a>
+<br/><br/><br/>
+
+
+<form action="__APP__/Codelist/addcodelistdata<?php echo ($yuurl); ?>" method="post" name="form1" >
+	
+<table class="mainTabled">
+	<tr>
+		<td width="200" align="right">是否启用:</td>
+		<td width="800">
+		<select name="flag" id="flag" >
+			<?php echo ($optionflag); ?>
+		</select>
+		&nbsp;&nbsp;<font color="red" size="-1">产品信息数据启用总开关</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">商品名称:</td>
+		<td width="800">
+			<input type="text" name="name" id="name" size="60" maxlength="50" onkeydown="if(event.keyCode==32) return false" />
+			<font color="red" size="-1"><br>名称请尽量规范，要求做到看名称就要知道该产品对应的【资费、兆数、可用范围、可充范围、上家来源】等信息</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">运营商:</td>
+		<td width="800">
+		<select name="gateway" id="gateway" >
+			<?php echo ($optiongateway); ?>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">流量兆数:</td>
+		<td width="800">
+		<select name="mbps" id="mbps" >
+			<?php echo ($optionmbps); ?>
+		</select>
+		<font color="red" size="-1">如果要添加的兆数在列表中找不到，请联系系统管理员</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">使用范围:</td>
+		<td width="800">
+		<select name="ttype" id="ttype" >
+			<?php echo ($optionttype); ?>
+		</select>
+		<font color="red" size="-1">流量将来的可使用范围，一般都为全国可用</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">充值省份:</td>
+		<td width="800">
+		<select name="province" id="province" >
+			<?php echo ($optionprovince); ?>
+		</select>
+		&nbsp;&nbsp;<font color="red" size="-1">全国时请置空</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">上家产品标识编号:</td>
+		<td width="800">
+			<input type="text" name="productid" id="productid" size="16" maxlength="10" onkeydown="if(event.keyCode==32) return false" />
+			<font color="red" size="-1">来自内部短流平台分配的产品标识编号</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">官方原始价格(分，1元=100分):</td>
+		<td width="800">
+			<input type="text" name="yuan_price" id="yuan_price" size="20" maxlength="10" onkeydown="if(event.keyCode==32) return false" />
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">拿到成本价格(分，1元=100分):</td>
+		<td width="800">
+			<input type="text" name="now_price" id="now_price" size="20" maxlength="10" onkeydown="if(event.keyCode==32) return false" />
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">备注:</td>
+		<td width="800">
+			<input type="text" name="remark" size="90" maxlength="60" />
+		</td>
+	</tr>
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="insert_submit" class="yubutton yuwhite" name="insert_submit" style="margin:15px 0px 0px 10px;" value="确认添加" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>
