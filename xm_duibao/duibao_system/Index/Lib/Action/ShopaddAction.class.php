@@ -552,12 +552,12 @@ class ShopaddAction extends Action{
 						$data['showpic1'] = URL_APK.str_replace('./','/',$showpic1);
 					}
 					if($info[$i]['key']=='showpic2'){
-						$showpic1 = $info[$i]['savepath'].$info[$i]['savename'];
-						$data['showpic2'] = URL_APK.str_replace('./','/',$showpic1);
+						$showpic2 = $info[$i]['savepath'].$info[$i]['savename'];
+						$data['showpic2'] = URL_APK.str_replace('./','/',$showpic2);
 					}
 					if($info[$i]['key']=='showpic3'){
-						$showpic1 = $info[$i]['savepath'].$info[$i]['savename'];
-						$data['showpic3'] = URL_APK.str_replace('./','/',$showpic1);
+						$showpic2 = $info[$i]['savepath'].$info[$i]['savename'];
+						$data['showpic3'] = URL_APK.str_replace('./','/',$showpic2);
 					}
 				}
 				
@@ -740,13 +740,13 @@ class ShopaddAction extends Action{
 				
 				//商品编号--子类型
 				$typearr = array();
-				$sql_childtype = "select type,childtype,xushi,name from shop_type order by id asc";
+				$sql_childtype = "select type,childtype,xushi,name from shop_type where flag=1 order by id asc";
 				$list_childtype = $Model->query($sql_childtype);
 				
 				$optionchildtype = '<option value=""></option>';
 				foreach($list_childtype as $val) {
 					$optionchildtype .= '<option value="'.$val['childtype'].'"';
-					if($shoplist[0]['typeid']==$val['type']) { $optionchildtype .= ' selected="selected" '; } 
+					if($shoplist[0]['typeidchild']==$val['childtype']) { $optionchildtype .= ' selected="selected" '; } 
 					$optionchildtype .= '>'.$val['childtype'].'--'.$val['name'].'</option>';
 				}
 				$this -> assign('optionchildtype',$optionchildtype);
@@ -963,11 +963,11 @@ class ShopaddAction extends Action{
 				$data['showpic1'] = URL_APK.str_replace('./','/',$showpic1);
 				}
 				if($info[$i]['key']=='showpic2'){
-				$showpic1 = $info[$i]['savepath'].$info[$i]['savename'];
+				$showpic2 = $info[$i]['savepath'].$info[$i]['savename'];
 				$data['showpic2'] = URL_APK.str_replace('./','/',$showpic2);
 				}
 				if($info[$i]['key']=='showpic3'){
-				$showpic1 = $info[$i]['savepath'].$info[$i]['savename'];
+				$showpic3 = $info[$i]['savepath'].$info[$i]['savename'];
 				$data['showpic3'] = URL_APK.str_replace('./','/',$showpic3);
 				}
 			}
