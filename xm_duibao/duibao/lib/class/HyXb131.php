@@ -34,7 +34,7 @@ class HyXb131 extends HyXb{
 		
 		//当usertype=1时，正常用户
 		if($usertype=='1'){
-			$userinfo_sql = "select id,phone,keyong_jifen,dongjie_jifen,sex,birthday,userlevel,nickname,create_datetime 
+			$userinfo_sql = "select id,phone,keyong_jifen,dongjie_jifen,sex,birthday,userlevel,nickname,touxiang,create_datetime 
 							from xb_user where id='".parent::__get('xb_userid')."'and tokenkey='".parent::__get('xb_userkey')."'";
 			$userinfo_list = parent::__get('HyDb')->get_all($userinfo_sql);
 			
