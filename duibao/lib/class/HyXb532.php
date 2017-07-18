@@ -185,6 +185,12 @@ class HyXb532 extends HyXb{
 				$duihuan_list['mtype']='11';
 			} */
 			
+			if(substr($duihuan_list['typeid'],0,2)=='11'){
+				
+				$duihuan_list['typeid'] = substr($duihuan_list['typeid'],0,2);//表示流量
+				
+			}
+			
 			
 			//兑换码的有效期dayok
 			$duihuan_list['dayok'] = $duihuan_list['youxiaoqi'];

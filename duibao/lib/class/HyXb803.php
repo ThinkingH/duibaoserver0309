@@ -157,8 +157,13 @@ class HyXb803 extends HyXb{
 				}
 			}
 			
+			if($listdata[$keys]['yuanprice']=='0'){
+				$listdata[$keys]['discount']='0';
+			}else{
+				$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
+			}
 			
-			$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
+			
 			
 			if(strlen($listdata[$keys]['discount'])=='1'){
 				

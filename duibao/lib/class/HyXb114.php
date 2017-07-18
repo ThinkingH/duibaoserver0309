@@ -4,6 +4,13 @@
  */
 class HyXb114 extends HyXb{
 	
+	private $sex;
+	private $openid;
+	private $nickname;
+	private $headimgurl;
+	private $userid;
+	private $userkey;
+	
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -28,6 +35,11 @@ class HyXb114 extends HyXb{
 	
 		//接收临时用户的key
 		$this->userkey = isset($input_data['userkey']) ? $input_data['userkey']:'';  //
+		
+		$this->sex = isset($input_data['sex']) ? $input_data['sex']:'';  //性别
+		$this->nickname = isset($input_data['nickname']) ? $input_data['nickname']:'';  //昵称
+		$this->headimgurl = isset($input_data['headimgurl']) ? $input_data['headimgurl']:'';  //头像
+		//$this->headimgurl='77777hfjkd';
 	}
 	
 	
@@ -47,6 +59,11 @@ class HyXb114 extends HyXb{
 			$openidlist = parent::__get('HyDb')->get_row($openidsql); 
 			
 			if($openidlist['id']>0){
+				
+				//用户名更新
+				$updateusersql = "update xb_user set sex='".$this->sex."',nickname='".$this->nickname."',touxiang='".$this->headimgurl."' where openid='".$this->openid."' ";
+								parent::__get('HyDb')->execute($updateusersql);
+				
 				//该用户注册过，直接进行登录
 				$temparr = array(
 						array(
@@ -66,8 +83,8 @@ class HyXb114 extends HyXb{
 				
 			}else{//该用户首次登录，数据插入到用户表中
 				
-				$userdatasql = "insert into xb_user (openid,tokenkey,create_datetime)
-					values ('".$this->openid."','".$userkey."','".parent::__get('create_datetime')."')";
+				$userdatasql = "insert into xb_user (openid,tokenkey,sex,nickname,touxiang,create_datetime)
+					values ('".$this->openid."','".$userkey."','".$this->sex."','".$this->nickname."','".$this->headimgurl."','".parent::__get('create_datetime')."')";
 				$userdatalist = parent::__get('HyDb')->execute($userdatasql);
 				
 				$useridsql = "select id,tokenkey from xb_user where openid='".$this->openid."' and create_datetime>='".date('Y-m-d H:i:s',(time()-3*24*60*60))."'";
@@ -134,7 +151,8 @@ class HyXb114 extends HyXb{
 				
 			}else{//该用户没有注册过,临时用户积分更新到正式用户中
 				
-				$userdatasql = "insert into xb_user (openid,tokenkey,create_datetime) values ('".$this->openid."','".$userkey."','".parent::__get('create_datetime')."')";
+				$userdatasql = "insert into xb_user (openid,tokenkey,sex,nickname,touxiang,create_datetime) 
+						values ('".$this->openid."','".$userkey."','".$this->sex."','".$this->nickname."','".$this->headimgurl."','".parent::__get('create_datetime')."')";
 				$userdatalist = parent::__get('HyDb')->execute($userdatasql);
 				
 				

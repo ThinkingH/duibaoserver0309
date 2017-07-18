@@ -93,7 +93,13 @@ class HyXb808 extends HyXb{
 		
 		
 		foreach ($listdata as $keys=>$vals){
-			$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
+			
+			if($listdata[$keys]['yuanprice']=='0'){
+				$listdata[$keys]['discount']='0';
+			}else{
+				$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
+			}
+			
 			
 			if(strlen($listdata[$keys]['discount'])=='1'){
 				
@@ -149,7 +155,7 @@ class HyXb808 extends HyXb{
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
-			$echoarr['dataarr'] = $listdata;
+			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
