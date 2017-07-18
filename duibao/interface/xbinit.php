@@ -120,6 +120,7 @@ $nowprice         = HyItems::arrayItem ( $_REQUEST, 'nowprice' );//现价
 $discount         = HyItems::arrayItem ( $_REQUEST, 'discount' );//折扣
 
 $over_datetime         = HyItems::arrayItem ( $_REQUEST, 'over_datetime' );
+$headimgurl         = HyItems::arrayItem ( $_REQUEST, 'headimgurl' );
 
 
 
@@ -210,6 +211,8 @@ $inputdataarr = array(
 		'discount' => $discount,
 		'over_datetime' => $over_datetime,
 		'keystr' => $keystr,
+		
+		'headimgurl' => $headimgurl,
 );
 
 
