@@ -1,10 +1,10 @@
 <?php
 /*
- * 版本的升级
+ * 版本的升级---ios
  * 
  */
 
-class HyXb104 extends HyXb{
+class HyXb107 extends HyXb{
 	
 	private $updatepath;
 	
@@ -28,11 +28,11 @@ class HyXb104 extends HyXb{
 	
 	public function controller_shengji(){
 		
-		$systemtype = '1';//代表安卓安装包
 		
-		//数据的查询
-		$version_sql = "select * from xb_versioninfo where systemtype='1' and flag='1' order by id desc ";
-		$version_list = parent::__get('HyDb')->get_row($version_sql);
+		//ios版本更新
+		$versionios_sql = "select * from xb_versioninfo where systemtype='2' and flag='1' order by id desc ";
+		$versionios_list = parent::__get('HyDb')->get_row($versionios_sql);
+		
 		
 		/* $apkurl = str_replace("./","/",$version_list['apk_url']);
 		
@@ -58,12 +58,13 @@ class HyXb104 extends HyXb{
 		
 		$temparr = unserialize(file_get_contents($config)); */
 		
-		if(count($version_list)>0){
+		if(count($versionios_list)>0){
 		
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '版本信息获取成功';
-			$echoarr['dataarr'] = $version_list;
+			$echoarr['dataarr'] = $versionios_list;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;

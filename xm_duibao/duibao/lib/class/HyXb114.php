@@ -130,6 +130,10 @@ class HyXb114 extends HyXb{
 			
 			if($useropenidlist['id']>0){//说明该用户注册过，直接登录
 				
+				//用户名更新
+				$updateusersql = "update xb_user set sex='".$this->sex."',nickname='".$this->nickname."',touxiang='".$this->headimgurl."' where openid='".$this->openid."' ";
+				parent::__get('HyDb')->execute($updateusersql);
+				
 				$trueuserid  = $useropenidlist['id'];
 				$trueuserkey = $useropenidlist['tokenkey'];
 				
