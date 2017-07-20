@@ -32,6 +32,7 @@ class HyXb601 extends HyXb{
 			$seldata = "select id,kindtype,kindname from maintype where flag=1 order by id";
 			$selsql  = parent::__get('HyDb')->get_all($seldata);
 			
+			
 			if(count($selsql)>0){
 				$echoarr = array();
 				$echoarr['returncode'] = 'success';
@@ -58,6 +59,17 @@ class HyXb601 extends HyXb{
 			
 			$seldata = "select id,childtype,smallpic from shouye_config where flag=1 and type='".trim($this->kindtype)."' order by id";
 			$selsql  = parent::__get('HyDb')->get_all($seldata);
+			
+			/*  $replace = array("\t", "\r", "\n",);
+				return str_replace($replace, ' ', $str);*/
+			
+			foreach ($selsql as $keys=>$vals){//
+				
+				$replace = array("\t", "\r", "\n",);
+				$selsql[$keys]['smallpic'] =  str_replace($replace, '', $selsql[$keys]['smallpic']);
+			}
+			
+			
 			
 			if(count($selsql)>0){
 					$echoarr = array();

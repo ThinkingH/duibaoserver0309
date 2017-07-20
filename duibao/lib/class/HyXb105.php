@@ -1,6 +1,9 @@
 <?php
 /*
- * 开屏引导图和新用户注册首页好礼弹框
+ * 106，102，105接口整合为一个105接口
+ *  type传不同的值，获取不同的数据
+	type=1 开屏引导页获取  type=2 新手领礼包弹框  type=3  首页轮播图获取 
+	type=4 首页零碎广告
  * 
  */
 class HyXb105 extends HyXb{
@@ -34,13 +37,15 @@ class HyXb105 extends HyXb{
 			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='2' order by id asc";
 			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
-			
+				
 			foreach ($lunbotu_list as $keys=>$vals){
-				
-				$lunbotu_list[$keys]['adtitle'] = '广告';
-				
-			}
 			
+				$lunbotu_list[$keys]['adtitle'] = '广告';
+				$lunbotu_list[$keys]['img'] = $lunbotu_list[$keys]['img'].'?imageView2/1/w/600/h/1200/q/75|imageslim';
+				
+			
+			}
+				
 			if(count($lunbotu_list)>0){
 				$echoarr = array();
 				$echoarr['returncode'] = 'success';
@@ -63,7 +68,7 @@ class HyXb105 extends HyXb{
 			}
 			
 			
-		}else if($this->type=='2'){
+		}else if($this->type=='2'){//新手礼包弹框
 			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='3' order by id asc";
 			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
@@ -89,17 +94,84 @@ class HyXb105 extends HyXb{
 				return false;
 			}
 			
+		}else if($this->type=='3'){
 			
 			
+			//开屏引导
+			$lunbotu_sql1 = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='2' order by id asc";
+			$kaiping_list = parent::__get('HyDb')->get_all($lunbotu_sql1);
 			
+			foreach ($kaiping_list as $keys=>$vals){
+				
+				$kaiping_list[$keys]['adtitle'] = '广告';
+				
+			}
+			
+			//新手礼包
+			$lunbotu_sql2 = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='3' order by id asc";
+			$libao_list = parent::__get('HyDb')->get_all($lunbotu_sql2);
+			
+			
+			//轮播图查询
+			$lunbotu_sql3 = "select id,picname,biaoshi,flag,shopid,shopname,img,
+				imgurl,action,type,value,isused,createdatetime
+				 from xb_lunbotu where flag='1' and biaoshi='9' order by id asc";
+			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql3);
+				
+			foreach ($lunbotu_list as $keys=>$vals){
+					
+				$lunbotu_list[$keys]['adtitle'] = '广告';
+					
+			}
+			
+			
+			//首页零碎广告
+			$lunbotu_sql4 = "select id,picname,biaoshi,flag,shopid,shopname,img,
+				imgurl,action,type,value,isused,createdatetime
+				 from xb_lunbotu where flag='1' and biaoshi='4' ";
+			$adver_list = parent::__get('HyDb')->get_all($lunbotu_sql4);
+			
+			foreach ($adver_list as $keys=>$vals){
+					
+				$adver_list[$keys]['adtitle'] = '广告';
+					
+			}
+				
+			
+			$data = array(
+					
+					'1' => $kaiping_list,
+					'2' => $libao_list,
+					'3' => $lunbotu_list,
+					'4' => $adver_list,
+			);
+			
+			
+			if(count($lunbotu_list)>0){
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '数据获取成功';
+				$echoarr['dataarr'] = $data;
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo str_replace("\/", "/",  json_encode($echoarr));
+				return true;
+			}else{
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '数据获取失败';
+				$echoarr['dataarr']    = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+					
+				echo json_encode($echoarr);
+				return false;
+			}
+		
 		}
 		
 		
 	}
-	
-	
-	
-	
 	
 	
 	

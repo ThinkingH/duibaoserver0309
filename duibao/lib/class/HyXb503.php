@@ -31,7 +31,11 @@ class HyXb503 extends HyXb{
 		$shoptypesql  = "select * from shop_config where flag=1 order by id asc ";
 		$shoptypelist = parent::__get('HyDb')->get_all($shoptypesql);
 		
-	
+		foreach ($shoptypelist as $keys=>$vals){
+			
+			$replace = array("\t", "\r", "\n",);
+			$shoptypelist[$keys]['picurl'] =  str_replace($replace, '', $shoptypelist[$keys]['picurl']);
+		}
 		
 		if(count($shoptypelist)>0){
 			$echoarr = array();

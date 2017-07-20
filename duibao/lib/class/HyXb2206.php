@@ -178,14 +178,19 @@ class HyXb2206 extends HyXb{
 				
 			}else{
 				//分享获取200积分
+				$typesql = "insert into newusers (userid,type,phone,openid,libao,createtime) values
+							 ('".$this->userid."','2','".$phone."','".$openid."','".$this->libao2."','".date('Y-m-d H:i:s')."')";
+				$typelist = parent::__get('HyDb')->execute($typesql);
+				
+				
 				
 				//用户领取礼包--获取300积分1.用户表积分的增加 2-新手表的插入3-积分详情的变动
 				$jifencharusql  = "update $tablename set keyong_jifen=keyong_jifen+'".$this->libao2."' where id='".$this->userid."'";
 				$jifencharulist = parent::__get('HyDb')->execute($jifencharusql);
 				
-				//分享的状态更新
+				/* //分享的状态更新
 				$typesql  = "update newusers set type='2',libao=libao+'".$this->libao2."' where userid='".$this->userid."' and type='1' ";
-				$typelist = parent::__get('HyDb')->execute($typesql); 
+				$typelist = parent::__get('HyDb')->execute($typesql);  */
 				
 				
 				//积分详情的记录
