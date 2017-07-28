@@ -9,6 +9,8 @@
 class HyXb105 extends HyXb{
 	
 	private $picurlpath;
+	private $width;
+	private $height;
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -25,6 +27,9 @@ class HyXb105 extends HyXb{
 	
 		
 		$this->type = isset($input_data['type']) ? $input_data['type']:'';  //
+		$this->width   = isset($input_data['width'])? $input_data['width']:'';  //图片宽
+		$this->height  = isset($input_data['height'])?$input_data['height']:'';     //图片高
+		
 	}
 	
 	
@@ -32,16 +37,35 @@ class HyXb105 extends HyXb{
 	protected function controller_getpicurl(){
 		
 		
+	//	echo $arr['duibao-basic'];
+		
 		if($this->type=='1'){//开屏引导
+			
+			if($this->width==''){
+				$this->width='1080';
+			}
+			
+			if($this->height==''){
+				$this->height='1920';
+			}
 			
 			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='2' order by id asc";
 			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
 				
 			foreach ($lunbotu_list as $keys=>$vals){
-			
+				
 				$lunbotu_list[$keys]['adtitle'] = '广告';
-				$lunbotu_list[$keys]['img'] = $lunbotu_list[$keys]['img'].'?imageView2/1/w/600/h/1200/q/75|imageslim';
+				
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
+				
+				$replace = array("\t", "\r", "\n",);
+				
+				if(substr($lunbotu_list[$keys]['img'],0,7)=='http://' || substr($lunbotu_list[$keys]['img'],0,8)=='https://'){
+					$lunbotu_list[$keys]['img'] = str_replace($replace, '',$lunbotu_list[$keys]['img']);
+				}else{
+					$lunbotu_list[$keys]['img'] = str_replace($replace, '',$arr['duibao-basic'].$lunbotu_list[$keys]['img']).'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				}
 				
 			
 			}
@@ -70,8 +94,28 @@ class HyXb105 extends HyXb{
 			
 		}else if($this->type=='2'){//新手礼包弹框
 			
+			if($this->width==''){
+				$this->width='600';
+			}
+				
+			if($this->height==''){
+				$this->height='480';
+			}
+			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='3' order by id asc";
 			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
+			
+			foreach ($lunbotu_list as $keys=>$vals){
+				
+				
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
+				
+				if(substr($lunbotu_list[$keys]['img'],0,7)=='http://' || substr($lunbotu_list[$keys]['img'],0,8)=='https://'){
+						
+				}else{
+					$lunbotu_list[$keys]['img'] = $arr['duibao-basic'].$lunbotu_list[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				}
+			}
 				
 			if(count($lunbotu_list)>0){
 				$echoarr = array();

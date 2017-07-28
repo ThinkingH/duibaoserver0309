@@ -5,7 +5,8 @@
  */
 class HyXb102 extends HyXb{
 	
-	private $picurlpath;
+	private $width;
+	private $height;
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -20,17 +21,9 @@ class HyXb102 extends HyXb{
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
 	
-	
-		//图片存放位置
-		$this->picurlpath = URLPATH;
-	
+		$this->width   = isset($input_data['width'])? $input_data['width']:'';  //图片宽
+		$this->height  = isset($input_data['height'])?$input_data['height']:'';     //图片高
 	}
-	//dataarr:[{img:url,act:1,value:link},....]
-	/* {"returncode":"success","returnmsg":"\u83b7\u53d6\u6210\u529f",
-	 * "dataarr":["http:\/\/127.0.0.1\/img\/gaunggao1.jpg","http:\/\/127.0.0.1\/img\/gaunggao2.jpg",
-	 * "http:\/\/127.0.0.1\/img\/gaunggao3.jpg","http:\/\/127.0.0.1\/img\/gaunggao4.jpg"]} 
-	 * thetype=102&nowtime=1463384184&md5key=527aa50704b8e9e2529e1a03e6ccd912&usertype=3&userid=&userkey=
-	 * */
 	
 	//进行操作
 	protected function controller_getpicurl(){
@@ -41,6 +34,13 @@ class HyXb102 extends HyXb{
 			value:  跳转的链接地址
 			click：1-允许点击 2-不允许
 		 */
+		if($this->width==''){
+			$this->width='750';
+		}
+		
+		if($this->height==''){
+			$this->height='290';
+		}
 		
 		//轮播图查询
 		$lunbotu_sql = "select id,picname,biaoshi,flag,shopid,shopname,img,
@@ -51,6 +51,15 @@ class HyXb102 extends HyXb{
 		foreach ($lunbotu_list as $keys=>$vals){
 			
 			$lunbotu_list[$keys]['adtitle'] = '广告';
+			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($lunbotu_list[$keys]['img'],0,7)=='http://' ||substr($lunbotu_list[$keys]['img'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			}else{
+				$lunbotu_list[$keys]['img'] = $arr['duibao-basic'].$lunbotu_list[$keys]['img'].'imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			
+			}
 			
 		}
 		

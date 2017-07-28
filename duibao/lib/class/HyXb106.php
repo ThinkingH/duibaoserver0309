@@ -6,6 +6,8 @@
 class HyXb106 extends HyXb{
 	
 	private $kindtype;
+	private $width;
+	private $height;
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -21,6 +23,8 @@ class HyXb106 extends HyXb{
 		unset($tmp_logstr);
 	
 		$this->kindtype  = isset($input_data['kindtype'])?$input_data['kindtype']:'';     //获取广告的类型
+		$this->width   = isset($input_data['width'])? $input_data['width']:'';  //图片宽
+		$this->height  = isset($input_data['height'])?$input_data['height']:'';     //图片高
 	}
 
 	
@@ -29,12 +33,26 @@ class HyXb106 extends HyXb{
 		
 		if($this->kindtype=='1'){//获取首页的广告
 			
+			if($this->width==''){
+				$this->width='350';
+			}
+				
+			if($this->height==''){
+				$this->height='178';
+			}
+			
 			$lunbotu_sql = "select id,picname,biaoshi,flag,shopid,shopname,img,
 				imgurl,action,type,value,isused,createdatetime
 				 from xb_lunbotu where flag='1' and biaoshi='4' ";
 			$lunbotu_list = parent::__get('HyDb')->get_row($lunbotu_sql); 
 			
 			$lunbotu_list['adtitle'] = '广告';
+			
+			if(substr($lunbotu_list['img'],0,7)=='http://' || substr($lunbotu_list['img'],0,8)=='https://'){
+				$lunbotu_list['img'] = str_replace($replace, '',$lunbotu_list['img']);
+			}else{
+				$lunbotu_list['img'] = str_replace($replace, '',$arr['duibao-basic'].$lunbotu_list['img']).'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			}
 			
 			
 			

@@ -68,6 +68,14 @@ class HyXb807 extends HyXb{
 				$shoptypelist[$keys]['shstatus']='未通过';
 			}
 			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
+			if(substr($shoptypelist[$keys]['picurl'],0,7)=='http://' || substr($shoptypelist[$keys]['picurl'],0,8)=='https://' ){
+				
+			}else{
+				$shoptypelist[$keys]['picurl'] = $arr['duibao-find'].$shoptypelist[$keys]['picurl'];
+			}
+			
 		}
 		
 		if(count($shoptypelist)>0){

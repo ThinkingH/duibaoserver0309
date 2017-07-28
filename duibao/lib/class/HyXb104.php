@@ -21,8 +21,8 @@ class HyXb104 extends HyXb{
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
 		
-		//apk上传的后台地址
-		$this->updatepath = URLUPDATE;
+		
+		$this->type   = isset($input_data['type'])? $input_data['type']:'';  
 	}
 	
 	
@@ -30,9 +30,17 @@ class HyXb104 extends HyXb{
 		
 		$systemtype = '1';//代表安卓安装包
 		
-		//数据的查询
-		$version_sql = "select * from xb_versioninfo where systemtype='1' and flag='1' order by id desc ";
-		$version_list = parent::__get('HyDb')->get_row($version_sql);
+		if($this->type=='' || $this->type=='1'){
+			
+			//数据的查询
+			$version_sql = "select * from xb_versioninfo where systemtype='1' and flag='1' order by id desc ";
+			$version_list = parent::__get('HyDb')->get_row($version_sql);
+			
+		}else if($this->type=='2'){
+			
+			$version_sql = "select * from xb_versioninfo where systemtype='2' and flag='1' order by id desc ";
+			$version_list = parent::__get('HyDb')->get_row($version_sql);
+		}
 		
 		/* $apkurl = str_replace("./","/",$version_list['apk_url']);
 		
@@ -64,7 +72,6 @@ class HyXb104 extends HyXb{
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '版本信息获取成功';
 			$echoarr['dataarr'] = $version_list;
-			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
 				
