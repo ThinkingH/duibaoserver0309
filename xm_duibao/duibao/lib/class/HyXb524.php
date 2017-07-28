@@ -44,7 +44,6 @@ class HyXb524 extends HyXb{
 		$pagesize  = $this->count;
 		
 		
-		
 		if($this->shoptype=='10' || $this->shopchildtype=='100'){
 			$wherestr = " where flag='1' and status='1' ";  //全部
 		}else{

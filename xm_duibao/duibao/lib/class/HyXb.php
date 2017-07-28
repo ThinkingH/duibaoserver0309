@@ -1210,7 +1210,76 @@ class HyXb{
 	}
 	
 	
+	//七牛图片上传--------2
+	function upload_qiniu($bucket,$filepath,$savename){
 	
+	
+		$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
+	
+		$data = array(
+				'bucket'   => $bucket,
+				'filepath' => $filepath,
+				'savename' => $savename,
+	
+		);
+	
+		//模拟数据访问
+		$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
+	
+		if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){
+	
+			$truepath = json_decode($r['content'], true);
+			//$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			$trueurl= $truepath['key'];//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
+			return $trueurl;
+		}else{
+			return false;
+		}
+	
+	}
+	
+	
+	//敏感字的过滤
+	public function sensitive1($str){
+		
+		if(is_file('./sensitive.txt')){
+			
+			$filter_word = file('./sensitive.txt');//把整个文件读入一个数组中
+			
+			for($i=0;$i<count($filter_word);$i++){
+				
+				if(preg_match('/'.trim($filter_word[$i]).'/i',$str)){
+					return true;//存在敏感词
+				}else{
+					return false;
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	function sensitive($str){
+		
+		$lujing = SEURL.'\sensitive.txt';
+		
+		if (is_file($lujing)){//判断给定文件名是否为一个正常的文件
+			
+			$filter_word = file($lujing);//把整个文件读入一个数组中
+	
+			for($i=0;$i<count($filter_word);$i++){//应用For循环语句对敏感词进行判断
+				if(preg_match("/".trim($filter_word[$i])."/i",$str)){//应用正则表达式，判断传递的留言信息中是否含有敏感词
+					
+					return true;
+				}
+			}
+			
+		}
+		
+		return false;
+	
+	}
 	
 	/**
 	 * 日志变量数据追加，即将子类的日志变量数据追加到父类的日志变量数据中
