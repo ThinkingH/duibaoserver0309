@@ -20,7 +20,9 @@ require_once("../lib/c.core.php");
 //获取当前文件名称
 $mname = basename(__FILE__,'.php');
 
+$sensitive = dirname(__FILE__);  //D:\www\www2\xm_duibao\duibao\lib
 
+define('SEURL',$sensitive);
 
 if( empty($_REQUEST) ){
 	exit('error,no parameter');
@@ -122,6 +124,14 @@ $discount         = HyItems::arrayItem ( $_REQUEST, 'discount' );//折扣
 $over_datetime         = HyItems::arrayItem ( $_REQUEST, 'over_datetime' );
 $headimgurl         = HyItems::arrayItem ( $_REQUEST, 'headimgurl' );
 
+$width        = HyItems::arrayItem ( $_REQUEST, 'width' );
+$height        = HyItems::arrayItem ( $_REQUEST, 'height' );
+
+$senderid        = HyItems::arrayItem ( $_REQUEST, 'senderid' );
+$receiverid      = HyItems::arrayItem ( $_REQUEST, 'receiverid' );
+$cid      = HyItems::arrayItem ( $_REQUEST, 'cid' );
+
+
 
 
 //初步判断传递的参数是否正确
@@ -213,6 +223,12 @@ $inputdataarr = array(
 		'keystr' => $keystr,
 		
 		'headimgurl' => $headimgurl,
+		'width' => $width,
+		'height' => $height,
+		
+		'senderid' => $senderid,
+		'receiverid' => $receiverid,
+		'cid' => $cid,
 );
 
 
