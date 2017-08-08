@@ -57,7 +57,7 @@ class HyXb102 extends HyXb{
 			if(substr($lunbotu_list[$keys]['img'],0,7)=='http://' ||substr($lunbotu_list[$keys]['img'],0,8)=='https://' ){
 				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
 			}else{
-				$lunbotu_list[$keys]['img'] = $arr['duibao-basic'].$lunbotu_list[$keys]['img'].'imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$lunbotu_list[$keys]['img'] = $arr['duibao-basic'].$lunbotu_list[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
 			
 			}
 			

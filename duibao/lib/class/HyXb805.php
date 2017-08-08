@@ -147,7 +147,7 @@ class HyXb805 extends HyXb{
 							values ('".parent::__get('xb_userid')."','1','2','".$message."','".$time."')";
 					$tuisonglist = parent::__get('HyDb')->execute($tuisongsql);
 						
-					parent::func_jgpush($jiguangid,$message);
+					parent::func_jgpush($jiguangid,$message,'1',$m_txt='',$m_time='86400');
 					
 				}
 				

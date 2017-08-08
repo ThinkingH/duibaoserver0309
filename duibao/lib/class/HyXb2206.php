@@ -130,7 +130,7 @@ class HyXb2206 extends HyXb{
 							values ('".$this->userid."','1','2','".$message."','".$time."')";
 					$tuisonglist = parent::__get('HyDb')->execute($tuisongsql);
 						
-					parent::func_jgpush($jiguangid,$message);//parent::func_jgpush($jiguangid,$messagee);
+					parent::func_jgpush($jiguangid,$message,'1',$m_txt='',$m_time='86400');//,$m_type='',$m_txt='',$m_time='86400'
 						
 						
 					$echoarr = array();
@@ -212,7 +212,7 @@ class HyXb2206 extends HyXb{
 				$tuisonglist = parent::__get('HyDb')->execute($tuisongsql);
 				
 				
-				parent::func_jgpush($jiguangid,$message);
+				parent::func_jgpush($jiguangid,$message,'1',$m_txt='',$m_time='86400');//$m_type='',$m_txt='',$m_time='86400'
 				
 				
 				if($typelist){

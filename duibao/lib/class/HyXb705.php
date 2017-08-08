@@ -74,7 +74,7 @@ class HyXb705 extends HyXb{
 				//极光推送
 				$message = '分享优惠券获取'.$this->jifen.'馅饼，请查看';
 					
-				parent::func_jgpush($listdata['jiguangid'],$message);
+				parent::func_jgpush($listdata['jiguangid'],$message,'1',$m_txt='',$m_time='86400');//$m_type='',$m_txt='',$m_time='86400'
 				
 				$echoarr = array();
 				$echoarr['returncode'] = 'success';

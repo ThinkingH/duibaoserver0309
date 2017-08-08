@@ -31,6 +31,8 @@ class HyXb106 extends HyXb{
 	//进行操作
 	protected function controller_getpicurl(){
 		
+		$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+		
 		if($this->kindtype=='1'){//获取首页的广告
 			
 			if($this->width==''){
@@ -48,6 +50,8 @@ class HyXb106 extends HyXb{
 			
 			$lunbotu_list['adtitle'] = '广告';
 			
+			$replace = array("\t", "\r", "\n",);
+			
 			if(substr($lunbotu_list['img'],0,7)=='http://' || substr($lunbotu_list['img'],0,8)=='https://'){
 				$lunbotu_list['img'] = str_replace($replace, '',$lunbotu_list['img']);
 			}else{
@@ -58,9 +62,26 @@ class HyXb106 extends HyXb{
 			
 		}else if($this->kindtype=='2'){//获取发现的广告
 			
+			if($this->width==''){
+				$this->width='180';
+			}
+			
+			if($this->height==''){
+				$this->height='180';
+			}
+			
 			//查询广告表中的广告
 			$lunbotu_sql = "select id,gflag,gtype,picurl,adurl,taskid,adtitle,adcontent,createtime from ad_advertisement where flag='1' and maintype='1'";
 			$lunbotu_list = parent::__get('HyDb')->get_row($lunbotu_sql);
+			
+			
+			$replace = array("\t", "\r", "\n",);
+			
+			if(substr($lunbotu_list['picurl'],0,7)=='http://' || substr($lunbotu_list['picurl'],0,8)=='https://'){
+				$lunbotu_list['picurl'] = str_replace($replace, '',$lunbotu_list['picurl']);
+			}else{
+				$lunbotu_list['picurl'] = str_replace($replace, '',$arr['duibao-basic'].$lunbotu_list['picurl']).'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			}
 			
 		}
 		

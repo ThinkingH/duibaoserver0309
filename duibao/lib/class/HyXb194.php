@@ -142,7 +142,7 @@ class HyXb194 extends HyXb{
 		
 		$messagee = '《'.$taskscorelist['name'].'》任务奖金已经到账，快去看看吧！';
 		
-		$retsend = parent::func_jgpush($jiguangid,$messagee);
+		$retsend = parent::func_jgpush($jiguangid,$messagee,'1',$m_txt='',$m_time='86400');//$jiguangid,$messagee,$m_type='',$m_txt='',$m_time='86400'
 		
 		//推送信息的插入
 		$stime = time();

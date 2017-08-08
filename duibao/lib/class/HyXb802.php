@@ -33,34 +33,84 @@ class HyXb802 extends HyXb{
 		
 		if($this->quantype=='all'){
 			
+			$arr = Array(
+					Array
+					(
+						'maintype' => '全部',
+						'num' => '0'
+					)
+						
+					);
+
+			$maintypelistarr = array();
+			
 			$maintypesql  = "select maintype,count(*) as num from z_tuanmainlist where flag='1' and shstatus='11' group by maintype ";
 			$maintypelist = parent::__get('HyDb')->get_all($maintypesql);
+			
+			foreach ($maintypelist as $keys => $vals){
+				
+				$maintypelistarr = Array(
+						
+						'maintype' => $maintypelist[$keys]['maintype'],
+						'num' => $maintypelist[$keys]['num'],
+				
+				);
+				array_push($arr,$maintypelistarr);
+			}
+			
+			
+			if(count($maintypelist)>0){
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '分类获取成功';
+				$echoarr['dataarr'] = $arr;
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return true;
+			
+			}else{
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '分类获取失败';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+			
+			
+			
+			
 			
 		}else{
 			$maintypesql  = "select childtype,count(*) as num from z_tuanmainlist  where maintype='".$this->quantype."' and flag='1' and shstatus='11' group by childtype ";
 			$maintypelist = parent::__get('HyDb')->get_all($maintypesql);
+			
+			if(count($maintypelist)>0){
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '分类获取成功';
+				$echoarr['dataarr'] = $maintypelist;
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return true;
+			
+			}else{
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '分类获取失败';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
 		}
 	
-		if(count($maintypelist)>0){
-			$echoarr = array();
-			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '分类获取成功';
-			$echoarr['dataarr'] = $maintypelist;
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-			parent::hy_log_str_add($logstr);
-			echo json_encode($echoarr);
-			return true;
-	
-		}else{
-			$echoarr = array();
-			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '分类获取失败';
-			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-			parent::hy_log_str_add($logstr);
-			echo json_encode($echoarr);
-			return false;
-		}
+		
 	
 	
 	}

@@ -48,21 +48,21 @@ class JiPush{
 						"alert"=>$content,
 						"title"=>"",
 						"builder_id"=>1,
-						"extras"=>array("type"=>$m_type, "txt"=>$m_txt)
+						"extras"=>array("action"=>$m_type, "value"=>$m_txt)
 				),
 				//ios的自定义
 				"ios"=>array(
 						"alert"=>$content,
 						"badge"=>"1",
 						"sound"=>"default",
-						"extras"=>array("type"=>$m_type, "txt"=>$m_txt)
+						"extras"=>array("action"=>$m_type, "value"=>$m_txt)
 				)
 		);
 
 		//苹果自定义---为了弹出值方便调测
 		$data['message'] = array(
 				"msg_content"=>$content,
-				"extras"=>array("type"=>$m_type, "txt"=>$m_txt)
+				"extras"=>array("action"=>$m_type, "value"=>$m_txt)
 		);
 
 		//附加选项

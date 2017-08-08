@@ -11,7 +11,7 @@ class HyXb811 extends HyXb{
 	
 	private $count;
 	private $page;
-	private $cid;
+	private $cid;  //主表id，主评论id
 	
 	
 	//数据的初始化
@@ -28,22 +28,19 @@ class HyXb811 extends HyXb{
 		unset($tmp_logstr);
 	
 		
-		$this->quanid  = isset($input_data['quanid'])? $input_data['quanid']:'';    //优惠券id
-		$this->type = isset($input_data['type'])? $input_data['type']:'';    //留言内容
-// 		$this->userid = isset($input_data['userid']) ? $input_data['userid']:'';   //板块id
+		$this->type   = isset($input_data['type'])? $input_data['type']:'';    //留言内容
+		$this->quanid = isset($input_data['quanid'])? $input_data['quanid']:'';    //优惠券id
+		$this->userid = isset($input_data['userid']) ? $input_data['userid']:'';   //用户id
 		
 		$this->count = isset($input_data['count'])? $input_data['count']:'';  //每页显示的最大条数
 		$this->page  = isset($input_data['page'])?$input_data['page']:'';     //页数
 		
-		$this->cid  = isset($input_data['cid'])?$input_data['cid']:'';     
+		$this->cid  = isset($input_data['cid'])?$input_data['cid']:'';     //主表id，主评论id
 		
 	}
 	
 	
-	public function liuyanlist(){
-		
-		
-		if($this->type=='1'){//留言列表的获取
+	public function liuyanlist_1(){
 	
 			//分页
 			if($this->page=='' || $this->page=='0' || $this->page=='undefined' ){
@@ -88,34 +85,42 @@ class HyXb811 extends HyXb{
 			$useridsql = "select * from xb_comment where quanid='".$this->quanid."' limit $firstpage,$pagesize ";
 			$useridlist = parent::__get('HyDb')->get_all($useridsql); 
 			
+			foreach($useridlist as $keyud => $valud) {
+				$useridlist[$keyud]['cid'] = $useridlist[$keyud]['id'];
+				$useridlist[$keyud]['dtype'] = 'm';
+				
+			}
 			
 			$allarray = array();
 			
+			//$allarray = $useridlist;
 			
 			$inarr = array();
-			$kkk = 0;
-			foreach ($useridlist as $val){
-				
+			$kkk = -1;
+			foreach ($useridlist as $keyu => $valu){
 				++$kkk;
 				
 				//获取留言的用户id
-				if(is_numeric($val['userid'])) {
-					array_push($inarr,$val['userid']);
+				if(is_numeric($valu['userid'])) {
+					array_push($inarr,$valu['userid']);
 				}
 				
 				
-				$cid = $val['id'];//主留言编号
+				$cid = $valu['id'];//主留言编号
 				$sql_getchild = "select * from xb_subcomment where cid='".$cid."' order by id desc limit 5";
 				$list_getchild = parent::__get('HyDb')->get_all($sql_getchild); 
 				
+				foreach($list_getchild as $keygc => $valgc) {
+					$list_getchild[$keygc]['dtype'] = 'c';
+				}
 				
-				$allarray[$kkk]['mainlist'] = $val;
-				$allarray[$kkk]['childlist'] = $list_getchild;
+				$allarray[$kkk]= $valu;
+				$allarray1[$kkk]['childlist'] = $list_getchild;
 				
 				
 				foreach($list_getchild as $valg) {
-					array_push($inarr,$valg['senderid']);
-					array_push($inarr,$valg['receiverid']);
+					array_push($inarr,$valg['fromuserid']);
+					array_push($inarr,$valg['touserid']);
 				}
 				
 				
@@ -123,19 +128,17 @@ class HyXb811 extends HyXb{
 			
 			$inarr = array_unique($inarr);
 			if(count($inarr)<=0){
-			
-				$where = 'id=0';
+				$where_user = 'id=0';
 			}else{
 				$instr = ' ('.implode(',',$inarr).') ';
-				$where = ' id in '. $instr;
-			
+				$where_user = ' id in '. $instr;
 			}
 			
 			
 			
 			
 			//获取用户列表
-			$usersql  = "select id,nickname,touxiang from xb_user where $where ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
+			$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
 			$userlist = parent::__get('HyDb')->get_all($usersql); 
 			
 			foreach ($userlist as $keys=>$vals){
@@ -146,55 +149,85 @@ class HyXb811 extends HyXb{
 			}
 			
 			
-			
-			
 			foreach($allarray as $keyaa => $valaa) {
 				
+				$allarray[$keyaa]['fromuser'] = array(
+						'user_id'  => $allarray[$keyaa]['userid'],
+						'nickname' => isset($usernamearr[$allarray[$keyaa]['userid']])?(string)$usernamearr[$allarray[$keyaa]['userid']]:'',
+						'img_url'  => isset($usertouxiangarr[$allarray[$keyaa]['userid']])?(string)$usertouxiangarr[$allarray[$keyaa]['userid']]:'',
+				);
 				
-				//主留言头像
-				$allarray[$keyaa]['mainlist']['touxiang'] = $usertouxiangarr[$allarray[$keyaa]['mainlist']['userid']];
-				$allarray[$keyaa]['mainlist']['nickname'] = $usernamearr[$allarray[$keyaa]['mainlist']['userid']];
+				
+				/* //主留言头像
+				$allarray[$keyaa]['touxiang'] = $usertouxiangarr[$allarray[$keyaa]['userid']];
+				$allarray[$keyaa]['nickname'] = $usernamearr[$allarray[$keyaa]['userid']]; */
 				
 				//留言的时间
-				if((time()-strtotime($allarray[$keyaa]['mainlist']['createtime']))<1*60*60){
+				if((time()-strtotime($allarray[$keyaa]['createtime']))<1*60*60){
 						
-					$allarray[$keyaa]['mainlist']['createtime']='刚刚';
+					$allarray[$keyaa]['createtime']='刚刚';
 						
-				}else if((time()-strtotime($allarray[$keyaa]['mainlist']['createtime']))<1*24*60*60){
+				}else if((time()-strtotime($allarray[$keyaa]['createtime']))<1*24*60*60){
 						
-					$allarray[$keyaa]['mainlist']['createtime']=intval(((time()-strtotime($allarray[$keyaa]['mainlist']['createtime']))/3600)).'小时前';//算出小时
+					$allarray[$keyaa]['createtime']=intval(((time()-strtotime($allarray[$keyaa]['createtime']))/3600)).'小时前';//算出小时
 						
 				}else {
 						
-					$allarray[$keyaa]['mainlist']['createtime'] = intval(((time()-strtotime($allarray[$keyaa]['mainlist']['createtime']))/86400)).'天前';//算出多少天前
+					$allarray[$keyaa]['createtime'] = intval(((time()-strtotime($allarray[$keyaa]['createtime']))/86400)).'天前';//算出多少天前
 				}
 				
 				
 				//子留言信息
-				foreach($allarray[$keyaa]['childlist'] as $keyccc => $valccc) {
+				foreach($allarray1[$keyaa]['childlist'] as $keyccc => $valccc) {
 					
-					$allarray[$keyaa]['childlist'][$keyccc]['stouxiang'] = $usertouxiangarr[$allarray[$keyaa]['childlist'][$keyccc]['senderid']];
-					$allarray[$keyaa]['childlist'][$keyccc]['snickname'] = $usernamearr[$allarray[$keyaa]['childlist'][$keyccc]['senderid']];
+					$allarray1[$keyaa]['childlist'][$keyccc]['fromuser'] = array(
+							'nickname' => isset($usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']])?$usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']]:'',
+							'user_id'  => isset($allarray1[$keyaa]['childlist'][$keyccc]['fromuserid'])?$allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']:'',
+							'img_url'  => isset($usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']])?$usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']]:'',
+					);
 					
-					$allarray[$keyaa]['childlist'][$keyccc]['rtouxiang'] = $usertouxiangarr[$allarray[$keyaa]['childlist'][$keyccc]['receiverid']];
-					$allarray[$keyaa]['childlist'][$keyccc]['rnickname'] = $usernamearr[$allarray[$keyaa]['childlist'][$keyccc]['receiverid']];
+					$allarray1[$keyaa]['childlist'][$keyccc]['touser'] = array(
+							'nickname' => isset($usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['touserid']])?$usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['touserid']]:'',
+							'user_id'  => isset($allarray1[$keyaa]['childlist'][$keyccc]['touserid'])?$allarray1[$keyaa]['childlist'][$keyccc]['touserid']:'',
+							'img_url'  => isset($usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['touserid']])?$usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['touserid']]:'',
+					);
+					
+					/* $allarray1[$keyaa]['childlist'][$keyccc]['stouxiang'] = $usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['senderid']];
+					$allarray1[$keyaa]['childlist'][$keyccc]['snickname'] = $usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['senderid']];
+					
+					$allarray1[$keyaa]['childlist'][$keyccc]['rtouxiang'] = $usertouxiangarr[$allarray1[$keyaa]['childlist'][$keyccc]['receiverid']];
+					$allarray1[$keyaa]['childlist'][$keyccc]['rnickname'] = $usernamearr[$allarray1[$keyaa]['childlist'][$keyccc]['receiverid']]; */
 					
 					//留言的时间
-					if((time()-strtotime($allarray[$keyaa]['childlist'][$keyccc]['createtime']))<1*60*60){
+					if((time()-strtotime($allarray1[$keyaa]['childlist'][$keyccc]['createtime']))<1*60*60){
 					
-						$allarray[$keyaa]['childlist'][$keyccc]['createtime']='刚刚';
+						$allarray1[$keyaa]['childlist'][$keyccc]['createtime']='刚刚';
 					
-					}else if((time()-strtotime($allarray[$keyaa]['childlist'][$keyccc]['createtime']))<1*24*60*60){
+					}else if((time()-strtotime($allarray1[$keyaa]['childlist'][$keyccc]['createtime']))<1*24*60*60){
 					
-						$allarray[$keyaa]['childlist'][$keyccc]['createtime']=intval(((time()-strtotime($allarray[$keyaa]['childlist'][$keyccc]['createtime']))/3600)).'小时前';//算出小时
+						$allarray1[$keyaa]['childlist'][$keyccc]['createtime']=intval(((time()-strtotime($allarray1[$keyaa]['childlist'][$keyccc]['createtime']))/3600)).'小时前';//算出小时
 					
 					}else {
 					
-						$allarray[$keyaa]['childlist'][$keyccc]['createtime'] = intval(((time()-strtotime($allarray[$keyaa]['childlist'][$keyccc]['createtime']))/86400)).'天前';//算出多少天前
+						$allarray1[$keyaa]['childlist'][$keyccc]['createtime'] = intval(((time()-strtotime($allarray1[$keyaa]['childlist'][$keyccc]['createtime']))/86400)).'天前';//算出多少天前
 					}
+					
+					
+					if($allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']==$allarray[$keyaa]['userid']){
+						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '1';//不可删除
+					}else{
+						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '2';//可删除
+					}
+					
+					
+					$allarray1[$keyaa]['childlist'][$keyccc]['comments'] = array();
+					
 					
 				}
 				
+				$allarray[$keyaa]['comments'] = $allarray1[$keyaa]['childlist'];
+				
+				$allarray[$keyaa]['is_deled'] = '1';
 				
 			}
 			
@@ -224,107 +257,137 @@ class HyXb811 extends HyXb{
 				return false;
 			}
 			
-		}else if($this->type=='2'){
 			
+		
+	}
+	
+	
+	
+	
+	
+	public function liuyanlist_2(){
+		
+		
+		
+		//获取回复的全部数据
+		$subcomment_sql  = "select * from xb_subcomment where cid='".$this->cid."' order by id desc  ";
+		$subcomment_list = parent::__get('HyDb')->get_all($subcomment_sql); 
+		
+		$inarr = array();
+		
+		
+		foreach ($subcomment_list as $val){
 			
-			//获取回复的全部数据
-			$subcomment_sql  = "select * from xb_subcomment where cid='".$this->cid."' order by id desc  ";
-			$subcomment_list = parent::__get('HyDb')->get_all($subcomment_sql); 
-			
-			$inarr = array();
-			
-			foreach ($subcomment_list as $val){
-				
-				//获取留言的用户id
-				if(is_numeric($val['senderid'])) {
-					array_push($inarr,$val['senderid']);
-				}
-				//获取留言的用户id
-				if(is_numeric($val['receiverid'])) {
-					array_push($inarr,$val['receiverid']);
-				}
-				
+			//获取留言的用户id
+			if(is_numeric($val['fromuserid'])) {
+				array_push($inarr,$val['fromuserid']);
+			}
+			//获取留言的用户id
+			if(is_numeric($val['touserid'])) {
+				array_push($inarr,$val['touserid']);
 			}
 			
-			$inarr = array_unique($inarr);
-			if(count($inarr)<=0){
+		}
+		
+		$inarr = array_unique($inarr);
+		if(count($inarr)<=0){
+		
+			$where_user = 'id=0';
+		}else{
+			$instr = ' ('.implode(',',$inarr).') ';
+			$where_user = ' id in '. $instr;
+		}
+		
+		$usertouxiangarr = array();//头像地址
+		$usernamearr = array();//昵称
+		
+		
+		//获取用户列表
+		$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
+		$userlist = parent::__get('HyDb')->get_all($usersql);
 			
-				$where = 'id=0';
-			}else{
-				$instr = ' ('.implode(',',$inarr).') ';
-				$where = ' id in '. $instr;
+		foreach ($userlist as $keys=>$vals){
+		
+			$usertouxiangarr[$vals['id']]  = $vals['touxiang'];
+			$usernamearr[$vals['id']]      = $vals['nickname'];
+		
+		}
+		
+		
+		foreach ($subcomment_list as $keys=>$vals){
+			
+			$subcomment_list[$keys]['dtype'] = 'c';
+			
+			$subcomment_list[$keys]['fromuser'] = array(
+					'user_id'  => $subcomment_list[$keys]['fromuserid'],
+					'nickname' => isset($usernamearr[$subcomment_list[$keys]['fromuserid']])?$usernamearr[$subcomment_list[$keys]['fromuserid']]:'',
+					'img_url'  => isset($usertouxiangarr[$subcomment_list[$keys]['fromuserid']])?$usertouxiangarr[$subcomment_list[$keys]['fromuserid']]:'',
+			);
+				
+			$subcomment_list[$keys]['touser'] = array(
+					'user_id'  => $subcomment_list[$keys]['touserid'],
+					'nickname' => isset($usernamearr[$subcomment_list[$keys]['touserid']])?$usernamearr[$subcomment_list[$keys]['touserid']]:'',
+					'img_url'  => isset($usertouxiangarr[$subcomment_list[$keys]['touserid']])?$usertouxiangarr[$subcomment_list[$keys]['touserid']]:'',
+			);
+			
+			
+			
+			
+			/* $subcomment_list[$keys]['stouxiang'] = isset($usertouxiangarr[$subcomment_list[$keys]['senderid']])?$usertouxiangarr[$subcomment_list[$keys]['senderid']]:'';
+			$subcomment_list[$keys]['snickname'] = isset($usernamearr[$subcomment_list[$keys]['senderid']])?$usernamearr[$subcomment_list[$keys]['senderid']]:'';
+			
+			$subcomment_list[$keys]['rtouxiang'] = isset($usertouxiangarr[$subcomment_list[$keys]['receiverid']])?$usertouxiangarr[$subcomment_list[$keys]['receiverid']]:'';
+			$subcomment_list[$keys]['rnickname'] = isset($usernamearr[$subcomment_list[$keys]['receiverid']])?$usernamearr[$subcomment_list[$keys]['receiverid']]:''; */
+			
+			
+			//留言的时间
+			if((time()-strtotime($subcomment_list[$keys]['createtime']))<1*60*60){
+					
+				$subcomment_list[$keys]['createtime']='刚刚';
+					
+			}else if((time()-strtotime($subcomment_list[$keys]['createtime']))<1*24*60*60){
+					
+				$subcomment_list[$keys]['createtime']=intval(((time()-strtotime($subcomment_list[$keys]['createtime']))/3600)).'小时前';//算出小时
+					
+			}else {
+					
+				$subcomment_list[$keys]['createtime'] = intval(((time()-strtotime($subcomment_list[$keys]['createtime']))/86400)).'天前';//算出多少天前
 			}
 			
-			$usertouxiangarr = array();//头像地址
-			$usernamearr = array();//昵称
+			$subcomment_list[$keys]['comments'] = array();
 			
 			
-			//获取用户列表
-			$usersql  = "select id,nickname,touxiang from xb_user where $where ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
-			$userlist = parent::__get('HyDb')->get_all($usersql);
 				
-			foreach ($userlist as $keys=>$vals){
-			
-				$usertouxiangarr[$vals['id']]  = $vals['touxiang'];
-				$usernamearr[$vals['id']]      = $vals['nickname'];
-			
-			}
-			
-			
-			foreach ($subcomment_list as $keys=>$vals){
-				
-				
-				$subcomment_list[$keys]['stouxiang'] = isset($usertouxiangarr[$subcomment_list[$keys]['senderid']])?$usertouxiangarr[$subcomment_list[$keys]['senderid']]:'';
-				$subcomment_list[$keys]['snickname'] = isset($usernamearr[$subcomment_list[$keys]['senderid']])?$usernamearr[$subcomment_list[$keys]['senderid']]:'';
-				
-				$subcomment_list[$keys]['rtouxiang'] = isset($usertouxiangarr[$subcomment_list[$keys]['receiverid']])?$usertouxiangarr[$subcomment_list[$keys]['receiverid']]:'';
-				$subcomment_list[$keys]['rnickname'] = isset($usernamearr[$subcomment_list[$keys]['receiverid']])?$usernamearr[$subcomment_list[$keys]['receiverid']]:'';
-				
-				
-				//留言的时间
-				if((time()-strtotime($subcomment_list[$keys]['createtime']))<1*60*60){
-						
-					$subcomment_list[$keys]['createtime']='刚刚';
-						
-				}else if((time()-strtotime($subcomment_list[$keys]['createtime']))<1*24*60*60){
-						
-					$subcomment_list[$keys]['createtime']=intval(((time()-strtotime($subcomment_list[$keys]['createtime']))/3600)).'小时前';//算出小时
-						
-				}else {
-						
-					$subcomment_list[$keys]['createtime'] = intval(((time()-strtotime($subcomment_list[$keys]['createtime']))/86400)).'天前';//算出多少天前
-				}
-				
-				
-				
-			}
-			
-			
-			if(count($subcomment_list)>0){
-				
-				$echoarr = array();
-				$echoarr['returncode'] = 'success';
-				$echoarr['returnmsg']  = '回复列表获取成功';
-				$echoarr['dataarr'] = $subcomment_list;
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return true;
-				
-			}else{
-				
-				$echoarr = array();
-				$echoarr['returncode'] = 'success';
-				$echoarr['returnmsg']  = '回复列表为空';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-			}
+			$subcomment_list[$keys]['is_deled'] = '2';
 			
 			
 		}
+		
+		
+		if(count($subcomment_list)>0){
+			
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '回复列表获取成功';
+			$echoarr['dataarr'] = $subcomment_list;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return true;
+			
+		}else{
+			
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '回复列表为空';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
+			
 		
 		
 	}
@@ -333,7 +396,7 @@ class HyXb811 extends HyXb{
 	//操作入口
 	public function controller_init(){
 	
-	
+	//echo '1111111';
 		//基本参数的判断,md5key判断，时间戳的判断
 		$r = parent::func_base_check();
 	
@@ -342,6 +405,21 @@ class HyXb811 extends HyXb{
 			return false;
 		}
 	
+		if($this->type==1) {
+			$this->liuyanlist_1();
+		}else if($this->type==2) {
+			$this->liuyanlist_2();
+		}else {
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = 'type参数状态不正确';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
 	
 	/* 	//优惠券id
 		if($this->quanid==''){
@@ -373,7 +451,6 @@ class HyXb811 extends HyXb{
 // 		}
 	
 	
-		$this->liuyanlist();
 		
 	
 		return true;
