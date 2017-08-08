@@ -39,7 +39,8 @@ class LunbotuAction extends Action {
 		$hot_list = $Model->query($hot_sql); 
 		
 		//特供优惠
-		$youhui_sql = "select * from xb_lunbotu where where flag='1' and biaoshi='6' order by picname desc limit 4";
+		$youhui_sql = "select * from xb_lunbotu where flag='1' and biaoshi='6' order by picname desc limit 4";
+		$youhui_list = $Model->query($youhui_sql);
 		
 		//数据的读出
 		foreach ($list as $keys=>$vals){
@@ -123,11 +124,53 @@ class LunbotuAction extends Action {
 			}else{
 				$hot_list[$keys]['img'] = $arr['duibao-basic'].$hot_list[$keys]['img'].'?imageView2/1/w/300/h/150/q/75|imageslim';
 			}
+		}
+		//特供优惠
+		foreach ($youhui_list as $keys=>$vals){
+			
+			if($youhui_list[$keys]['flag']=='1'){
+				$youhui_list[$keys]['flag']='启用';
+			}else if($youhui_list[$keys]['flag']=='9'){
+				$youhui_list[$keys]['flag']='关闭';
+			}
+			
+			if($youhui_list[$keys]['picname']=='1'){
+				$youhui_list[$keys]['picname']='轮播图一';
+			}else if($youhui_list[$keys]['picname']=='2'){
+				$youhui_list[$keys]['picname']='轮播图二';
+			}else if($youhui_list[$keys]['picname']=='3'){
+				$youhui_list[$keys]['picname']='轮播图三';
+			}else if($youhui_list[$keys]['picname']=='4'){
+				$youhui_list[$keys]['picname']='轮播图四';
+			}
+			
+			if($youhui_list[$keys]['action']=='1'){
+				$youhui_list[$keys]['action']='页面';
+			}else if($youhui_list[$keys]['action']=='2'){
+				$youhui_list[$keys]['action']='活动';
+			}else if($youhui_list[$keys]['action']=='3'){
+				$youhui_list[$keys]['action']='商品';
+			}
+			
+			if($youhui_list[$keys]['isused']=='1'){
+				$youhui_list[$keys]['isused']='允许点击';
+			}else if($youhui_list[$keys]['isused']=='2'){
+				$youhui_list[$keys]['isused']='不允许点击';
+			}
+			
+			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
+			
+			if(substr($youhui_list[$keys]['img'],0,7)=='http://' || substr($youhui_list[$keys]['img'],0,8)=='https://'){
+				
+			}else{
+				$youhui_list[$keys]['img'] = $arr['duibao-basic'].$youhui_list[$keys]['img'].'?imageView2/1/w/300/h/150/q/75|imageslim';
+			}
 				
 		}
 					
 		$this -> assign('list',$list);
 		$this -> assign('list1',$hot_list);
+		$this -> assign('list2',$youhui_list);
 		
 		// 输出模板
 		$this->display();
