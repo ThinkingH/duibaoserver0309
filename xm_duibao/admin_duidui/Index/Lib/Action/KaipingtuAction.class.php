@@ -82,7 +82,14 @@ class KaipingtuAction extends Action {
 			}
 			
 			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
-			$list[$keys]['img'] = $arr['duibao-basic'].$list[$keys]['img'].'?imageView2/1/w/800/h/600/q/75|imageslim';
+			
+			if(substr($list[$keys]['img'],0,7)=='http://' || substr($list[$keys]['img'],0,8)=='https://'){
+			
+			}else{
+				$list[$keys]['img'] = $arr['duibao-basic'].$list[$keys]['img'].'?imageView2/1/w/800/h/600/q/75|imageslim';
+			}
+			
+			
 			
 			
 			
@@ -97,7 +104,13 @@ class KaipingtuAction extends Action {
 			}
 			
 			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
-			$blist[$keys]['img'] = $arr['duibao-basic'].$blist[$keys]['img'].'?imageView2/1/w/400/h/300/q/75|imageslim';
+			
+			if(substr($blist[$keys]['img'],0,7)=='http://' || substr($blist[$keys]['img'],0,8)=='https://'){
+					
+			}else{
+				$blist[$keys]['img'] = $arr['duibao-basic'].$blist[$keys]['img'].'?imageView2/1/w/400/h/300/q/75|imageslim';
+			}
+			
 			
 			//http://osjzw40am.bkt.clouddn.com/5940f1f6a104e.png?imageView2/1/interlace/1/q/80|imageslim  http://osv2nvwyw.bkt.clouddn.com/596cb49f25150.jpg?imageView2/1/w/100/h/100/q/75|imageslim
 			

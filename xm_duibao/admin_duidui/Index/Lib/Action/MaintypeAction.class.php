@@ -112,6 +112,7 @@ class MaintypeAction extends Action{
 		}
 		
 		
+		//首页类型的子分类
 		$sql = "select * from shouye_config";
 		$shouyelist = $Model->query($sql);
 		
@@ -411,6 +412,7 @@ class MaintypeAction extends Action{
 		}
 	
 		$infof  =   $upload->upload();
+		
 		
 	
 		if($infof===true){

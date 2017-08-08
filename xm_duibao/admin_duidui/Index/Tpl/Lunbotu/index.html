@@ -57,6 +57,7 @@ $("document").ready(function(){
 		<td width="50"><b>商品编号</b></td>
 		<td width="150"><b>商品名称</b></td>
 		<td width="20"><b>跳转类型<br/></b></td>
+		<td width="20"><b>跳转链接类型<br/></b></td>
 		<td width="150"><b>跳转链接</b></td>
 		<td width="30"><b>是否可以点击<br/></b></td>
 		<!-- <td width="200"><b>跳转链接内容<br/></b></td> -->
@@ -91,6 +92,7 @@ $("document").ready(function(){
 		<td>{$vo.shopname}</td>
 		
 		<td>{$vo.action}</td>
+		<td>{$vo.type}</td>
 		<td>{$vo.value}</td>
 		<td>{$vo.isused}</td>
 		<!-- <td>{$vo.content}</td> -->
@@ -116,6 +118,7 @@ $("document").ready(function(){
 		<td width="50"><b>商品编号</b></td>
 		<td width="150"><b>商品名称</b></td>
 		<td width="20"><b>跳转类型<br/></b></td>
+		<td width="20"><b>跳转链接类型<br/></b></td>
 		<td width="150"><b>跳转链接</b></td>
 		<td width="30"><b>是否可以点击<br/></b></td>
 		<!-- <td width="200"><b>跳转链接内容<br/></b></td> -->
@@ -150,6 +153,7 @@ $("document").ready(function(){
 		<td>{$vo.shopname}</td>
 		
 		<td>{$vo.action}</td>
+		<td>{$vo.type}</td>
 		<td>{$vo.value}</td>
 		<td>{$vo.isused}</td>
 		<!-- <td>{$vo.content}</td> -->
@@ -207,6 +211,66 @@ $("document").ready(function(){
 		<td>{$vo.shopname}</td>
 		
 		<td>{$vo.action}</td>
+		<td>{$vo.value}</td>
+		<td>{$vo.isused}</td>
+		<!-- <td>{$vo.content}</td> -->
+		<td>{$vo.createdatetime}</td>
+	</tr>
+	</volist>
+</tbody>
+
+</table>
+<br>
+<h1>常用功能</h1>
+
+<table class="mainTables" width="1700">
+<thead>
+	<tr>
+		<td width="20">&nbsp;</td>
+		<td width="20">&nbsp;</td>
+		<td width="20"><b>状态<br/></b></td>
+		<td width="30"><b>轮播图编号<br/></b></td>
+		<td width="150"><b>轮播图地址</b></td>
+		<td width="150"><b>轮播图展示</b></td>
+		<td width="50"><b>商品编号</b></td>
+		<td width="150"><b>商品名称</b></td>
+		<td width="20"><b>跳转类型<br/></b></td>
+		<td width="20"><b>跳转链接类型<br/></b></td>
+		<td width="150"><b>跳转链接</b></td>
+		<td width="30"><b>是否可以点击<br/></b></td>
+		<!-- <td width="200"><b>跳转链接内容<br/></b></td> -->
+		<td width="80"><b>上传时间<br/></b></td>
+	</tr>
+</thead>
+
+<tbody>
+	<volist name="list3" id="vo" empty="没有对应数据" >
+	<tr>
+	
+		<td>
+			<form action="__APP__/Lunbotu/updatelunbotushow{$yuurl}" method="post" style="margin:0px">
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="修改" />
+			</form>
+		</td>
+		
+		<td>
+			<form action="__APP__/Lunbotu/deletelunbodata{$yuurl}" method="post" style="margin:0px">
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="删除" />
+			</form>
+		</td>
+		
+		<td>{$vo.flag}</td>
+		<td>{$vo.picname}</td>
+		<td>{$vo.img}</td>
+		
+		<td><img alt="" src="{$vo.img}" width="200"></td>
+		<td>{$vo.shopid}</td>
+		<td>{$vo.shopname}</td>
+		
+		<td>{$vo.action}</td>
+		<td>{$vo.type}</td>
 		<td>{$vo.value}</td>
 		<td>{$vo.isused}</td>
 		<!-- <td>{$vo.content}</td> -->
