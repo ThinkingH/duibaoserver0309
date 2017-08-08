@@ -16,7 +16,7 @@ function uploadqiniu($bucket,$filepath,$savename){
 	} */
 	
 	//$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
-	$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_upload.php';
+	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
 	
 	$data = array(
 			'bucket'   => $bucket,
@@ -39,8 +39,10 @@ function uploadqiniu($bucket,$filepath,$savename){
 //七牛图片上传--------2
 function upload_qiniu($bucket,$filepath,$savename){
 	
-	
-	$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_upload.php';
+	//测试服务器的地址
+	//$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_upload.php';
+	//正式服务器的地址
+	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
 	
 	$data = array(
 			'bucket'   => $bucket,
@@ -75,8 +77,10 @@ function delqiuniu($bucket,$filename){
 	$fengge1 = explode('/',$fenge[0]);
 	
 	$filename = $fengge1[3]; */
-	
-	$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_delete.php';
+	//测试服务器的地址
+	//$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_delete.php';
+	//正式服务器的地址
+	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_delete.php';
 	
 	$data = array(
 			'delbucket' => $bucket,

@@ -42,6 +42,10 @@ class LunbotuAction extends Action {
 		$youhui_sql = "select * from xb_lunbotu where flag='1' and biaoshi='6' order by picname desc limit 4";
 		$youhui_list = $Model->query($youhui_sql);
 		
+		//抽奖转盘
+		$chouprize_sql = "select * from xb_lunbotu where flag=1 and biaoshi=7  order by id desc";
+		$chouprize_list = $Model->query($chouprize_sql);
+		
 		//数据的读出
 		foreach ($list as $keys=>$vals){
 			
@@ -73,6 +77,12 @@ class LunbotuAction extends Action {
 				$list[$keys]['isused']='允许点击';
 			}else if($list[$keys]['isused']=='2'){
 				$list[$keys]['isused']='不允许点击';
+			}
+			
+			if($list[$keys]['type']=='1'){
+				$list[$keys]['type']='跳转外链';
+			}else if($list[$keys]['type']=='2'){
+				$list[$keys]['type']='跳转内部链';
 			}
 			
 			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
@@ -158,6 +168,12 @@ class LunbotuAction extends Action {
 				$youhui_list[$keys]['isused']='不允许点击';
 			}
 			
+			if($youhui_list[$keys]['type']=='1'){
+				$youhui_list[$keys]['type']='跳转外链';
+			}else if($youhui_list[$keys]['type']=='2'){
+				$youhui_list[$keys]['type']='跳转内部链';
+			}
+			
 			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
 			
 			if(substr($youhui_list[$keys]['img'],0,7)=='http://' || substr($youhui_list[$keys]['img'],0,8)=='https://'){
@@ -167,10 +183,58 @@ class LunbotuAction extends Action {
 			}
 				
 		}
-					
+
+		//常用功能
+		foreach ($chouprize_list as $keys=>$vals){
+				
+			if($chouprize_list[$keys]['flag']=='1'){
+				$chouprize_list[$keys]['flag']='启用';
+			}else if($chouprize_list[$keys]['flag']=='9'){
+				$chouprize_list[$keys]['flag']='关闭';
+			}
+				
+			if($chouprize_list[$keys]['picname']=='1'){
+				$chouprize_list[$keys]['picname']='轮播图一';
+			}else if($chouprize_list[$keys]['picname']=='2'){
+				$chouprize_list[$keys]['picname']='轮播图二';
+			}else if($chouprize_list[$keys]['picname']=='3'){
+				$chouprize_list[$keys]['picname']='轮播图三';
+			}else if($chouprize_list[$keys]['picname']=='4'){
+				$chouprize_list[$keys]['picname']='轮播图四';
+			}
+				
+			if($chouprize_list[$keys]['action']=='1'){
+				$chouprize_list[$keys]['action']='页面';
+			}else if($chouprize_list[$keys]['action']=='2'){
+				$chouprize_list[$keys]['action']='活动';
+			}else if($chouprize_list[$keys]['action']=='3'){
+				$chouprize_list[$keys]['action']='商品';
+			}
+				
+			if($chouprize_list[$keys]['isused']=='1'){
+				$chouprize_list[$keys]['isused']='允许点击';
+			}else if($chouprize_list[$keys]['isused']=='2'){
+				$chouprize_list[$keys]['isused']='不允许点击';
+			}
+			
+			if($chouprize_list[$keys]['type']=='1'){
+				$chouprize_list[$keys]['type']='跳转外链';
+			}else if($chouprize_list[$keys]['type']=='2'){
+				$chouprize_list[$keys]['type']='跳转内部链';
+			}
+				
+			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
+				
+			if(substr($chouprize_list[$keys]['img'],0,7)=='http://' || substr($chouprize_list[$keys]['img'],0,8)=='https://'){
+		
+			}else{
+				$chouprize_list[$keys]['img'] = $arr['duibao-basic'].$chouprize_list[$keys]['img'].'?imageView2/1/w/500/h/200/q/75|imageslim';
+			}
+		}
 		$this -> assign('list',$list);
 		$this -> assign('list1',$hot_list);
 		$this -> assign('list2',$youhui_list);
+		$this -> assign('list3',$chouprize_list);
 		
 		// 输出模板
 		$this->display();
@@ -192,6 +256,19 @@ class LunbotuAction extends Action {
 		//拼接url参数
 		$yuurl = $this -> createurl($_GET);
 		$this -> assign('yuurl',$yuurl);
+		
+		//跳转链接类型
+		$ljtype_arr = array(
+				'1'=> '跳转外链',
+				'2'=> '内部跳转',
+		);
+			
+		foreach($ljtype_arr as $keyc => $valc) {
+			$optionljtype .= '<option value="'.$keyc.'" ';
+			if($verdata_list[0]['type']==$keyc) { $optionljtype .= ' selected="selected" '; }
+			$optionljtype .= '>'.$valc.'</option>';
+		}
+		$this->assign('optionljtype',$optionljtype);
 		
 		
 		// 输出模板
@@ -223,6 +300,7 @@ class LunbotuAction extends Action {
 		$value     = $this->_post('tzurl');  //跳转页面的链接
 		$isused    = $this->_post('isused');   //是否可点击
 		$picname   = $this->_post('picname'); 
+		$ljtype    = $this->_post('ljtype');
 		
 		//把接收的数据写入到,上传的图片内容
 		//$r = file_put_contents('../../Xheditor/content/2.txt', $content);
@@ -280,6 +358,7 @@ class LunbotuAction extends Action {
 		$data['isused'] = $isused;
 		$data['content'] = $content;
 		$data['picname'] = $picname;
+		$data['type'] = $ljtype;
 		$data['createdatetime'] = date('Y-m-d h:i:s');
 		
 		
@@ -356,6 +435,19 @@ class LunbotuAction extends Action {
 			}
 			$this->assign('optiontype',$optiontype);
 			
+			//跳转链接类型
+			$ljtype_arr = array(
+					'1'=> '跳转外链',
+					'2'=> '内部跳转',
+			);
+			
+			foreach($ljtype_arr as $keyc => $valc) {
+				$optionljtype .= '<option value="'.$keyc.'" ';
+				if($verdata_list[0]['type']==$keyc) { $optionljtype .= ' selected="selected" '; }
+				$optionljtype .= '>'.$valc.'</option>';
+			}
+			$this->assign('optionljtype',$optionljtype);
+			
 			//跳转页面类型
 			$lunbo_arr = array(
 					'1'=> '轮播图一',
@@ -416,6 +508,7 @@ class LunbotuAction extends Action {
 		$isused    = $this->_post('isused');
 		$shopid    = $this->_post('shopid');
 		$shopname  = $this->_post('shopname');
+		$ljtype  = $this->_post('ljtype');
 		$update_submit = $this->_post('update_submit');
 		
 		$Model = new Model();
@@ -476,6 +569,7 @@ class LunbotuAction extends Action {
 		}
 		
 		$data['flag']        = $flag;
+		$data['type']        = $ljtype;
 		$data['action']      = $tztype;
 		$data['content']     = $content;
 		$data['value']       = $tzurl;
