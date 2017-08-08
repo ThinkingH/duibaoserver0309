@@ -25,6 +25,8 @@ class HyXb171 extends HyXb{
 		
 		$this->count = isset($input_data['count'])? $input_data['count']:'';  //每页显示的最大条数
 		$this->page  = isset($input_data['page'])?$input_data['page']:'';     //页数
+		
+		$this->type  = isset($input_data['type'])?$input_data['type']:''; //1-通知 2-留言
 	
 	}
 	
@@ -32,7 +34,6 @@ class HyXb171 extends HyXb{
 	//信息的推送
 	protected function controller_tuisongmessage(){
 		
-		$usertype = parent::__get('xb_usertype');
 		
 		if($this->page=='' || $this->page=='0'){
 		
@@ -40,7 +41,7 @@ class HyXb171 extends HyXb{
 		}
 		
 		if($this->count=='' || $this->count=='undefined'){
-				
+		
 			$this->count=10;
 		}
 		
@@ -48,74 +49,106 @@ class HyXb171 extends HyXb{
 		$pagesize  = $this->page*$this->count;
 		
 		
-		if($usertype=='1'){
+		if($this->type==''){
 			
-			$tablename = 'xb_user_tuisong';
+			$usertype = parent::__get('xb_usertype');
 			
-		}else if($usertype=='2'){
-			
-			$tablename = 'xb_temp_user_tuisong';
-			
-		}else{
-			$echoarr = array();
-			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '该用户的用户类型参数错误，信息推送失败';
-			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-			parent::hy_log_str_add($logstr);
-			echo json_encode($echoarr);
-			return false;
-		}
-		
-		$returnarr = array();
-		
-		//分页的实现
-		$tuisongsumsql  = "select count(*) as num from $tablename where userid='".parent::__get('xb_userid')."' ";
-		$tuisongsumsqlist = parent::__get('HyDb')->get_all($tuisongsumsql);
-		
-		if($tuisongsumsqlist[0]['num']>0){
-			$returnarr['maxcon'] = $tuisongsumsqlist[0]['num'];//总条数
-		}else{
-			$returnarr['maxcon'] = 0;//总条数
-		}
-		
-		//总页数
-		$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
-		
-		
-		
-		$temptuisongsql  = "select id,type,status,taskid,message,create_inttime from $tablename where userid='".parent::__get('xb_userid')."' 
-				order by create_inttime desc";
-		$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
-		
-		
-		/* $inarr = '';
-		foreach ($temltuisonglist as $val){
-		
-			if(is_numeric($val['id'])) {
-				array_push($inarr,$val['id']);
+			if($usertype=='1'){
+					
+				$tablename = 'xb_user_tuisong';
+					
+			}else if($usertype=='2'){
+					
+				$tablename = 'xb_temp_user_tuisong';
+					
+			}else{
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '该用户的用户类型参数错误，信息推送失败';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
 			}
-		
-			//把时间戳更新为时间格式
-			$val['create_inttime'] = date("Y-m-d H:i:s",$val['create_inttime']);
-		}
-		$instr = ' ('.implode(',',$inarr).') '; */
-		foreach ($temltuisonglist as $keys => $vals){
 			
-			$temltuisonglist[$keys]['create_inttime'] = date("Y-m-d H:i:s",$temltuisonglist[$keys]['create_inttime']);
+			$returnarr = array();
+			
+			//分页的实现
+			$tuisongsumsql  = "select count(*) as num from $tablename where userid='".parent::__get('xb_userid')."' ";
+			$tuisongsumsqlist = parent::__get('HyDb')->get_all($tuisongsumsql);
+			
+			if($tuisongsumsqlist[0]['num']>0){
+				$returnarr['maxcon'] = $tuisongsumsqlist[0]['num'];//总条数
+			}else{
+				$returnarr['maxcon'] = 0;//总条数
+			}
+			
+			//总页数
+			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
+			
+			
+			
+			$temptuisongsql  = "select id,type,status,taskid,message,create_inttime from $tablename where userid='".parent::__get('xb_userid')."'
+				order by create_inttime desc";
+			$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
+			
+			//评论信息
+			$pinglun_sql = "SELECT id FROM xb_subcomment where receiverid='".parent::__get('xb_userid')."' limit 1 ";
+			$pinglun_list = parent::__get('HyDb')->get_all($pinglun_sql);
+			
+			$con = 0;
+			foreach ($temltuisonglist as $keys => $vals){
+
+				++$con;
+				if($con==1 && $this->page==1 && $pinglun_list[0]['id']>0){
+						
+					$temltuisonglist[$keys]['message'] = '留言箱';
+				}
+				
+				$temltuisonglist[$keys]['create_inttime'] = date("Y-m-d H:i:s",$temltuisonglist[$keys]['create_inttime']);
+				
+			}
+			
+			
+		}else if($this->type=='1'){//留言数据的获取
+			
+			
+			$returnarr = array();
+				
+			//分页的实现
+			$tuisongsumsql  = "select count(*) as num from xb_subcomment where receiverid='".parent::__get('xb_userid')."' ";
+			$tuisongsumsqlist = parent::__get('HyDb')->get_all($tuisongsumsql);
+				
+			if($tuisongsumsqlist[0]['num']>0){
+				$returnarr['maxcon'] = $tuisongsumsqlist[0]['num'];//总条数
+			}else{
+				$returnarr['maxcon'] = 0;//总条数
+			}
+				
+			//总页数
+			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
+				
+			$temptuisongsql  = "select * from xb_subcomment where receiverid='".parent::__get('xb_userid')."' 
+				order by createtime desc";
+			$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
+				
+			foreach ($temltuisonglist as $keys => $vals){
+				
+				$temltuisonglist[$keys]['content'] = '您有一条新消息！';
+				
+			}
+			
+			
 		}
 		
 		
 		if(count($temltuisonglist)>0){
 		
-			/* $deltuisong_sql = "delete from xb_user_tuisong where id in ".$instr;
-			 $deltuisong_list = parent::__get('HyDb')->execute($deltuisong_sql);
-			 parent::hy_log_str_add(HyItems::hy_trn2space($deltuisong_sql)."\n"); */
-		
 		
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '信息推送成功';
+			$echoarr['returnmsg']  = '获取成功';
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
@@ -127,7 +160,7 @@ class HyXb171 extends HyXb{
 		}else{
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '推送信息为空';
+			$echoarr['returnmsg']  = '获取为空';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);

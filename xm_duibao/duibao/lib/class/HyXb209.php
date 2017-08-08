@@ -1,11 +1,13 @@
 <?php
 /*
- * 热门优惠分类
+ * 首页图片的获取
  */
 
 class HyXb209 extends HyXb{
 	
-	
+	private $width;
+	private $height;
+	private $type;
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -19,6 +21,10 @@ class HyXb209 extends HyXb{
 				HyItems::hy_array2string($input_data)."\n";
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
+		
+		$this->width  = isset($input_data['width'])?$input_data['width']:'';
+		$this->height = isset($input_data['width'])?$input_data['width']:'';
+		$this->type = isset($input_data['type'])?$input_data['type']:'';
 	
 	}
 	
@@ -26,14 +32,138 @@ class HyXb209 extends HyXb{
 	//热门优惠分类
 	public function controller_collectiontypelist(){
 		
-		$youhuiquanconfsql  = "select kindtype,kindname,smallpic from xb_kind where flag='1' and biaoshi='9' ";
-		$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql); 
+		
+		
+		if($this->type=='1'){//兑宝热门免费
+			
+			if($this->width==''){//753 * 292
+				$this->width='200';
+			}
+			
+			if($this->height==''){
+				$this->height='160';
+			}
+			
+			$youhuiquanconfsql  = "select id,shopid,shopname,img,imgurl,action, type,value,isused
+								from xb_lunbotu where flag='1' and biaoshi='5' order by picname desc limit 3";
+			$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql);
+			
+			
+			foreach ($youhuiquanconflist as $keys => $vals){
+				
+				$replace = array("\t", "\r", "\n",);
+					
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($youhuiquanconflist[$keys]['img'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['img'],0,8)=='https://' ){
+					//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}else{
+					$youhuiquanconflist[$keys]['img'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+						
+				}
+			}
+			
+			
+		}else if($this->type=='2'){//兑宝特供优惠
+			
+			if($this->width==''){//753 * 292
+				$this->width='320';
+			}
+				
+			if($this->height==''){
+				$this->height='179';
+			}
+			
+			
+			$youhuiquanconfsql  = "select id,img from xb_lunbotu where flag='1' and biaoshi='6' order by picname desc limit 4";
+			$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql);
+			
+			foreach ($youhuiquanconflist as $keys => $vals){
+				
+				$replace = array("\t", "\r", "\n",);
+					
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($youhuiquanconflist[$keys]['img'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['img'],0,8)=='https://' ){
+					//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}else{
+					$youhuiquanconflist[$keys]['img'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}
+			}
+			
+			
+		}else if($this->type=='3'){//特价好货
+			
+			if($this->width==''){//753 * 292
+				$this->width='250';
+			}
+			
+			if($this->height==''){
+				$this->height='300';
+			}
+			
+			$youhuiquanconfsql  = "select kindtype,kindname,smallpic from xb_kind where flag='1' and biaoshi='2' order by createtime desc limit 3";
+			$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql);
+			
+			foreach ($youhuiquanconflist as $keys => $vals){
+				
+				$replace = array("\t", "\r", "\n",);
+				
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($youhuiquanconflist[$keys]['smallpic'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['smallpic'],0,8)=='https://' ){
+					//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['smallpic'] = str_replace($replace, '', $youhuiquanconflist[$keys]['smallpic']);
+				}else{
+					$youhuiquanconflist[$keys]['smallpic'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['smallpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['smallpic'] = str_replace($replace, '', $youhuiquanconflist[$keys]['smallpic']);
+				}
+				
+			}
+			
+		}else if($this->type=='4'){
+			
+			if($this->width==''){//753 * 292
+				$this->width='640';
+			}
+				
+			if($this->height==''){
+				$this->height='203';
+			}
+			
+			
+			$youhuiquanconfsql  = "select * from xb_lunbotu where flag='1' and biaoshi='7' ";
+			$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql);
+				
+			foreach ($youhuiquanconflist as $keys => $vals){
+			
+				$replace = array("\t", "\r", "\n",);
+					
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($youhuiquanconflist[$keys]['img'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['img'],0,8)=='https://' ){
+					//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}else{
+					$youhuiquanconflist[$keys]['img'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}
+			}
+			
+			
+			
+		}
+		
 		
 		if(count($youhuiquanconflist)>0){
 			
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '精选优惠券类型获取成功';
+			$echoarr['returnmsg']  = '数据获取成功';
 			$echoarr['dataarr'] = $youhuiquanconflist;
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
@@ -43,7 +173,7 @@ class HyXb209 extends HyXb{
 		}else{
 			$echoarr = array();
 			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '精选优惠券类型获取失败';
+			$echoarr['returnmsg']  = '数据获取失败';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);

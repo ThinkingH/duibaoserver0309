@@ -95,11 +95,11 @@ class HyXb105 extends HyXb{
 		}else if($this->type=='2'){//新手礼包弹框
 			
 			if($this->width==''){
-				$this->width='600';
+				$this->width='750';
 			}
 				
 			if($this->height==''){
-				$this->height='480';
+				$this->height='600';
 			}
 			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='3' order by id asc";

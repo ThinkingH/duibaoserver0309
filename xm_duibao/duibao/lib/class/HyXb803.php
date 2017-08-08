@@ -47,20 +47,68 @@ class HyXb803 extends HyXb{
 		//查询的条件
 		$where = '';
 		
-		if($this->kindtype=='美食'){//查询全部的
-			
-			$where = "z='".$z."' and shstatus=11 and hyflag=1 and flag=1 and zflag=1 and maintype='美食' 
-					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."' 
-					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."'";
-			
-			
-		}else{//查询单个的
-			
-			$where = "z='".$z."' and shstatus=11 and hyflag=1 and flag=1 and zflag=1 and childtype = '".$this->kindtype."' 
-					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
-					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."'";
-		}
+		$shopaddress = array();//距离商铺的距离
 		
+		if($this->type=='3'){
+			
+			//地理位置转换为经纬度
+			$shopaddress_sql = "select id,address,lat,lng from shop_site where flag='1' and checkstatus='2' and storestatus='2' 
+					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
+					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' ";
+			$shopaddress_list = parent::__get('HyDb')->get_all($shopaddress_sql);
+			
+			
+			$inarr = array();
+			
+			foreach ($shopaddress_list as $keys => $vals){
+				
+				//获取商户的id
+				if(is_numeric($shopaddress_list[$keys]['id'])) {
+					array_push($inarr,$shopaddress_list[$keys]['id']);
+				}
+				
+				//距离的展示
+				$shopaddress[$shopaddress_list[$keys]['id']] = parent::getDistance($this->lat, $this->lng, $shopaddress_list[$keys]['lat'], $shopaddress_list[$keys]['lng'], $len_type = 2, $decimal = 2);
+				
+			}
+			
+			$inarr = array_unique($inarr);
+			if(count($inarr)<=0){
+					
+				$where = 'siteid=0';
+			}else{
+				$instr = ' ('.implode(',',$inarr).') ';
+				$where = ' siteid in '. $instr;
+			}
+			
+			
+			if($this->kindtype=='全部'){//查询全部的附近商家的优惠券
+					
+				$where = "onsales=1 and status=1 and flag=1  and $where and typeid not in (11,13,14,15) ";
+					
+			}else {//查询单个的
+					
+				$where = " onsales=1 and status=1 and flag=1  
+							and $where and attribute = '".$this->kindtype."' and typeid not in (11,13,14,15) ";
+			}
+			
+			
+		}else{
+			
+			if($this->kindtype=='全部'){//查询全部的
+					
+				$where = "z='".$z."' and shstatus=11 and hyflag=1  and zflag=1
+					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
+					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' and new_datetime>='".date("Y-m-d",strtotime("-11 month"))."' ";
+					
+			}else{//查询单个的
+					
+				$where = "z='".$z."' and shstatus=11 and hyflag=1 and zflag=1 and maintype = '".$this->kindtype."'
+					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
+					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' and new_datetime>='".date("Y-m-d",strtotime("-11 month"))."' ";
+			}
+		}
+		$where = ' 1=1 ';
 		
 		if($this->page=='' || $this->page=='0' || $this->page=='undefined'){
 			$this->page=1;
@@ -76,8 +124,15 @@ class HyXb803 extends HyXb{
 		$returnarr = array();
 			
 		//分类数据的查询
-		$typesql  = "select count(*) as num from z_tuanmainlist where $where ";
-		$typelist = parent::__get('HyDb')->get_all($typesql);
+		if($this->type=='3'){//查询商家的优惠券
+			$typesql  = "select count(*) as num from shop_product where $where ";
+			$typelist = parent::__get('HyDb')->get_all($typesql);
+			
+		}else{
+			$typesql  = "select count(*) as num from z_tuanmainlist where $where ";
+			$typelist = parent::__get('HyDb')->get_all($typesql);
+		}
+		
 			
 		if($typelist[0]['num']>0){
 			$returnarr['maxcon'] = $typelist[0]['num'];
@@ -88,24 +143,36 @@ class HyXb803 extends HyXb{
 		//总页数
 		$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
 		
-		//1-人气最高
+		//1-抓取优惠券
 		if($this->type=='1'){
 			
-			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,yuanprice,nowprice,round(nowprice/yuanprice,2) as bydiscount,yilingcon,address,
+			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,
+					yuanprice,nowprice,round(nowprice/yuanprice,2) as bydiscount,yilingcon,address,
 					phone,lat,lng,fenleiming,shopname,pingfen,reamrk,dianzan   
-				 	from z_tuanmainlist where $where order by bydiscount asc limit $firstpage,$pagesize ";
+				 	from z_tuanmainlist where $where and faflag='1' order by bydiscount asc limit $firstpage,$pagesize ";
 			
-		}else if($this->type=='2'){//评价最高
+		//	echo $sqldata;
 			
-			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,yuanprice,nowprice,yilingcon,address,
+		}else if($this->type=='2'){//评价最高     //发布优惠券
+			
+			$sqldata = "select id,userid,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,
+					yuanprice,nowprice,round(nowprice/yuanprice,2) as bydiscount,yilingcon,address,
 					phone,lat,lng,fenleiming,shopname,pingfen,reamrk,dianzan  
-				 	from z_tuanmainlist where $where order by pingfen desc limit $firstpage,$pagesize ";
+				 	from z_tuanmainlist where $where and faflag='1' order by bydiscount asc limit $firstpage,$pagesize ";
 			
 			
-		}else if($this->type=='3'){//最新发布
-			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,yuanprice,nowprice,yilingcon,address,
-					phone,lat,lng,fenleiming,shopname,pingfen,reamrk,dianzan 
-				 	from z_tuanmainlist where $where  order by new_datetime desc limit $firstpage,$pagesize ";
+		}else if($this->type=='3'){//最新发布      //商家优惠券
+			
+			$sqldata = "select id,name,price,yuanprice,score,mainpic,showpic1,showpic2,showpic3,showpic4,showpic5,
+						xiangqingurl,round(price/yuanprice,2) as bydiscount  
+				 	from shop_product where $where  order by bydiscount asc limit $firstpage,$pagesize ";
+			
+		}else if($this->type==''){
+			
+			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,
+						yuanprice,nowprice,round(nowprice/yuanprice,2) as bydiscount,yilingcon,address,
+						phone,lat,lng,fenleiming,shopname,pingfen,reamrk,dianzan
+						from z_tuanmainlist where $where and faflag='9' order by bydiscount asc limit $firstpage,$pagesize ";
 		}
 		
 		
@@ -128,7 +195,31 @@ class HyXb803 extends HyXb{
 		$conn = 0;
 		foreach ($listdata as $keys=>$vals){
 			
+			
+			
+			if($listdata[$keys]['mainpic']){
+				$listdata[$keys]['picurl'] = $listdata[$keys]['mainpic'];
+			}
+			
+			if($listdata[$keys]['name']){
+				
+				$listdata[$keys]['title'] = str_replace(' ','',$listdata[$keys]['name']);//商品的名称
+			}
+			
+			if($listdata[$keys]['price']=='0' || $listdata[$keys]['price']!=''){
+				$listdata[$keys]['nowprice'] = isset($listdata[$keys]['price'])?$listdata[$keys]['price']:'0';//商品的名称
+			}
+			
+			//跳转详情页tiaozhuanurl
+			if($listdata[$keys]['xiangqingurl']!=''){
+				
+				$listdata[$keys]['tiaozhuanurl'] = $listdata[$keys]['xiangqingurl'];
+			}
+			
+			
 			$listdata[$keys]['gflag'] = '1';
+			
+			$listdata[$keys]['faflag'] = isset($listdata[$keys]['faflag'])?$listdata[$keys]['faflag']:'1';
 			
 			++$con;
 			
@@ -164,7 +255,6 @@ class HyXb803 extends HyXb{
 			}
 			
 			
-			
 			if(strlen($listdata[$keys]['discount'])=='1'){
 				
 				$listdata[$keys]['discount'] = $listdata[$keys]['discount'].'.0';
@@ -178,13 +268,29 @@ class HyXb803 extends HyXb{
 			}
 			
 			//$listdata[$keys]['over_datetime'] = date('Y年m月d日',$listdata[$keys]['over_datetime']/1000);
-			$listdata[$keys]['over_datetime'] = substr($listdata[$keys]['over_datetime'],0,10);
+			if($listdata[$keys]['over_datetime']!=''){
+				$listdata[$keys]['over_datetime'] = substr($listdata[$keys]['over_datetime'],0,10);
+			}else{
+				$listdata[$keys]['over_datetime']='';
+			}
+			
 			
 			//标题空格的去除
 			$listdata[$keys]['title'] = str_replace(' ','',$listdata[$keys]['title']);
 			
+			if($listdata[$keys]['lat']=='' || $listdata[$keys]['lng']==''){
+				
+				$listdata[$keys]['distance'] = $shopaddress[$listdata[$keys]['id']];
+				
+			}else{
+				$listdata[$keys]['distance'] = parent::getDistance($this->lat, $this->lng, $listdata[$keys]['lat'], $listdata[$keys]['lng'], $len_type = 2, $decimal = 2);
+			}
 			
-			$listdata[$keys]['distance'] = parent::getDistance($this->lat, $this->lng, $listdata[$keys]['lat'], $listdata[$keys]['lng'], $len_type = 2, $decimal = 2);
+			if($listdata[$keys]['distance']<1){
+				
+				$listdata[$keys]['distance'] = $listdata[$keys]['distance']*1000;
+			}
+			
 			
 			if($listdata[$keys]['pingfen']>'0' && $listdata[$keys]['pingfen']<='1.5'){
 				
@@ -209,8 +315,6 @@ class HyXb803 extends HyXb{
 				$listdata[$keys]['dflag'] = '2';//未点赞
 			}
 			
-			
-					
 			}
 			
 			

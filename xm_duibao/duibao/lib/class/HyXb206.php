@@ -133,7 +133,7 @@ class HyXb206 extends HyXb{
 							
 					
 					
-					parent::func_jgpush($jiguangid,$message);
+					parent::func_jgpush($jiguangid,$message,'1',$m_txt='',$m_time='86400');////$jiguangid,$messagee,$m_type='',$m_txt='',$m_time='86400'
 					
 					
 					$echoarr = array();

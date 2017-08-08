@@ -43,15 +43,40 @@ class HyXb511 extends HyXb{
 		}
 		
 		
+		//商品信息
 		$productdetailsql = "select * from shop_product 
 				where flag=1 and status=1 and onsales=1 and id='".$this->productid."'";
 		
 		$productdetaillist = parent::__get('HyDb')->get_row($productdetailsql);
 		
-		//用户浏览记录的增加
 		
+		//第三方店铺链接
+		$shopdata_sql  = "select * from shop_store where siteid='".$productdetaillist['siteid']."' ";
+		$shopdata_list = parent::__get('HyDb')->get_all($shopdata_sql); 
+		
+		foreach ($shopdata_list as $keys=>$vals){
+			
+			if($shopdata_list[$keys]['shopname']===null){
+				$shopdata_list[$keys]['shopname']='';
+			}
+			if($shopdata_list[$keys]['shoplogo']===null){
+				$shopdata_list[$keys]['shoplogo']='';
+			}
+			if($shopdata_list[$keys]['shoptype']===null){
+				$shopdata_list[$keys]['shoptype']='';
+			}
+			if($shopdata_list[$keys]['shopurl']===null){
+				$shopdata_list[$keys]['shopurl']='';
+			}
+			
+		}
+		
+		//var_dump($shopdata_list['shopname']);
+		
+		//用户浏览记录的增加
 		$updatesql = "update shop_site set renqi=renqi+1 where id='".$productdetaillist['siteid']."' ";
 		$updatelist = parent::__get('HyDb')->execute($updatesql);
+		
 		
 		//下载次数的增加
 		$downloadsql  = "update shop_product set buycount=buycount+1 where id='".$this->productid."' ";
@@ -59,6 +84,36 @@ class HyXb511 extends HyXb{
 		
 		
 		if($productdetaillist['id']>0){
+			
+			$productdetaillist['shoparr'] = $shopdata_list;
+			
+			/* //跳转链接地址
+			//$productdetaillist['shopname'] = isset($shopdata_list['shopname'])?$shopdata_list['shopname']:'';
+			if($shopdata_list['shopname']===null){
+				$shopdata_list['shopname']='';
+			}else{
+				$productdetaillist['shopname'] = $shopdata_list['shopname'];
+			}
+			
+			if($shopdata_list['shoplogo']===null){
+				$productdetaillist['shoplogo']='';
+			}else{
+				$productdetaillist['shoplogo'] = $shopdata_list['shoplogo'];
+			}
+			
+			if($shopdata_list['shopurl']===null){
+				$productdetaillist['shopurl']='';
+			}else{
+				$productdetaillist['shopurl'] = $shopdata_list['shopurl'];
+			}
+			
+			if($shopdata_list['shoptype']===null){
+				$productdetaillist['shoptype']='';
+			}else{
+				$productdetaillist['shoptype'] = $shopdata_list['shoptype'];
+			} */
+			
+			
 			
 			if($productdetaillist['kucun']<=0){
 				$productdetaillist['productnum'] = '9';//库存不足

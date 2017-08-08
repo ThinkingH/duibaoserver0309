@@ -604,15 +604,15 @@ class HyXb{
 		
 	}
 	
-	
+	//$receiver='all',$content='',$m_type='',$m_txt='',$m_time='86400'
 	//极光推送
-	public function func_jgpush($jiguangid,$messagee){
+	public function func_jgpush($jiguangid,$messagee,$m_type='',$m_txt='',$m_time='86400'){
 		
 		
 		//极光推送的设置
-		$m_type = '';//推送附加字段的类型
+		/* $m_type = '';//推送附加字段的类型
 		$m_txt = '';//推送附加字段的类型对应的内容(可不填) 可能是url,可能是一段文字。
-		$m_time = '86400';//离线保留时间
+		$m_time = '86400';//离线保留时间 */
 		$receive = array('alias'=>array($jiguangid));//别名
 		//$receive = array('alias'=>array('073dc8672c25d8d023328d06dbbd1230'));//别名
 		$content = $messagee;
@@ -812,6 +812,30 @@ class HyXb{
 		}
 		return round($s,$decimal);
 	}
+	
+	
+	//地理位置转换
+	protected function getlnglat($address){
+		
+		$url = 'http://api.map.baidu.com/geocoder?address=urlencode('.$address.')&output=json&key=WPzUoVnSMWZXrUuSR5Vs22Cd17yhCZeD';
+		
+		$data = vget($url);
+		
+		$truepath = json_decode($data['content'], true);
+		
+		
+		if($truepath['status']=='OK'){//请求成功
+			
+			return $truepath['result']['location'];
+			
+		}else{
+			return false;
+		}
+		
+	}
+	
+	
+	
 	
 	
 	
@@ -1280,6 +1304,7 @@ class HyXb{
 		return false;
 	
 	}
+	
 	
 	/**
 	 * 日志变量数据追加，即将子类的日志变量数据追加到父类的日志变量数据中

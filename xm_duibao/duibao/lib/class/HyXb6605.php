@@ -31,7 +31,7 @@ class HyXb6605 extends HyXb{
 		
 		
 		$sql_where = '';
-		if($this->quantype=='666'){
+		if($this->quantype=='666'){//特价好货
 			$sql_where .= "  flag=1  ";
 		}else{
 			$sql_where .= " flag=1 and maintype='".$this->quantype."'";
@@ -100,7 +100,7 @@ class HyXb6605 extends HyXb{
 				
 				/* $dataarr = parent::func_advertisement($this->page);  */
 				
-				if($con=='10'){
+				if($con=='11'){
 					
 					$page = $this->page-1;
 					$dataarr = parent::func_advertisement($page);
@@ -125,7 +125,7 @@ class HyXb6605 extends HyXb{
 					
 				}
 				
-				if($con=='20'){
+				if($con=='21'){
 					
 					$page = $this->page-1;
 					$dataarr = parent::func_advertisement($page,3);
@@ -150,24 +150,7 @@ class HyXb6605 extends HyXb{
 					
 					
 				}
-				/* if($shangpinlist[$keys]['id']%10==0){//每10条显示一条广告
 				
-				    $page = $this->page-1;
-					$dataarr = parent::func_advertisement($page);
-					
-					if($dataarr['id']>0){//有广告存在可以进行插入
-						
-						$shangpinlist[$keys]['gflag'] = $dataarr['gflag'];//广告类型1-优惠券 2-网页下载 3-下载广告
-						$shangpinlist[$keys]['gtype'] = $dataarr['gtype'];//1-任务 2-广告
-						$shangpinlist[$keys]['url'] = $dataarr['picurl'];//图片链接
-						$shangpinlist[$keys]['adurl'] = $dataarr['adurl'];//广告跳转链接
-						$shangpinlist[$keys]['taskid'] = $dataarr['taskid'];//任务下载编号
-						$shangpinlist[$keys]['adtitle'] = $dataarr['adtitle'];//广告标题
-						$shangpinlist[$keys]['adcontent'] = $dataarr['adcontent'];//广告描述
-						
-					}
-				} */
-					
 				
 				
 				

@@ -5,6 +5,11 @@
 
 class HyXb601 extends HyXb{
 	
+	private $height;
+	private $width;
+	
+	
+	
 	//数据的初始化
 	function __construct($input_data){
 	
@@ -20,6 +25,8 @@ class HyXb601 extends HyXb{
 	
 		//接收用户的userid
 		$this->kindtype = isset($input_data['kindtype']) ? $input_data['kindtype']:'';  //商品的类型
+		$this->height = isset($input_data['height']) ? $input_data['height']:'';  //商品的类型
+		$this->width = isset($input_data['width']) ? $input_data['width']:'';  //商品的类型
 	
 	}
 	
@@ -27,10 +34,33 @@ class HyXb601 extends HyXb{
 	public function controller_shouyetype(){
 		
 		
+		
 		if(trim($this->kindtype)=='all'){//获取首页的全部类型
 			
-			$seldata = "select id,kindtype,kindname from maintype where flag=1 order by id";
+			if($this->width==''){
+				$this->width='111';
+			}
+			
+			if($this->height==''){
+				$this->height='111';
+			}
+			$seldata = "select id,kindtype,kindname,smallpic from maintype where flag=1 order by id asc";
 			$selsql  = parent::__get('HyDb')->get_all($seldata);
+			
+			foreach ($selsql as $keys=>$vals){
+				
+				$replace = array("\t", "\r", "\n",);
+					
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($selsql[$keys]['smallpic'],0,7)=='http://' ||substr($selsql[$keys]['smallpic'],0,8)=='https://' ){
+					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
+				}else{
+					$selsql[$keys]['smallpic'] = $arr['duibao-basic'].$selsql[$keys]['smallpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
+				}
+				
+			}
 			
 			
 			if(count($selsql)>0){
@@ -57,6 +87,14 @@ class HyXb601 extends HyXb{
 			
 		}else{
 			
+			if($this->width==''){
+				$this->width='111';
+			}
+				
+			if($this->height==''){
+				$this->height='111';
+			}
+			
 			$seldata = "select id,childtype,smallpic from shouye_config where flag=1 and type='".trim($this->kindtype)."' order by id";
 			$selsql  = parent::__get('HyDb')->get_all($seldata);
 			
@@ -66,7 +104,16 @@ class HyXb601 extends HyXb{
 			foreach ($selsql as $keys=>$vals){//
 				
 				$replace = array("\t", "\r", "\n",);
-				$selsql[$keys]['smallpic'] =  str_replace($replace, '', $selsql[$keys]['smallpic']);
+				
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($selsql[$keys]['smallpic'],0,7)=='http://' ||substr($selsql[$keys]['smallpic'],0,8)=='https://' ){
+					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
+				}else{
+					$selsql[$keys]['smallpic'] = $arr['duibao-basic'].$selsql[$keys]['smallpic'].'imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
+				}
+				
 			}
 			
 			
