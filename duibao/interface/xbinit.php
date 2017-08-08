@@ -127,9 +127,10 @@ $headimgurl         = HyItems::arrayItem ( $_REQUEST, 'headimgurl' );
 $width        = HyItems::arrayItem ( $_REQUEST, 'width' );
 $height        = HyItems::arrayItem ( $_REQUEST, 'height' );
 
-$senderid        = HyItems::arrayItem ( $_REQUEST, 'senderid' );
-$receiverid      = HyItems::arrayItem ( $_REQUEST, 'receiverid' );
+$touserid  = HyItems::arrayItem ( $_REQUEST, 'touserid' );
 $cid      = HyItems::arrayItem ( $_REQUEST, 'cid' );
+$dtype   = HyItems::arrayItem ( $_REQUEST, 'dtype' );  //删除层级类型id---m主表评论---c字表回复
+$nowid  = HyItems::arrayItem ( $_REQUEST, 'nowid' );  //评论列表id字段
 
 
 
@@ -226,9 +227,11 @@ $inputdataarr = array(
 		'width' => $width,
 		'height' => $height,
 		
-		'senderid' => $senderid,
-		'receiverid' => $receiverid,
-		'cid' => $cid,
+		'dtype' => $dtype,
+		'cid'   => $cid,
+		'nowid' => $nowid,
+		'touserid' => $touserid,
+		
 );
 
 
