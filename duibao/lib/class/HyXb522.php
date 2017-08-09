@@ -16,7 +16,7 @@ class HyXb522 extends HyXb{
 	private $typeid;
 	private $gateway;
 	private $mbps;
-	private $ttype;
+	private $ttype; 
 	private $goodsname;
 	private $typeidchild;
 	private $xiafaurl;

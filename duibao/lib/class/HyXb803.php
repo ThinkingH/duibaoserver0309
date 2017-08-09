@@ -1,6 +1,6 @@
 <?php
 /*
- *坐标的计算
+ *附近数据的展示
  */
 class HyXb803 extends HyXb{
 	
@@ -108,7 +108,7 @@ class HyXb803 extends HyXb{
 					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' and new_datetime>='".date("Y-m-d",strtotime("-11 month"))."' ";
 			}
 		}
-		$where = ' 1=1 ';
+		//$where = ' 1=1 ';
 		
 		if($this->page=='' || $this->page=='0' || $this->page=='undefined'){
 			$this->page=1;
@@ -149,7 +149,7 @@ class HyXb803 extends HyXb{
 			$sqldata = "select id,faflag,new_datetime,over_datetime,type,maintype,childtype,title,content,picurl,tiaozhuanurl,
 					yuanprice,nowprice,round(nowprice/yuanprice,2) as bydiscount,yilingcon,address,
 					phone,lat,lng,fenleiming,shopname,pingfen,reamrk,dianzan   
-				 	from z_tuanmainlist where $where and faflag='1' order by bydiscount asc limit $firstpage,$pagesize ";
+				 	from z_tuanmainlist where $where and faflag='9' order by bydiscount asc limit $firstpage,$pagesize ";
 			
 		//	echo $sqldata;
 			
