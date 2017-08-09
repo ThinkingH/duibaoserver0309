@@ -6,6 +6,7 @@ class HyXb116 extends HyXb{
 	
 	private $appid;
 	private $appsecret;
+	private $code;
 	
 	
 	//数据的初始化
@@ -20,21 +21,43 @@ class HyXb116 extends HyXb{
 				HyItems::hy_array2string($input_data)."\n";
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
-	
-		$this->appid = '';
-		$this->appsecret='';
+		
+		$this->appid = APPID; //微信的appid
+		$this->appsecret = SECRET; //微信的SECRET
+		$this->code = isset($input_data['code'])? $input_data['code']:'';
 	
 	}
 	
+	/* https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code */
 	
 	//微信绑定主操作
 	public function controller_checkphone(){
 		
-		$redirectUrl = urlencode("你的回调页面的地址");
-		$url='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$this->appid.'&redirect_uri='.$redirectUrl.'
-				&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+		//请求地址
+		$url   = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appid.'&secret='.$this->appsecret.'&code='.$this->code.'&grant_type=authorization_code';
+		$data  = HyItems::vget( $url, 10000 );
 		
-		header("Location:" . $url);
+		if($data['httpcode']=='200' && $data['content']['access_token']!='' ){
+			
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '获取成功';
+			$echoarr['dataarr'] = $data;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return true;
+		}else{
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = '获取失败';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
 		
 	}
 	
