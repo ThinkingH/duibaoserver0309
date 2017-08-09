@@ -213,10 +213,10 @@ class HyXb811 extends HyXb{
 					}
 					
 					
-					if($allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']==$allarray[$keyaa]['userid']){
-						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '1';//不可删除
+					if($allarray1[$keyaa]['childlist'][$keyccc]['fromuserid']==$this->userid){
+						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '1';//可删除
 					}else{
-						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '2';//可删除
+						$allarray1[$keyaa]['childlist'][$keyccc]['is_deled'] = '2';//bu可删除
 					}
 					
 					
@@ -225,9 +225,18 @@ class HyXb811 extends HyXb{
 					
 				}
 				
+				
+				
 				$allarray[$keyaa]['comments'] = $allarray1[$keyaa]['childlist'];
 				
-				$allarray[$keyaa]['is_deled'] = '1';
+				if($allarray[$keyaa]['userid']==$this->userid) {
+					$allarray[$keyaa]['is_deled'] = '1';
+					
+				}else {
+					$allarray[$keyaa]['is_deled'] = '2';
+					
+				}
+				
 				
 			}
 			
