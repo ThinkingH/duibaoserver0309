@@ -14,6 +14,7 @@ class GuanggaoAction extends Action {
 	
 	private $lock_updateshow   = '975';
 	private $lock_addshow      = '975';
+	private $lock_updatedata      = '975';
 
 	
 	public function index(){
