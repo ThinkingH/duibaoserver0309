@@ -139,16 +139,16 @@ class MenuAction extends Action {
 						),
 				),
 				
-				/* array(
-						'murl_name' => '商户管理',
+				 array(
+						'murl_name' => '商品分类管理',
 						'curl_name' => array(
-								array('f', '商户开户管理' ,    '/Shanghu/index' , ),
-								array('f', '发布商品' ,        '/Shopadd/index' , ),
-								array('f', '商品审核管理' ,    '/Shoptype/index' , ),
+								array('f', '商品分类' ,    '/Goodscategory/addcategory' , ),//categorylist
+								array('f', '商品属性' ,        '/Shopadd/index' , ),
+								array('f', '商品规格' ,    '/Shoptype/index' , ),
 								
 				
 						),
-				), */
+				), 
 				
 				array(
 						'murl_name' => '数据查询',
@@ -208,6 +208,7 @@ class MenuAction extends Action {
 								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
 								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
 								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
+								array('f', '开屏引导图' ,        '/Kaipingtu/index' , ),
 								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
 								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
 						),
@@ -339,6 +340,7 @@ class MenuAction extends Action {
 								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
 								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
 								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
+								array('f', '开屏引导图' ,        '/Kaipingtu/index' , ),
 								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
 								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
 						),
