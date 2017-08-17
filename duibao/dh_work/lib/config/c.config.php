@@ -15,6 +15,10 @@ define('HY_CZLOGPATH',HYONEPATH.'/chongzhilog/'); //流量充值日志
 define('HY_REPLOGPATH',HYONEPATH.'/reportlog/'); //状态报告日志
 
 
+define('HY_PAYCREATELOG',HYONEPATH.'/paycreatelog/'); //支付订单创建日志
+define('HY_PAYREPORTLOG',HYONEPATH.'/payreportlog/'); //支付订单状态报告日志
+
+
 //定义与调用方校验的密钥
 define('DYF_CKEY','d02f34ffd8c1a6788fd49e387e189f8e');
 
