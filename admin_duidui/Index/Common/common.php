@@ -1,5 +1,14 @@
 <?php
 
+function convert_arr_key($arr, $key_name)
+{
+	$arr2 = array();
+	foreach($arr as $key => $val){
+		$arr2[$val[$key_name]] = $val;
+	}
+	return $arr2;
+}
+
 //七牛图片上传
 function uploadqiniu($bucket,$filepath,$savename){
 	

@@ -233,8 +233,10 @@ class ShopaddAction extends Action{
 				
 			}else if($list[$keyc]['feetype']=='2'){
 				$list[$keyc]['feetype'] = '金额支付';
-			}else {
+			}else if($list[$keyc]['feetype']=='3'){
 				$list[$keyc]['feetype'] = '积分金额混合支付';
+			}else if($list[$keyc]['feetype']=='4'){
+				$list[$keyc]['feetype'] = '免费';
 			}
 			
 			if($list[$keyc]['onsales']=='1'){
@@ -425,6 +427,7 @@ class ShopaddAction extends Action{
 				'1' => '积分',
 				'2' => '金额',
 				'3' => '混合使用',
+				'4' => '免费',
 		);
 		$optionfeetype = '<option value=""></option>';
 		foreach($zhifu_arr as $keyc => $valc) {
@@ -802,6 +805,7 @@ class ShopaddAction extends Action{
 						'1' => '积分',
 						'2' => '金额',
 						'3' => '混合使用',
+						'4' => '免费',
 				);
 				$optionfeetype = '<option value=""></option>';
 				foreach($zhifu_arr as $keyc => $valc) {

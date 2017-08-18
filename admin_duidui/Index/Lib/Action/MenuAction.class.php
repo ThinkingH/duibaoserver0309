@@ -142,7 +142,7 @@ class MenuAction extends Action {
 				 array(
 						'murl_name' => '商品分类管理',
 						'curl_name' => array(
-								array('f', '商品分类' ,    '/Goodscategory/addcategory' , ),//categorylist
+								array('f', '商品分类' ,    '/Goodscategory/categorylist' , ),//categorylist
 								array('f', '商品属性' ,        '/Shopadd/index' , ),
 								array('f', '商品规格' ,    '/Shoptype/index' , ),
 								
