@@ -25,8 +25,104 @@ class GoodscategoryAction extends Action {
 		$this -> assign('yuurl',$yuurl);
 		
 		
+		$Model = M("goods_type");
+		$type = $Model->where("pid=0")->select();//获得一级分类
 		
+		$type2=array();
+		$type3 = array();
+		
+		foreach ($type as $key=>$value){
+			
+			$type[$key]['child'] = array();
+			$type2 = $Model->where("pid=".$value['id'])->select();//获得二级分类
+			
+			foreach ($type2 as $k =>$v){
+				
+				$type[$key]['child'][$k]['child2'] = array();//获取三级分类
+				
+				array_push($type[$key]['child'],$v);//合并一级分类和二级分类
+				
+				$type3 = $Model->where("pid=".$v['id'])->select();//获取三级分类
+				
+				foreach ($type3 as $v2){
+					
+					array_push($type[$key]['child'][$k]['child2'],$v2);//合并一级二级分类
+					
+				}
+				
+			}
+			
+			
+			
+		}
+		
+		print_r("<pre>");
+		print_r($type);
+		
+		
+		
+		
+		
+		
+		
+		/* $Model = new Model();
+		$sql = "select * from goods_type where flag=1 order by sort";
+		$goods_category = $Model->query($sql);
+		
+		$goods_category = convert_arr_key($goods_category, 'id');
+		
+		global $goods_category, $goods_category2;
+		foreach ($goods_category AS $key => $value){
+			
+			if($value['level'] == 1)
+				
+				$r = $this->get_cat_tree($value['id']);
+		}
+		
+		
+		
+		print_r($r);
+		 */
+		
+		
+		
+		
+		
+		$this->display();
 	}
+	
+	
+	
+	
+	/**
+	 * 获取指定id下的 所有分类
+	 * @global type $goods_category 所有商品分类
+	 * @param type $id 当前显示的 菜单id
+	 * @return 返回数组 Description
+	 */
+	public function get_cat_tree($id)
+	{
+		global $goods_category, $goods_category2;
+		$goods_category2[$id] = $goods_category[$id];
+		foreach ($goods_category AS $key => $value){
+			if($value['pid'] == $id)
+			{
+				$this->get_cat_tree($value['id']);
+				$goods_category2[$id]['have_son'] = 1; // 还有下级
+			}
+		}
+		
+		return $goods_category2;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

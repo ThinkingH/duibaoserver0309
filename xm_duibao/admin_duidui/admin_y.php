@@ -1,6 +1,7 @@
 <?php
 
-	$bucketarr = array(
+//正式七牛地址
+	/* $bucketarr = array(
 			'img-duibaoxinyouxingkong' => 'http://osv2nvwyw.bkt.clouddn.com/',
 			'duibao-basic'    => 'http://ot9nqx2pm.bkt.clouddn.com/',
 			'duibao-business' => 'http://ot9nz4ril.bkt.clouddn.com/',
@@ -8,7 +9,22 @@
 			'duibao-shop'     => 'http://ot9nwdfs7.bkt.clouddn.com/',
 			'duibao-user'     => 'http://ot9n52hqq.bkt.clouddn.com/',
 			
-	);
+	); */
+
+//测试版七牛地址
+$bucketarr = array(
+		'duibao-basic'    => 'http://ou040h90h.bkt.clouddn.com/',
+		'duibao-business' => 'http://ou04tbzs7.bkt.clouddn.com/',
+		'duibao-find'     => 'http://ou04n5703.bkt.clouddn.com/',
+		'duibao-shop'     => 'http://ou04vpu93.bkt.clouddn.com/',
+		'duibao-user'     => 'http://ou04zj06v.bkt.clouddn.com/',
+			
+);
+	
+	
+	
+	
+	
 	
 	$bucketstr = serialize($bucketarr);
 	define('BUCKETSTR',$bucketstr);

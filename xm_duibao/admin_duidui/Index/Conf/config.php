@@ -16,6 +16,8 @@ return array(
 	
 	
 	'URL_MODEL'	=> 1,
+		
+	
 	
 	
 	// 添加数据库配置信息
