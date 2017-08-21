@@ -82,7 +82,7 @@ class HyXb811 extends HyXb{
 			$usernamearr = array();//昵称
 			
 			
-			$useridsql = "select * from xb_comment where quanid='".$this->quanid."' order by id desc limit $firstpage,$pagesize ";
+			$useridsql = "select * from xb_comment where quanid='".$this->quanid."' order by subcreatetime desc,id desc limit $firstpage,$pagesize ";
 			$useridlist = parent::__get('HyDb')->get_all($useridsql); 
 			
 			foreach($useridlist as $keyud => $valud) {
