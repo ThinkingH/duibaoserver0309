@@ -26,8 +26,12 @@ class HyXb171 extends HyXb{
 		$this->count = isset($input_data['count'])? $input_data['count']:'';  //每页显示的最大条数
 		$this->page  = isset($input_data['page'])?$input_data['page']:'';     //页数
 		
-		$this->type  = isset($input_data['type'])?$input_data['type']:''; //1-获取留言和通知，各20条
-	
+		$this->type  = isset($input_data['type'])?$input_data['type']:''; //1-获取留言和通知，各20条,3为更新为已读
+		
+		$this->dtype      = isset($input_data['dtype']) ? $input_data['dtype']:'c'; //m或c m--评论 c-回复
+		$this->nowid      = isset($input_data['nowid']) ? $input_data['nowid']:'0'; //回复的id或评论的id
+		
+		
 	}
 	
 	
@@ -244,6 +248,77 @@ class HyXb171 extends HyXb{
 	
 	
 	
+	
+	
+	protected function func_messagestatusup(){
+		
+		
+		if(''==$this->nowid) {
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = '未传递数据标识id';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
+		$newidarr = array();
+		$nowidarr = explode(',',$this->nowid);
+		foreach($nowidarr as $valn) {
+			$valn = trim($valn);
+			if(is_numeric($valn) && $valn>0) {
+				array_push($newidarr,$valn);
+			}
+		}
+		if(count($newidarr)<=0) {
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = '未传递数据标识id';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}else {
+			$instring = ' ('.implode(',',$newidarr).') ';
+			
+		}
+		
+		
+		if('m'==$this->dtype) {
+			$sql_update = "update xb_comment set readflag='1' where touserid='".parent::__get('xb_userid')."' and id in ".$instring;
+			
+		}else {
+			$sql_update = "update xb_subcomment set readflag='1' where touserid='".parent::__get('xb_userid')."' and id in ".$instring;
+			
+			
+		}
+		
+		
+		//更新状态标为已读
+		parent::__get('HyDb')->execute($sql_update);
+		
+		
+		$echoarr = array();
+		$echoarr['returncode'] = 'success';
+		$echoarr['returnmsg']  = '状态更新成功';
+		$echoarr['dataarr'] = array();
+		$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+		parent::hy_log_str_add($logstr);
+		echo json_encode($echoarr);
+		return true;
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 	//操作入口--推送信息获取
 	public function controller_init(){
 	
@@ -285,10 +360,20 @@ class HyXb171 extends HyXb{
 		
 		
 		
+		if($this->type=='3') {
+			//留言回复标为已读
+			$this->func_messagestatusup();
+			
+			
+		}else {
+			//推送信息入口
+			$this->controller_tuisongmessage();
+			
+			
+		}
+		
 	
-		//推送信息入口
-		$this->controller_tuisongmessage();
-	
+		
 		return true;
 	}
 	

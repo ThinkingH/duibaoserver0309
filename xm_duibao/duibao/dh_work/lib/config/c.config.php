@@ -17,6 +17,15 @@ define('HY_REPLOGPATH',HYONEPATH.'/reportlog/'); //状态报告日志
 
 define('HY_PAYCREATELOG',HYONEPATH.'/paycreatelog/'); //支付订单创建日志
 define('HY_PAYREPORTLOG',HYONEPATH.'/payreportlog/'); //支付订单状态报告日志
+define('HY_PAYSELECTLOG',HYONEPATH.'/payselectlog/'); //支付查询日志
+
+
+define('HY_THEBASEURL','http://120.27.34.239:8018/');
+
+
+//客户端校验值
+define('MD5KEY','527aa50704b8e9e2529e1a03e6ccd912');
+
 
 
 //定义与调用方校验的密钥
