@@ -26,7 +26,7 @@ class HyXb171 extends HyXb{
 		$this->count = isset($input_data['count'])? $input_data['count']:'';  //每页显示的最大条数
 		$this->page  = isset($input_data['page'])?$input_data['page']:'';     //页数
 		
-		$this->type  = isset($input_data['type'])?$input_data['type']:''; //1-通知 2-留言
+		$this->type  = isset($input_data['type'])?$input_data['type']:''; //1-获取留言和通知，各20条
 	
 	}
 	
@@ -103,67 +103,80 @@ class HyXb171 extends HyXb{
 		}else if($this->type=='1'){//留言数据的获取
 			
 			
-			$returnarr = array();
+			
+			
+			//留言数据---只取20条
+			$sql_maindata  = "select * from xb_comment where touserid='".parent::__get('xb_userid')."' order by createtime desc limit 20";
+			$list_maindata = parent::__get('HyDb')->get_all($sql_maindata);
+			
+			
+			//回复数据---只取20条
+			$sql_childdata = "select * from xb_subcomment where touserid='".parent::__get('xb_userid')."' order by createtime desc limit 20";
+			$list_childdata = parent::__get('HyDb')->get_all($sql_childdata);
+			
+			
+			$userarr = array(); //用户id
+			$shoparr = array(); //券id
+			
+			foreach ($list_maindata as $keys => $vals){
+				if($vals['fromuserid']!='') {
+					array_push($userarr,$vals['fromuserid']);
+				}
+				if($vals['touserid']!='') {
+					array_push($userarr,$vals['touserid']);
+				}
+				if($vals['quanid']!='') {
+					array_push($shoparr,$vals['quanid']);
+				}
 				
-			//分页的实现
-			$tuisongsumsql  = "select count(*) as num from xb_subcomment where touserid='".parent::__get('xb_userid')."' ";
-			$tuisongsumsqlist = parent::__get('HyDb')->get_all($tuisongsumsql);
 				
-			if($tuisongsumsqlist[0]['num']>0){
-				$returnarr['maxcon'] = $tuisongsumsqlist[0]['num'];//总条数
-			}else{
-				$returnarr['maxcon'] = 0;//总条数
+			}
+			foreach ($list_childdata as $keys => $vals){
+				if($vals['fromuserid']!='') {
+					array_push($userarr,$vals['fromuserid']);
+				}
+				if($vals['touserid']!='') {
+					array_push($userarr,$vals['touserid']);
+				}
+				if($vals['quanid']!='') {
+					array_push($shoparr,$vals['quanid']);
+				}
+				
+				
 			}
 			
-			//总页数
-			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
-			
-			$temptuisongsql  = "select * from xb_subcomment where touserid='".parent::__get('xb_userid')."' 
-				order by createtime desc";
-			$temltuisonglist1 = parent::__get('HyDb')->get_all($temptuisongsql);
-			
-			$inarr=array();
-			$shoparr = array();
-			
-			foreach ($temltuisonglist1 as $keys => $vals){
-				
-				array_push($inarr,$temltuisonglist1[$keys]['fromuserid']);
-				array_push($inarr,$temltuisonglist1[$keys]['touserid']);
-				array_push($shoparr,$temltuisonglist1[$keys]['quanid']);
-				
-			}
 			
 			//用户id
-			$inarr = array_unique($inarr);
-			if(count($inarr)<=0){
-				$where_user = 'id=0';
+			$userarr = array_unique($userarr);
+			if(count($userarr)<=0){
+				$where_user = ' id=0 ';
 			}else{
-				$instr = ' ('.implode(',',$inarr).') ';
-				$where_user = ' id in '. $instr;
+				$where_user = ' id in ('.implode(',',$userarr).') ';
 			}
-			
-			//商品id
+			//券
 			$shoparr = array_unique($shoparr);
 			if(count($shoparr)<=0){
-				$where_shop = 'id=0';
+				$where_shop = ' id=0 ';
 			}else{
-				$shoparr = ' ('.implode(',',$shoparr).') ';
-				$where_shop = ' id in '. $shoparr;
+				$where_shop = ' id in ('.implode(',',$shoparr).') ';
 			}
 			
 			
-			$usertouxiangarr=array();
-			$usernamearr = array();
-			$shopdataarr = array();
+			$user_touxiangarr = array();
+			$user_namearr     = array();
+			$shop_dataarr     = array();
+			
+			
 			//获取用户列表
-			$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
+			$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";
+			//echo $usersql;
+			
 			$userlist = parent::__get('HyDb')->get_all($usersql);
-				
-			foreach ($userlist as $keys=>$vals){
 			
-				$usertouxiangarr[$vals['id']]  = $vals['touxiang'];
-				$usernamearr[$vals['id']]      = $vals['nickname'];
-			
+			foreach($userlist as $keys => $vals){
+				$user_touxiangarr[$vals['id']]  = $vals['touxiang'];
+				$user_namearr[$vals['id']]      = $vals['nickname'];
+					
 			}
 			
 			//商品信息的获取
@@ -171,19 +184,29 @@ class HyXb171 extends HyXb{
 			$shopinfo_list = parent::__get('HyDb')->get_all($shopinfo_sql);
 			
 			foreach ($shopinfo_list as $keys => $vals){
-				$shopdataarr[$vals['id']] = $vals['picurl'];
+				$shop_dataarr[$vals['id']] = $vals['picurl'];
 			}
 			
 			
-			//留言的获取
-			$liuyanxiang_sql = "select * from xb_subcomment where touserid='".parent::__get('xb_userid')."' order by createtime desc";
-			$temltuisonglist = parent::__get('HyDb')->get_all($liuyanxiang_sql);
 			
-			foreach ($temltuisonglist as $keys => $vals){
+			$temltuisonglist = array();
+			
+			foreach ($list_maindata as $keym => $valm){
+				$list_maindata[$keym]['dtype'] = 'm';
+				$list_maindata[$keym]['fromuserid'] = isset($user_namearr[$valm['userid']])?$user_namearr[$valm['userid']]:'';//留言者
+				$list_maindata[$keym]['picurl']     = isset($shop_dataarr[$valm['quanid']])?$shop_dataarr[$valm['quanid']]:'';//
 				
-				$temltuisonglist[$keys]['fromuserid'] = isset($usernamearr[$temltuisonglist[$keys]['fromuserid']])?$usernamearr[$temltuisonglist[$keys]['fromuserid']]:'';//回复者
-				$temltuisonglist[$keys]['picurl'] = isset($shopdataarr[$temltuisonglist[$keys]['quanid']])?$shopdataarr[$temltuisonglist[$keys]['quanid']]:'';//商品详情页图片
+				array_push($temltuisonglist,$list_maindata[$keym]);
 			}
+			foreach ($list_childdata as $keym => $valm){
+				$list_childdata[$keym]['dtype'] = 'c';
+				$list_childdata[$keym]['fromuserid'] = isset($user_namearr[$valm['userid']])?$user_namearr[$valm['userid']]:'';//留言者
+				$list_childdata[$keym]['picurl']     = isset($shop_dataarr[$valm['quanid']])?$shop_dataarr[$valm['quanid']]:'';//
+				
+				array_push($temltuisonglist,$list_childdata[$keym]);
+				
+			}
+			
 			
 			
 		}
