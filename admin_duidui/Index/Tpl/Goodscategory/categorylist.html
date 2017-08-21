@@ -50,9 +50,11 @@ $("document").ready(function(){
     <tr>
        
         <td width="50"><b>分类ID<br/></b></td>
-         <td width="80"><b>分类名称<br/></b></td>
-        <td width="100"><b>是否开启<br/></b></td>
-        <td width="100"><b>排序<br/></b></td>
+         <td width="80"><b>主分类名称<br/></b></td>
+         <td width="80"><b>一级分类名称<br/></b></td>
+         <td width="80"><b>二级分类名称<br/></b></td>
+         <td width="100"><b>是否开启<br/></b></td>
+         <td width="100"><b>排序<br/></b></td>
         
          <td width="50">&nbsp;</td>
         <td width="50">&nbsp;</td>
@@ -66,6 +68,8 @@ $("document").ready(function(){
         
         <td>{$vo.id}</td>
         <td>{$vo.name}</td>
+        <td>{$vo.child}</td>
+        <td>{$vo.child2}</td>
         <td>{$vo.flag}</td>
         <td>{$vo.sort}</td>
         
