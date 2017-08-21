@@ -958,6 +958,39 @@ class HyXb{
 	}
 	
 	
+	//是否是会员
+	protected function is_huiyuan(){
+		
+		$userbuysql  = "select id, vipflag from xb_user where id='".$this->xb_userid."' ";
+		$userbuylist = $this->HyDb->get_row($userbuysql);
+		
+		if($userbuylist['vipflag']=='1'){//一级会员
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	//判断该月领取的次数
+	protected function is_month_pickup(){
+		
+		$starttime = date('Y-m-01 00:00:00');
+		$endtime   = date('Y-m-31 23:59:59');
+		
+		$pickup_sql  = "select id from newusers where type='4' and userid='".$this->xb_userid."' and createtime>='".$starttime."' and createtime<='".$endtime."'";
+		$pickup_list = $this->HyDb->get_row($pickup_sql); 
+		
+		if($pickup_list['id']>0){//当月已领取，不可以在领取
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+	
+	
+	
 	//1.判断该用户每日该商品的兑换数量
 	protected function check_duihuan_user_day(){
 		
@@ -1141,7 +1174,7 @@ class HyXb{
 	
 		$this->log_str .= HyItems::hy_tospace($insertuserbuysql)."\n";
 	
-		return true;
+		return $insertuserbuylist;
 	
 	}
 	
@@ -1248,7 +1281,7 @@ class HyXb{
 		);
 	
 		//模拟数据访问
-		$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
+		$r=HyItems::vpost($qiniurl,$data,$header=array(),$timeout=5000 );
 	
 		if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){
 	

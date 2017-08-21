@@ -88,27 +88,16 @@ class HyXb171 extends HyXb{
 			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
 			
 			
-			
 			$temptuisongsql  = "select id,type,status,taskid,message,create_inttime from $tablename where userid='".parent::__get('xb_userid')."'
 				order by create_inttime desc";
 			$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
 			
-			//评论信息
-			$pinglun_sql = "SELECT id FROM xb_subcomment where receiverid='".parent::__get('xb_userid')."' limit 1 ";
-			$pinglun_list = parent::__get('HyDb')->get_all($pinglun_sql);
-			
-			$con = 0;
 			foreach ($temltuisonglist as $keys => $vals){
-
-				++$con;
-				if($con==1 && $this->page==1 && $pinglun_list[0]['id']>0){
-						
-					$temltuisonglist[$keys]['message'] = '留言箱';
-				}
 				
-				$temltuisonglist[$keys]['create_inttime'] = date("Y-m-d H:i:s",$temltuisonglist[$keys]['create_inttime']);
+				$temltuisonglist[$keys]['create_inttime'] = date('Y-m-d H:i:s',$temltuisonglist[$keys]['create_inttime']);
 				
 			}
+			
 			
 			
 		}else if($this->type=='1'){//留言数据的获取
@@ -117,7 +106,7 @@ class HyXb171 extends HyXb{
 			$returnarr = array();
 				
 			//分页的实现
-			$tuisongsumsql  = "select count(*) as num from xb_subcomment where receiverid='".parent::__get('xb_userid')."' ";
+			$tuisongsumsql  = "select count(*) as num from xb_subcomment where touserid='".parent::__get('xb_userid')."' ";
 			$tuisongsumsqlist = parent::__get('HyDb')->get_all($tuisongsumsql);
 				
 			if($tuisongsumsqlist[0]['num']>0){
@@ -125,18 +114,75 @@ class HyXb171 extends HyXb{
 			}else{
 				$returnarr['maxcon'] = 0;//总条数
 			}
-				
+			
 			//总页数
 			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
-				
-			$temptuisongsql  = "select * from xb_subcomment where receiverid='".parent::__get('xb_userid')."' 
+			
+			$temptuisongsql  = "select * from xb_subcomment where touserid='".parent::__get('xb_userid')."' 
 				order by createtime desc";
-			$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
+			$temltuisonglist1 = parent::__get('HyDb')->get_all($temptuisongsql);
+			
+			$inarr=array();
+			$shoparr = array();
+			
+			foreach ($temltuisonglist1 as $keys => $vals){
 				
+				array_push($inarr,$temltuisonglist1[$keys]['fromuserid']);
+				array_push($inarr,$temltuisonglist1[$keys]['touserid']);
+				array_push($shoparr,$temltuisonglist1[$keys]['quanid']);
+				
+			}
+			
+			//用户id
+			$inarr = array_unique($inarr);
+			if(count($inarr)<=0){
+				$where_user = 'id=0';
+			}else{
+				$instr = ' ('.implode(',',$inarr).') ';
+				$where_user = ' id in '. $instr;
+			}
+			
+			//商品id
+			$shoparr = array_unique($shoparr);
+			if(count($shoparr)<=0){
+				$where_shop = 'id=0';
+			}else{
+				$shoparr = ' ('.implode(',',$shoparr).') ';
+				$where_shop = ' id in '. $shoparr;
+			}
+			
+			
+			$usertouxiangarr=array();
+			$usernamearr = array();
+			$shopdataarr = array();
+			//获取用户列表
+			$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";//$usertask_list[$key]['id']       = $taskidarr[$usertask_list[$key]['taskid']];
+			$userlist = parent::__get('HyDb')->get_all($usersql);
+				
+			foreach ($userlist as $keys=>$vals){
+			
+				$usertouxiangarr[$vals['id']]  = $vals['touxiang'];
+				$usernamearr[$vals['id']]      = $vals['nickname'];
+			
+			}
+			
+			//商品信息的获取
+			$shopinfo_sql  = "select id,picurl from z_tuanmainlist where $where_shop ";
+			$shopinfo_list = parent::__get('HyDb')->get_all($shopinfo_sql);
+			
+			foreach ($shopinfo_list as $keys => $vals){
+				$shopdataarr[$vals['id']] = $vals['picurl'];
+			}
+			
+			
+			//留言的获取
+			$liuyanxiang_sql = "select * from xb_subcomment where touserid='".parent::__get('xb_userid')."' order by createtime desc";
+			$temltuisonglist = parent::__get('HyDb')->get_all($liuyanxiang_sql);
+			
 			foreach ($temltuisonglist as $keys => $vals){
 				
-				$temltuisonglist[$keys]['content'] = '您有一条新消息！';
-				
+				$temltuisonglist[$keys]['fromuserid'] = isset($usernamearr[$temltuisonglist[$keys]['fromuserid']])?$usernamearr[$temltuisonglist[$keys]['fromuserid']]:'';//回复者
+				$temltuisonglist[$keys]['picurl'] = isset($shopdataarr[$temltuisonglist[$keys]['quanid']])?$shopdataarr[$temltuisonglist[$keys]['quanid']]:'';//商品详情页图片
 			}
 			
 			

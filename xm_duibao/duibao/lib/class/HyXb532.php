@@ -62,7 +62,6 @@ class HyXb532 extends HyXb{
 		
 		$duihuan_sql  = "select shop_userbuy.*,shop_product.mainpic,shop_product.pickup,shop_product.youxiaoqi,shop_product.stop_datetime from shop_userbuy,shop_product 
 						 where  shop_userbuy.productid = shop_product.id and shop_userbuy.id='".$this->quanid."'  ";
-		
 		$duihuan_list = parent::__get('HyDb')->get_row($duihuan_sql);
 		
 		
@@ -84,19 +83,6 @@ class HyXb532 extends HyXb{
 				$duihuan_list['flag']='入驻商户商品';//商家入驻商户
 			}
 			
-			/*  	//判断什么类型
-			$typelist = substr($duihuan_list[$keys]['typeid'],0,4);
-			
-			if($typelist=='1112'|| $typelist=='1312' || $typelist=='1322' ){//单秘钥
-				$duihuan_list[$keys]['tflag']='1';//单秘钥
-			}else if($typelist=='22'){
-				$duihuan_list[$keys]['tflag']='2';//实物类型
-			}else if($typelist=='1311' || $typelist=='1321' ){
-				
-				$duihuan_list[$keys]['tflag']='3';//多秘钥
-			}else{
-				$duihuan_list[$keys]['tflag']='4';//其他
-			}*/
 			
 			$typelist = substr($duihuan_list['typeid'],0,4);
 			
@@ -200,9 +186,11 @@ class HyXb532 extends HyXb{
 				$duihuan_list['nflag'] = '1';
 				
 				//兑换码的过期时间
-				$duihuan_list['endday'] = strtotime(substr($duihuan_list['order_createtime'],0,10))+ $duihuan_list['dayok']*24*60*60;
+				
+				$duihuan_list['endday'] = strtotime($duihuan_list['order_createtime'])+$duihuan_list['dayok']*24*60*60;
 				$duihuan_list['endday'] = substr(date('Y-m-d H:i:s',$duihuan_list['endday']),0,10);
-					
+				
+				
 				//是否有效的标识
 				if(strtotime($duihuan_list['endday'])<strtotime(date('Y-m-d'))){
 				

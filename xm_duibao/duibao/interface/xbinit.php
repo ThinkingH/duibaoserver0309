@@ -7,8 +7,9 @@
 //断开连接后继续执行，参数用法详见手册
 ignore_user_abort(true);
 
-//error_reporting(E_ALL);
-//ini_set('display_errors', '1');
+//警告提示
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/dd_system';
 define('XMAINURL',$url);
@@ -133,6 +134,11 @@ $dtype   = HyItems::arrayItem ( $_REQUEST, 'dtype' );  //删除层级类型id---
 $nowid  = HyItems::arrayItem ( $_REQUEST, 'nowid' );  //评论列表id字段
 
 
+$code  = HyItems::arrayItem ( $_REQUEST, 'code' );  //微信请求的code
+
+
+
+
 
 
 //初步判断传递的参数是否正确
@@ -231,6 +237,8 @@ $inputdataarr = array(
 		'cid'   => $cid,
 		'nowid' => $nowid,
 		'touserid' => $touserid,
+		
+		'code' => $code,
 		
 );
 

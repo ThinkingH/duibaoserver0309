@@ -1,8 +1,8 @@
 <?php
 /*
- *商品兑换
+ *vip免费商品兑换
  */
-class HyXb522 extends HyXb{
+class HyXb512 extends HyXb{
 	
 	private $type;
 	private $passwd;
@@ -69,7 +69,8 @@ class HyXb522 extends HyXb{
 	
 	public function controller_userduihuan(){
 		
-		//echo $this->tid;
+		
+		
 		if($this->tid==''){
 			$this->tid='1';//商品数量
 		}
@@ -80,7 +81,6 @@ class HyXb522 extends HyXb{
 		//订单编号date('YmdHis').mt_rand(1000,9999);
 		//商品类型的判断
 		$this->mtype  = substr($this->typeidchild,0,3);
-		//$this->typeid = substr($this->typeid,0,2);//$typeid 
 		$this->typeid  = substr($this->typeidchild,0,4);//截取类型的前三位判断  是自采还是商户发放
 		$this->typeid1 = substr($this->typeidchild,0,3);//截取类型的前三位判断 流量1111  卡密1311自采多秘钥--状态改变（待领取） 1321商户发放--状态改变（已领取）
 		
@@ -102,6 +102,7 @@ class HyXb522 extends HyXb{
 			$this->tflag='1';
 		}
 		
+		
 		if($this->typeid1=='111'){//走流量接口
 			
 			if($this->tid>1){
@@ -116,50 +117,40 @@ class HyXb522 extends HyXb{
 				return false;
 				
 			}else{
-				if($this->score > $this->keyongjifen){
+				//订单去重判断
+				$r = parent::repeat_userbuy_orderno($orderno);
+				
+				if($r){
 					$echoarr = array();
-					$echoarr['returncode'] = 'error';
-					$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-					$echoarr['dataarr'] = array();
+					$echoarr['returncode'] = 'success';
+					$echoarr['returnmsg']  = '订单提交成功！';
+					$echoarr['dataarr'] = $r;
 					$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 					parent::hy_log_str_add($logstr);
 					echo json_encode($echoarr);
-					return false;
+					return true;
 				}else{
-					//订单去重判断
-					$r = parent::repeat_userbuy_orderno($orderno);
+					//模拟用户操作发放兑换码--运营商1，2，3--
+					$url =$this->xiafaurl.'?gateway='.$this->gateway.'&mbps='.$this->mbps.'&ttype='.$this->ttype.'&orderno='.$orderno.'&userid='.parent::__get('xb_userid').'&youxiaoday=30&name='.urlencode($this->goodsname).'&describe='.urlencode($this->goodsname);
+					$duihuancode = HyItems::vget( $url, 10000 );
 					
-					if($r){
-						$echoarr = array();
-						$echoarr['returncode'] = 'success';
-						$echoarr['returnmsg']  = '订单提交成功！';
-						$echoarr['dataarr'] = $r;
-						$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-						parent::hy_log_str_add($logstr);
-						echo json_encode($echoarr);
-						return true;
-					}else{
-						//模拟用户操作发放兑换码--运营商1，2，3--
-						$url =$this->xiafaurl.'?gateway='.$this->gateway.'&mbps='.$this->mbps.'&ttype='.$this->ttype.'&orderno='.$orderno.'&userid='.parent::__get('xb_userid').'&youxiaoday=30&name='.urlencode($this->goodsname).'&describe='.urlencode($this->goodsname);
-						$duihuancode = HyItems::vget( $url, 10000 );
+					if($duihuancode['httpcode']=='200'){
+						$this->keystr = $duihuancode['content'];//生成兑换码
 						
-						if($duihuancode['httpcode']=='200'){
-							$this->keystr = $duihuancode['content'];//生成兑换码
+						if(strlen($this->keystr)!='18'){//秘钥生成错误
+							$echoarr = array();
+							$echoarr['returncode'] = 'error';
+							$echoarr['returnmsg']  = '兑换码生成失败,系统维修中';
+							$echoarr['dataarr'] = array();
+							$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+							parent::hy_log_str_add($logstr);
+							echo json_encode($echoarr);
+							return false;
+								
+						}else{//兑换码生成成功，数据的插入
 							
-							if(strlen($this->keystr)!='18'){//秘钥生成错误
-								$echoarr = array();
-								$echoarr['returncode'] = 'error';
-								$echoarr['returnmsg']  = '兑换码生成失败,系统维修中';
-								$echoarr['dataarr'] = array();
-								$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-								parent::hy_log_str_add($logstr);
-								echo json_encode($echoarr);
-								return false;
-									
-							}else{//兑换码生成成功，数据的插入
-									
-								parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','1');
-							}
+							parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','1');
+							
 						}
 					}
 				}
@@ -167,16 +158,7 @@ class HyXb522 extends HyXb{
 			
 		}else if($this->typeid1=='131' || $this->typeid1=='132'){//该商品为卡密类的商品，走卡密接口, 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密    131 自采   132 商户发放   
 			
-			if($this->score>$this->keyongjifen){
-				$echoarr = array();
-				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-			}else{
+			 
 				//订单去重判断
 				$r = parent::repeat_userbuy_orderno($orderno);
 				
@@ -197,8 +179,7 @@ class HyXb522 extends HyXb{
 						$this->keystr='';
 						$this->passwd='';
 						
-						parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','2','1');
-						
+						$tt = parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','2','1');
 						
 						//单卡密 多卡密的判断
 						if( $this->typeid=='1312' ){//11流量 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密
@@ -273,21 +254,8 @@ class HyXb522 extends HyXb{
 						}
 					}
 				}
-				
-			}
-			
 		}else if($this->typeid=='22'){
 			
-			if($this->score>$this->keyongjifen){
-				$echoarr = array();
-				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-			}else{
 				//随机生成的兑换码
 				$this->keystr = parent::getRandomString(6);
 				
@@ -310,35 +278,25 @@ class HyXb522 extends HyXb{
 					echo json_encode($echoarr);
 					return false;
 				}
-				
-			}
 		}
 		
 		//商品信息的更新
 		$updateproduct = "update shop_product set buycount=buycount+1,kucun=kucun-1 where id='".$this->productid."'";
 		$updateproductsql = parent::__get('HyDb')->execute($updateproduct);
 		
+		//用户记录的插入
+		$insert_pickup = "insert into newusers (userid,type,libao,createtime) 
+				values('".parent::__get('xb_userid')."','4','".$this->goodsname."','".date('Y-m-d h:i:s')."')";
+		//echo $insert_pickup;
+	    $pickup = parent::__get('HyDb')->execute($insert_pickup);
 		
-		//用户积分的变化
-		$userscoresql  = "update xb_user set keyong_jifen=keyong_jifen-'".$this->score."'  where id='".parent::__get('xb_userid')."' ";
-		$userscorelist = parent::__get('HyDb')->execute($userscoresql);
-		
-		
-		//积分变动的插入
-		$getdescribe = '购买'.$this->goodsname.'消耗'.$this->score.'馅饼';
-		$gettime = time();
-		$insertsql = "insert into xb_user_score (userid,goodstype,maintype,type,
-					score,usermoney,getdescribe,gettime) values
-				 ('".parent::__get('xb_userid')."','1','2','9',
-				 		'".$this->score."','0','".$getdescribe."','".$gettime."')";
-		parent::__get('HyDb')->execute($insertsql);
 		
 		//订单id的获取
 		$ordernoidsql = "select id from shop_userbuy where orderno='".$orderno."' order by id desc";
 		$ordernoidlist = parent::__get('HyDb')->get_row($ordernoidsql);
 		
 		
-		if($userscorelist){
+		if($pickup){
 				
 			$temparr = array(
 					'goodsname' =>$this->goodsname,
@@ -394,47 +352,41 @@ class HyXb522 extends HyXb{
 			return false;
 		}
 	
+		//库存的判断
 		$r = parent::check_duihuan_canshu();
 		if($r===false){
 			return false;
 		}
 	
-		//判断该商品每日兑换的数量
-		$r = parent::check_duihuan_max_day();
-		if($r===false){
+		//判断是否是会员
+		$huiyuan = parent::is_huiyuan();
+		
+		if($huiyuan===false){
+			
+			$echoarr = array();
+			$echoarr['returncode'] ='error';
+			$echoarr['returnmsg']  = '不是会员不可以领取免费商品';
+			$echoarr['dataarr']    = array();
+			$this->log_str .= $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			echo json_encode($echoarr);
 			return false;
 		}
-	
-	
-		//1.判断该用户每日该商品的兑换数量
-		$r = parent::check_duihuan_user_day();
-		if($r===false){
+		
+		
+		//每月是否兑换
+		$month_pickup = parent::is_month_pickup();
+		
+		if($month_pickup===false){
+			
+			$echoarr = array();
+			$echoarr['returncode'] ='error';
+			$echoarr['returnmsg']  = '免费商品当月仅限领取一次';
+			$echoarr['dataarr']    = array();
+			$this->log_str .= $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			echo json_encode($echoarr);
 			return false;
 		}
-	
-		//2.商品每月的最大兑换次数
-		$r = parent::check_duihuan_user_month();
-		if($r===false){
-			return false;
-		}
-	
-		//判断该商品该用户每年的最大兑换次数
-		$r = parent::check_duihuan_user_year();
-		if($r===false){
-			return false;
-		}
-	
-		/* //支付方式的判断
-			$r = parent::check_scoremoney_user();
-			if($r===false){
-			return false;
-			} */
-	
-		/* $r = parent::check_zhifuway_user();
-	
-		if($r==false){
-			return false;
-		} */
+		
 	
 		$this->controller_userduihuan();
 	

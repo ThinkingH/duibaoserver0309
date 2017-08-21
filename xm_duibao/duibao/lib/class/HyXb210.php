@@ -122,9 +122,10 @@ class HyXb210 extends HyXb{
 				
 				if($usertype=='1'){
 					
-					$userregistersql  = "select id,jiguangid,phone,openid from xb_user where id='".$this->userid."'";
+					$userregistersql  = "select id,vipflag,jiguangid,phone,openid from xb_user where id='".$this->userid."'";
 					$userregisterlist = parent::__get('HyDb')->get_row($userregistersql);
 					
+					$vipflag = $userregisterlist['vipflag'];//会员标识
 					$phone = $userregisterlist['phone'];
 					$openid = $userregisterlist['openid'];
 					
@@ -132,23 +133,33 @@ class HyXb210 extends HyXb{
 					
 					$userregistersql  = "select id,jiguangid from xb_temp_user where id='".$this->userid."'";
 					$userregisterlist = parent::__get('HyDb')->get_row($userregistersql);
+					
+					$vipflag='';//非会员
+					
+				}
+				
+				if($vipflag=='1'){//会员积分加10
+					$score = '20';
+				}else if($vipflag=='10'){
+					$score = '10';
+				}else{
+					$score = '5';
 				}
 					
-					
 				$libaosql = "insert into newusers (userid,type,phone,openid,libao,createtime)
-					values ('".$this->userid."','3','".$phone."','".$openid."','5','".date('Y-m-d H:i:s')."')";
+					values ('".$this->userid."','3','".$phone."','".$openid."','".$score."','".date('Y-m-d H:i:s')."')";
 				$libaolist = parent::__get('HyDb')->execute($libaosql);
 					
 				//用户积分的增加
-				$scoresql = "update $tablename set keyong_jifen=keyong_jifen+5 where id='".$this->userid."'";
+				$scoresql = "update $tablename set keyong_jifen=keyong_jifen+'".$score."' where id='".$this->userid."'";
 				parent::__get('HyDb')->execute($scoresql);
 			
 				//积分增加记录
 				//积分详情的记录
-				$getdescribe = '‘每日领’获取5馅饼';
+				$getdescribe = '‘每日领’获取'.$score.'馅饼';
 				$date=time();
 				$scoresql = "insert into $tablescorename (userid,goodstype,maintype,type,score,gettime,getdescribe)
-						values ('".$this->userid."','1','1','1','5','".$date."','".$getdescribe."')";
+						values ('".$this->userid."','1','1','1','".$score."','".$date."','".$getdescribe."')";
 				parent::__get('HyDb')->execute($scoresql);
 				
 				
@@ -164,7 +175,7 @@ class HyXb210 extends HyXb{
 					
 					$temparr = array(
 							array(
-									'xianbing'   => '5',
+									'xianbing'   => $score,
 									'flag'       => '1',
 							),
 					);
