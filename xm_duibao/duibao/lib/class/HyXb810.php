@@ -65,9 +65,15 @@ class HyXb810 extends HyXb{
 			
 		}else{
 			
+			$sql_gettouserid = "select userid from z_tuanmainlist where id='".$this->quanid."'";
+			$thetouserid = parent::__get('HyDb')->get_one($sql_gettouserid);
+			if($thetouserid=='') {
+				$thetouserid = 0;
+			}
+			
 			//用户留言信息的入库操作
-			$insertsql = "insert into xb_comment(userid,quanid,content,createtime)
-				values ('".$this->userid."','".$this->quanid."','".$this->yijian."','".date('Y-m-d H:i:s')."')";
+			$insertsql = "insert into xb_comment(userid,quanid,touserid,content,createtime)
+				values ('".$this->userid."','".$this->quanid."','".$thetouserid."','".$this->yijian."','".date('Y-m-d H:i:s')."')";
 			$insertlist = parent::__get('HyDb')->execute($insertsql);
 			
 			
