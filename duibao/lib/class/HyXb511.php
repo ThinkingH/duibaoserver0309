@@ -68,6 +68,20 @@ class HyXb511 extends HyXb{
 			if($shopdata_list[$keys]['shopurl']===null){
 				$shopdata_list[$keys]['shopurl']='';
 			}
+			if($shopdata_list[$keys]['showpic2']===null){
+				$shopdata_list[$keys]['showpic2']='';
+			}
+			if($shopdata_list[$keys]['showpic3']===null){
+				$shopdata_list[$keys]['showpic3']='';
+			}
+			if($shopdata_list[$keys]['showpic4']===null){
+				$shopdata_list[$keys]['showpic4']='';
+			}
+			if($shopdata_list[$keys]['showpic5']===null){
+				$shopdata_list[$keys]['showpic5']='';
+			}
+			
+			
 			
 		}
 		
@@ -87,33 +101,6 @@ class HyXb511 extends HyXb{
 			
 			$productdetaillist['shoparr'] = $shopdata_list;
 			
-			/* //跳转链接地址
-			//$productdetaillist['shopname'] = isset($shopdata_list['shopname'])?$shopdata_list['shopname']:'';
-			if($shopdata_list['shopname']===null){
-				$shopdata_list['shopname']='';
-			}else{
-				$productdetaillist['shopname'] = $shopdata_list['shopname'];
-			}
-			
-			if($shopdata_list['shoplogo']===null){
-				$productdetaillist['shoplogo']='';
-			}else{
-				$productdetaillist['shoplogo'] = $shopdata_list['shoplogo'];
-			}
-			
-			if($shopdata_list['shopurl']===null){
-				$productdetaillist['shopurl']='';
-			}else{
-				$productdetaillist['shopurl'] = $shopdata_list['shopurl'];
-			}
-			
-			if($shopdata_list['shoptype']===null){
-				$productdetaillist['shoptype']='';
-			}else{
-				$productdetaillist['shoptype'] = $shopdata_list['shoptype'];
-			} */
-			
-			
 			
 			if($productdetaillist['kucun']<=0){
 				$productdetaillist['productnum'] = '9';//库存不足
@@ -129,7 +116,13 @@ class HyXb511 extends HyXb{
 			
 			$productdetaillist['phone'] = $storephonearr[$productdetaillist['siteid']];
 			
-			$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'].'+'.$productdetaillist['score'].'馅饼';
+			if($productdetaillist['feetype']=='4'){//免费商品
+				$productdetaillist['scoremoney']='免费';
+			}else{
+				$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'].'+'.$productdetaillist['score'].'馅饼';
+			}
+			
+			
 			
 			$productdetaillist['downloadnum'] = '568'+$productdetaillist['buycount'];
 			

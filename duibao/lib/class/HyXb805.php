@@ -79,13 +79,14 @@ class HyXb805 extends HyXb{
 			//图片的存储路径--图片的绝对路径
 			$filepathname = $filepath.$filename;
 			
+			
 			//把解码转化为图片，然后存放路径中
 			file_put_contents($filepathname,base64_decode($this->imgdata));
 			
 			//$filepathname ='http://xbapp.xinyouxingkong.com'.substr($filepathname,20);
+			//七牛文件的上传parent::hy_yunyingshangcheck($this->phone);
+			$filenameurl=parent::upload_qiniu('duibao-find',$filepathname,$filename);
 			
-			//七牛文件的上传
-			$filenameurl=upload_qiniu('duibao-find',$filepathname,$filename);
 			
 			if($filenameurl){//图片上传成功
 				//本地文件删除
@@ -94,17 +95,19 @@ class HyXb805 extends HyXb{
 				}
 			}
 			
+			
 			$theurl = 'http://127.0.0.1/'.date('YmdHis').mt_rand(1000,9999);
 			
 			//发布数据的入库处理
 			$insertsql = "insert into z_tuanmainlist (hyflag,shstatus,userid,faflag,theurl,
-						create_datetime,childtype,title,picurl,
+						create_datetime,maintype,title,picurl,
 						yuanprice,nowprice,reamrk,address,
 						lat,lng,over_datetime,zflag,phone) values 
 						('1','99','".parent::__get('xb_userid')."','1','".$theurl."',
 						'".date('Y-m-d H:i:s')."','".$this->type."','".$this->proname."','".$filenameurl."', 
 							'".$this->yuanprice."','".$this->nowprice."','".$this->discount."','".$this->address."',
 							'".$this->lat."','".$this->lng."','".$this->over_datetime."','1','".$this->phone."')";
+			
 			$insertlist = parent::__get('HyDb')->execute($insertsql);
 			
 			if($insertlist===true){
@@ -204,7 +207,7 @@ class HyXb805 extends HyXb{
 		}
 		
 		
-		if($this->imgdata==''){
+	/* 	if($this->imgdata==''){
 			$echoarr = array();
 			$echoarr['returncode'] = 'error';
 			$echoarr['returnmsg']  = '图片不能为空！';
@@ -213,7 +216,7 @@ class HyXb805 extends HyXb{
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return false;
-		}
+		} */
 		
 		if($this->houzhui==''){
 			$echoarr = array();

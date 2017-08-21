@@ -37,7 +37,7 @@ class HyXb810 extends HyXb{
 		$this->touserid = isset($input_data['touserid']) ? $input_data['touserid']:''; //
 		$this->yijian = isset($input_data['yijian'])? $input_data['yijian']:'';    //留言内容
 		
-		$this->dtype      = isset($input_data['dtype']) ? $input_data['dtype']:'c'; //m或c
+		$this->dtype      = isset($input_data['dtype']) ? $input_data['dtype']:'c'; //m或c m--评论 c-回复
 		$this->cid        = isset($input_data['cid']) ? $input_data['cid']:''; //评论的id
 		$this->nowid      = isset($input_data['nowid']) ? $input_data['nowid']:''; //回复的id或评论的id
 	

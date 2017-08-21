@@ -172,8 +172,8 @@ class HyXb209 extends HyXb{
 			
 		}else{
 			$echoarr = array();
-			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '数据获取失败';
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '数据获去成功';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);

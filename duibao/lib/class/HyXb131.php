@@ -34,9 +34,24 @@ class HyXb131 extends HyXb{
 		
 		//当usertype=1时，正常用户
 		if($usertype=='1'){
-			$userinfo_sql = "select id,phone,keyong_jifen,dongjie_jifen,sex,birthday,userlevel,nickname,touxiang,create_datetime 
+			$userinfo_sql = "select id,vipflag,vip_endtime_one,vip_endtime_two,phone,keyong_jifen,dongjie_jifen,sex,birthday,userlevel,nickname,touxiang,create_datetime 
 							from xb_user where id='".parent::__get('xb_userid')."'and tokenkey='".parent::__get('xb_userkey')."'";
 			$userinfo_list = parent::__get('HyDb')->get_all($userinfo_sql);
+			
+			if(strtotime($userinfo_list[0]['vip_endtime_one'])<time()){//会员过期
+				
+				$updateflag_sql = "update xb_user set vipflag='10',vip_endtime_one='0000-00-00 00:00:00' where id='".parent::__get('xb_userid')."' ";
+				 parent::__get('HyDb')->execute($updateflag_sql);
+				 
+				 $userinfo_list[0]['vip_endtime_one'] = '0000-00-00 00:00:00';
+				 $userinfo_list[0]['vipflag'] = '10'; //会员标识 1-会员  10-普通会员
+				 $userinfo_list[0]['day']    = '0';//剩余天数
+				 
+			}else{//剩余多长时间
+				
+				//echo ceil((strtotime($userinfo_list[0]['vip_endtime_one']) -time())/86400);
+				$userinfo_list[0]['day'] = ceil(((strtotime($userinfo_list[0]['vip_endtime_one']) - time() )/86400)).'天';
+			}
 			
 			if($userinfo_list[0]['nickname']=='' || $userinfo_list[0]['nickname']=='undefined'){
 				

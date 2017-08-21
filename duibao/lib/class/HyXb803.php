@@ -99,16 +99,18 @@ class HyXb803 extends HyXb{
 					
 				$where = "z='".$z."' and shstatus=11 and hyflag=1  and zflag=1
 					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
-					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' and new_datetime>='".date("Y-m-d",strtotime("-11 month"))."' ";
+					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."'  
+					and new_datetime>='".date("Y-m-01 00:00:00 ")."' and new_datetime<='".date("Y-m-31 23:59:59")."'";
 					
 			}else{//查询单个的
 					
 				$where = "z='".$z."' and shstatus=11 and hyflag=1 and zflag=1 and maintype = '".$this->kindtype."'
 					and lat<>0 and lat>'".$squares['right-bottom']['lat']."' and lat<'".$squares['left-top']['lat']."'
-					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' and new_datetime>='".date("Y-m-d",strtotime("-11 month"))."' ";
+					and lng>'".$squares['left-top']['lng']."' and lng<'".$squares['right-bottom']['lng']."' 
+					and new_datetime>='".date("Y-m-01 00:00:00 ")."' and new_datetime<='".date("Y-m-31 23:59:59")."' ";
 			}
 		}
-		//$where = ' 1=1 ';
+		
 		
 		if($this->page=='' || $this->page=='0' || $this->page=='undefined'){
 			$this->page=1;
@@ -288,7 +290,9 @@ class HyXb803 extends HyXb{
 			
 			if($listdata[$keys]['distance']<1){
 				
-				$listdata[$keys]['distance'] = $listdata[$keys]['distance']*1000;
+				$listdata[$keys]['distance'] = ($listdata[$keys]['distance']*1000).'米';
+			}else{
+				$listdata[$keys]['distance'] = $listdata[$keys]['distance'].'公里';
 			}
 			
 			

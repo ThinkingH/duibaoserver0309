@@ -35,9 +35,9 @@ class HyXb501 extends HyXb{
 		$usertype = parent::__get('xb_usertype');
 		
 		if($this->type=='1'){
-			$wherestr = " where flag=1 and status=1 and onsales=1 ";  //全部
+			$wherestr = " where flag=1 and status=1 and onsales=1 and feetype in (1,2,3) ";  //全部
 		}else if($this->type=='2'){
-			$wherestr = " where flag=1 and status=1 and onsales=1 and hottypeid=101 ";  //全部
+			$wherestr = " where flag=1 and status=1 and onsales=1 and hottypeid=101 ";  //推荐
 		}
 		
 		
@@ -72,6 +72,7 @@ class HyXb501 extends HyXb{
 						score,mainpic,xiangqingurl,buycount,pingjiacount 
 						from shop_product 
 						 $wherestr order by orderbyid asc,id desc limit $firstpage,$pagesize ";
+		//echo $shangpinsql;
 		$shangpinlist = parent::__get('HyDb')->get_all($shangpinsql); 
 		
 		foreach ($shangpinlist as $keys=>$vals){
