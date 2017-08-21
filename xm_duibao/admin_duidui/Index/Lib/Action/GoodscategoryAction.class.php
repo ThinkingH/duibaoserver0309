@@ -56,8 +56,17 @@ class GoodscategoryAction extends Action {
 			
 		}
 		
-		print_r("<pre>");
-		print_r($type);
+		
+		/* print_r("<pre>");
+		print_r($type[$key]['child'][$k]['child2']); */
+		
+		$this -> assign('list',$type);
+		
+		$this->assign('clist',$type[$key]['child'][$k]['child2']);
+		
+		
+		/* print_r("<pre>");
+		print_r($type); */
 		
 		
 		
@@ -275,16 +284,6 @@ class GoodscategoryAction extends Action {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//分类的增加或修改‘
 	public function addEditCategory(){
 		
@@ -294,6 +293,12 @@ class GoodscategoryAction extends Action {
 		
 		
 		
+		
+	}
+	
+	
+	//商品的属性表
+	public function attributelist(){
 		
 	}
 	
