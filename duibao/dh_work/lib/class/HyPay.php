@@ -139,11 +139,11 @@ class HyPay {
 		$sql_insert  = "insert into pay_order (payid,siteid,payflag,paytype,
 						sj_orderid,myorderid,paymoney,goodsname,
 						client_ip,ystatus,ymessage,jumpurl,
-						create_datetime) values (
+						create_datetime,remark) values (
 						'".$this->cg_payid."','".$this->cg_account."','".$this->payflag."','".$this->d_paytype."',
 						'".$this->d_sj_orderid."','".$this->d_myorderid."','".$this->d_paymoney."','".$this->d_goodsname."',
 						'".$this->d_client_ip."','".$this->d_ystatus."','".$this->d_ymessage."','".$this->d_jumpurl."',
-						'".date('Y-m-d H:i:s')."')";
+						'".date('Y-m-d H:i:s')."','".$this->remark."')";
 		$this->log_str .= HyItems::hy_trn2space($sql_insert)."\n";
 		
 		$r = $this->HyDb->execute($sql_insert);

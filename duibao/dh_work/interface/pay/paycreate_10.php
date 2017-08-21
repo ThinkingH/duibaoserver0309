@@ -13,7 +13,7 @@ require_once("../../lib/c.core.php");
 $payid = 10;
 
 $paytype = 14;  //14为h5支付
-$thereport_url = 'http://xbapp.xinyouxingkong.com/dh_work/intreface/reppay/payreport_10.php';
+$thereport_url = HY_THEBASEURL.'dh_work/interface/reppay/payreport_10.php';
 
 
 //获取当前文件名称及父目录
@@ -61,7 +61,7 @@ if(''==$myorderid) {
 }
 
 if($thenotify_url=='') {
-	$thenotify_url = 'http://duibao.xinyouxingkong.com';
+	$thenotify_url = HY_THEBASEURL.'dh_work/interface/reppay/paycallback_10.php';;
 }
 
 $payarray = array();

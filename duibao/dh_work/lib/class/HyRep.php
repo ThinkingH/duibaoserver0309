@@ -27,10 +27,8 @@ class HyRep {
 	private $d_siteid;
 	private $d_typeid;
 	private $d_stat;
-	private $d_paymoney;
 	private $d_sj_orderid;
 	private $d_myorderid;
-	private $d_tcid;
 	private $d_openid;
 	private $d_ystatus;    //上家错误码
 	private $d_ymessage;   //上家错误码描述
