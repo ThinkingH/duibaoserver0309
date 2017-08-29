@@ -971,7 +971,6 @@ class HyXb{
 		}
 	}
 	
-	
 	//判断该月领取的次数
 	protected function is_month_pickup(){
 		
@@ -982,6 +981,7 @@ class HyXb{
 		$pickup_list = $this->HyDb->get_row($pickup_sql); 
 		
 		if($pickup_list['id']>0){//当月已领取，不可以在领取
+			
 			return false;
 		}else{
 			return true;

@@ -23,6 +23,7 @@ class HyXb531 extends HyXb{
 		//接收用户的userid
 		$this->userid = isset($input_data['userid']) ? $input_data['userid']:''; 
 		$this->taskid = isset($input_data['taskid']) ? $input_data['taskid']:'';
+		$this->kindtype = isset($input_data['kindtype']) ? $input_data['kindtype']:''; //为空 默认删除 1-确认收货
 	
 	}
 	
@@ -31,16 +32,22 @@ class HyXb531 extends HyXb{
 	public function controller_getproducttypelist(){
 		
 		
-		
-		$shopproductsql  = "delete from shop_userbuy where id='".$this->taskid."'"; 
-		$shopproductlist = parent::__get('HyDb')->execute($shopproductsql); 
-		
+		if($this->kindtype==''){
+			$shopproductsql = "update shop_userbuy set status='6' where id='".$this->taskid."' ";
+			//$shopproductsql  = "delete from shop_userbuy where id='".$this->taskid."'";
+			$shopproductlist = parent::__get('HyDb')->execute($shopproductsql);
+			
+		}else if($this->kindtype=='1'){
+			
+			$shopproductsql = "update shop_userbuy set status='5', fh_shouhuotime='".date('Y-m-d H:i:s')."' where id='".$this->taskid."' ";
+			$shopproductlist = parent::__get('HyDb')->execute($shopproductsql);
+		}
 		
 		if(count($shopproductlist)>0){
 			
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '订单记录删除成功';
+			$echoarr['returnmsg']  = '操作成功';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
@@ -50,7 +57,7 @@ class HyXb531 extends HyXb{
 		}else{
 			$echoarr = array();
 			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '订单记录删除失败';
+			$echoarr['returnmsg']  = '操作失败';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);

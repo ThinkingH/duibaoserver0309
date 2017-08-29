@@ -99,6 +99,17 @@ class HyXb511 extends HyXb{
 		
 		if($productdetaillist['id']>0){
 			
+			if($productdetaillist['feetype']=='5'){
+				$productdetaillist['prizeurl'] = 'http://120.27.34.239:8018/choujiang/index.php'; 
+			}else{
+				
+				$productdetaillist['prizeurl']='';
+			}
+			
+			
+			
+			
+			
 			$productdetaillist['shoparr'] = $shopdata_list;
 			
 			

@@ -154,8 +154,37 @@ class HyXb209 extends HyXb{
 				}
 			}
 			
+		}else if($this->type=='5'){
 			
+			if($this->width==''){//753 * 292
+				$this->width='200';
+			}
+				
+			if($this->height==''){
+				$this->height='160';
+			}
+				
+			$youhuiquanconfsql  = "select id,shopid,shopname,img,imgurl,action, type,value,isused
+								from xb_lunbotu where flag='1' and biaoshi='5' order by picname desc limit 3";
+			$youhuiquanconflist = parent::__get('HyDb')->get_all($youhuiquanconfsql);
+				
+			$youhuiquanconflist= array();
+			/* 	
+			foreach ($youhuiquanconflist as $keys => $vals){
 			
+				$replace = array("\t", "\r", "\n",);
+					
+				//图片展示
+				$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+				if(substr($youhuiquanconflist[$keys]['img'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['img'],0,8)=='https://' ){
+					//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+				}else{
+					$youhuiquanconflist[$keys]['img'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+			
+				}
+			} */
 		}
 		
 		
