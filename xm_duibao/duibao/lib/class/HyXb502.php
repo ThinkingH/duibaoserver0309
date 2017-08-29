@@ -36,6 +36,113 @@ class HyXb502 extends HyXb{
 		}else if($this->typeid=='17'){
 			
 			$this->function_viptypelist();
+		}else if($this->typeid=='15'){//抽奖免费专区
+			
+			$this->function_freelist();
+		}
+		
+	}
+	
+	
+	//抽奖免费商品
+	public function function_freelist(){
+		
+		if($this->page=='' || $this->page=='0'){
+			$this->page=1;
+		}
+		
+		if($this->count=='' || $this->count=='undefined'){
+			$this->count=10;
+		}
+		
+		$firstpage = ($this->page-1)*$this->count;
+		$pagesize  = $this->count;
+		
+		$returnarr = array();
+		
+		//分类数据的查询
+		$typesql  = "select count(*) as num from shop_product where flag=1 and status=1 and onsales=1 and feetype='5'";
+		$typelist = parent::__get('HyDb')->get_all($typesql);
+		
+		if($typelist[0]['num']>0){
+			$returnarr['maxcon'] = $typelist[0]['num'];
+		}else{
+			$returnarr['maxcon'] = 0;
+		}
+		
+		//总页数
+		$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
+		
+		//顶部图片的输出
+		$lunbo_sql = "select img from xb_lunbotu where biaoshi='8' limit 1";
+		$lunbo_list = parent::__get('HyDb')->get_one($lunbo_sql);
+		
+		
+		//商品类型的输出
+		$shopproductsql  = "select * from shop_product where flag=1 and status=1 and onsales=1 and feetype='5' order by orderbyid desc limit $firstpage,$pagesize";
+		$shopproductlist = parent::__get('HyDb')->get_all($shopproductsql);
+		
+		$i = 0;
+		foreach ($shopproductlist as $keys=>$vals){
+			$i++;
+			if($i==1){
+				if($lunbo_list==''){
+					$shopproductlist[$keys]['img'] = '';
+				}else{
+					$shopproductlist[$keys]['img'] = $lunbo_list;
+				}
+			}
+				
+				
+			$shopproductlist[$keys]['scoremoney'] = '免费';
+			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
+				
+			if($shopproductlist[$keys]['showpic2'] ===null){
+				$shopproductlist[$keys]['showpic2']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic3'] ===null){
+				$shopproductlist[$keys]['showpic3']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic4'] ===null){
+				$shopproductlist[$keys]['showpic4']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic5'] ===null){
+				$shopproductlist[$keys]['showpic5']='';
+			}
+		
+			if($shopproductlist[$keys]['miaoshu'] ===null){
+				$shopproductlist[$keys]['miaoshu']='';
+			}
+		}
+		
+		
+		if(count($shopproductlist)>0){
+		
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '免费商品分类列表获取成功';
+			$echoarr['maxcon']  = $returnarr['maxcon'];
+			$echoarr['sumpage'] = $returnarr['sumpage'];
+			$echoarr['nowpage'] = $this->page;
+			$echoarr['dataarr'] = $shopproductlist;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return true;
+		
+		}else{
+		
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '免费商品分类列表为空';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
 		}
 		
 	}

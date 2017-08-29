@@ -7,6 +7,7 @@
 class HyXb112 extends HyXb{
 	
 	
+	
 	//数据的初始化
 	function __construct($input_data){
 	
@@ -32,6 +33,9 @@ class HyXb112 extends HyXb{
 	
 		//接收临时用户的key
 		$this->userkey = isset($input_data['userkey']) ? $input_data['userkey']:'';  //
+		
+		//跳转到登录页的类型  为空 正常用户登录    type=1 从轮播图跳转到登录
+		$this->type = isset($input_data['type']) ? $input_data['type']:'';  //
 	}
 	
 	
@@ -48,6 +52,11 @@ class HyXb112 extends HyXb{
 		//验证码校验函数
 		$r = parent::func_vcode_check($type='1',$this->phone,$this->vcode);
 		
+		if($this->type=='1'){//从轮播图跳转过来的
+			$score = '100';
+		}else{
+			$score = '0';
+		}
 		
 		if($usertype=='3'){//正常用户的注册
 			
@@ -78,36 +87,43 @@ class HyXb112 extends HyXb{
 					
 				}else{//该用户首次登录，数据插入到用户表中
 					
+					
 					//数据的插入
 					$userdatasql = "insert into xb_user (phone,tokenkey,create_datetime,keyong_jifen)
-					values ('".$this->phone."','".$userkey."','".parent::__get('create_datetime')."','0')";
+									values ('".$this->phone."','".$userkey."','".parent::__get('create_datetime')."','".$score."')";
 					$userdatalist = parent::__get('HyDb')->execute($userdatasql);
 						
-					/* $useridsql = "select id,tokenkey,jiguangid from xb_user where phone='".$this->phone."' and create_datetime>='".date('Y-m-d H:i:s',(time()-3*24*60*60))."'";
+					$useridsql = "select id,tokenkey from xb_user where phone='".$this->phone."' and create_datetime>='".date('Y-m-d H:i:s',(time()-3*24*60*60))."'";
 					$useridlist = parent::__get('HyDb')->get_row($useridsql);
 					
-					$jiguangid = $useridlist['jiguangid'];
-					$userid    = $useridlist['id'];
+					//轮播图的登录
+					if($this->type=='1'){//积分的记录
 					
-					//极光推送
-					$message = '恭喜注册成功获取300馅饼，请注意查看';
+						//积分详情的记录
+						$getdescribe = '通过兑宝登录参与“积分夺宝”，赠送100馅饼';
+						$date=time();
+						$scoresql = "insert into xb_user_score (userid,goodstype,maintype,type,score,gettime,getdescribe)
+									values ('".$useridlist['id']."','1','1','1','100','".$date."','".$getdescribe."')";
+						parent::__get('HyDb')->execute($scoresql);
 					
-					//推送是我记录
-					$time =time();
-					$tuisongsql = "insert into xb_user_tuisong (userid,type,status,message,create_inttime)
-							values ('".$userid."','1','2','".$message."','".$time."')";
-					$tuisonglist = parent::__get('HyDb')->execute($tuisongsql); */
-						
-					//parent::func_jgpush($jiguangid,$message);
+						//通知记录
+						//推送是我记录
+						$time =time();
+						$tuisongsql = "insert into xb_user_tuisong (userid,type,status,message,create_inttime)
+										values ('".$useridlist['id']."','1','2','".$getdescribe."','".$time."')";
+						$tuisonglist = parent::__get('HyDb')->execute($tuisongsql);
+					
+					}
 					
 					
 					if(count($useridlist)>0){
-							
+						
 						$temparr = array(
 								array(
-										'userid' => $useridlist['id'],
-										'userkey'=> $useridlist['tokenkey'],
+									'userid' => $useridlist['id'],
+									'userkey'=> $useridlist['tokenkey'],
 								),
+									
 						);
 							
 						$echoarr = array();
@@ -133,8 +149,19 @@ class HyXb112 extends HyXb{
 					
 				}
 				
+				
+				
 			}else{
 				
+				//在父类中返回
+				/* $echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '验证码校验错误';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false; */
 			}
 			
 			
@@ -162,18 +189,18 @@ class HyXb112 extends HyXb{
 					
 				}else{
 					//没有注册，数据从新插入到用户表中，并同时把临时用户获取的积分增加上去
-					$userdatasql = "insert into xb_user (phone,tokenkey,create_datetime,keyong_jifen) values ('".$this->phone."','".$userkey."','".parent::__get('create_datetime')."','0')";
+					$userdatasql = "insert into xb_user (phone,tokenkey,create_datetime,keyong_jifen) 
+							values ('".$this->phone."','".$userkey."','".parent::__get('create_datetime')."','".$score."')";
 					$userdatalist = parent::__get('HyDb')->execute($userdatasql);
 					
 					if($userdatalist){
 						
 						//读取转为正式用户的id
-						$zhengshiuser_sql  = "select id,tokenkey,jiguangid from xb_user where phone='".$this->phone."' order by id desc limit 1";
+						$zhengshiuser_sql  = "select id,tokenkey from xb_user where phone='".$this->phone."' order by id desc limit 1";
 						$zhengshiuser_list = parent::__get('HyDb')->get_row($zhengshiuser_sql);
 						
 						$trueuserid  = $zhengshiuser_list['id'];
 						$trueuserkey = $zhengshiuser_list['tokenkey'];
-						$jiguangid   = $zhengshiuser_list['jiguangid'];
 						
 					}else{
 						$echoarr = array();
@@ -186,6 +213,25 @@ class HyXb112 extends HyXb{
 						return false;
 					}
 					
+					
+					//轮播图的登录
+					if($this->type=='1'){//积分的记录
+						
+						//积分详情的记录
+						$getdescribe = '通过兑宝登录参与“积分夺宝”，赠送100馅饼';
+						$date=time();
+						$scoresql = "insert into xb_user_score (userid,goodstype,maintype,type,score,gettime,getdescribe)
+									values ('".$trueuserid."','1','1','1','100','".$date."','".$getdescribe."')";
+						parent::__get('HyDb')->execute($scoresql);
+						
+						//通知记录
+						//推送是我记录
+						$time =time();
+						$tuisongsql = "insert into xb_user_tuisong (userid,type,status,message,create_inttime)
+						values ('".$trueuserid."','1','2','".$getdescribe."','".$time."')";
+						$tuisonglist = parent::__get('HyDb')->execute($tuisongsql);
+						
+					}
 					
 					
 					//1.临时任务表中的数据更新 id userid status taskid flag remark create_datetime
@@ -215,11 +261,15 @@ class HyXb112 extends HyXb{
 					$scoreuser_list = parent::__get('HyDb')->get_all($scoreuser_sql);
 						
 					if(count($scoreuser_list)>0){
-					
-						$insertscore_sql = "insert into xb_user_score (userid,maintype,type,score,getdescribe,gettime,remark)
+						
+						foreach ($scoreuser_list as $key => $val){
+							
+							$insertscore_sql = "insert into xb_user_score (userid,maintype,type,score,getdescribe,gettime,remark)
 								values ('".$trueuserid."','1','".$scoreuser_list[$key]['type']."','".$scoreuser_list[$key]['score']."',
 										'".$scoreuser_list[$key]['getdescribe']."','".$scoreuser_list[$key]['gettime']."','".$scoreuser_list[$key]['remark']."')";
-						$insertscore_list = parent::__get('HyDb')->execute($insertscore_sql);
+							$insertscore_list = parent::__get('HyDb')->execute($insertscore_sql);
+						}
+					
 					
 						//删除临时表中该用户的记录
 						$deluserscore_sql  = "delete from xb_temp_user_score where userid = '".parent::__get('xb_userid')."' ";
@@ -248,6 +298,17 @@ class HyXb112 extends HyXb{
 						
 					}
 					
+					
+					//查看该临时用户是否领取了积分，如果是的话 我该临时用户领取记录转为正式用户的id
+					$libaosql = "select id,userid from newusers where userid='".parent::__get('xb_userid')."' and type in (1,2) ";
+					$libaolist = parent::__get('HyDb')->get_all($libaosql);
+					
+					if(count($libaolist)>0){//临时用户领取记录存在
+						
+						$updatelibaosql = "update newusers set userid='".$trueuserid."' where userid='".parent::__get('xb_userid')."' and type in (1,2) ";
+										parent::__get('HyDb')->execute($updatelibaosql);
+						
+					}
 					
 					
 					
@@ -290,33 +351,7 @@ class HyXb112 extends HyXb{
 						
 					}
 					
-					
-					
-					/* //读取转为正式用户的id
-					$zhengshiuser_sql  = "select id,tokenkey,jiguangid from xb_user where phone='".$this->phone."' order by id desc limit 1";
-					$zhengshiuser_list = parent::__get('HyDb')->get_row($zhengshiuser_sql);
-					
-					$trueuseridd  = $zhengshiuser_list['id'];
-					$jiguangidd   = $zhengshiuser_list['jiguangid'];
-					
-					//极光推送
-					$message = '恭喜注册成功获取300馅饼，请注意查看';
-						
-					//推送是我记录
-					$time =time();
-					$tuisongsql = "insert into xb_user_tuisong (userid,type,status,message,create_inttime)
-							values ('".$trueuseridd."','1','2','".$message."','".$time."')";
-					$tuisonglist = parent::__get('HyDb')->execute($tuisongsql); */
-					
-					
-					
-					
-					//parent::func_jgpush($jiguangidd,$message);
-					
-					
 				}
-				
-				
 				
 				
 				if(!empty($temparr)){

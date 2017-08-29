@@ -92,8 +92,9 @@ class HyXb171 extends HyXb{
 			$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
 			
 			
-			$temptuisongsql  = "select id,type,status,taskid,message,create_inttime from $tablename where userid='".parent::__get('xb_userid')."'
-				order by create_inttime desc";
+			$temptuisongsql  = "select id,type,status,taskid,message,create_inttime 
+								from $tablename where userid='".parent::__get('xb_userid')."'
+								order by create_inttime desc limit $firstpage,$pagesize ";
 			$temltuisonglist = parent::__get('HyDb')->get_all($temptuisongsql);
 			
 			foreach ($temltuisonglist as $keys => $vals){
@@ -267,7 +268,13 @@ class HyXb171 extends HyXb{
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '获取成功';
+<<<<<<< .mine
 			$echoarr['dataarr'] = $temltuisonglist;
+			$echoarr['maxcon']  = $returnarr['maxcon'];
+			$echoarr['sumpage'] = $returnarr['sumpage'];
+			$echoarr['nowpage'] = $this->page;
+=======
+>>>>>>> .r97
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);

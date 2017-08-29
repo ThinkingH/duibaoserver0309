@@ -8,6 +8,7 @@ class HyXb529 extends HyXb{
 	private $xb_yijian;
 	private $productid;
 	private $typeid;
+	private $orderid;
 	
 	
 	//数据的初始化
@@ -26,7 +27,8 @@ class HyXb529 extends HyXb{
 		//意见
 		$this->xb_yijian   = isset($input_data['yijian'])? $input_data['yijian']:'';  //用户提交的意见
 		$this->productid   = isset($input_data['productid'])? $input_data['productid']:'';  
-		$this->typeid   = isset($input_data['typeid'])? $input_data['typeid']:'';  
+		$this->typeid   = isset($input_data['typeid'])? $input_data['typeid']:''; 
+		$this->orderid  = isset($input_data['taskid'])? $input_data['taskid']:'';  //订单id
 	
 	}
 	
@@ -51,7 +53,7 @@ class HyXb529 extends HyXb{
 		
 		
 		//评价状态的更新
-		$pingjiasql = "update shop_userbuy set pingjia=1 where userid='".parent::__get('xb_userid')."' and siteid='".$this->typeid."' and productid='".$this->productid."'";
+		$pingjiasql = "update shop_userbuy set pingjia=1 where userid='".parent::__get('xb_userid')."' and siteid='".$this->typeid."' and productid='".$this->productid."' and id='".$this->orderid."' ";
 		$pingjialist = parent::__get('HyDb')->execute($pingjiasql);
 		
 		
