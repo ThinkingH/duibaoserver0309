@@ -107,7 +107,12 @@ class HyXb511 extends HyXb{
 			}
 			
 			
-			
+			if($productdetaillist['feetype']=='5'){
+				$productdetaillist['video_url'] = 'http://pic.chinaaresc.com/mp4/gggg.mp4'; 
+			}else{
+				
+				$productdetaillist['video_url']='';
+			}
 			
 			
 			$productdetaillist['shoparr'] = $shopdata_list;
@@ -129,8 +134,15 @@ class HyXb511 extends HyXb{
 			
 			if($productdetaillist['feetype']=='4'){//免费商品
 				$productdetaillist['scoremoney']='免费';
-			}else{
+			}else if($productdetaillist['feetype']=='1'){
 				$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'].'+'.$productdetaillist['score'].'馅饼';
+			}else if($productdetaillist['feetype']=='2'){
+				
+				$productdetaillist['price'] = number_format($productdetaillist['price'] /100, 2);
+				
+				$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'];
+			}else if($productdetaillist['feetype']=='5'){
+				$productdetaillist['scoremoney']='免费';
 			}
 			
 			
@@ -140,6 +152,8 @@ class HyXb511 extends HyXb{
 			if($productdetaillist['pickup']=='1'){
 				$productdetaillist['pickup']='自提';
 			}else if($productdetaillist['pickup']=='2'){
+				$productdetaillist['pickup']='包邮';
+			}else{
 				$productdetaillist['pickup']='包邮';
 			}
 			
