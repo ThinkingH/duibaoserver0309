@@ -154,7 +154,7 @@ if(false!==$ret) {
 						$HyRep->hy_log_str_add($tmp_logstr);
 						unset($tmp_logstr);
 						
-						$HyRep->__get('HyDb')->get_row($sql_update);
+						$HyRep->__get('HyDb')->execute($sql_update);
 						
 						
 					}
