@@ -22,7 +22,7 @@ class HyXb143 extends HyXb{
 		$this->mobile     = isset($input_data['mobile'])? $input_data['mobile']:'';
 		$this->shouhuoren = isset($input_data['shouhuoren'])?$input_data['shouhuoren']:'';
 		$this->province   = isset($input_data['province'])?$input_data['province']:'';
-		$this->city       = isset($input_data['city'])?$input_data['city']:'';
+		$this->city       = isset($input_data['province'])?$input_data['province']:'';
 		$this->address    = isset($input_data['address'])?$input_data['address']:'';
 		$this->zipcode    = isset($input_data['zipcode'])?$input_data['zipcode']:'';
 		$this->is_default = isset($input_data['is_default'])? $input_data['is_default']:'9';  //

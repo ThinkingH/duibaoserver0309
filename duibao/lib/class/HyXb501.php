@@ -35,9 +35,9 @@ class HyXb501 extends HyXb{
 		$usertype = parent::__get('xb_usertype');
 		
 		if($this->type=='1'){
-			$wherestr = " where flag=1 and status=1 and onsales=1 and feetype in (1,2,3) ";  //全部
+			$wherestr = " where flag=1 and status=1 and onsales=1 and feetype=1  ";  // 1--全部
 		}else if($this->type=='2'){
-			$wherestr = " where flag=1 and status=1 and onsales=1 and hottypeid=101 ";  //推荐
+			$wherestr = " where flag=1 and status=1 and onsales=1 and hottypeid=101 ";  //2-获取今日推荐的数据
 		}
 		
 		
@@ -69,15 +69,27 @@ class HyXb501 extends HyXb{
 		
 		//商品数据列表的获取
 		$shangpinsql  = "select id,siteid,typeid,name,price,
-						score,mainpic,xiangqingurl,buycount,pingjiacount 
+						score,mainpic,xiangqingurl,buycount,pingjiacount,feetype 
 						from shop_product 
 						 $wherestr order by orderbyid asc,id desc limit $firstpage,$pagesize ";
-		//echo $shangpinsql;
 		$shangpinlist = parent::__get('HyDb')->get_all($shangpinsql); 
 		
+		
 		foreach ($shangpinlist as $keys=>$vals){
-				
-			$shangpinlist[$keys]['scoremoney'] = '¥'.$shangpinlist[$keys]['price'].'+'.$shangpinlist[$keys]['score'].'馅饼';
+			
+			
+			if($shangpinlist[$keys]['feetype']=='1'){//积分number_format($paymoney / 100, 2)
+				$shangpinlist[$keys]['scoremoney'] = '¥'.$shangpinlist[$keys]['price'].'+'.$shangpinlist[$keys]['score'].'馅饼';
+			}else if($shangpinlist[$keys]['feetype']=='2'){
+				$shangpinlist[$keys]['scoremoney'] = '¥'.number_format($shangpinlist[$keys]['price'] / 100, 2).'+'.$shangpinlist[$keys]['score'].'馅饼';
+			}else if($shangpinlist[$keys]['feetype']=='4'){
+				$shangpinlist[$keys]['scoremoney'] = '免费';
+			}else if($shangpinlist[$keys]['feetype']=='5'){
+				$shangpinlist[$keys]['scoremoney'] = '免费';
+			}
+			
+			
+			
 			
 			$shangpinlist[$keys]['downloadnum'] = '568'+$shangpinlist[$keys]['buycount'];
 		}

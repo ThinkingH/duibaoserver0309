@@ -29,13 +29,13 @@ class HyXb142 extends HyXb{
 	
 		$this->mobile     = isset($input_data['mobile'])? $input_data['mobile']:'';
 		$this->shouhuoren = isset($input_data['shouhuoren'])?$input_data['shouhuoren']:'';
-		$this->province   = isset($input_data['province'])?$input_data['province']:'';
-		$this->city       = isset($input_data['city'])?$input_data['city']:'';
+		$this->province   = isset($input_data['province'])?$input_data['province']:'';//省市区
+		/* $this->city       = isset($input_data['city'])?$input_data['city']:''; */
 		$this->address    = isset($input_data['address'])?$input_data['address']:'';
 		$this->zipcode    = isset($input_data['zipcode'])?$input_data['zipcode']:'';
 		$this->is_default = isset($input_data['is_default'])? $input_data['is_default']:'9';
 		if($this->is_default=='') {
-			$this->is_default = 9;
+			$this->is_default = '9';
 		}
 	}
 	
@@ -43,24 +43,26 @@ class HyXb142 extends HyXb{
 	protected function controller_edituseraddress(){
 		
 		//判断该用户的添加的收货地址的数量
-		$addressnum_sql  = "select count(*) as num from xb_user_address where userid = '".parent::__get('xb_userid')."'";
+		$addressnum_sql  = "select  id from xb_user_address where userid = '".parent::__get('xb_userid')."'";
 		$addressnum_list = parent::__get('HyDb')->get_all($addressnum_sql);
 		
-		if($addressnum_list[0]['num']>10){
+		if(count($addressnum_list)>0){
 			$echoarr = array();
-			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '该用户添加的地址达到了上限,不可以在进行地址的添加';
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '地址添加成功';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
-			return false;
+			return true;
 		}else{
+			
+			
 			//判断传递的默认地址值是否为1，如果为1 的话，更新新的默认地址
 			$morendizhisql  = "select id from xb_user_address where userid = '".parent::__get('xb_userid')."' and is_default=1";
-			$morendizhilist = parent::__get('HyDb')->get_all($morendizhisql);
-			
-			if(count($morendizhilist)>0){
+			//$morendizhilist = parent::__get('HyDb')->get_all($morendizhisql);
+			$morendizhilist = 0;
+			if($morendizhilist>0){
 				//该用户存在默认地址
 				if($this->is_default=='1'){//传入新的默认地址
 					//把地址中的默认地址全部改为非默认地址
@@ -102,10 +104,12 @@ class HyXb142 extends HyXb{
 				}
 				
 			}else{
+				
+				
 				//该用户不存在默认地址，之间进行地址的插入
 				$address_sql = "insert into xb_user_address (userid,mobile,shouhuoren,province,city,address,zipcode,is_default)
 						values ('".parent::__get('xb_userid')."','".$this->mobile."','".$this->shouhuoren."','".$this->province."'
-						,'".$this->city."','".$this->address."','".$this->zipcode."','".$this->is_default."')";
+						,'".$this->province."','".$this->address."','".$this->zipcode."','".$this->is_default."')";
 				$address_list = parent::__get('HyDb')->execute($address_sql);
 				
 				if($address_list===true){
@@ -196,7 +200,7 @@ class HyXb142 extends HyXb{
 			return false;
 		}
 		
-		//省份
+		/* //省份
 		if($this->province==''){
 				
 			$echoarr = array();
@@ -220,7 +224,7 @@ class HyXb142 extends HyXb{
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return false;
-		}
+		} */
 	
 		//详细地址
 		if($this->address==''){

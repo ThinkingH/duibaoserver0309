@@ -30,18 +30,124 @@ class HyXb502 extends HyXb{
 	//商品的分类展示
 	public function controller_getproducttypelist(){
 		
-		if($this->typeid=='11' || $this->typeid=='13' || $this->typeid=='14'){
-			
+		if($this->typeid=='11'){//流量
 			$this->function_typelist();
-		}else if($this->typeid=='17'){
-			
+		}else if($this->typeid=='17'){//vip商品区
 			$this->function_viptypelist();
 		}else if($this->typeid=='15'){//抽奖免费专区
-			
 			$this->function_freelist();
+		}else if( $this->typeid=='13' || $this->typeid=='14'){//支付商品
+			$this->function_zhifutypelist();
 		}
 		
 	}
+	
+	//支付商品
+	public function function_zhifutypelist(){
+		
+		
+		if($this->page=='' || $this->page=='0'){
+			$this->page=1;
+		}
+		
+		if($this->count=='' || $this->count=='undefined'){
+			$this->count=10;
+		}
+		
+		$firstpage = ($this->page-1)*$this->count;
+		$pagesize  = $this->count;
+		
+		$returnarr = array();
+		
+		//分类数据的查询
+		$typesql  = "select count(*) as num from shop_product where flag=1 and status=1 and onsales=1 and feetype='2'";
+		$typelist = parent::__get('HyDb')->get_all($typesql);
+		
+		if($typelist[0]['num']>0){
+			$returnarr['maxcon'] = $typelist[0]['num'];
+		}else{
+			$returnarr['maxcon'] = 0;
+		}
+		
+		//总页数
+		$returnarr['sumpage'] = ceil($returnarr['maxcon']/$pagesize);
+		
+		//顶部图片的输出
+		$lunbo_sql = "select img from xb_lunbotu where biaoshi='8' limit 1";
+		$lunbo_list = parent::__get('HyDb')->get_one($lunbo_sql);
+		
+		
+		//商品类型的输出
+		$shopproductsql  = "select * from shop_product where flag=1 and status=1 and onsales=1 and feetype='2' order by orderbyid desc limit $firstpage,$pagesize";
+		$shopproductlist = parent::__get('HyDb')->get_all($shopproductsql);
+		
+		$i = 0;
+		foreach ($shopproductlist as $keys=>$vals){
+			$i++;
+			if($i==1){
+				if($lunbo_list==''){
+					$shopproductlist[$keys]['img'] = '';
+				}else{
+					$shopproductlist[$keys]['img'] = $lunbo_list;
+				}
+			}
+		
+		
+			$shopproductlist[$keys]['scoremoney'] = '¥'.number_format($shopproductlist[$keys]['price'] / 100, 2);
+			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
+		
+			if($shopproductlist[$keys]['showpic2'] ===null){
+				$shopproductlist[$keys]['showpic2']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic3'] ===null){
+				$shopproductlist[$keys]['showpic3']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic4'] ===null){
+				$shopproductlist[$keys]['showpic4']='';
+			}
+		
+			if($shopproductlist[$keys]['showpic5'] ===null){
+				$shopproductlist[$keys]['showpic5']='';
+			}
+		
+			if($shopproductlist[$keys]['miaoshu'] ===null){
+				$shopproductlist[$keys]['miaoshu']='';
+			}
+		}
+		
+		
+		if(count($shopproductlist)>0){
+		
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '免费商品分类列表获取成功';
+			$echoarr['maxcon']  = $returnarr['maxcon'];
+			$echoarr['sumpage'] = $returnarr['sumpage'];
+			$echoarr['nowpage'] = $this->page;
+			$echoarr['dataarr'] = $shopproductlist;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return true;
+		
+		}else{
+		
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '免费商品分类列表为空';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
+		
+	}
+	
+	
 	
 	
 	//抽奖免费商品
@@ -123,7 +229,7 @@ class HyXb502 extends HyXb{
 		
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '免费商品分类列表获取成功';
+			$echoarr['returnmsg']  = '抽奖免费商品分类列表获取成功';
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
@@ -137,7 +243,7 @@ class HyXb502 extends HyXb{
 		
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '免费商品分类列表为空';
+			$echoarr['returnmsg']  = '抽奖免费商品分类列表为空';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
@@ -148,7 +254,7 @@ class HyXb502 extends HyXb{
 	}
 	
 	
-	//非vip数据的展示
+	//流量数据的展示
 	public function function_typelist(){
 		
 		if($this->page=='' || $this->page=='0'){
@@ -165,7 +271,7 @@ class HyXb502 extends HyXb{
 		$returnarr = array();
 		
 		//分类数据的查询
-		$typesql  = "select count(*) as num from shop_product where flag=1 and status=1 and onsales=1 and typeid='".$this->typeid."'";
+		$typesql  = "select count(*) as num from shop_product where flag=1 and status=1 and onsales=1 and typeid='11' and feetype='1' ";
 		$typelist = parent::__get('HyDb')->get_all($typesql);
 		
 		if($typelist[0]['num']>0){
@@ -179,13 +285,13 @@ class HyXb502 extends HyXb{
 		
 		
 		//商品类型的输出
-		$shopproductsql  = "select * from shop_product where flag=1 and status=1 and onsales=1 and typeid='".$this->typeid."' and feetype in (1,2,3) order by orderbyid desc limit $firstpage,$pagesize";
+		$shopproductsql  = "select * from shop_product where flag=1 and status=1 and onsales=1 and typeid='11' and feetype='1' order by orderbyid desc limit $firstpage,$pagesize";
 		$shopproductlist = parent::__get('HyDb')->get_all($shopproductsql);
 		
 		
 		foreach ($shopproductlist as $keys=>$vals){
 			
-			$shopproductlist[$keys]['scoremoney'] = '¥'.$shopproductlist[$keys]['price'].'+'.$shopproductlist[$keys]['score'].'馅饼';
+			$shopproductlist[$keys]['scoremoney'] = '¥'.number_format($shopproductlist[$keys]['price'] / 100, 2).'+'.$shopproductlist[$keys]['score'].'馅饼';
 			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
 			
 			if($shopproductlist[$keys]['showpic2'] ===null){
@@ -216,7 +322,7 @@ class HyXb502 extends HyXb{
 					
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '商品分类列表获取成功';
+			$echoarr['returnmsg']  = '流量数据列表获取成功';
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
@@ -230,7 +336,7 @@ class HyXb502 extends HyXb{
 			
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '商品分类列表为空';
+			$echoarr['returnmsg']  = '流量数据列表为空';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
@@ -322,7 +428,7 @@ class HyXb502 extends HyXb{
 				
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '商品分类列表获取成功';
+			$echoarr['returnmsg']  = 'vip商品列表获取成功';
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
@@ -336,7 +442,7 @@ class HyXb502 extends HyXb{
 				
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
-			$echoarr['returnmsg']  = '商品分类列表为空';
+			$echoarr['returnmsg']  = 'vip商品分类列表为空';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);

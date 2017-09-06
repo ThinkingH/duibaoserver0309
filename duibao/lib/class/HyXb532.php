@@ -67,6 +67,26 @@ class HyXb532 extends HyXb{
 		$duihuan_list = parent::__get('HyDb')->get_row($duihuan_sql);
 		
 		
+		if($duihuan_list['address_id']==null){
+			$duihuan_list['address_id'] ='';
+		}
+		if($duihuan_list['childtypeid']==null){
+			$duihuan_list['childtypeid'] ='';
+		}
+		if($duihuan_list['zhifu_order']==null){
+			$duihuan_list['zhifu_order'] ='';
+		}
+		if($duihuan_list['miyao_type']==null){
+			$duihuan_list['miyao_type'] ='';
+		}
+		
+		$duihuan_list['typeid']= substr($duihuan_list['typeid'],0,2);
+		if($duihuan_list['typeid']=='11'){
+			$duihuan_list['lflag']='1';//单独的商品
+		}else{
+			$duihuan_list['lflag']='2';//其他商品
+		}
+		
 		if($duihuan_list['keystr']==''){
 			$duihuan_list['keystr']='派送中';
 		}
@@ -90,15 +110,41 @@ class HyXb532 extends HyXb{
 		}
 		
 		
+		//收货地址的展示
+		$address_sql = "select * from xb_user_address where id='".$duihuan_list['address_id']."'";
+		$address_list = parent::__get('HyDb')->get_row($address_sql);
+		
+		//mobile,shouhuoren,address
+		if($address_list['mobile']!=''){
+				
+			$duihuan_list['fh_phone'] = $address_list['mobile'];
+		}else{
+			$duihuan_list['fh_phone']='';
+		}
+		if($address_list['shouhuoren']!=''){
+				
+			$duihuan_list['fh_shouhuoren'] = $address_list['shouhuoren'];
+		}else{
+			$duihuan_list['fh_shouhuoren']='';
+		}
+		
+		if($address_list['address']!=''){//fh_address
+			$duihuan_list['fh_address']=$address_list['address'];
+		}else{
+			$duihuan_list['fh_address']='';
+		}
+		
+		
+		
 		$duihuan_list['storename'] = $shangjiaarr[$duihuan_list['siteid']];//商户名称
 		$duihuan_list['qq']        = $shangjiaqqarr[$duihuan_list['siteid']];//商户qq
 		$duihuan_list['phone']        = $shangphonearr[$duihuan_list['siteid']];//商户手机号
 		
-		//金额的展示方式
+		//金额的展示方式 number_format($duihuan_list[$keys]['price']/100);
 		if($duihuan_list['feetype']=='1'){
-			$duihuan_list['moneyscore']  = '￥'.$duihuan_list['price'].'+'.$duihuan_list['score'].'馅饼';
+			$duihuan_list['moneyscore']  = '￥'.number_format($duihuan_list['price']/100,2).'+'.$duihuan_list['score'].'馅饼';
 		}else if($duihuan_list['feetype']=='2'){
-			$duihuan_list['moneyscore']  = '￥'.$duihuan_list['price'];
+			$duihuan_list['moneyscore']  = '￥'.number_format($duihuan_list['price']/100,2);
 		}else if($duihuan_list['feetype']=='4' || $duihuan_list['feetype']=='5'){
 			$duihuan_list['moneyscore']  = '免费';
 		}
