@@ -52,6 +52,7 @@ class HyXb511 extends HyXb{
 		
 		//第三方店铺链接
 		$shopdata_sql  = "select * from shop_store where siteid='".$productdetaillist['siteid']."' ";
+		//echo $shopdata_sql;
 		$shopdata_list = parent::__get('HyDb')->get_all($shopdata_sql); 
 		
 		foreach ($shopdata_list as $keys=>$vals){
@@ -68,20 +69,6 @@ class HyXb511 extends HyXb{
 			if($shopdata_list[$keys]['shopurl']===null){
 				$shopdata_list[$keys]['shopurl']='';
 			}
-			if($shopdata_list[$keys]['showpic2']===null){
-				$shopdata_list[$keys]['showpic2']='';
-			}
-			if($shopdata_list[$keys]['showpic3']===null){
-				$shopdata_list[$keys]['showpic3']='';
-			}
-			if($shopdata_list[$keys]['showpic4']===null){
-				$shopdata_list[$keys]['showpic4']='';
-			}
-			if($shopdata_list[$keys]['showpic5']===null){
-				$shopdata_list[$keys]['showpic5']='';
-			}
-			
-			
 			
 		}
 		
@@ -100,19 +87,27 @@ class HyXb511 extends HyXb{
 		if($productdetaillist['id']>0){
 			
 			if($productdetaillist['feetype']=='5'){
-				$productdetaillist['prizeurl'] = 'http://120.27.34.239:8018/choujiang/index.php'; 
+				//$productdetaillist['prizeurl'] = 'http://120.27.34.239:8018/choujiang/index.php'; 
+				$productdetaillist['prizeurl'] = 'http://xbapp.xinyouxingkong.com/choujiang/index.php'; 
 			}else{
 				
 				$productdetaillist['prizeurl']='';
 			}
 			
 			
+<<<<<<< .mine
+			if($productdetaillist['feetype']=='5'){
+			}else{
+				$productdetaillist['video_url']='';
+			}
+=======
 			if($productdetaillist['feetype']=='5'){
 				$productdetaillist['video_url'] = 'http://pic.chinaaresc.com/mp4/gggg.mp4'; 
 			}else{
 				
 				$productdetaillist['video_url']='';
 			}
+>>>>>>> .r101
 			
 			
 			$productdetaillist['shoparr'] = $shopdata_list;
@@ -126,11 +121,11 @@ class HyXb511 extends HyXb{
 			//商品详情
 			$productdetaillist['miaoshu'] = htmlspecialchars_decode($productdetaillist['miaoshu']);
 			//商品的店铺名
-			$productdetaillist['storename'] = $storenamearr[$productdetaillist['siteid']];
+			$productdetaillist['storename'] = isset($storenamearr[$productdetaillist['siteid']])?$storenamearr[$productdetaillist['siteid']]:'';
 			//商品logo
-			$productdetaillist['storelogo'] = $storelogoarr[$productdetaillist['siteid']];
+			$productdetaillist['storelogo'] = isset($storelogoarr[$productdetaillist['siteid']])?$storelogoarr[$productdetaillist['siteid']]:'';
 			
-			$productdetaillist['phone'] = $storephonearr[$productdetaillist['siteid']];
+			$productdetaillist['phone'] = isset($storephonearr[$productdetaillist['siteid']])?$storephonearr[$productdetaillist['siteid']]:'';
 			
 			if($productdetaillist['feetype']=='4'){//免费商品
 				$productdetaillist['scoremoney']='免费';
@@ -156,6 +151,34 @@ class HyXb511 extends HyXb{
 			}else{
 				$productdetaillist['pickup']='包邮';
 			}
+			
+			
+			if($productdetaillist['miyao_type']==''){
+				$productdetaillist['miyao_type']='';
+			}
+			
+			if($productdetaillist['fafang_type']==''){
+				$productdetaillist['fafang_type']='';
+			}
+			
+			if($productdetaillist['showpic2']==''){
+				$productdetaillist['showpic2']='';
+			}
+			
+			if($productdetaillist['showpic3']==''){
+				$productdetaillist['showpic3']='';
+			}
+			if($productdetaillist['showpic4']==''){
+				$productdetaillist['showpic4']='';
+			}
+			
+			if($productdetaillist['showpic5']==''){
+				$productdetaillist['showpic5']='';
+			}
+			
+			
+			
+			
 			
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
