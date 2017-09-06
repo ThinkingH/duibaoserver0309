@@ -21,7 +21,6 @@ class HyXb131 extends HyXb{
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
 	
-	
 	}
 	
 	

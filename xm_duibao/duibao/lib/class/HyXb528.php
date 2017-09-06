@@ -34,8 +34,10 @@ class HyXb528 extends HyXb{
 		
 		if($this->kindtype=='5'){//订单数量的展示
 			
+			//echo $this->kindtype;
 			//待领取
 			$ordernumsql  = "select count(*)as num1 from shop_userbuy where userid='".parent::__get('xb_userid')."' and status='3' ";
+			//echo $ordernumsql;exit;
 			$ordernumlist = parent::__get('HyDb')->get_row($ordernumsql);
 			
 			//已发货
@@ -88,9 +90,10 @@ class HyXb528 extends HyXb{
 			}else if($this->kindtype=='2'){//已领取
 				$where = " userid='".parent::__get('xb_userid')."' and shop_userbuy.status='4' ";
 			}else if($this->kindtype=='3'){//待评价
-				$where = " userid='".parent::__get('xb_userid')."' and shop_userbuy.pingjia='9' and shop_userbuy.status='4' or shop_userbuy.status='5' ";
+				//$where = " userid='".parent::__get('xb_userid')."' and shop_userbuy.pingjia='9' and shop_userbuy.confirm='2' and shop_userbuy.status='4' or shop_userbuy.status='5' ";
+				$where = " userid='".parent::__get('xb_userid')."' and  shop_userbuy.pingjia='9' and shop_userbuy.status in (4,5) and shop_userbuy.confirm='2' ";
 			}else if($this->kindtype=='4'){//全部
-				$where = " userid='".parent::__get('xb_userid')."' and shop_userbuy.status in (3,4,5,6) ";
+				$where = " userid='".parent::__get('xb_userid')."' and shop_userbuy.status in (3,4,5,6,20) ";
 			}
 			
 			
@@ -153,16 +156,74 @@ class HyXb528 extends HyXb{
 				$dhorderlistarr[$vals['orderno']] = $vals['flag'];
 					
 			}
+		
+			$duihuan_sql  =  "select shop_userbuy.*,
+									shop_product.mainpic,
+									shop_product.pickup,
+									shop_product.miyao_type,
+									shop_product.feetype,
+									shop_product.xushi_type,
+									shop_product.youxiaoqi,
+									shop_product.stop_datetime 
+
+									from shop_userbuy,shop_product 
+							
+								where   shop_userbuy.productid = shop_product.id  and $where 
+                            order by id desc limit $firstpage,$pagesize ";
 			
-			
-			//flag  0状态未知，1已使用，5兑换中，9未使用 (只有流量类型才会显示未使用、充值中和已使用的状态)xushi_type
-			$duihuan_sql  = "select shop_userbuy.*,shop_product.mainpic,shop_product.xushi_type,shop_product.miyao_type,shop_product.feetype,shop_product.pickup,shop_product.youxiaoqi,shop_product.stop_datetime 
-							from shop_userbuy,shop_product where $where and shop_userbuy.productid = shop_product.id 
-							order by id desc limit $firstpage,$pagesize";
+			//echo $duihuan_sql;
 			$duihuan_list = parent::__get('HyDb')->get_all($duihuan_sql);
 			
 			
 			foreach ($duihuan_list as $keys=>$vals){
+				
+				if($duihuan_list[$keys]['address_id']==null){
+					$duihuan_list[$keys]['address_id'] ='';
+				}
+				if($duihuan_list[$keys]['childtypeid']==null){
+					$duihuan_list[$keys]['childtypeid'] ='';
+				}
+				if($duihuan_list[$keys]['zhifu_order']==null){
+					$duihuan_list[$keys]['zhifu_order'] ='';
+				}
+				if($duihuan_list[$keys]['miyao_type']==null){
+					$duihuan_list[$keys]['miyao_type'] ='';
+				}
+				
+				
+				//收货地址的展示
+				$address_sql = "select * from xb_user_address where id='".$duihuan_list[$keys]['address_id']."'";
+				$address_list = parent::__get('HyDb')->get_row($address_sql); 
+				
+				//mobile,shouhuoren,address
+				if($address_list['mobile']!=''){
+					
+					$duihuan_list[$keys]['fh_phone'] = $address_list['mobile'];
+				}else{
+					$duihuan_list[$keys]['fh_phone']='';
+				}
+				if($address_list['shouhuoren']!=''){
+					
+					$duihuan_list[$keys]['fh_shouhuoren'] = $address_list['shouhuoren'];
+				}else{
+					$duihuan_list[$keys]['fh_shouhuoren']='';
+				}
+				
+				if($address_list['address']!=''){//fh_address
+					$duihuan_list[$keys]['fh_address']=$address_list['address'];
+				}else{
+					$duihuan_list[$keys]['fh_address']='';
+				}
+				
+				
+				$duihuan_list[$keys]['typeid']= substr($duihuan_list[$keys]['typeid'],0,2);
+				
+				if($duihuan_list[$keys]['typeid']=='11'){
+					$duihuan_list[$keys]['lflag']='1';//单独的商品
+				}else{
+					$duihuan_list[$keys]['lflag']='2';//其他商品
+				}
+				
 				
 				if($duihuan_list[$keys]['keystr']==''){
 					$duihuan_list[$keys]['keystr']='派送中';
@@ -184,50 +245,60 @@ class HyXb528 extends HyXb{
 					$duihuan_list[$keys]['pickup']='到店自提';
 				}else if($duihuan_list[$keys]['pickup']=='2'){
 					$duihuan_list[$keys]['pickup']='网上兑换';
+				}else if($duihuan_list[$keys]['pickup']=='3'){
+					$duihuan_list[$keys]['pickup']='物流';
 				}
 				
 				
-				$duihuan_list[$keys]['storename'] = $shangjiaarr[$duihuan_list[$keys]['siteid']];//商户名称
-				$duihuan_list[$keys]['qq']        = $shangjiaqqarr[$duihuan_list[$keys]['siteid']];//商户qq
-				$duihuan_list[$keys]['phone']        = $shangphonearr[$duihuan_list[$keys]['siteid']];//商户手机号
+				$duihuan_list[$keys]['storename'] = isset($shangjiaarr[$duihuan_list[$keys]['siteid']])?$shangjiaarr[$duihuan_list[$keys]['siteid']]:'';//商户名称
+				$duihuan_list[$keys]['qq']        = isset($shangjiaqqarr[$duihuan_list[$keys]['siteid']])?$shangjiaqqarr[$duihuan_list[$keys]['siteid']]:'';//商户qq
+				$duihuan_list[$keys]['phone']        = isset($shangphonearr[$duihuan_list[$keys]['siteid']])?$shangphonearr[$duihuan_list[$keys]['siteid']]:'';//商户手机号
 				
 				//金额的展示方式
+				$duihuan_list[$keys]['price'] = number_format($duihuan_list[$keys]['price']/100,2);
+				
 				if($duihuan_list[$keys]['feetype']=='1'){
 					$duihuan_list[$keys]['moneyscore']  = '￥'.$duihuan_list[$keys]['price'].'+'.$duihuan_list[$keys]['score'].'馅饼';
 				}else if($duihuan_list[$keys]['feetype']=='2'){
 					$duihuan_list[$keys]['moneyscore']  = '￥'.$duihuan_list[$keys]['price'];
-				}else if($duihuan_list[$keys]['feetype']=='4' || $duihuan_list[$keys]['feetype']=='5'){
+				}else if($duihuan_list[$keys]['feetype']=='4' || $duihuan_list[$keys]['feet_type']=='5'){
 					$duihuan_list[$keys]['moneyscore']  = '免费';
 				}
+				
 				
 				//兑换码的有效期dayok
 				$duihuan_list[$keys]['dayok'] = $duihuan_list[$keys]['youxiaoqi'];//miyao_type
 				
 				if($duihuan_list[$keys]['status']=='4'){
+					
+					if($duihuan_list[$keys]['feetype']=='2' || $duihuan_list[$keys]['xushi_type']=='2'){
 						
-					if($duihuan_list[$keys]['feetype']=='2' || $duihuan_list[$keys]['xushi_type']=='2' ){//判断实物是否过期
 						$duihuan_list[$keys]['endday'] = strtotime(substr($duihuan_list[$keys]['fh_fahuotime'],0,10))+ 14*24*60*60;
 						$duihuan_list[$keys]['endday'] = substr(date('Y-m-d H:i:s',$duihuan_list[$keys]['endday']),0,10);
-				
+						
 						//是否有效的标识
 						if(strtotime($duihuan_list[$keys]['endday'])<strtotime(date('Y-m-d'))){
-				
+							
+							 //更新确认收货状态
+							$updatestatus = "update shop_userbuy set status='5',fh_shouhuotime='".date('Y-m-d H:i:s')."' where id='".$duihuan_list[$keys]['id']."' ";
+							parent::__get('HyDb')->execute($updatestatus); 
+						
 							$duihuan_list[$keys]['okflag'] = '29';//失效
 							$duihuan_list[$keys]['statusmsg']='已确认';
 						}else{
 							$duihuan_list[$keys]['okflag'] = '21';//有效
 							$duihuan_list[$keys]['comfirmsg']='待确认';
 						}
-				
+						
+						
 					}else{
-				
+						
 						if($duihuan_list[$keys]['dayok']>0 && $duihuan_list[$keys]['dayok']!=''){
-								
-							$duihuan_list[$keys]['nflag'] = '1';
+							
 							//兑换码的过期时间
 							$duihuan_list[$keys]['endday'] = strtotime(substr($duihuan_list[$keys]['order_createtime'],0,10))+ $duihuan_list[$keys]['dayok']*24*60*60;
 							$duihuan_list[$keys]['endday'] = substr(date('Y-m-d H:i:s',$duihuan_list[$keys]['endday']),0,10);
-								
+							
 							//是否有效的标识
 							if(strtotime($duihuan_list[$keys]['endday'])<strtotime(date('Y-m-d'))){
 									
@@ -236,15 +307,18 @@ class HyXb528 extends HyXb{
 							}else{
 								$duihuan_list[$keys]['okflag'] = '11';//有效
 							}
-						}else{
-							$duihuan_list[$keys]['nflag'] = '1';
+							
 						}
+						
 					}
 					
+				}
+				
+				
 				
 				//流量单独的状态判断typeid
 				if($duihuan_list[$keys]['typeid']=='11' && $duihuan_list[$keys]['status']=='3'){
-					$duihuan_list[$keys]['statuss'] = $dhorderlistarr[$duihuan_list[$keys]['orderno']];//1已使用，5兑换中，9未使用 (只有流量类型才会显示未使用、充值中和已使用的状态)
+					$duihuan_list[$keys]['statuss'] = isset($dhorderlistarr[$duihuan_list[$keys]['orderno']])?$dhorderlistarr[$duihuan_list[$keys]['orderno']]:'';//1已使用，5兑换中，9未使用 (只有流量类型才会显示未使用、充值中和已使用的状态)
 				}else{
 					$duihuan_list[$keys]['statuss']='';
 				}
@@ -280,6 +354,8 @@ class HyXb528 extends HyXb{
 					$duihuan_list[$keys]['statusmsg']='已确认';
 				}else if($duihuan_list[$keys]['status']=='6'){//已删除
 					$duihuan_list[$keys]['statusmsg']='已删除';
+				}else if($duihuan_list[$keys]['status']=='20'){
+					$duihuan_list[$keys]['statusmsg']='支付确认中';
 				}
 				
 				
@@ -310,13 +386,8 @@ class HyXb528 extends HyXb{
 					echo json_encode($echoarr);
 					return false;
 				}
-				
-				
-			}
-			
-			
-		}
 	}
+}
 	
 	
 	

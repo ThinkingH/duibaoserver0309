@@ -268,13 +268,10 @@ class HyXb171 extends HyXb{
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '获取成功';
-<<<<<<< .mine
 			$echoarr['dataarr'] = $temltuisonglist;
 			$echoarr['maxcon']  = $returnarr['maxcon'];
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
-=======
->>>>>>> .r97
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);

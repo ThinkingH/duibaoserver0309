@@ -39,7 +39,7 @@ class HyXb531 extends HyXb{
 			
 		}else if($this->kindtype=='1'){
 			
-			$shopproductsql = "update shop_userbuy set status='5', fh_shouhuotime='".date('Y-m-d H:i:s')."' where id='".$this->taskid."' ";
+			$shopproductsql = "update shop_userbuy set status='5', fh_shouhuotime='".date('Y-m-d H:i:s')."',confirm='2' where id='".$this->taskid."' ";
 			$shopproductlist = parent::__get('HyDb')->execute($shopproductsql);
 		}
 		
