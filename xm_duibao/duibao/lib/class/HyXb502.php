@@ -36,7 +36,7 @@ class HyXb502 extends HyXb{
 			$this->function_viptypelist();
 		}else if($this->typeid=='15'){//抽奖免费专区
 			$this->function_freelist();
-		}else if( $this->typeid=='13' || $this->typeid=='14'){//支付商品
+		}else if( $this->typeid=='13'){//支付商品--超值优惠
 			$this->function_zhifutypelist();
 		}
 		
@@ -44,6 +44,14 @@ class HyXb502 extends HyXb{
 	
 	//支付商品
 	public function function_zhifutypelist(){
+		
+		if($this->width==''){//753 * 292
+			$this->width='800';
+		}
+			
+		if($this->height==''){
+			$this->height='800';
+		}
 		
 		
 		if($this->page=='' || $this->page=='0'){
@@ -95,22 +103,21 @@ class HyXb502 extends HyXb{
 		
 			$shopproductlist[$keys]['scoremoney'] = '¥'.number_format($shopproductlist[$keys]['price'] / 100, 2);
 			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
-		
-			if($shopproductlist[$keys]['showpic2'] ===null){
-				$shopproductlist[$keys]['showpic2']='';
+			
+			
+			//图片处理
+			$replace = array("\t", "\r", "\n",);
+				
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($shopproductlist[$keys]['mainpic'],0,7)=='http://' ||substr($shopproductlist[$keys]['mainpic'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}else{
+				$shopproductlist[$keys]['mainpic'] = $arr['duibao-shop'].$shopproductlist[$keys]['mainpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
 			}
-		
-			if($shopproductlist[$keys]['showpic3'] ===null){
-				$shopproductlist[$keys]['showpic3']='';
-			}
-		
-			if($shopproductlist[$keys]['showpic4'] ===null){
-				$shopproductlist[$keys]['showpic4']='';
-			}
-		
-			if($shopproductlist[$keys]['showpic5'] ===null){
-				$shopproductlist[$keys]['showpic5']='';
-			}
+			
 		
 			if($shopproductlist[$keys]['miaoshu'] ===null){
 				$shopproductlist[$keys]['miaoshu']='';
@@ -152,6 +159,14 @@ class HyXb502 extends HyXb{
 	
 	//抽奖免费商品
 	public function function_freelist(){
+		
+		if($this->width==''){//753 * 292
+			$this->width='800';
+		}
+			
+		if($this->height==''){
+			$this->height='800';
+		}
 		
 		if($this->page=='' || $this->page=='0'){
 			$this->page=1;
@@ -202,6 +217,20 @@ class HyXb502 extends HyXb{
 				
 			$shopproductlist[$keys]['scoremoney'] = '免费';
 			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
+			
+			
+			//图片处理
+			$replace = array("\t", "\r", "\n",);
+			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($shopproductlist[$keys]['mainpic'],0,7)=='http://' ||substr($shopproductlist[$keys]['mainpic'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}else{
+				$shopproductlist[$keys]['mainpic'] = $arr['duibao-shop'].$shopproductlist[$keys]['mainpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}
 				
 			if($shopproductlist[$keys]['showpic2'] ===null){
 				$shopproductlist[$keys]['showpic2']='';
@@ -257,6 +286,14 @@ class HyXb502 extends HyXb{
 	//流量数据的展示
 	public function function_typelist(){
 		
+		if($this->width==''){//753 * 292
+			$this->width='800';
+		}
+			
+		if($this->height==''){
+			$this->height='800';
+		}
+		
 		if($this->page=='' || $this->page=='0'){
 			$this->page=1;
 		}
@@ -285,7 +322,16 @@ class HyXb502 extends HyXb{
 		
 		
 		//商品类型的输出
-		$shopproductsql  = "select * from shop_product where flag=1 and status=1 and onsales=1 and typeid='11' and feetype='1' order by orderbyid desc limit $firstpage,$pagesize";
+		$shopproductsql  = "select  `id`, `flag`, `orderbyid`, `hottypeid`, `siteid`, `xushi_type`, 
+		`miyao_type`, `fafang_type`, `onsales`, `goods_sn`, `attribute`, `status`, 
+		`is_free_shipping`, `pickup`, `typeid`, `typeidchild`, `name`, `gateway`, 
+		`mbps`, `ttype`, `miaoshu`,  `price`, `yuanprice`, `score`,
+		 `mainpic`, `showpic1`, `showpic2`, `showpic3`, `showpic4`, `showpic5`, `feetype`, 
+		`xiangqingurl`, `buycount`, `pingjiacount`, `create_datetime`, `stop_datetime`, 
+		`start_datetime`, `remark`, `statusmsg`, `kucun`, `daymax`, `userdaymax`, `usermonthmax`,
+		 `userallmax`, `fh_address`, `youxiaoqi`, `storeurl`, `video_url`
+		 from shop_product where flag=1 and status=1 and onsales=1 and typeid='11' and feetype='1' order by orderbyid desc limit $firstpage,$pagesize";
+		
 		$shopproductlist = parent::__get('HyDb')->get_all($shopproductsql);
 		
 		
@@ -293,6 +339,19 @@ class HyXb502 extends HyXb{
 			
 			$shopproductlist[$keys]['scoremoney'] = '¥'.number_format($shopproductlist[$keys]['price'] / 100, 2).'+'.$shopproductlist[$keys]['score'].'馅饼';
 			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
+			
+			//图片处理
+			$replace = array("\t", "\r", "\n",);
+			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($shopproductlist[$keys]['mainpic'],0,7)=='http://' ||substr($shopproductlist[$keys]['mainpic'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}else{
+				$shopproductlist[$keys]['mainpic'] = $arr['duibao-shop'].$shopproductlist[$keys]['mainpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}
 			
 			if($shopproductlist[$keys]['showpic2'] ===null){
 				$shopproductlist[$keys]['showpic2']='';
@@ -351,6 +410,14 @@ class HyXb502 extends HyXb{
 	//vip数据的展示
 	public function function_viptypelist(){
 		
+		if($this->width==''){//753 * 292
+			$this->width='800';
+		}
+			
+		if($this->height==''){
+			$this->height='800';
+		}
+		
 		
 		if($this->page=='' || $this->page=='0'){
 			$this->page=1;
@@ -401,6 +468,19 @@ class HyXb502 extends HyXb{
 			
 			$shopproductlist[$keys]['scoremoney'] = '免费';
 			$shopproductlist[$keys]['downloadnum'] = '568'+ $shopproductlist[$keys]['buycount'];
+			
+			//图片处理
+			$replace = array("\t", "\r", "\n",);
+			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($shopproductlist[$keys]['mainpic'],0,7)=='http://' ||substr($shopproductlist[$keys]['mainpic'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}else{
+				$shopproductlist[$keys]['mainpic'] = $arr['duibao-shop'].$shopproductlist[$keys]['mainpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shopproductlist[$keys]['mainpic'] = str_replace($replace, '', $shopproductlist[$keys]['mainpic']);
+			}
 			
 			if($shopproductlist[$keys]['showpic2'] ===null){
 				$shopproductlist[$keys]['showpic2']='';

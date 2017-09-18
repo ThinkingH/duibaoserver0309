@@ -18,18 +18,26 @@ class HyXb503 extends HyXb{
 				HyItems::hy_array2string($input_data)."\n";
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
+		
+		$this->button = isset($input_data['button'])?$input_data['button']:'';
 	
 	}
 	
 	//商品类型的获取
 	public function controller_getproducttypelist(){
 		
+		if($this->button==''){//安卓
+			
+			//安卓
+			$shoptypesql  = "select * from shop_config where flag=1 and type=1 order by id asc ";
+			$shoptypelist = parent::__get('HyDb')->get_all($shoptypesql);
+		}else if($this->button=='ios'){
+			
+			//安卓
+			$shoptypesql  = "select * from shop_config where flag=1 and type=2 order by id asc ";
+			$shoptypelist = parent::__get('HyDb')->get_all($shoptypesql);
+		}
 		
-		//商城类型id与名称的匹配
-		$typenamearr = array();
-		
-		$shoptypesql  = "select * from shop_config where flag=1 order by id asc ";
-		$shoptypelist = parent::__get('HyDb')->get_all($shoptypesql);
 		
 		foreach ($shoptypelist as $keys=>$vals){
 			

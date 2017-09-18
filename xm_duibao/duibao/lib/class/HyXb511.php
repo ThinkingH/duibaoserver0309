@@ -86,6 +86,76 @@ class HyXb511 extends HyXb{
 		
 		if($productdetaillist['id']>0){
 			
+			if($this->width==''){//753 * 292
+				$this->width='800';
+			}
+				
+			if($this->height==''){
+				$this->height='800';
+			}
+			
+			
+			$replace = array("\t", "\r", "\n",);
+				
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if($productdetaillist['showpic1']!=null){
+				
+				if(substr($productdetaillist['showpic1'],0,7)=='http://' ||substr($productdetaillist['showpic1'],0,8)=='https://' ){
+					$productdetaillist['showpic1'] = str_replace($replace, '', $productdetaillist['showpic1']);
+				}else{
+					$productdetaillist['showpic1'] = $arr['duibao-shop'].$productdetaillist['showpic1'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$productdetaillist['showpic1'] = str_replace($replace, '', $productdetaillist['showpic1']);
+				}
+				
+			}
+			
+			
+			if($productdetaillist['showpic2']!=null){
+				if(substr($productdetaillist['showpic2'],0,7)=='http://' ||substr($productdetaillist['showpic2'],0,8)=='https://' ){
+					$productdetaillist['showpic2'] = str_replace($replace, '', $productdetaillist['showpic2']);
+				}else{
+					$productdetaillist['showpic2'] = $arr['duibao-shop'].$productdetaillist['showpic2'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$productdetaillist['showpic2'] = str_replace($replace, '', $productdetaillist['showpic2']);
+				}
+			}
+			
+			
+			
+			if($productdetaillist['showpic3']!=null){
+				
+				if(substr($productdetaillist['showpic3'],0,7)=='http://' ||substr($productdetaillist['showpic3'],0,8)=='https://' ){
+					$productdetaillist['showpic3'] = str_replace($replace, '', $productdetaillist['showpic3']);
+				}else{
+					$productdetaillist['showpic3'] = $arr['duibao-shop'].$productdetaillist['showpic3'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$productdetaillist['showpic3'] = str_replace($replace, '', $productdetaillist['showpic3']);
+				}
+					
+			}
+			if($productdetaillist['showpic4']!=null){
+				
+				if(substr($productdetaillist['showpic4'],0,7)=='http://' ||substr($productdetaillist['showpic4'],0,8)=='https://' ){
+					$productdetaillist['showpic4'] = str_replace($replace, '', $productdetaillist['showpic4']);
+				}else{
+					$productdetaillist['showpic4'] = $arr['duibao-shop'].$productdetaillist['showpic4'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$productdetaillist['showpic4'] = str_replace($replace, '', $productdetaillist['showpic4']);
+				}
+					
+			}
+			if($productdetaillist['showpic5']!=null){
+				
+				if(substr($productdetaillist['showpic5'],0,7)=='http://' ||substr($productdetaillist['showpic5'],0,8)=='https://' ){
+					$productdetaillist['showpic5'] = str_replace($replace, '', $productdetaillist['showpic5']);
+				}else{
+					$productdetaillist['showpic5'] = $arr['duibao-shop'].$productdetaillist['showpic5'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$productdetaillist['showpic5'] = str_replace($replace, '', $productdetaillist['showpic5']);
+				}
+					
+			}
+			
+			
+			
+			
 			if($productdetaillist['feetype']=='5'){
 				//$productdetaillist['prizeurl'] = 'http://120.27.34.239:8018/choujiang/index.php'; 
 				$productdetaillist['prizeurl'] = 'http://xbapp.xinyouxingkong.com/choujiang/index.php'; 
@@ -95,19 +165,10 @@ class HyXb511 extends HyXb{
 			}
 			
 			
-<<<<<<< .mine
 			if($productdetaillist['feetype']=='5'){
 			}else{
 				$productdetaillist['video_url']='';
 			}
-=======
-			if($productdetaillist['feetype']=='5'){
-				$productdetaillist['video_url'] = 'http://pic.chinaaresc.com/mp4/gggg.mp4'; 
-			}else{
-				
-				$productdetaillist['video_url']='';
-			}
->>>>>>> .r101
 			
 			
 			$productdetaillist['shoparr'] = $shopdata_list;
@@ -135,7 +196,8 @@ class HyXb511 extends HyXb{
 				
 				$productdetaillist['price'] = number_format($productdetaillist['price'] /100, 2);
 				
-				$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'];
+				//$productdetaillist['scoremoney'] = '¥'.$productdetaillist['price'];
+				
 			}else if($productdetaillist['feetype']=='5'){
 				$productdetaillist['scoremoney']='免费';
 			}
@@ -161,20 +223,7 @@ class HyXb511 extends HyXb{
 				$productdetaillist['fafang_type']='';
 			}
 			
-			if($productdetaillist['showpic2']==''){
-				$productdetaillist['showpic2']='';
-			}
 			
-			if($productdetaillist['showpic3']==''){
-				$productdetaillist['showpic3']='';
-			}
-			if($productdetaillist['showpic4']==''){
-				$productdetaillist['showpic4']='';
-			}
-			
-			if($productdetaillist['showpic5']==''){
-				$productdetaillist['showpic5']='';
-			}
 			
 			
 			
