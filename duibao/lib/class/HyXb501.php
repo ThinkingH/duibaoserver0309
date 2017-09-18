@@ -77,6 +77,26 @@ class HyXb501 extends HyXb{
 		
 		foreach ($shangpinlist as $keys=>$vals){
 			
+			if($this->width==''){//753 * 292
+				$this->width='800';
+			}
+			
+			if($this->height==''){
+				$this->height='800';
+			}
+			
+			$replace = array("\t", "\r", "\n",);
+			
+			//图片展示
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+			if(substr($shangpinlist[$keys]['mainpic'],0,7)=='http://' ||substr($shangpinlist[$keys]['mainpic'],0,8)=='https://' ){
+				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shangpinlist[$keys]['mainpic'] = str_replace($replace, '', $shangpinlist[$keys]['mainpic']);
+			}else{
+				$shangpinlist[$keys]['mainpic'] = $arr['duibao-shop'].$shangpinlist[$keys]['mainpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$shangpinlist[$keys]['mainpic'] = str_replace($replace, '', $shangpinlist[$keys]['mainpic']);
+			}
+			
 			
 			if($shangpinlist[$keys]['feetype']=='1'){//积分number_format($paymoney / 100, 2)
 				$shangpinlist[$keys]['scoremoney'] = '¥'.$shangpinlist[$keys]['price'].'+'.$shangpinlist[$keys]['score'].'馅饼';

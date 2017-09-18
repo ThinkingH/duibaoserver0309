@@ -24,14 +24,18 @@ class HyXb522 extends HyXb{
 	private $fh_address;
 	private $tflag;
 	private $typeid1;
+	private $miyao_type;
+	private $xushi_type;
+	private $fafang_type;
+	private $siteid;
 	
 	//数据的初始化
+	
 	function __construct($input_data){
 	
 	
 		//数据初始化
 		parent::__construct($input_data);
-	
 	
 		//日志数据开始写入
 		$tmp_logstr   = "\n".'BEGINXB--------------------BEGIN--------------------BEGIN'."\n".
@@ -62,284 +66,134 @@ class HyXb522 extends HyXb{
 		$this->typeidchild = isset($shopdata['typeidchild']) ? $shopdata['typeidchild'] : '';  //商品的子类型
 		$this->fh_address = isset($shopdata['fh_address']) ? $shopdata['fh_address'] : '';  //商品的子类型
 		
+		
+		$this->siteid = isset($shopdata['siteid']) ? $shopdata['siteid'] : '';   //渠道编号
+		$this->miyao_type = isset($shopdata['miyao_type']) ? $shopdata['miyao_type'] : '';   //秘钥的单双
+		$this->xushi_type = isset($shopdata['xushi_type']) ? $shopdata['xushi_type'] :'';    //商品类型
+		$this->fafang_type = isset($shopdata['fafang_type']) ? $shopdata['fafang_type'] :''; //卡密发放时间
+		
+		$this->typeid = isset($shopdata['typeid']) ? $shopdata['typeid'] :''; //类型
+		
+		
+		
 		$this->xiafaurl = XAIFALIULIANGURL;   //调用流量下发兑换码的接口
 	
 	}
 	
 	
-	public function controller_userduihuan(){
+	
+	public function controller_duihuan(){
 		
-		//echo $this->tid;
-		if($this->tid==''){
-			$this->tid='1';//商品数量
-		}
 		
 		$this->score = $this->score*$this->tid;
 		
-		//积分满足可以进行购买--1.用户表积分的减少 2.商品兑换次数的更加 3.商品存库量的减少4.用户购买表数据的插入 5.积分表的变动记录
-		//订单编号date('YmdHis').mt_rand(1000,9999);
-		//商品类型的判断
-		$this->mtype  = substr($this->typeidchild,0,3);
-		//$this->typeid = substr($this->typeid,0,2);//$typeid 
-		$this->typeid  = substr($this->typeidchild,0,4);//截取类型的前三位判断  是自采还是商户发放
-		$this->typeid1 = substr($this->typeidchild,0,3);//截取类型的前三位判断 流量1111  卡密1311自采多秘钥--状态改变（待领取） 1321商户发放--状态改变（已领取）
-		
-		
-		$this->type = substr($this->typeid,0,1);//$typeid 判断商品的虚实
-		
+		/* if($this->miyao_type=='1'){//单秘钥
+				
+			$this->tflag='1';//单卡密
+			
+		}else if($this->miyao_type=='2'){//多秘钥
+				
+			$this->tflag='3';//多卡密
+				
+		}else if($this->miyao_type=='3'){//二维码
+				
+			$this->tflag='2';//二维码
+				
+		}else if($this->miyao_type=='4'){//实物
+				
+			$this->tflag='4';//实物
+		} */
 		
 		//商品订单
 		$orderno = 'D'.date('YmdHis').mt_rand(1000,9999);//商品订单号
 		
-		//单卡密 多卡密的判断
-		if($this->typeid=='1112' ||$this->typeid=='1312' || $this->typeid=='1322' ){//11流量 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密
-			$this->tflag='1';//单卡密
-		}else if($this->typeid=='1311' || $this->typeid=='1321'){
-			$this->tflag='3';//多卡密
-		}else if($this->typeid=='22'){
-			$this->tflag='2';
-		}else{
-			$this->tflag='1';
-		}
-		
-		if($this->typeid1=='111'){//走流量接口
+		if($this->zhifuway=='1' || $this->zhifuway=='4' || $this->zhifuway=='5'){//积分兑换
 			
-			if($this->tid>1){
+			if($this->fafang_type=='1'){//立即发放，商户，
 				
-				$echoarr = array();
-				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '流量兑换数量不能大于2个';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-				
-			}else{
-				if($this->score > $this->keyongjifen){
-					$echoarr = array();
-					$echoarr['returncode'] = 'error';
-					$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-					$echoarr['dataarr'] = array();
-					$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-					parent::hy_log_str_add($logstr);
-					echo json_encode($echoarr);
-					return false;
+				if($this->xushi_type=='2'){//实物立即发放兑换码
+					$r = $this->controller_duihuan_one($orderno);
 				}else{
-					//订单去重判断
-					$r = parent::repeat_userbuy_orderno($orderno);
 					
-					if($r){
-						$echoarr = array();
-						$echoarr['returncode'] = 'success';
-						$echoarr['returnmsg']  = '订单提交成功！';
-						$echoarr['dataarr'] = $r;
-						$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-						parent::hy_log_str_add($logstr);
-						echo json_encode($echoarr);
-						return true;
+					if($this->typeid=='11'){
+						$r = $this->controller_duihuan_two($orderno);//单独兑换流程
 					}else{
-						//模拟用户操作发放兑换码--运营商1，2，3--
-						$url =$this->xiafaurl.'?gateway='.$this->gateway.'&mbps='.$this->mbps.'&ttype='.$this->ttype.'&orderno='.$orderno.'&userid='.parent::__get('xb_userid').'&youxiaoday=30&name='.urlencode($this->goodsname).'&describe='.urlencode($this->goodsname);
-						$duihuancode = HyItems::vget( $url, 10000 );
-						
-						if($duihuancode['httpcode']=='200'){
-							$this->keystr = $duihuancode['content'];//生成兑换码
-							
-							if(strlen($this->keystr)!='18'){//秘钥生成错误
-								$echoarr = array();
-								$echoarr['returncode'] = 'error';
-								$echoarr['returnmsg']  = '兑换码生成失败,系统维修中';
-								$echoarr['dataarr'] = array();
-								$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-								parent::hy_log_str_add($logstr);
-								echo json_encode($echoarr);
-								return false;
-									
-							}else{//兑换码生成成功，数据的插入
-									
-								parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','1');
-							}
-						}
+						$r = $this->controller_duihuan_three($orderno);//上家发放，从表中读出对应的秘钥
 					}
+					
 				}
-			}
-			
-		}else if($this->typeid1=='131' || $this->typeid1=='132'){//该商品为卡密类的商品，走卡密接口, 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密    131 自采   132 商户发放   
-			
-			if($this->score>$this->keyongjifen){
-				$echoarr = array();
-				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-			}else{
-				//订单去重判断
-				$r = parent::repeat_userbuy_orderno($orderno);
 				
-				if($r){
-					$echoarr = array();
-					$echoarr['returncode'] = 'success';
-					$echoarr['returnmsg']  = '订单提交成功！';
-					$echoarr['dataarr'] = $r;
-					$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-					parent::hy_log_str_add($logstr);
-					echo json_encode($echoarr);
-					return true;
-					
-				}else{
-					
-					if($this->typeid1=='131'){//自采电子卡商品
-						
-						$this->keystr='';
-						$this->passwd='';
-						
-						parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','2','1');
-						
-						
-						//单卡密 多卡密的判断
-						if( $this->typeid=='1312' ){//11流量 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密
-							
-							if($this->keystr==''){
-								$this->keystr='派送中';
-							}
-							
-							if($this->passwd==''){
-								$this->passwd=null;
-							}
-							
-							
-						}else if($this->typeid=='1311'){
-							
-							if($this->keystr==''){
-								$this->keystr='派送中';
-							}
-							
-							if($this->passwd==''){
-								$this->passwd='派送中';
-							}
-						}
-						
-						
-					}else if($this->typeid1=='132'){//商户发放电子卡
-						
-						//生成秘钥
-						$duihuanmasql  = "select id,duihuanma,passwd from xb_duihuanma where flag=9 and type='".$this->typeidchild."' order by id asc limit 1 ";
-						parent::hy_log_str_add($duihuanmasql);
-						$duihuanmalist = parent::__get('HyDb')->get_all($duihuanmasql);
-						
-						if($duihuanmalist[0]['id']<=0){
-							
-							
-							$this->keystr='';
-							$this->passwd='';
-							
-							//状态在待领取中
-							parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','1','1');
-							
-							//单卡密 多卡密的判断
-							if( $this->typeid=='1322' ){//11流量 1311 自采多卡密 1312 自采单卡密    1321商户发放多卡密      1322 商户发放单卡密
-								
-								if($this->keystr==''){
-									$this->keystr='派送中';
-								}
-								
-								if($this->passwd==''){
-									$this->passwd=null;
-								}
-								
-							}else if($this->typeid=='1321'){
-								
-								if($this->keystr==''){
-									$this->keystr='派送中';
-								}
-								
-								if($this->passwd==''){
-									$this->passwd='派送中';
-								}
-							}
-							
-					
-						}else{
-							
-							$this->keystr = $duihuanmalist[0]['duihuanma'];
-							$this->passwd = $duihuanmalist[0]['passwd'];
-							
-							//更新兑换码的状态
-							parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','1','1');
-						}
-					}
-				}
+			}else{//稍后发放，从后台输入对应秘钥
+				
+				$r = $this->controller_duihuan_four($orderno);
 				
 			}
 			
-		}else if($this->typeid=='22'){
+		}else if($this->zhifuway=='2'){//金额支付
 			
-			if($this->score>$this->keyongjifen){
-				$echoarr = array();
-				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
-				$echoarr['dataarr'] = array();
-				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-				parent::hy_log_str_add($logstr);
-				echo json_encode($echoarr);
-				return false;
-			}else{
-				//随机生成的兑换码
-				$this->keystr = parent::getRandomString(6);
-				
-				if(strlen($this->keystr)==6){
-				
-					//秘钥数据的入库
-					$miyaosql = "insert into shop_duihuanma(userid,goods_id,goods_name,type,maintype,flag,duihuanma,createtime) values
-							('".parent::__get('xb_userid')."','".$this->productid."','".$this->goodsname."','".$this->typeidchild."','".$this->mtype."','9','".$this->keystr."',date('Y-m-d H:i:s'))";
-					$miyaolist = parent::__get('HyDb')->execute($miyaosql);
-					//echo $this->type;
-					parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','2');
-				
-				}else {
-					$echoarr = array();
-					$echoarr['returncode'] = 'error';
-					$echoarr['returnmsg']  = '兑换码生成失败，系统维修中';
-					$echoarr['dataarr'] = array();
-					$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-					parent::hy_log_str_add($logstr);
-					echo json_encode($echoarr);
-					return false;
-				}
-				
-			}
+			
+			
+			
+			
+		}else if($this->zhifuway=='3'){//混合支付
+			
+			
+			
 		}
 		
-		//商品信息的更新
-		$updateproduct = "update shop_product set buycount=buycount+1,kucun=kucun-1 where id='".$this->productid."'";
-		$updateproductsql = parent::__get('HyDb')->execute($updateproduct);
-		
-		
-		//用户积分的变化
-		$userscoresql  = "update xb_user set keyong_jifen=keyong_jifen-'".$this->score."'  where id='".parent::__get('xb_userid')."' ";
-		$userscorelist = parent::__get('HyDb')->execute($userscoresql);
-		
-		
-		//积分变动的插入
-		$getdescribe = '购买'.$this->goodsname.'消耗'.$this->score.'馅饼';
-		$gettime = time();
-		$insertsql = "insert into xb_user_score (userid,goodstype,maintype,type,
+		if($r){
+			
+			//商品信息的更新
+			$updateproduct = "update shop_product set buycount=buycount+1,kucun=kucun-1 where id='".$this->productid."'";
+			$updateproductsql = parent::__get('HyDb')->execute($updateproduct);
+			
+			
+			//用户积分的变化
+			$userscoresql  = "update xb_user set keyong_jifen=keyong_jifen-'".$this->score."'  where id='".parent::__get('xb_userid')."' ";
+			$userscorelist = parent::__get('HyDb')->execute($userscoresql);
+			
+			
+			//积分变动的插入
+			$getdescribe = '购买'.$this->goodsname.'消耗'.$this->score.'馅饼';
+			$gettime = time();
+			$insertsql = "insert into xb_user_score (userid,goodstype,maintype,type,
 					score,usermoney,getdescribe,gettime) values
 				 ('".parent::__get('xb_userid')."','1','2','9',
 				 		'".$this->score."','0','".$getdescribe."','".$gettime."')";
-		parent::__get('HyDb')->execute($insertsql);
-		
-		//订单id的获取
-		$ordernoidsql = "select id from shop_userbuy where orderno='".$orderno."' order by id desc";
-		$ordernoidlist = parent::__get('HyDb')->get_row($ordernoidsql);
-		
-		
-		if($userscorelist){
-				
+			parent::__get('HyDb')->execute($insertsql);
+			
+			//订单id的获取
+			$ordernoidsql = "select id from shop_userbuy where orderno='".$orderno."' order by id desc";
+			$ordernoidlist = parent::__get('HyDb')->get_row($ordernoidsql);
+			
+			$this->keystr = $r['keystr'];
+			$this->passwd = $r['passwd'];
+			$this->tflag = $r['tflag'];
+			
+			//账号和密码的展示
+			if($this->fafang_type=='1'){//立即发放
+					
+			}else if($this->fafang_type=='2'){//稍后发放
+					
+				if($this->miyao_type=='1'){//单秘钥
+					$this->keystr='正在派送中';
+				}else if($this->miyao_type=='2'){//对秘钥
+			
+					$this->keystr = '正在派送中';
+					$this->passwd = '正在派送中';
+						
+				}else if($this->miyao_type=='3'){//二维码
+			
+					$this->keystr = '正在派送中';
+						
+				}
+					
+			}
+			
+			
+			
+			
+			
 			$temparr = array(
 					'goodsname' =>$this->goodsname,
 					'keystr'     => $this->keystr,
@@ -347,9 +201,9 @@ class HyXb522 extends HyXb{
 					'tflag'     => $this->tflag,
 					'createtime' => date('Y-m-d H:i:s'),
 					'id'         => $ordernoidlist['id'],
-					
+			
 			);
-				
+			
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '订单提交成功';
@@ -358,10 +212,73 @@ class HyXb522 extends HyXb{
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
+			
+			
 		}else{
+			
+		}
+		
+	}
+	
+	
+	//兑换生成卡密的实物，随机生成6位的随机字符串
+	public function controller_duihuan_one($orderno){
+		
+		if($this->zhifuway=='1' ){
+			
+			//商品数量的判断
+			if($this->tid>1){
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '兑换数量不能大于2个';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+			
+			if($this->score>$this->keyongjifen){
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+			
+		}
+		
+		
+		//随机生成的兑换码
+		$this->keystr = parent::getRandomString(6);
+		
+		if(strlen($this->keystr)==6){
+		
+			//秘钥数据的入库
+			$miyaosql = "insert into shop_duihuanma(userid,goods_id,goods_name,type,maintype,flag,duihuanma,createtime) values
+							('".parent::__get('xb_userid')."','".$this->productid."','".$this->goodsname."','".$this->typeidchild."',
+							'".$this->mtype."','9','".$this->keystr."','".date('Y-m-d H:i:s')."')";
+			$miyaolist = parent::__get('HyDb')->execute($miyaosql);
+			
+			parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','2');//状态和实物类型
+			
+			$miyao = array(
+					'keystr'     => $this->keystr,
+					'passwd'     => null,
+					'tflag'     => '22',
+					
+			
+			);
+			
+			return $miyao;
+		
+		}else {
 			$echoarr = array();
 			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '订单提交失败';
+			$echoarr['returnmsg']  = '兑换码生成失败，系统维修中';
 			$echoarr['dataarr'] = array();
 			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
@@ -370,22 +287,224 @@ class HyXb522 extends HyXb{
 		}
 		
 		
+	}
+	
+	
+	//流量单独的兑换流量
+	public function controller_duihuan_two($orderno){
+		
+		if($this->zhifuway=='1' ){
+			
+			//商品数量的判断
+			if($this->tid>1){
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '流量兑换数量不能大于2个';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+				
+			if($this->score > $this->keyongjifen){
+			
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+			
+		}
+		
+		
+		//订单去重判断
+		$r = parent::repeat_userbuy_orderno($orderno);
+		
+		if($r){
+			$echoarr = array();
+			$echoarr['returncode'] = 'success';
+			$echoarr['returnmsg']  = '订单提交成功！';
+			$echoarr['dataarr'] = $r;
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return true;
+		}
+		/* userbuy_insert_data($orderno='',$tid='',$code='',$passwd='',$fh_phone='',$fh_address='',
+		 * $fh_fahuotime='',$fh_shouhuotime='',$address_id='',$shouhuoren='',$typeid='1',$mytype='1') */
+		
+		//模拟用户操作发放兑换码--运营商1，2，3--
+		$url =$this->xiafaurl.'?gateway='.$this->gateway.'&mbps='.$this->mbps.'&ttype='.$this->ttype.'&orderno='.
+			$orderno.'&userid='.parent::__get('xb_userid').'&youxiaoday=30&name='.urlencode($this->goodsname).
+			'&describe='.urlencode($this->goodsname);
+		
+		$duihuancode = HyItems::vget( $url, 10000 );
+		
+		
+		if($duihuancode['httpcode']=='200'){
+			
+			$this->keystr = $duihuancode['content'];//生成兑换码
+			
+			if(strlen($this->keystr)!='18'){//秘钥生成错误
+				
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '兑换码生成失败,系统维修中';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+					
+			}else{//兑换码生成成功，数据的插入
+				parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,'','',$this->fh_address,'','','','','2','1');
+				
+				
+				$miyao = array(
+						'keystr'     => $this->keystr,
+						'passwd'     => null,
+						'tflag'     => '1',
+							
+				);
+					
+				return $miyao;
+			}
+		}
+		
+	}
+	
+	
+	//虚拟商品的电子卡，商家发放从对应的表中读出该字符串
+	public function controller_duihuan_three($orderno){
+		
+		if($this->zhifuway=='1' ){
+			
+			//商品数量的判断
+			if($this->tid>1){
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '兑换数量不能大于2个';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+				
+			if($this->score > $this->keyongjifen){
+			
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+		}
 		
 		
 		
+		//生成秘钥SELECT `id`, `goods_id`, `siteid`, `goods_name`, `type`, `maintype`, `flag`, `duihuanma`, `passwd`, `createtime` FROM `xb_duihuanma` WHERE 1
+		$duihuanmasql  = "select id,duihuanma,passwd from xb_duihuanma 
+						where flag=9 and maintype='".$this->typeid."' and type='".$this->typeidchild."' 
+						and goods_id='".$this->productid."' and  siteid='".$this->siteid."' 
+						order by id asc limit 1 ";
+		parent::hy_log_str_add($duihuanmasql);
+		$duihuanmalist = parent::__get('HyDb')->get_all($duihuanmasql);
 		
+		if($duihuanmalist[0]['id']>0){//秘钥兑换成功
+			
+			$this->keystr=$duihuanmalist[0]['duihuanma'];
+			$this->passwd=$duihuanmalist[0]['passwd'];
+			
+			//状态在待领取中
+			parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','1','1');
+			
+			$miyao = array(
+					'keystr'     => $this->keystr,
+					'passwd'     => $this->passwd,
+					'tflag'     => '23',
+						
+			);
+				
+			return $miyao;
+			
+		}else{//秘钥生成失败，系统错误
+			
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = '系统错误';
+			$echoarr['dataarr'] = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
+			return false;
+		}
+		
+		
+	}
+	
+	
+	//兑换码稍微发放
+	public function controller_duihuan_four($orderno){
+		
+		if($this->zhifuway=='1' ){
+			
+			//商品数量的判断
+			if($this->tid>1){
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '兑换数量不能大于2个';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+				
+			if($this->score > $this->keyongjifen){
+			
+				$echoarr = array();
+				$echoarr['returncode'] = 'error';
+				$echoarr['returnmsg']  = '您的馅饼不足，无法兑换该商品';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return false;
+			}
+		}
+		
+		
+		$this->keystr='';
+		$this->passwd=null;
+						
+		parent::userbuy_insert_data($orderno,$this->tid,$this->keystr,$this->passwd,'',$this->fh_address,'','','','','2','1');
+		
+		$miyao = array(
+				'keystr'     => $this->keystr,
+				'passwd'     => $this->passwd,
+				'tflag'     => '24',
+		
+		);
+		
+		return $miyao;
 		
 	}
 	
 	
 	
 	
-	
-	
-	
-	
 	//操作入口
 	public function controller_init(){
+	
 	
 	
 		//基本参数的判断,md5key判断，时间戳的判断
@@ -432,11 +551,12 @@ class HyXb522 extends HyXb{
 	
 		/* $r = parent::check_zhifuway_user();
 	
-		if($r==false){
+		if($r==false){      $this->zhifuway
 			return false;
 		} */
-	
-		$this->controller_userduihuan();
+		
+		$this->controller_duihuan();
+		
 	
 		return true;
 	}

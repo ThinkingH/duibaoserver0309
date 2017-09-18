@@ -37,9 +37,6 @@ class HyXb525 extends HyXb{
 				$echoarr = array();
 				$echoarr['returncode'] = 'success';
 				$echoarr['returnmsg']  = '商铺列表获取成功';
-				$echoarr['maxcon']  = $returnarr['maxcon'];
-				$echoarr['sumpage'] = $returnarr['sumpage'];
-				$echoarr['nowpage'] = $this->page;
 				$echoarr['dataarr'] = $shopproductlist;
 				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 				parent::hy_log_str_add($logstr);
