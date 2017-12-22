@@ -171,11 +171,13 @@ class HyXb528 extends HyXb{
 								where   shop_userbuy.productid = shop_product.id  and $where 
                             order by id desc limit $firstpage,$pagesize ";
 			
-			//echo $duihuan_sql;
+			
 			$duihuan_list = parent::__get('HyDb')->get_all($duihuan_sql);
 			
 			
 			foreach ($duihuan_list as $keys=>$vals){
+				
+				//$duihuan_list[$keys]['endday'] = strtotime($duihuan_list[$keys]['fh_fahuotime'])+ 14*24*60*60;
 				
 				if($duihuan_list[$keys]['address_id']==null){
 					$duihuan_list[$keys]['address_id'] ='';
@@ -202,6 +204,7 @@ class HyXb528 extends HyXb{
 				}else{
 					$duihuan_list[$keys]['fh_phone']='';
 				}
+				
 				if($address_list['shouhuoren']!=''){
 					
 					$duihuan_list[$keys]['fh_shouhuoren'] = $address_list['shouhuoren'];
@@ -261,7 +264,7 @@ class HyXb528 extends HyXb{
 					$duihuan_list[$keys]['moneyscore']  = '￥'.$duihuan_list[$keys]['price'].'+'.$duihuan_list[$keys]['score'].'馅饼';
 				}else if($duihuan_list[$keys]['feetype']=='2'){
 					$duihuan_list[$keys]['moneyscore']  = '￥'.$duihuan_list[$keys]['price'];
-				}else if($duihuan_list[$keys]['feetype']=='4' || $duihuan_list[$keys]['feet_type']=='5'){
+				}else if($duihuan_list[$keys]['feetype']=='4' || $duihuan_list[$keys]['feetype']=='5'){
 					$duihuan_list[$keys]['moneyscore']  = '免费';
 				}
 				
@@ -271,13 +274,13 @@ class HyXb528 extends HyXb{
 				
 				if($duihuan_list[$keys]['status']=='4'){
 					
-					if($duihuan_list[$keys]['feetype']=='2' || $duihuan_list[$keys]['xushi_type']=='2'){
+					if($duihuan_list[$keys]['feetype']=='2' || $duihuan_list[$keys]['xushi_type']=='2'){//金额支付 或实物
 						
-						$duihuan_list[$keys]['endday'] = strtotime(substr($duihuan_list[$keys]['fh_fahuotime'],0,10))+ 14*24*60*60;
-						$duihuan_list[$keys]['endday'] = substr(date('Y-m-d H:i:s',$duihuan_list[$keys]['endday']),0,10);
+						$duihuan_list[$keys]['endday'] = strtotime($duihuan_list[$keys]['fh_fahuotime'])+ 14*24*60*60;
+						$duihuan_list[$keys]['endday'] = date('Y-m-d H:i:s',$duihuan_list[$keys]['endday']);
 						
 						//是否有效的标识
-						if(strtotime($duihuan_list[$keys]['endday'])<strtotime(date('Y-m-d'))){
+						if(strtotime($duihuan_list[$keys]['endday'])<time()){
 							
 							 //更新确认收货状态
 							$updatestatus = "update shop_userbuy set status='5',fh_shouhuotime='".date('Y-m-d H:i:s')."' where id='".$duihuan_list[$keys]['id']."' ";

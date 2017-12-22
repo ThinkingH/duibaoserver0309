@@ -32,14 +32,14 @@ class HyXb511 extends HyXb{
 		$storenamearr = array();
 		$storelogoarr = array();
 		$storephonearr = array();
-		$storeinfo = "select id,storename,touxiang,username from shop_site where flag=1 and checkstatus=2  ";
+		$storeinfo = "select id,storename,touxiang,username,phone from shop_site where flag=1 and checkstatus=2  ";
 		$storeinfolist = parent::__get('HyDb')->get_all($storeinfo);
 		
 		foreach ($storeinfolist as $keys=>$vals){
 			
 			$storenamearr[$storeinfolist[$keys]['id']] = $storeinfolist[$keys]['storename'];
 			$storelogoarr[$storeinfolist[$keys]['id']] = $storeinfolist[$keys]['touxiang'];
-			$storephonearr[$storeinfolist[$keys]['id']] = $storeinfolist[$keys]['username'];
+			$storephonearr[$storeinfolist[$keys]['id']] = $storeinfolist[$keys]['phone'];
 		}
 		
 		

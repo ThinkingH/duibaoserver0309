@@ -109,7 +109,6 @@ class HyXb171 extends HyXb{
 			
 			if($this->type=='1') {
 				
-				
 				//留言数据---只取20条
 				$sql_maindata  = "select * from xb_comment where touserid='".parent::__get('xb_userid')."' order by createtime desc limit 20";
 				$list_maindata = parent::__get('HyDb')->get_all($sql_maindata);
@@ -175,7 +174,6 @@ class HyXb171 extends HyXb{
 				//获取用户列表
 				$usersql  = "select id,nickname,touxiang from xb_user where $where_user ";
 				//echo $usersql;
-				
 				$userlist = parent::__get('HyDb')->get_all($usersql);
 				
 				foreach($userlist as $keys => $vals){

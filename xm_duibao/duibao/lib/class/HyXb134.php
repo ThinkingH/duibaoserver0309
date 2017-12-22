@@ -6,6 +6,9 @@
 class HyXb134 extends HyXb{
 	
 	private $xb_jiguangid;
+	private $xb_tag1;
+	private $xb_tag2;
+	private $xb_tag3;
 	
 	//数据的初始化
 	function __construct($input_data){
@@ -22,6 +25,9 @@ class HyXb134 extends HyXb{
 	
 		//意见
 		$this->xb_jiguangid   = isset($input_data['jiguangid'])? $input_data['jiguangid']:'';  //极光id
+		$this->xb_tag1   = isset($input_data['tag1'])? $input_data['tag1']:'';  //极光id
+		$this->xb_tag2   = isset($input_data['tag2'])? $input_data['tag2']:'';  //极光id
+		$this->xb_tag3   = isset($input_data['tag3'])? $input_data['tag3']:'';  //极光id
 	
 	}
 	
@@ -31,48 +37,62 @@ class HyXb134 extends HyXb{
 		//获取用户登录的类型
 		$usertype = parent::__get('xb_usertype');
 		
-		$jiguangid = trim($this->xb_jiguangid);
+		if($usertype=='1'){
+			$tablename = 'xb_user';
+		}else if($usertype=='2'){
+			$tablename='xb_temp_user';
+		}
 		
-		if($jiguangid!=''){
+		if($this->xb_jiguangid!='' || $this->xb_tag1!='' || $this->xb_tag2!='' || $this->xb_tag3!='' ){
 			
-			if($usertype=='1'){
+			$sql_update = "update $tablename set ";
+			
+			if($this->xb_jiguangid!='') {
+				$sql_update .= " jiguangid='".$this->xb_jiguangid."', ";
+			}
+			
+			if($this->xb_tag1!=''){
 				
-				//更新用户表插入该字段
-				$tuisong_sql = "update xb_user set jiguangid ='".$jiguangid."' where id='".parent::__get('xb_userid')."'";
-				$tuisong_list = parent::__get('HyDb')->execute($tuisong_sql);
-					
-					
-					
-			}else if($usertype=='2'){
-					
-				//更新用户表插入该字段
-				$tuisong_sql = "update xb_temp_user set jiguangid ='".$jiguangid."' where id='".parent::__get('xb_userid')."'";
-				$tuisong_list = parent::__get('HyDb')->execute($tuisong_sql);
+				$sql_update .= " tag1='".$this->xb_tag1."', ";
+			}
+			
+			if($this->xb_tag2!=''){
 				
-			}else if($usertype=='3'){
+				$sql_update .= " tag2='".$this->xb_tag2."', ";
+			}
+			
+			if($this->xb_tag3!=''){
 				
+				$sql_update .= " tag3='".$this->xb_tag3."', ";
+			}
+			
+			$sql_update = rtrim($sql_update,', ');
+			
+			$sql_update .= "where id='".parent::__get('xb_userid')."' ";
+			
+			$r = parent::__get('HyDb')->execute($sql_update);
+			
+			if($r===true){
+				$echoarr = array();
+				$echoarr['returncode'] = 'success';
+				$echoarr['returnmsg']  = '字段更新成功';
+				$echoarr['dataarr'] = array();
+				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+				parent::hy_log_str_add($logstr);
+				echo json_encode($echoarr);
+				return true;
+			}else{
 				$echoarr = array();
 				$echoarr['returncode'] = 'error';
-				$echoarr['returnmsg']  = '用户类型错误';
+				$echoarr['returnmsg']  = '字段更新失败';
 				$echoarr['dataarr'] = array();
 				$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 				parent::hy_log_str_add($logstr);
 				echo json_encode($echoarr);
 				return false;
-				
 			}
-			
-		}else{
-			
-			$echoarr = array();
-			$echoarr['returncode'] = 'error';
-			$echoarr['returnmsg']  = '极光id为空';
-			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
-			parent::hy_log_str_add($logstr);
-			echo json_encode($echoarr);
-			return false;
 		}
+		
 	}
 	
 	
@@ -83,6 +103,20 @@ class HyXb134 extends HyXb{
 		//基本参数的判断,md5key判断，时间戳的判断
 		$r = parent::func_base_check();
 		if($r===false){
+			return false;
+		}
+		
+		$shuzu = array('1','2');
+		
+		if(!in_array(parent::__get('xb_usertype'),$shuzu)){
+		
+			$echoarr = array();
+			$echoarr['returncode'] = 'error';
+			$echoarr['returnmsg']  = '该用户传递的用户类型参数错误';
+			$echoarr['dataarr']    = array();
+			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			parent::hy_log_str_add($logstr);
+			echo json_encode($echoarr);
 			return false;
 		}
 	

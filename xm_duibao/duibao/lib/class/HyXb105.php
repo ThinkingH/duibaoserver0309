@@ -50,7 +50,7 @@ class HyXb105 extends HyXb{
 			}
 			
 			
-			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='2' order by id asc";
+			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='2' ";
 			$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
 				
 			foreach ($lunbotu_list as $keys=>$vals){
@@ -95,11 +95,11 @@ class HyXb105 extends HyXb{
 		}else if($this->type=='2'){//新手礼包弹框
 			
 			if($this->width==''){
-				$this->width='750';
+				$this->width='600';
 			}
 				
 			if($this->height==''){
-				$this->height='600';
+				$this->height='480';
 			}
 			
 			$lunbotu_sql = "select img,isused,imgurl from xb_lunbotu where flag='1' and biaoshi='3' order by id asc";

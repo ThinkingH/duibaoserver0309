@@ -97,7 +97,7 @@ class HyXb803 extends HyXb{
 				
 			$listdata[$keys]['faflag'] = isset($listdata[$keys]['faflag'])?$listdata[$keys]['faflag']:'1';
 			
-			if($listdata[$keys]['yuanprice']=='0'){
+			if($listdata[$keys]['yuanprice']==0){
 				$listdata[$keys]['discount']='0';
 			}else{
 				$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
@@ -140,7 +140,7 @@ class HyXb803 extends HyXb{
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
 			$echoarr['dataarr'] = $listdata;
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test0'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
@@ -149,7 +149,7 @@ class HyXb803 extends HyXb{
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '抓取数据为空!';
 			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test0'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
@@ -223,12 +223,11 @@ class HyXb803 extends HyXb{
 		
 		foreach ($listdata as $keys=>$vals){
 				
-				
 			$listdata[$keys]['gflag'] = '1';
 		
 			$listdata[$keys]['faflag'] = isset($listdata[$keys]['faflag'])?$listdata[$keys]['faflag']:'1';
 				
-			if($listdata[$keys]['yuanprice']=='0'){
+			if($listdata[$keys]['yuanprice']==0){
 				$listdata[$keys]['discount']='0';
 			}else{
 				$listdata[$keys]['discount'] = round($listdata[$keys]['nowprice']/$listdata[$keys]['yuanprice'],2)*10;
@@ -297,7 +296,7 @@ class HyXb803 extends HyXb{
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
 			$echoarr['dataarr'] = $listdata;
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test1'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
@@ -306,7 +305,7 @@ class HyXb803 extends HyXb{
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '抓取数据为空!';
 			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test1'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
@@ -352,22 +351,26 @@ class HyXb803 extends HyXb{
 		$inarr = array_unique($inarr);
 		if(count($inarr)<=0){
 				
-			$where = 'siteid=0';
+			$where = 'and siteid=0';
 		}else{
 			$instr = ' ('.implode(',',$inarr).') ';
-			$where = ' siteid in '. $instr;
+			$where = ' and siteid in '. $instr;
 		}
 		
 		//附近与商品之间的关联表fujin_product
-		$guanlian_sql = "select name,typeid from fujin_product where type='".$this->kindtype."' ";
-		$guanlian_list = parent::__get('HyDb')->get_all($guanlian_sql);
+		if($this->kindtype=='全部'){
+			$guanlian_sql = "select name,typeid from fujin_product  ";
+			$guanlian_list = parent::__get('HyDb')->get_all($guanlian_sql);
+		}else{
+			$guanlian_sql = "select name,typeid from fujin_product where type='".$this->kindtype."' ";
+			$guanlian_list = parent::__get('HyDb')->get_all($guanlian_sql);
+		}
+		
 		
 		$typearr = array();//关联商品的类型
 		
 		foreach ($guanlian_list as $keys=>$vals){
-			
 			array_push($typearr,$guanlian_list[$keys]['typeid']);
-			
 		}
 		
 		$typearr = array_unique($typearr);
@@ -376,13 +379,13 @@ class HyXb803 extends HyXb{
 			$where .= '';
 		}else{
 			$typearr = ' ('.implode(',',$typearr).') ';
-			$where .= ' typeid in '. $typearr;
+			$where .= ' and typeid in '. $typearr;
 		}
 		
 		if($this->kindtype=='全部'){//查询全部的附近商家的优惠券
-			$where = "onsales=1 and status=1 and flag=1  and $where  ";
-		}else {//查询单个的
-			$where = " onsales=1 and status=1 and flag=1 and $where  ";
+			$where = "onsales=1 and status=1 and flag=1  $where  ";
+		}else {//查询单个的 
+			$where = " onsales=1 and status=1 and flag=1 $where  ";
 		}
 		
 		
@@ -510,7 +513,7 @@ class HyXb803 extends HyXb{
 			$echoarr['sumpage'] = $returnarr['sumpage'];
 			$echoarr['nowpage'] = $this->page;
 			$echoarr['dataarr'] = $listdata;
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test2'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;
@@ -519,7 +522,7 @@ class HyXb803 extends HyXb{
 			$echoarr['returncode'] = 'success';
 			$echoarr['returnmsg']  = '抓取数据为空!';
 			$echoarr['dataarr'] = array();
-			$logstr = $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
+			$logstr = 'test--test2'.$echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 			parent::hy_log_str_add($logstr);
 			echo json_encode($echoarr);
 			return true;

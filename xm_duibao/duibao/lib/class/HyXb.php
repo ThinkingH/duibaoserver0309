@@ -899,8 +899,6 @@ class HyXb{
 			echo json_encode($echoarr);
 			return false;
 			
-		}else{
-			return true;
 		}
 		//判断1.该商品的库存是否大于0  2.是否上架 3.用户每日 每月 每年的最大兑换次数
 		if($this->kucun<=0){
@@ -912,8 +910,6 @@ class HyXb{
 			echo json_encode($echoarr);
 			return false;
 			
-		}else{
-			return true;
 		}
 		
 		if($this->stop_datetime<date('Y-m-d H:i:s')){
@@ -925,10 +921,9 @@ class HyXb{
 			echo json_encode($echoarr);
 			return false;
 		
-		}else{
-			return true;
 		}
 		
+		return true;
 	}
 	
 	
@@ -1111,9 +1106,6 @@ class HyXb{
 				$this->log_str .= $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 				echo json_encode($echoarr);
 				return false;
-				
-			}else{
-				return true;
 			}
 			
 		}else if($this->zhifuway=='2'){//金额支付
@@ -1126,9 +1118,6 @@ class HyXb{
 				$this->log_str .= $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 				echo json_encode($echoarr);
 				return false;
-				
-			}else{
-				return true;
 			}
 			
 		}else if($this->zhifuway=='3'){//积分+金额
@@ -1147,9 +1136,6 @@ class HyXb{
 				$this->log_str .= $echoarr['returncode'].'-----'.$echoarr['returnmsg']."\n"; //日志写入
 				echo json_encode($echoarr);
 				return false;
-				
-			}else{
-				return true;
 			}
 		}
 		
@@ -1294,6 +1280,29 @@ class HyXb{
 		}
 	
 	}
+	
+	
+	//七牛图片链接的读取
+	public function qiniu_pic_url($banktname,$picname,$width,$height,$imageslim='75'){
+	
+		$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+	
+		$bname = isset($arr[$banktname])?$arr[$banktname]:'';
+	
+		$replace = array("\t", "\r", "\n",);
+	
+		if(substr($picname,0,7)=='http://' || substr($picname,0,8)=='https://'){
+				
+		}else{
+			$picname = $bname.$picname.'?imageView2/1/w/'.$width.'/h/'.$height.'/q/'.$imageslim.'|imageslim';
+		}
+	
+		//去除换行，回车符
+		$picname = str_replace($replace, '', $picname);
+	
+		return $picname;
+	}
+	
 	
 	
 	//敏感字的过滤

@@ -10,6 +10,7 @@ class HyXb101 extends HyXb{
 	
 	//数据的初始化
 	function __construct($input_data){
+		
 	
 		//数据初始化
 		parent::__construct($input_data);
@@ -74,6 +75,7 @@ class HyXb101 extends HyXb{
 	
 	//操作入口
 	public function controller_init(){
+		
 		
 		//基本参数的判断,md5key判断，时间戳的判断
 		$r = parent::func_base_check();

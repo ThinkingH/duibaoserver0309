@@ -37,7 +37,7 @@ class HyXb501 extends HyXb{
 		if($this->type=='1'){
 			$wherestr = " where flag=1 and status=1 and onsales=1 and feetype=1  ";  // 1--全部
 		}else if($this->type=='2'){
-			$wherestr = " where flag=1 and status=1 and onsales=1 and hottypeid=101 ";  //2-获取今日推荐的数据
+			$wherestr = " where flag=1 and status=1 and onsales=1 and feetype=1 and hottypeid=101 ";  //2-获取今日推荐的数据
 		}
 		
 		

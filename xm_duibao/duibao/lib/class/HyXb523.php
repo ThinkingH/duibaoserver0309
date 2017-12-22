@@ -3,8 +3,6 @@
  * 商品的轮播图
  */
 class HyXb523 extends HyXb{
-	private $width;
-	private $height;
 	
 	
 	//数据的初始化
@@ -20,8 +18,10 @@ class HyXb523 extends HyXb{
 		parent::hy_log_str_add($tmp_logstr);
 		unset($tmp_logstr);
 	
-		$this->width   = isset($input_data['width'])? $input_data['width']:'';  //图片宽
-		$this->height  = isset($input_data['height'])?$input_data['height']:'';     //图片高
+	
+		//图片存放位置
+		//$this->picurlpath = URLPATH;
+	
 	}
 	
 	
@@ -34,32 +34,28 @@ class HyXb523 extends HyXb{
 		 value:  跳转的链接地址
 		 click：1-允许点击 2-不允许
 		 */
-		if($this->width==''){
-			$this->width='750';
-		}
-		
-		if($this->height==''){
-			$this->height='290';
-		}
 	
 		//轮播图查询
 		$lunbotu_sql = "select img,shopid,shopname,isused,type,picname,action,value from xb_lunbotu where biaoshi='1' and flag='1' order by id asc";
 		$lunbotu_list = parent::__get('HyDb')->get_all($lunbotu_sql);
 		
-		foreach ($lunbotu_list as $keys=>$vals){
-			
+		foreach($lunbotu_list as $keys=>$vals){
+			$replace = array("\t", "\r", "\n",);
 			//图片展示
-			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
+			$arr = unserialize(BUCKETSTR);//获取七牛访问链接
 			if(substr($lunbotu_list[$keys]['img'],0,7)=='http://' ||substr($lunbotu_list[$keys]['img'],0,8)=='https://' ){
 				//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$lunbotu_list[$keys]['img'] = str_replace($replace, '', $lunbotu_list[$keys]['img']);
 			}else{
-				$lunbotu_list[$keys]['img'] = $arr['duibao-basic'].$lunbotu_list[$keys]['img'].'imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+				$lunbotu_list[$keys]['img'] = $arr['duibao-shop'].$lunbotu_list[$keys]['img'].'?imageView2/1/w/750/h/250/q/75|imageslim';
+				$lunbotu_list[$keys]['img'] = str_replace($replace, '', $lunbotu_list[$keys]['img']);
+					
+			}		
 				
-			}
-			
 		}
 	
 		if(count($lunbotu_list)>0){
+			
 	
 			$echoarr = array();
 			$echoarr['returncode'] = 'success';

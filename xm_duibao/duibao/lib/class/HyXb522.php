@@ -87,28 +87,10 @@ class HyXb522 extends HyXb{
 		
 		$this->score = $this->score*$this->tid;
 		
-		/* if($this->miyao_type=='1'){//单秘钥
-				
-			$this->tflag='1';//单卡密
-			
-		}else if($this->miyao_type=='2'){//多秘钥
-				
-			$this->tflag='3';//多卡密
-				
-		}else if($this->miyao_type=='3'){//二维码
-				
-			$this->tflag='2';//二维码
-				
-		}else if($this->miyao_type=='4'){//实物
-				
-			$this->tflag='4';//实物
-		} */
-		
 		//商品订单
 		$orderno = 'D'.date('YmdHis').mt_rand(1000,9999);//商品订单号
 		
 		if($this->zhifuway=='1' || $this->zhifuway=='4' || $this->zhifuway=='5'){//积分兑换
-			
 			if($this->fafang_type=='1'){//立即发放，商户，
 				
 				if($this->xushi_type=='2'){//实物立即发放兑换码
@@ -118,6 +100,7 @@ class HyXb522 extends HyXb{
 					if($this->typeid=='11'){
 						$r = $this->controller_duihuan_two($orderno);//单独兑换流程
 					}else{
+						echo 'mmm';
 						$r = $this->controller_duihuan_three($orderno);//上家发放，从表中读出对应的秘钥
 					}
 					
@@ -147,14 +130,23 @@ class HyXb522 extends HyXb{
 			$updateproduct = "update shop_product set buycount=buycount+1,kucun=kucun-1 where id='".$this->productid."'";
 			$updateproductsql = parent::__get('HyDb')->execute($updateproduct);
 			
+			if($this->zhifuway=='1'){//积分支付，账户积分的扣除
+				//用户积分的变化
+				$userscoresql  = "update xb_user set keyong_jifen=keyong_jifen-'".$this->score."'  where id='".parent::__get('xb_userid')."' ";
+				$userscorelist = parent::__get('HyDb')->execute($userscoresql);
+			}
 			
-			//用户积分的变化
-			$userscoresql  = "update xb_user set keyong_jifen=keyong_jifen-'".$this->score."'  where id='".parent::__get('xb_userid')."' ";
-			$userscorelist = parent::__get('HyDb')->execute($userscoresql);
+			if($this->zhifuway=='2'){//2-金额支付 1-积分支付 4-vip会员商品 5-免费商品
+				$this->score='0';//金额支付
+			}else if($this->zhifuway=='4'){//vip商品
+				$getdescribe = '免费领取VIP'.$this->goodsname;
+				$this->score='0';
+			}else if($this->zhifuway=='5'){
+				$this->score='0';
+			}else{
+				$getdescribe = '购买'.$this->goodsname.'消耗'.$this->score.'馅饼';
+			}
 			
-			
-			//积分变动的插入
-			$getdescribe = '购买'.$this->goodsname.'消耗'.$this->score.'馅饼';
 			$gettime = time();
 			$insertsql = "insert into xb_user_score (userid,goodstype,maintype,type,
 					score,usermoney,getdescribe,gettime) values

@@ -52,7 +52,6 @@ class HyXb151 extends HyXb{
 		//正常用户的登录查看积分--xb_user_score
 		if($usertype=='1'){
 			
-			
 			//查询该用户的总条数
 			$usernumscore_sql  = "select count(*) as num from xb_user_score where userid='".parent::__get('xb_userid')."' ";
 			$usernumscore_list = parent::__get('HyDb')->get_all($usernumscore_sql);

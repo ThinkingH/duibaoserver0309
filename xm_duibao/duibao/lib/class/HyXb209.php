@@ -23,7 +23,7 @@ class HyXb209 extends HyXb{
 		unset($tmp_logstr);
 		
 		$this->width  = isset($input_data['width'])?$input_data['width']:'';
-		$this->height = isset($input_data['width'])?$input_data['width']:'';
+		$this->height = isset($input_data['height'])?$input_data['height']:'';
 		$this->type = isset($input_data['type'])?$input_data['type']:'';
 		$this->button = isset($input_data['button'])?$input_data['button']:'';
 	
