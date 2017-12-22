@@ -160,6 +160,10 @@ $("document").ready(function(){
 	<tr>
 		<td width="200" align="right">类型编号:</td>
 		<td>
+			<select name="xushitype" id="xushitype" >
+			{$optionxushitype}
+			</select>
+			--
 			<select name="type" id="type" >
 			{$optiontype}
 			</select>
@@ -220,6 +224,15 @@ $("document").ready(function(){
 		</td>
 	</tr>
 	
+	<tr>
+		<td width="200" align="right">视频链接:</td>
+		<td>
+		<input type="text" name="video_url" id="video_url" size="100" maxlength="100" value="">
+		<font size="-1" color="red">*视频链接只针对免费商品，可选择性添加</font>
+		</td>
+	</tr>
+	
+	
 	<!-- <tr>
 		<td width="200" align="right">商品描述:</td>
 		<td>
@@ -235,10 +248,17 @@ $("document").ready(function(){
 	</tr>
 	
 	<tr>
-		<td width="200" align="right">商品金额价格:</td>
+		<td width="200" align="right">商品现价:</td>
 		<td>
 		<input type="text" name="price" id="price" size="30" maxlength="30" >
-		<font size="-1" color="red">*单位为分</font>
+		<font size="-1" color="red">*单位(元)</font>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">商品原价:</td>
+		<td>
+		<input type="text" name="yuanprice" id="yuanprice" size="30" maxlength="30" >
+		<font size="-1" color="red">*单位(元)</font>
 		</td>
 	</tr>
 	
@@ -255,6 +275,31 @@ $("document").ready(function(){
 		<td>
 			<select name="feetype" id="feetype">
 			{$optionfeetype}
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">兑换码类型:</td>
+		<td>
+			<select name="miyao_type" id="miyao_type">
+			{$optionmiyaotype}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">兑换码发放类型:</td>
+		<td>
+			<select name="fafang_type" id="fafang_type">
+			{$optionfafang}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">商品领取方式:</td>
+		<td>
+			<select name="pickup" id="pickup">
+			{$optionpickup}
 			</select>
 		</td>
 	</tr>

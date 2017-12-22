@@ -236,7 +236,9 @@ class ShopaddAction extends Action{
 			}else if($list[$keyc]['feetype']=='3'){
 				$list[$keyc]['feetype'] = '积分金额混合支付';
 			}else if($list[$keyc]['feetype']=='4'){
-				$list[$keyc]['feetype'] = '免费';
+				$list[$keyc]['feetype'] = 'VIP免费专区';
+			}else if($list[$keyc]['feetype']=='5'){
+				$list[$keyc]['feetype'] = '免费专区';
 			}
 			
 			if($list[$keyc]['onsales']=='1'){
@@ -290,6 +292,18 @@ class ShopaddAction extends Action{
 			if(substr($list[$keyc]['showpic3'],0,7)!='http://'){
 				$list[$keyc]['showpic3']=$arr['duibao-shop'].$list[$keyc]['showpic3'].'?imageView2/1/w/200/h/200/q/75|imageslim';
 			}
+			
+			//价格展示number_format($selet_list['price'] / 100, 2);
+			/* if($list[$keyc]['price'] =='0'){
+				
+			}else{
+				$list[$keyc]['price'] = number_format($list[$keyc]['price'] / 100, 2);
+			}
+			 */
+			
+			//$list[$keyc]['price'] = $list[$keyc]['price'] / 100;
+			
+			$list[$keyc]['price'] = number_format($list[$keyc]['price'] / 100, 2);
 			
 			
 		}
@@ -349,8 +363,8 @@ class ShopaddAction extends Action{
 		//是否推荐
 		$tuijian_arr = array(
 				
-				'101' => '推荐',
 				'100' => '不推荐',
+				'101' => '推荐',
 				
 		);
 		foreach($tuijian_arr as $keyc => $valc) {
@@ -392,15 +406,45 @@ class ShopaddAction extends Action{
 		
 		//商品编号--主类型
 		$typearr = array();
+		/* $sql_type = "select typeid,name,flag from shop_config where flag=1 order by typeid asc"; */
+		$sql_type = "select * from db_goods_type where flag=1 and level=1  order by  id desc ";
+		$list_type = $Model->query($sql_type);
+		
+		$optiontype = '<option value="">请选择商品分类</option>';
+		foreach($list_type as $val) {
+			$optiontype .= '<option value="'.$val['id'].'"';
+			$optiontype .= '>'.$val['name'].'</option>';
+		}
+		$this -> assign('optiontype',$optiontype);
+		
+		
+		//商品编号--子类型
+		$typearr = array();
+		//$sql_childtype = "select childtype,xushi,name from shop_type order by id asc";
+		$sql_childtype = "select * from db_goods_type  where flag=1 and level=2 order by id desc";
+		$list_childtype = $Model->query($sql_childtype);
+		
+		$optionchildtype = '<option value="">请选择商品子分类</option>';
+		foreach($list_childtype as $val) {
+			$optionchildtype .= '<option value="'.$val['id'].'"';
+			/* if($val['typeid']==$type) {
+			 $optiontype .= ' selected="selected" ';
+			 } */
+			$optionchildtype .= '>'.$val['name'].'</option>';
+		}
+		$this -> assign('optionchildtype',$optionchildtype);
+		
+		
+		
+		
+		/* //商品编号--主类型
+		$typearr = array();
 		$sql_type = "select typeid,name,flag from shop_config where flag=1 order by typeid asc";
 		$list_type = $Model->query($sql_type);
 		
 		$optiontype = '<option value=""></option>';
 		foreach($list_type as $val) {
 			$optiontype .= '<option value="'.$val['typeid'].'"';
-			/* if($val['typeid']==$type) {
-				$optiontype .= ' selected="selected" ';
-			} */
 			$optiontype .= '>'.$val['typeid'].'--'.$val['name'].'</option>';
 		}
 		$this -> assign('optiontype',$optiontype);
@@ -414,12 +458,9 @@ class ShopaddAction extends Action{
 		$optionchildtype = '<option value=""></option>';
 		foreach($list_childtype as $val) {
 			$optionchildtype .= '<option value="'.$val['childtype'].'"';
-			/* if($val['typeid']==$type) {
-			 $optiontype .= ' selected="selected" ';
-			 } */
 			$optionchildtype .= '>'.$val['childtype'].'--'.$val['name'].'</option>';
 		}
-		$this -> assign('optionchildtype',$optionchildtype);
+		$this -> assign('optionchildtype',$optionchildtype); */
 		
 		
 		//支付类型
@@ -427,7 +468,8 @@ class ShopaddAction extends Action{
 				'1' => '积分',
 				'2' => '金额',
 				'3' => '混合使用',
-				'4' => '免费',
+				'4' => 'VIP免费专区',
+				'5' => '免费专区',
 		);
 		$optionfeetype = '<option value=""></option>';
 		foreach($zhifu_arr as $keyc => $valc) {
@@ -438,7 +480,61 @@ class ShopaddAction extends Action{
 		$this->assign('optionfeetype',$optionfeetype);
 		
 		
-		//
+		//商品领取方式
+		$pickup_arr = array(
+				'1' => '自提',
+				'2' => '包邮',
+				'3' => '发货物流',
+		);
+		$optionpickup = '<option value="">商品领取方式</option>';
+		foreach($pickup_arr as $keyc => $valc) {
+			$optionpickup .= '<option value="'.$keyc.'" ';
+			/* if($status==$keyc) { $optionstatus .= ' selected="selected" '; } */
+			$optionpickup .= '>'.$valc.'</option>';
+		}
+		$this->assign('optionpickup',$optionpickup);
+		
+		//秘钥形式
+		$miyao_arr = array(
+				'1' => '单卡密',
+				'2' => '多卡密',
+				'3' => '二维码',
+				'4' => '实物',
+					
+		);
+		$optionmiyaotype = '<option value="4">秘钥形式</option>';
+		foreach($miyao_arr as $keyc => $valc) {
+			$optionmiyaotype .= '<option value="'.$keyc.'" ';
+			/* if($status==$keyc) { $optionstatus .= ' selected="selected" '; } */
+			$optionmiyaotype .= '>'.$valc.'</option>';
+		}
+		$this->assign('optionmiyaotype',$optionmiyaotype);
+		
+		//卡密发放方式
+		$fafang_arr = array(
+				'1' => '立即发放',
+				'2' => '隔天发放',
+		);
+		$optionfafang = '<option value="">商品发放时间</option>';
+		foreach($fafang_arr as $keyc => $valc) {
+			$optionfafang .= '<option value="'.$keyc.'" ';
+			/* if($status==$keyc) { $optionstatus .= ' selected="selected" '; } */
+			$optionfafang .= '>'.$valc.'</option>';
+		}
+		$this->assign('optionfafang',$optionfafang);
+		
+		//商品虚实
+		$xushitype = array(
+				'1' => '虚拟',
+				'2' => '实物',
+		);
+		
+		$optionxushitype = '<option value="">请选择商品类型</option>';
+		foreach($xushitype as $keyc => $valc) {
+			$optionxushitype .= '<option value="'.$keyc.'" ';
+			$optionxushitype .= '>'.$valc.'</option>';
+		}
+		$this->assign('optionxushitype',$optionxushitype);
 		
 		// 输出模板
 		$this->display();
@@ -489,6 +585,12 @@ class ShopaddAction extends Action{
 		$onsales    = $this->_post('onsales');
 		$youxiaoqi    = $this->_post('youxiaoqi');
 		$update_submit = $this->_post('update_submit');
+		
+		$video_url = $this->_post('video_url');
+		$xushitype = $this->_post('xushitype');//商品虚实
+		$miyao_type = $this->_post('miyao_type');//商品虚实
+		$fafang_type = $this->_post('fafang_type');//商品虚实
+		$pickup = $this->_post('pickup');//商品虚实
 		
 		$goods_content    = $this->_post('goods_content');//商品详情页
 		//商品详情页链接
@@ -617,7 +719,7 @@ class ShopaddAction extends Action{
 				$data['mbps']    = $mbps;
 				$data['ttype']   = $ttype;
 				$data['miaoshu'] = $miaoshu;
-				$data['price']   = $price;
+				$data['price']   = $price*100;
 				$data['score']   = $score;
 				$data['feetype'] = $feetype;
 				$data['xiangqingurl'] =$xiangqingurl;
@@ -634,11 +736,16 @@ class ShopaddAction extends Action{
 				$data['goods_content'] = $goods_content;
 				$data['stop_datetime'] = $stop_datetime;
 				$data['youxiaoqi'] = $youxiaoqi;
+				$data['video_url'] = $video_url;
+				$data['miyao_type'] = $miyao_type;
+				$data['xushi_type'] = $xushitype;
+				$data['fafang_type'] = $fafang_type;
+				$data['pickup'] = $pickup;
 				
 			//说明此数据没有关联数据，可以删除
 			$ret = $Model -> table('shop_product')  -> add($data);
 			
-			//echo $Model->getLastsql();exit;
+			
 				
 			if($ret) {
 				echo "<script>alert('数据添加成功！');window.location.href='".__APP__."/Shopadd/index".$yuurl."';</script>";
@@ -684,6 +791,8 @@ class ShopaddAction extends Action{
 				$shopsql  = "select * from shop_product where id='".$id."'";
 				$shoplist = $Model->query($shopsql); 
 				
+				
+				$shoplist[0]['price'] = number_format($shoplist[0]['price'] / 100, 2);//单价
 				//时间的截取
 				/* $shoplist[0]['stop_datetime_his'] = substr($shoplist[0]['stop_datetime'],11,8); 
 				$shoplist[0]['stop_datetime'] = substr($shoplist[0]['stop_datetime'],0,10);//下架时间
@@ -771,8 +880,58 @@ class ShopaddAction extends Action{
 				}
 				$this -> assign('optionsiteid',$optionsiteid);
 				
+				//商品虚实
+				$xushitype = array(
+						'1' => '虚拟',
+						'2' => '实物',
+				);
+				
+				$optionxushitype = '<option value="">请选择商品类型</option>';
+				foreach($xushitype as $keyc => $valc) {
+					$optionxushitype .= '<option value="'.$keyc.'" ';
+					if($shoplist[0]['xushi_type']==$keyc) {
+						$optionxushitype .= ' selected="selected" ';
+					}
+					$optionxushitype .= '>'.$valc.'</option>';
+				}
+				$this->assign('optionxushitype',$optionxushitype);
+				
+				
 				
 				//商品编号--主类型
+				$typearr = array();
+				/* $sql_type = "select typeid,name,flag from shop_config where flag=1 order by typeid asc"; */
+				$sql_type = "select * from db_goods_type where flag=1 and level=1  order by  id desc ";
+				$list_type = $Model->query($sql_type);
+				
+				$optiontype = '<option value="">请选择商品分类</option>';
+				foreach($list_type as $val) {
+					$optiontype .= '<option value="'.$val['id'].'"';
+					
+					
+				 if($shoplist[0]['typeid']==$val['id']) { $optiontype .= ' selected="selected" '; } 
+				 
+					$optiontype .= '>'.$val['name'].'</option>';
+				}
+				
+				
+				$this -> assign('optiontype',$optiontype);
+				
+				
+				//商品编号--子类型
+				$typearr = array();
+				//$sql_childtype = "select childtype,xushi,name from shop_type order by id asc";
+				$sql_childtype = "select * from db_goods_type  where flag=1 and level=2 order by id desc";
+				$list_childtype = $Model->query($sql_childtype);
+				
+				$optionchildtype = '<option value="">请选择商品子分类</option>';
+				foreach($list_childtype as $val) {
+					$optionchildtype .= '<option value="'.$val['id'].'"';
+				 if($shoplist[0]['typeidchild']==$val['id']) { $optionchildtype .= ' selected="selected" '; } 
+					$optionchildtype .= '>'.$val['name'].'</option>';
+				}
+				$this -> assign('optionchildtype',$optionchildtype);
+				/* //商品编号--主类型
 				$typearr = array();
 				$sql_type = "select typeid,name,flag from shop_config where flag=1 order by typeid asc";
 				$list_type = $Model->query($sql_type);
@@ -797,7 +956,7 @@ class ShopaddAction extends Action{
 					if($shoplist[0]['typeidchild']==$val['childtype']) { $optionchildtype .= ' selected="selected" '; } 
 					$optionchildtype .= '>'.$val['childtype'].'--'.$val['name'].'</option>';
 				}
-				$this -> assign('optionchildtype',$optionchildtype);
+				$this -> assign('optionchildtype',$optionchildtype); */
 				
 				
 				//支付类型
@@ -805,7 +964,8 @@ class ShopaddAction extends Action{
 						'1' => '积分',
 						'2' => '金额',
 						'3' => '混合使用',
-						'4' => '免费',
+						'4' => 'VIP免费专区',
+						'5' => '免费专区',
 				);
 				$optionfeetype = '<option value=""></option>';
 				foreach($zhifu_arr as $keyc => $valc) {
@@ -815,7 +975,56 @@ class ShopaddAction extends Action{
 				}
 				$this->assign('optionfeetype',$optionfeetype);
 				
+				
+				//商品领取方式
+				$pickup_arr = array(
+						'1' => '自提',
+						'2' => '包邮',
+						'3' => '发货物流',
+				);
+				$optionpickup = '<option value="">商品领取方式</option>';
+				foreach($pickup_arr as $keyc => $valc) {
+					$optionpickup .= '<option value="'.$keyc.'" ';
+					 if($shoplist[0]['pickup']==$keyc) { $optionpickup .= ' selected="selected" '; } 
+					$optionpickup .= '>'.$valc.'</option>';
+				}
+				$this->assign('optionpickup',$optionpickup);
+				
+				//秘钥形式
+				$miyao_arr = array(
+						'1' => '单卡密',
+						'2' => '多卡密',
+						'3' => '二维码',
+						'4' => '实物',
+							
+				);
+				$optionmiyaotype = '<option value="4">秘钥形式</option>';
+				foreach($miyao_arr as $keyc => $valc) {
+					$optionmiyaotype .= '<option value="'.$keyc.'" ';
+					 if($shoplist[0]['miyao_type']==$keyc) { $optionmiyaotype .= ' selected="selected" '; } 
+					$optionmiyaotype .= '>'.$valc.'</option>';
+				}
+				$this->assign('optionmiyaotype',$optionmiyaotype);
+				
+				//卡密发放方式
+				$fafang_arr = array(
+						'1' => '立即发放',
+						'2' => '隔天发放',
+				);
+				$optionfafang = '<option value="">商品发放时间</option>';
+				foreach($fafang_arr as $keyc => $valc) {
+					$optionfafang .= '<option value="'.$keyc.'" ';
+					if($shoplist[0]['fafang_type']==$keyc) { $optionfafang .= ' selected="selected" '; } 
+					$optionfafang .= '>'.$valc.'</option>';
+				}
+				$this->assign('optionfafang',$optionfafang);
+			//	$shoplist[0]['price'] = number_format($shoplist[0]['price'] / 100, 2);//单价
+				
+				
+				
 				$this->assign('list',$shoplist[0]);
+				
+				
 				// 输出模板
 				$this->display();
 				
@@ -951,7 +1160,7 @@ class ShopaddAction extends Action{
 		$mbps    = $this->_post('mbps');
 		$ttype   = $this->_post('ttype');
 		$miaoshu  = $this->_post('miaoshu');
-		$price    = $this->_post('price');
+		$price    = $this->_post('price')*100;
 		$score    = $this->_post('score');
 		$feetype  = $this->_post('feetype');
 		/* $xiangqingurl = $this->_post('xiangqingurl'); */
@@ -968,6 +1177,16 @@ class ShopaddAction extends Action{
 		$youxiaoqi    = $this->_post('youxiaoqi');
 		$onsales    = $this->_post('onsales');
 		$hottype    = $this->_post('hottype');
+		$video_url    = $this->_post('video_url');
+		
+		/*  $xushitype = $this->_post('xushitype');//商品虚实
+		$miyao_type = $this->_post('miyao_type');//商品虚实
+		$fafang_type = $this->_post('fafang_type');//商品虚实
+		$pickup = $this->_post('pickup');//商品虚实*/
+		$xushitype    = $this->_post('xushitype');
+		$miyao_type    = $this->_post('miyao_type');
+		$fafang_type    = $this->_post('fafang_type');
+		$pickup    = $this->_post('pickup');
 
 		$goods_content    = $this->_post('goods_content');//商品详情页
 		//商品详情页链接
@@ -1100,6 +1319,12 @@ class ShopaddAction extends Action{
 		$data['goods_content'] = $goods_content;
 		$data['youxiaoqi'] = $youxiaoqi;
 		$data['onsales'] = $onsales;
+		$data['video_url'] = $video_url;
+		
+		$data['xushi_type'] = $xushitype;
+		$data['miyao_type'] = $miyao_type;
+		$data['fafang_type'] = $fafang_type;
+		$data['pickup'] = $pickup;
 		
 		//echo $data['hottypeid'];exit;
 		

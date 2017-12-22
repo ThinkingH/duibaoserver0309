@@ -10,7 +10,6 @@
 <script type="text/javascript">
 $("document").ready(function(){
 	
-	
 	$(".delete_submit").click(function(){
 		
 		if(confirm("您确认要删除此条数据吗？")) {
@@ -20,25 +19,6 @@ $("document").ready(function(){
 		}
 	});
 	
-	$(".fabu_submit").click(function(){
-		
-		if(confirm("确定发布该信息嘛？")) {
-			
-		}else {
-			return false;
-		}
-	});
-	
-	$("#bohui_submit").click(function(){
-		
-		if(confirm("确定驳回该信息嘛？")) {
-			
-		}else {
-			return false;
-		}
-	});
-	
-		
 	$(".mainTables>tbody>tr>td").hover(function(){
 		$(this).parent().children().addClass('yu_mourse_stop_change');
 	},function(){
@@ -60,16 +40,17 @@ $("document").ready(function(){
 	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
 </table>
 
-<!-- <a href="__APP__/Shanghu/addshow{$yuurl}" class="yubutton yuwhite">发布信息</a> -->
 <br/><br/>
 
 <form action="__APP__/Shanghu/index" method="get" >
 <table class="mainTabled" >
 
 <tr>
-	<td align="center">是否注销</td>
-	<td align="center">发布时间</td>
+	<td align="center">商户状态</td>
 	<td align="center">审核状态</td>
+	<td align="center">商户编号</td>
+	<td align="center">联系人</td>
+	<td align="center">开户时间</td>
 	<td align="center"></td>
 </tr>
 
@@ -80,16 +61,20 @@ $("document").ready(function(){
 			{$optionflag}
 		</select>
 	</td>
-	
-	<td>
-		<input type="text" size="12" maxlength="10" name="date_s" value="{$date_s}" onclick="WdatePicker()" />--
-		<input type="text" size="12" maxlength="10" name="date_e" value="{$date_e}" onclick="WdatePicker()" />
-	</td>
-	
 	<td>
 		<select name="status">
 			{$optionstatus}
 		</select>
+	</td>
+	<td>
+		<input type="text" size="8" maxlength="8" name="bianhao" value="{$bianhao}" />
+	</td>
+	<td>
+		<input type="text" size="15" maxlength="15" name="lianxiren" value="{$lianxiren}"  />
+	</td>
+	<td>
+		<input type="text" size="10" maxlength="10" name="date_s" value="{$date_s}" onclick="WdatePicker()" />--
+		<input type="text" size="10" maxlength="10" name="date_e" value="{$date_e}" onclick="WdatePicker()" />
 	</td>
 	
 	<td>
@@ -105,19 +90,16 @@ $("document").ready(function(){
 <thead>
 	<tr>
 		<td width="4%">&nbsp;</td>
-		<td width="4%">&nbsp;</td>
-		<td width="5%"><b>商户编号<br/></b></td>
+		<td width="5%"><b>商户状态<br/></b></td>
 		<td width="5%"><b>审核状态<br/></b></td>
-		<td width="5%"><b>是否开启<br/></b></td>
+		<td width="5%"><b>商户编号<br/></b></td>
 		<td width="5%"><b>联系人<br/></b></td>
 		<td width="6%"><b>联系方式</b></td>
 		<td width="10%"><b>邮箱</b></td>
 		<td width="15%"><b>公司名称</b></td>
 		<td width="20%"><b>公司地址</b></td>
-		<td width="15%"><b>账户信息</b></td>
-		<!-- <td width="10%"><b>营业执照副本1</b></td>
-		<td width="10%"><b>营业执照副本2</b></td> -->
 		<td width="8%"><b>开户时间</b></td>
+		<td width="8%"><b>审核时间</b></td>
 	</tr>
 </thead>
 
@@ -126,63 +108,21 @@ $("document").ready(function(){
 	<tr>
 			<td align="center">
 			
-			<!-- <form action="__APP__/Shanghu/updateshow{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="id" value="{$vo.id}" />
-			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="修改" />
-			</form> -->
-			
 			<form action="__APP__/Shanghu/chakanshow{$yuurl}" method="post" style="margin:0px">
 			<input type="hidden" name="id" value="{$vo.id}" />
-			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="查看" />
+			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="审核" />
 			</form>
-			
 			</td>
-			
-			<td>
-			<form action="__APP__/Shanghu/deletedata{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="id" value="{$vo.id}" />
-			<php> if($vo['flag']=='1'){</php>
-			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="注销" />
-			<php> }else if($vo['flag']=='9'){</php>
-			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="注销" disabled="disabled"/>
-			<php> }</php>
-			</form>
-			
-			<!-- <br><br>
-		
-			<form action="__APP__/Shanghu/checkdata{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="id" value="{$vo.id}" />
-			<input type="hidden" name="userid" value="{$vo.userid}" />
-			<input type="hidden" name="discount" value="{$vo.reamrk}" />
-			<input type="hidden" name="flag" value="1" />
-			<input type="submit" class="yubuttonss yuwhite" name="check_submit" id="fabu_submit"  value="发布" />
-			</form>
-			
-			
-			<form action="__APP__/Shanghu/checkdata{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="id" value="{$vo.id}" />
-			<input type="hidden" name="userid" value="{$vo.userid}" />
-			<input type="hidden" name="discount" value="{$vo.reamrk}" />
-			<input type="hidden" name="flag" value="2" />
-			<input type="submit" class="yubuttonss yuwhite" name="check_submit" id="bohui_submit" value="驳回" />
-			</form> -->
-		
-		</td>
-		
-		
-		
-		<td align="center">{$vo.id}</td>
-		<td align="center">{$vo.checkstatus}</td>
 		<td align="center">{$vo.flags}</td>
+		<td align="center">{$vo.checkstatus}</td>
+		<td align="center">{$vo.id}</td>
 		<td>{$vo.lianxiren}</td>
 		<td>{$vo.phone}</td>
 		<td>{$vo.email}</td>
 		<td>{$vo.company}</td>
 		<td>{$vo.address}</td>
-		<td>{$vo.username}</td>
-		<!-- <td><img alt="" src="{$vo.bussinelicence1}" width="150"></td>
-		<td><img alt="" src="{$vo.bussinelicence2}" width="150"></td> -->
 		<td>{$vo.create_datetime}</td>
+		<td>{$vo.check_datetime}</td>
 	</tr>
 	</volist>
 </tbody>

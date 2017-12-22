@@ -40,22 +40,7 @@ class MonthprizeAction extends Action {
 		}
 		$this->assign('optionflag',$optionflag);
 		$this->assign('type_s',$type_s);
-		/* //兑换码的类型
-		$type_arr = array(
-				'1' => '1-爱奇艺',
-				'2' => '2-腹肌',
-				'3' => '3-瘦腿',
-		);
-		$optiontype = '<option value=""></option>';
-		foreach($type_arr as $keyc => $valc) {
-			$optiontype .= '<option value="'.$keyc.'" ';
-			if($type_s==$keyc) { $optiontype .= ' selected="selected" '; }
-			$optiontype .= '>'.$valc.'</option>';
-		}
-		$this->assign('optiontype',$optiontype); */
 		
-		
-	
 		//数据库的初始化
 		$Model = new Model();
 	
@@ -70,6 +55,7 @@ class MonthprizeAction extends Action {
 						-> field($sql_field)
 						-> select();
 	
+		$list1[0]['picurl'] = hy_qiniuimgurl('duibao-basic',$list1[0]['picurl'],'150','50');
 		//释放内存
 		unset($sql_field, $sql_where, $sql_order);
 		
@@ -121,18 +107,6 @@ class MonthprizeAction extends Action {
 			}else {
 				$list[$keyc]['flag'] = 'ERR';
 			}
-		
-		
-		
-			/* if($list[$keyc]['type']=='1') {
-				$list[$keyc]['type'] = '1-爱奇艺';
-			}else if($list[$keyc]['type']=='2') {
-				$list[$keyc]['type'] = '2-腹肌';
-			}else if($list[$keyc]['type']=='3'){
-				$list[$keyc]['type'] = '3-瘦腿';
-			}else{
-				$list[$keyc]['type'] = 'ERR';
-			} */
 		
 		}
 		
@@ -221,7 +195,7 @@ class MonthprizeAction extends Action {
 		$upload = new UploadFile();// 实例化上传类
 		$upload->maxSize  = 20*1024*1024;// 设置附件上传大小
 		$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg','rar','pdf','txt','apk');//设置附件上传类型
-		$upload->savePath =  './Public/Uploads/libao/'.date('Y-m').'/';// 设置附件上传目录
+		$upload->savePath =  XMAINPATH.'Public/Uploads/libao/'.date('Y-m').'/';// 设置附件上传目录
 		
 		$upload->thumb = false;
 		$upload->thumbMaxHeight = '300';
@@ -235,22 +209,20 @@ class MonthprizeAction extends Action {
 		if($infof===true){
 			$info =  $upload->getUploadFileInfo();
 			$apkurl = $info[0]['savepath'].$info[0]['savename'];
-			$picurl = URL_APK.str_replace('./','/',$apkurl);
-			$data['picurl']      = $picurl;
+			
+			$r=upload_qiniu('duibao-basic',$apkurl,$info[0]['savename']);
+			
+			$data['picurl']      = $r;
 		}
 		
 		if($apkurl!=''){
 		
 			$data_sql = "select picurl from xb_config where flag='".$flag."'";
 			$data_list = $Model->query($data_sql);
-		
-			$filepath=$data_list[0]['picurl'];
-		
-			if(file_exists($filepath)){
-				unlink($filepath);
-			}
+			
+			//七牛云上图片删除
+			delete_qiniu('duibao-basic',$data_list[0]['picurl']);
 		}
-		
 		
 		$data['title1']     = $title1;
 		$data['shengming']  = $shengming;
@@ -296,19 +268,6 @@ class MonthprizeAction extends Action {
 			$optionflag .= '>'.$valc.'</option>';
 		}
 		$this->assign('optionflag',$optionflag);
-		
-		/* //兑换码类型
-		$type_arr = array(
-				'1' => '1-爱奇艺',
-				'2' => '2-腹肌',
-				'3' => '3-瘦腿',
-		);
-		$optiontype = '<option value=""></option>';
-		foreach($type_arr as $keyc => $valc) {
-			$optiontype .= '<option value="'.$keyc.'" ';
-			$optiontype .= '>'.$valc.'</option>';
-		}
-		$this->assign('optiontype',$optiontype); */
 		
 		// 输出模板
 		$this->display();

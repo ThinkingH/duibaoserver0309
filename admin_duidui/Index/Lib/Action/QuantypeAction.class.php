@@ -38,13 +38,8 @@ class QuantypeAction extends Action {
 				$sellist[$keys]['flag']='<font style="background-color:#FF1700">&nbsp;&nbsp;关闭&nbsp;&nbsp;</font>';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
-				
-			if(substr($sellist[$keys]['smallpic'],0,7)=='http://' || substr($sellist[$keys]['smallpic'],0,8)=='https://'){
+			$sellist[$keys]['smallpic'] = hy_qiniuimgurl('duibao-basic',$sellist[$keys]['smallpic'],'80','60');
 			
-			}else{
-				$sellist[$keys]['smallpic'] = $arr['duibao-basic'].$sellist[$keys]['smallpic'].'?imageView2/1/w/200/h/160/q/75|imageslim';
-			}
 		}
 					
 		$this -> assign('list',$sellist);
@@ -110,7 +105,6 @@ class QuantypeAction extends Action {
 			$flag_arr = array(
 					'9' => '关闭',
 					'1' => '启用',
-						
 			);
 			foreach($flag_arr as $keyc => $valc) {
 				$optionflag .= '<option value="'.$keyc.'" ';
@@ -180,17 +174,13 @@ class QuantypeAction extends Action {
 			//本地图片的删除
 			delfile($apkurl);
 			
-			
 			$data_sql = "select smallpic from xb_kind where kindtype='".$kindtype."'";
 			$data_list = $Model->query($data_sql);
 			
-			$bucket= 'duibao-basic';//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
-			$filename = $data_list[0]['smallpic'];
-			
-			delqiuniu($bucket,$filename);
+			//七牛云上图片删除
+			delete_qiniu('duibao-basic',$data_list[0]['smallpic']);
 			
 		}
-		
 		
 		$data['flag']          = $flag;
 		$data['kindname']      = $kindname;
@@ -272,6 +262,7 @@ class QuantypeAction extends Action {
 		$Model = new Model();
 		
 		$data['flag'] = $flag;
+		$data['biaoshi'] = '2';
 		$data['kindtype']  = $kindtype;
 		$data['kindname']  = $kindname;
 		$data['createtime'] = date('Y-m-d h:i:s');
@@ -300,7 +291,6 @@ class QuantypeAction extends Action {
 		$this->loginjudgeshow($this->lock_deletetypedata);
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		
-		
 		//拼接url参数
 		$yuurl = $this -> createurl($_GET);
 		$this -> assign('yuurl',$yuurl);
@@ -312,26 +302,18 @@ class QuantypeAction extends Action {
 		if($delete_submit!=''){
 		
 			if($kindtype==''){
-		
 				echo "<script>alert('非法操作！'); history.go(-1);</script>";
 				$this->error('非法操作！');
 			}
 		
-		
 			//数据库初始化
 			$Model = new Model();
-			
 		
-			//对应安装包的删除
 			$seldata_sql  = "select smallpic from xb_kind where kindtype='".$kindtype."'";
 			$seldata_list = $Model->query($seldata_sql);
-		
-			$filepath=$seldata_list[0]['smallpic'];
 			
-			$bucket= 'duibao-basic';//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
-			
-			$deldata = delqiuniu($bucket,$filepath);
-		
+			//七牛云上图片删除
+			delete_qiniu('duibao-basic',$seldata_list[0]['smallpic']);
 		
 			//说明此数据没有关联数据，可以删除
 			$ret = $Model -> table('xb_kind') -> where("kindtype='".$kindtype."'") -> delete();

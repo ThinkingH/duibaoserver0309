@@ -1,52 +1,38 @@
 <?php
 
-//正式七牛地址
-	/* $bucketarr = array(
-			'img-duibaoxinyouxingkong' => 'http://osv2nvwyw.bkt.clouddn.com/',
-			'duibao-basic'    => 'http://ot9nqx2pm.bkt.clouddn.com/',
-			'duibao-business' => 'http://ot9nz4ril.bkt.clouddn.com/',
-			'duibao-find'     => 'http://ot9ny2h5q.bkt.clouddn.com/',
-			'duibao-shop'     => 'http://ot9nwdfs7.bkt.clouddn.com/',
-			'duibao-user'     => 'http://ot9n52hqq.bkt.clouddn.com/',
-			
-	); */
-
-//测试版七牛地址
-$bucketarr = array(
-		'duibao-basic'    => 'http://ou040h90h.bkt.clouddn.com/',
-		'duibao-business' => 'http://ou04tbzs7.bkt.clouddn.com/',
-		'duibao-find'     => 'http://ou04n5703.bkt.clouddn.com/',
-		'duibao-shop'     => 'http://ou04vpu93.bkt.clouddn.com/',
-		'duibao-user'     => 'http://ou04zj06v.bkt.clouddn.com/',
-			
+	$bucketarr = array(
+		//本地不在存储图片，上传完毕后直接删除，严格要求不使用的图片必须删除(调用封装的七牛删除接口)
+		'duibao-basic'    => 'http://oymkhn027.bkt.clouddn.com/',  //基础公共图片存放，公共图片图标，循环展示图片，默认图片，抽奖小页面等公共静态资源图片
+		'duibao-user'     => 'http://oyojv7be2.bkt.clouddn.com/', //用户图片存放，头像，用户其他数据
+		'duibao-business' => 'http://oyojteo81.bkt.clouddn.com/',  //商家图片存放，如商家营业执照，认证扫描图片，合同等
+		'duibao-find'     => 'http://oyoj423p4.bkt.clouddn.com/', //发现图片存放，用户发布的发现数据内容图片
+		'duibao-shop'     => 'http://oyojvph72.bkt.clouddn.com/', //商城图片存放，各种商品图片
+		
 );
-	
-	
-	
-	
-	
+
 	
 	$bucketstr = serialize($bucketarr);
 	define('BUCKETSTR',$bucketstr);
 	
+	$bucketstr2 = json_encode($bucketarr);
+	define('QINIUBUCKETSTR',$bucketstr2);
+	
 	/* $arr = unserialize(BUCKETSTR);
 	echo $arr['duibao-business']; */
 	
+	//正式的七牛访问链接
+	define('QINIUURL','http://127.0.0.1:8001/hyqiniunew/init/');
 	
 	$path = dirname(__file__);
 	//echo $path;//D:\www\www2\admin_duidui﻿
 	
 	define('XMAINPATH',$path.'/');
 	
-	$picpath = dirname(dirname(__file__));
-	define('PICPATH',$picpath.'/');
-	//echo dirname(__file__);
-	
-	$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/dd_system';
+	$url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/dd_system_old';
 	define('XMAINURL',$url);
 	
 	//自定义session前缀，主要用于系统区分
-	define('HYSESSQZ','dd_');
+	define('HYSESSQZ','duibaoold_');
 	
 	//定义平台名称
 	define('HY_SYSTEM_NAME','兑宝后台系统');
@@ -64,7 +50,7 @@ $bucketarr = array(
 	define('APP_DEBUG',true);
 	
 	//apk存放地址链接http://120.27.34.239:8009/dd_system/Public/Uploads/apk/
-	define('URL_APK','http://xbapp.xinyouxingkong.com/dd_system');
+	define('URL_APK','http://xbapp.xinyouxingkong.com/dd_system_old');
 	
 	
 	

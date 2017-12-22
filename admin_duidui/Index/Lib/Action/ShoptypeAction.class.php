@@ -9,125 +9,11 @@ class ShoptypeAction extends Action{
 	private $lock_updateshow    = '975';
 	private $lock_addshow       = '975';
 	private $lock_adddata       = '975';
-	private $lock_deletedata    = '97';
+	private $lock_deletedata    = '975';
 	private $lock_madddata      = '975';
 	private $lock_maintype      = '975';
 	
-	public function index() {
 	
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//判断用户是否登陆
-		$this->loginjudgeshow($this->lock_index);
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-	
-		//拼接url参数
-		$yuurl = $this -> createurl($_GET);
-		$this -> assign('yuurl',$yuurl);
-
-		//接收用户选择的查询参数
-		$xushi   = $this->_get('xushi');
-		$type    = $this->_get('type');
-		$name    = $this->_get('name');
-	
-		$this-> assign('name',$name);
-	
-		$optionxushi = '<option value=""></option>';
-		$optionxushi .= '<option value="1" ';
-		if($xushi==1) { $optionxushi .= ' selected="selected" '; }
-		$optionxushi .= '>1-虚拟商品</option>';
-		$optionxushi .= '<option value="2" ';
-		if($xushi==9) { $optionxushi .= ' selected="selected" '; }
-		$optionxushi .= '>2-实物商品</option>';
-		$this -> assign('optionxushi',$optionxushi);
-		
-		
-		$Model = new Model();
-		
-		//商品的类型
-		$typearr = array();
-		$sql_type = "select typeid,name,flag from shop_config where flag=1 order by typeid asc";
-		$list_type = $Model->query($sql_type);
-		
-		foreach ($list_type as $keyc=>$valc){
-			
-			$typearr[$list_type[$keyc]['typeid']] = $list_type[$keyc]['typeid'].'--'.$list_type[$keyc]['name'];
-			
-		}
-		
-		
-		$optiontype = '<option value=""></option>';
-		foreach($list_type as $val) {
-			$optiontype .= '<option value="'.$val['typeid'].'"';
-			if($val['typeid']==$type) {
-				$optiontype .= ' selected="selected" ';
-			}
-			$optiontype .= '>'.$val['typeid'].'--'.$val['name'].'</option>';
-		}
-		$this -> assign('optiontype',$optiontype);
-	
-	
-		//-----------------------------------------------------------
-		//生成where条件判断字符串
-		$sql_where = '';
-		if($type!='') {
-			$sql_where .= " type='".$type."' and ";
-		}
-		
-		if($xushi!='') {
-			$sql_where .= " xushi='".$xushi."' and ";
-		}
-		if($name!='') {
-			$sql_where .= " name like'".$name."%' and ";
-		}
-		$sql_where = rtrim($sql_where,'and ');
-		//-----------------------------------------------------------
-	
-		//生成排序字符串数据
-		$sql_order = " id asc ";
-	
-	
-		import('ORG.Page');// 导入分页类
-		$count = $Model -> table('shop_type')
-						-> where($sql_where)
-						-> count();// 查询满足要求的总记录数
-		$Page = new Page($count,50);// 实例化分页类 传入总记录数和每页显示的记录数
-		$show = $Page->show();// 分页显示输出
-		// 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-		$this->assign('page',$show);// 赋值分页输出
-	
-		//执行SQL查询语句
-		$list  = $Model -> table('shop_type')
-						-> where($sql_where)
-						-> order($sql_order)
-						-> limit($Page->firstRow.','.$Page->listRows)
-						-> select();
-	
-		//释放内存
-		unset($sql_field, $sql_where, $sql_order);
-		//---------------------------------------------------------------
-	
-		foreach($list as $keyc => $valc) {
-			
-			$list[$keyc]['type'] = $typearr[$list[$keyc]['type']];//商品类型
-				
-				
-			if($list[$keyc]['xushi']=='1') {
-				$list[$keyc]['xushi'] = '虚拟';
-			}else if($list[$keyc]['xushi']=='2') {
-				$list[$keyc]['xushi'] = '实物';
-			}else {
-				$list[$keyc]['flag'] = 'ERR';
-			}
-			
-		}
-		$this -> assign('list',$list);
-	
-		// 输出模板
-		$this->display();
-	
-		printf(' memory usage: %01.2f MB', memory_get_usage()/1024/1024);
-	
-	}
 	public function maintype() {
 	
 		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -202,7 +88,6 @@ class ShoptypeAction extends Action{
 						-> order($sql_order)
 						-> limit($Page->firstRow.','.$Page->listRows)
 						-> select();
-	
 		//释放内存
 		unset($sql_field, $sql_where, $sql_order);
 		//---------------------------------------------------------------
@@ -214,7 +99,9 @@ class ShoptypeAction extends Action{
 				$list[$keys]['flag']='关闭';
 			}
 			
+			$list[$keys]['picurl']=hy_qiniuimgurl('duibao-shop',$list[$keys]['picurl'],'50','50');
 		}
+		
 		$this -> assign('list',$list);
 	
 		// 输出模板
@@ -267,7 +154,7 @@ class ShoptypeAction extends Action{
 			$upload = new UploadFile();// 实例化上传类
 			$upload->maxSize  = 20*1024*1024;// 设置附件上传大小
 			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg','rar','pdf','txt','apk');//设置附件上传类型
-			$upload->savePath =  './Public/Uploads/lunbotu/'.date('Y-m').'/';// 设置附件上传目录
+			$upload->savePath = XMAINPATH.'Public/Uploads/lunbotu/'.date('Y-m').'/';// 设置附件上传目录
 			
 			$upload->thumb = false;
 			$upload->thumbMaxHeight = '300';
@@ -282,15 +169,26 @@ class ShoptypeAction extends Action{
 			}else{                                              // 上传成功 获取上传文件信息
 				$info =  $upload->getUploadFileInfo();
 			}
-			//轮播图的链接
-			$picurl = URL_APK.str_replace('./','/',$info[0]['savepath'].$info[0]['savename']);
 			
+			$pathurl  = $info[0]['savepath'].$info[0]['savename'];
+			$savename = $info[0]['savename'];//图片名称
+			
+			$r=upload_qiniu('duibao-shop',$pathurl,$savename);
 			
 			$data=array();
+			
+			if($r){
+				$data['picurl']  = $r;
+			}else{
+				$data['picurl']  = '';
+			}
+			
+			//本地文件的删除
+			delfile($pathurl);
+			
 			$data['flag']      =$flag;
 			$data['typeid']    = $typeid;
 			$data['name']      = $name;
-			$data['picurl']    = $picurl;
 				
 			$Model = new Model();
 				
@@ -313,67 +211,10 @@ class ShoptypeAction extends Action{
 					echo "<script>alert('数据添加失败，系统错误!');history.go(-1);</script>";
 					$this -> error('数据添加失败，系统错误!');
 				}
-		
 			}
-				
-				
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//修改页面
-	public function updateshow(){
-		
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//判断用户是否登陆
-		$this->loginjudgeshow($this->lock_updateshow);
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		
-		//拼接url参数
-		$yuurl = $this -> createurl($_GET);
-		$this -> assign('yuurl',$yuurl);
-		
-		//获取参数
-		$id = $this->_post('id');
-		$update = $this->_post('update_submit');
-		
-		$Model = new Model();
-		
-		if($update==''){
-			echo "<script>alert('非法操作！');history.go(-1);</script>";
-			$this->error('非法操作！');
-			
-		}else {
-			if($id==''){
-				echo "<script>alert('非法操作！');history.go(-1);</script>";
-				$this->error('非法操作！');
-				
-			}
-			
-			$shoptypesql  = "select * from shop_type where id='".$id."'";
-			$shoptypelist = $Model->query($shoptypesql);
-			
-			
-			$this -> assign('list',$shoptypelist);
-			
-			// 输出模板
-			$this->display();
-			
-			printf(' memory usage: %01.2f MB', memory_get_usage()/1024/1024);
-			
-			
-		}
-		
-	}
-	
 	
 
 	//数据的删除呢
@@ -404,31 +245,22 @@ class ShoptypeAction extends Action{
 			//数据库初始化
 			$Model = new Model();
 			
-			if($type=='1'){
-				
-				//说明此数据没有关联数据，可以删除
-				$ret = $Model -> table('shop_type') -> where("id='".$id."'") -> delete();
-				
-				if($ret) {
-					echo "<script>alert('数据删除成功！');window.location.href='".__APP__."/Shoptype/index".$yuurl."';</script>";
-					$this -> success('数据删除成功!','__APP__/Shoptype/index'.$yuurl);
-				}else {
-					echo "<script>alert('数据删除失败，系统错误!');history.go(-1);</script>";
-					$this -> error('数据删除失败，系统错误!');
-				}
-				
-			}else if($type=='2'){
-				
-				//说明此数据没有关联数据，可以删除
-				$ret = $Model -> table('shop_config') -> where("typeid='".$id."'") -> delete();
-				
-				if($ret) {
-					echo "<script>alert('数据删除成功！');window.location.href='".__APP__."/Shoptype/maintype".$yuurl."';</script>";
-					$this -> success('数据删除成功!','__APP__/Shoptype/maintype'.$yuurl);
-				}else {
-					echo "<script>alert('数据删除失败，系统错误!');history.go(-1);</script>";
-					$this -> error('数据删除失败，系统错误!');
-				}
+			//对应安装包的删除
+			$seldata_sql  = "select img from shop_config where typeid='".$id."'";
+			$seldata_list = $Model->query($seldata_sql);
+			
+			//七牛云上图片删除
+			delete_qiniu('duibao-shop',$seldata_list[0]['img']);
+			
+			//说明此数据没有关联数据，可以删除
+			$ret = $Model -> table('shop_config') -> where("typeid='".$id."'") -> delete();
+			
+			if($ret) {
+				echo "<script>alert('数据删除成功！');window.location.href='".__APP__."/Shoptype/maintype".$yuurl."';</script>";
+				$this -> success('数据删除成功!','__APP__/Shoptype/maintype'.$yuurl);
+			}else {
+				echo "<script>alert('数据删除失败，系统错误!');history.go(-1);</script>";
+				$this -> error('数据删除失败，系统错误!');
 			}
 			
 		}
@@ -544,7 +376,7 @@ class ShoptypeAction extends Action{
 				$ret = $Model -> table('shop_type') -> add($data);
 					
 				if($ret) {
-					echo "<script>alert('数据添加成功！');window.location.href='".__APP__."/Shoptype/index".$yuurl."';</script>";
+					echo "<script>alert('数据添加成功jjjj！');window.location.href='".__APP__."/Shoptype/index".$yuurl."';</script>";
 					$this -> success('数据添加成功!','__APP__/Shoptype/index'.$yuurl);
 				}else {
 					echo "<script>alert('数据添加失败，系统错误!');history.go(-1);</script>";
@@ -555,18 +387,7 @@ class ShoptypeAction extends Action{
 			
 			
 		}
-		
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

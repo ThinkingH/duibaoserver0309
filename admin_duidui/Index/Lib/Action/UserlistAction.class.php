@@ -36,14 +36,9 @@ class UserlistAction extends Action{
 		$flag_s          = $this->_get('flag_s');
 		$nickname        = $this->_get('nickname');
 		$sex             = $this->_get('sex');
-		$birthdate_s     = $this->_get('birthdate_s');
-		$birthdate_e     = $this->_get('birthdate_e');
-		$qq             = $this->_get('qq');
-		$weixin         = $this->_get('weixin');
 		$date_s         = $this->_get('date_s');
 		$date_e         = $this->_get('date_e');
-		$phonetype      = $this->_get('phonetype');
-		$userlevel      = $this->_get('userlevel');
+		$bianhao      = $this->_get('bianhao');
 		
 		
 		//是否启用
@@ -87,14 +82,10 @@ class UserlistAction extends Action{
 		$this->assign('optionphonetype',$optionphonetype);
 		$this->assign('nickname',$nickname);
 		$this->assign('optionsex',$optionsex);
-		$this->assign('birthdate_s',$birthdate_s);
-		$this->assign('birthdate_e',$birthdate_e);
 		
-		$this->assign('qq',$qq);
-		$this->assign('weixin',$weixin);
 		$this->assign('date_s',$date_s);
 		$this->assign('date_e',$date_e);
-		$this->assign('userlevel',$userlevel);
+		$this->assign('bianhao',$bianhao);
 		
 		$Model = new Model();
 		
@@ -118,20 +109,8 @@ class UserlistAction extends Action{
 			$sql_where .= " sex='".$sex."' and ";
 		}
 		
-		if($birthdate_s!='') {
-			$sql_where .= " birthday>='".$birthdate_s."' and ";
-		}
-		
-		if($birthdate_e!='') {
-			$sql_where .= " birthday<='".$birthdate_e."' and ";
-		}
-		
-		if($qq!='') {
-			$sql_where .= " qq='".$qq."' and ";
-		}
-		
-		if($weixin!='') {
-			$sql_where .= " weixin='".$weixin."' and ";
+		if($bianhao!='') {
+			$sql_where .= " id='".$bianhao."' and ";
 		}
 		
 		if($date_s!='') {
@@ -140,14 +119,6 @@ class UserlistAction extends Action{
 		
 		if($date_e!='') {
 			$sql_where .= " create_datetime<='".$date_e."' and ";
-		}
-		
-		if($phonetype!='') {
-			$sql_where .= " phonetype='".$phonetype."' and ";
-		}
-		
-		if($userlevel!='') {
-			$sql_where .= " userlevel='".$userlevel."' and ";
 		}
 		
 		
@@ -189,7 +160,7 @@ class UserlistAction extends Action{
 			}else {
 				$list[$keyc]['is_lock'] = 'ERR';
 			}
-				
+			
 			if($list[$keyc]['sex']=='1') {
 				$list[$keyc]['sex'] = '男';
 			}else if($list[$keyc]['sex']=='2') {
@@ -207,12 +178,34 @@ class UserlistAction extends Action{
 			}else {
 		
 			}
-				
-				
+			
+			if($list[$keyc]['vipflag']=='10') {
+				$list[$keyc]['vipflag'] = '普通用户';
+			}else if($list[$keyc]['vipflag']=='1') {
+				$list[$keyc]['vipflag'] = '会员用户';
+			}
+			
+			if($list[$keyc]['logintime']!='0'){
+				$list[$keyc]['logintime'] = date('Y-m-d H:i:s',$list[$keyc]['logintime']);
+			}
+			
+			if('0000-00-00 00:00:00' == $list[$keyc]['vip_endtime_one']){
+				$list[$keyc]['day']='0';
+			}else{
+				$list[$keyc]['day'] = ceil(((strtotime($list[$keyc]['vip_endtime_one']) - time() )/86400));//会员天数
+				if($list[$keyc]['day']<=0){
+					$list[$keyc]['day']='0';
+				}
+			}
+			
+			
+			if($list[$keyc]['vip_endtime_one']<=date('Y-m-d H:i:s') && $list[$keyc]['vip_endtime_one']!='0000-00-00 00:00:00') {
+				$list[$keyc]['vip_endtime_one'] = '<font style="background-color:#FF1700">&nbsp;'.$list[$keyc]['vip_endtime_one'].'&nbsp;</font>';
+			}
+			
 			$list[$keyc]['keyong_money']   = $list[$keyc]['keyong_money']/100;
 			$list[$keyc]['dongjie_money']  = $list[$keyc]['dongjie_money']/100;
 				
-			
 		}
 		
 		$this -> assign('list',$list);

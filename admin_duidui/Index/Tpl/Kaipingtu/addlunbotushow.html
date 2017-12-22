@@ -22,13 +22,10 @@ function submitForm(){$('#frmDemo').submit();}
 $("document").ready(function(){
 	//数据添加确认
 	$("#add_submit").click(function() {
-		
 		var tzurl= $("#tzurl").val();
-		
 		if(tzurl==''){
 			alert('链接地址不能为空！');
 		}
-		
 		
 		if(confirm("您确认要添加数据吗？")) {
 			//alert('ok');
@@ -37,8 +34,6 @@ $("document").ready(function(){
 		}
 		
 	});
-	
-	
 	
 });
 

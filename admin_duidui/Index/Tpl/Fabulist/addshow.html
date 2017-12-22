@@ -80,7 +80,6 @@ $("document").ready(function(){
 		<td width="200" align="right">优惠券截止时间:</td>
 		<td>
 			<input type="text" size="12" maxlength="10" name="date_s" value="{$date_s}" onclick="WdatePicker()" />
-			<input type="text" size="10" maxlength="10" name="data_e" value="00:00:00">
 		</td>
 	</tr>
 	
@@ -115,13 +114,6 @@ $("document").ready(function(){
 	</tr>
 	
 	<tr>
-		<td width="200" align="right">描述说明:</td>
-		<td>
-			<textarea  name="content" rows="5" cols="60"></textarea>
-		</td>
-	</tr>
-	
-	<tr>
 		<td width="200" align="right">发布图片:</td>
 		<td>
 			<input type='file' name='picurl' id='picurl'>
@@ -139,13 +131,6 @@ $("document").ready(function(){
 		<td width="200" align="right">现价(元):</td>
 		<td>
 			<input type="text" name="nowprice" id="nowprice" size="30" maxlength="30">
-		</td>
-	</tr>
-	
-	<tr>
-		<td width="200" align="right">已领取人数:</td>
-		<td>
-			<input type="text" name="yilingcon" id="yilingcon" size="30" maxlength="30">
 		</td>
 	</tr>
 	
@@ -167,6 +152,13 @@ $("document").ready(function(){
 		<td width="200" align="right">经度:</td>
 		<td>
 			<input type="text" name="lng" id="lng" size="60" maxlength="60">
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">备注:</td>
+		<td>
+			<textarea  name="content" rows="5" cols="60"></textarea>
 		</td>
 	</tr>
 	

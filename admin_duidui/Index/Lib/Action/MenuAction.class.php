@@ -39,25 +39,19 @@ class MenuAction extends Action {
 								array('f', '用户在线状态' ,    '/Taskrelease/userstate' , ),
 						),
 				),
-				array(
-						'murl_name' => '数据处理工具',
-						'curl_name' => array(
-								
-						),
-				),
 				
 				
 				array(
 						'murl_name' => '配置信息',
 						'curl_name' => array(
-								
-								array('f', '产品信息管理' ,    '/Codelist/index' , ),
-								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
-								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
-								array('f', '首页轮播图' ,        '/Lunbotu/index' , ),
-								array('f', '开屏引导图' ,        '/Kaipingtu/index' , ),
+								array('f', '版本信息管理' ,       '/Versionlist/index' , ),
+								array('f', '首页类型管理' ,        '/Lunbotu/index' , ),
+								array('f', '首页分类管理' ,        '/Maintype/index', ),
+								array('f', '引导图管理' ,        '/Kaipingtu/index' , ),
+								array('f', '特供好货' ,        '/Quantype/index', ),
 								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
-								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
+								array('f', '每月礼包管理' ,        '/Monthprize/index', ),
+								array('f', 'Push推送' ,        '/Push/index', ),
 						),
 				),
 				array(
@@ -70,12 +64,9 @@ class MenuAction extends Action {
 				),
 				
 				array(
-						'murl_name' => '广告管理',
+						'murl_name' => '附近管理',
 						'curl_name' => array(
-								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
-								array('f', '广告上传管理' ,        '/Adverlist/index', ),
-								array('f', '模块广告管理' ,        '/Guanggao/index', ),
-								array('f', '发布审核管理' ,        '/Fabulist/index', ),
+								array('f', '附近审核管理' ,        '/Fabulist/index', ),
 								
 						),
 				),
@@ -83,81 +74,54 @@ class MenuAction extends Action {
 				
 				
 				array(
-						'murl_name' => '优惠券管理',
+						'murl_name' => '优惠信息管理',
 						'curl_name' => array(
-								array('f', '首页类型管理' ,        '/Maintype/index', ),
-								array('f', '首页数据管理' ,        '/Firsttype/index', ),
-								array('f', '优惠券类型管理' ,        '/Quantype/index', ),
-								array('f', '优惠券信息管理' ,        '/Youhuiquan/index', ),
+								
+								array('f', '热门饭票管理' ,        '/Youhuiquan/index', ),
 						),
 				),
 				
-				/* array(
-						'murl_name' => '兑宝配置信息',
+				array(
+						'murl_name' => '商户信息管理',
 						'curl_name' => array(
-								array('f', '产品信息管理' ,    '/Codelist/index' , ),
-								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
-								array('f', '正式用户信息' ,        '/Userlist/normaluser' , ),
-								array('f', '临时用户信息' ,        '/Userlist/tempuser' , ),
-								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
-								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
-								array('f', '参数信息管理' ,        '/Lunbotu/configshow', ),
-								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
-								array('f', '优惠券信息管理' ,        '/Youhuiquan/index', ),
-								array('f', '优惠券类型管理' ,        '/Quantype/index', ),
-								array('f', '首页分类数据管理' ,        '/Firsttype/index', ),
-								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
-								array('f', '首页类型管理' ,        '/Maintype/index', ),
-								array('f', '广告上传管理' ,        '/Adverlist/index', ),
-								array('f', '发布审核管理' ,        '/Fabulist/index', ),
 								
+								array('f', '商户开户管理' ,    '/Shanghu/index' , ),
+							/* 	array('f', '商户店铺管理' ,    '/Shanghu/store' , ), */
 						),
-				), */
+				),
 				
 				array(
 						'murl_name' => '商城配置信息',
 						'curl_name' => array(
-								array('f', '商户开户管理' ,    '/Shanghu/index' , ),
-								array('f', '商户店铺管理' ,    '/Shanghu/store' , ),
-								array('f', '商品类型管理' ,    '/Shoptype/maintype' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城轮播图' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城类型' ,    '/Shoptype/maintype' , ),
+								array('f', '商品类型' ,    '/Goodscategory/goodstype' , ),
+								array('f', '商品分类' ,    '/Goodscategory/addcategory' , ),//categorylist
+								array('f', '商品属性' ,    '/Goodscategory/attributelist' , ),
+								array('f', '商品列表' ,    '/Shopadd/index' , ),
+								
 								
 				
 						),
 				),
 				
 				array(
-						'murl_name' => '商城数据的查询',
+						'murl_name' => '商城订单查询',
 						'curl_name' => array(
 								array('f', '订单数据查询' ,    '/Orderlist/index' , ),
 								array('f', '商品评价查询' ,    '/Orderlist/pingjia' , ),
-								array('f', '兑换订单查询' ,    '/Orderlist/dealorder' , ),
+								array('f', '虚拟订单查询' ,    '/Orderlist/dealorder' , ),
+								array('f', '实物订单查询' ,    '/Orderlist/shiwuorder' , ),
 								
 				
 						),
+						
 				),
 				
-				 array(
-						'murl_name' => '商品分类管理',
-						'curl_name' => array(
-								array('f', '商品分类' ,    '/Goodscategory/categorylist' , ),//categorylist
-								array('f', '商品属性' ,    '/Goodscategory/attributelist' , ),
-								array('f', '商品规格' ,    '/Shoptype/index' , ),
-								array('f', '商品列表' ,    '/Goodlist/index' , ),
-								
-				
-						),
-				), 
 				
 				array(
 						'murl_name' => '数据查询',
 						'curl_name' => array(
-								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
-								//array('f', '商城商品查询' ,   '/Productlist/shopgoods' , ),
-								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
-								/* array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ), */
 								array('f', '积分变动记录' ,          '/Scoredata/scorechang' , ),
 								array('f', '正常用户信息推送' ,   '/Scoredata/usertuisong' , ),
 								array('f', '临时用户信息推送' ,   '/Scoredata/tempusertuisong' , ),
@@ -183,8 +147,20 @@ class MenuAction extends Action {
 								array('t', '退出系统'    ,  '/Login/logout' , ),
 						),
 				),
+				
+				array(
+						'murl_name' => '不在使用模块',
+						'curl_name' => array(
+								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
+								array('f', '广告上传管理' ,        '/Adverlist/index', ),
+								array('f', '模块广告管理' ,        '/Guanggao/index', ),
+								array('f', '产品信息管理' ,    '/Codelist/index' , ),
+								array('f', '首页数据管理' ,        '/Firsttype/index', ),
+								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
+								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
+						),
+				),
 		);
-		
 		
 		//----------------------------------------------------------------------------------------------------
 		$urlarr7 = array(
@@ -195,23 +171,19 @@ class MenuAction extends Action {
 								array('f', '用户在线状态' ,    '/Taskrelease/userstate' , ),
 						),
 				),
-				array(
-						'murl_name' => '数据处理工具',
-						'curl_name' => array(
-								
-						),
-				),
+				
+				
 				array(
 						'murl_name' => '配置信息',
 						'curl_name' => array(
-								
-								array('f', '产品信息管理' ,    '/Codelist/index' , ),
-								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
-								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
-								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
-								array('f', '开屏引导图' ,        '/Kaipingtu/index' , ),
+								array('f', '版本信息管理' ,       '/Versionlist/index' , ),
+								array('f', '首页类型管理' ,        '/Lunbotu/index' , ),
+								array('f', '首页分类管理' ,        '/Maintype/index', ),
+								array('f', '引导图管理' ,        '/Kaipingtu/index' , ),
+								array('f', '特供好货' ,        '/Quantype/index', ),
 								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
-								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
+								array('f', '每月礼包管理' ,        '/Monthprize/index', ),
+								array('f', 'Push推送' ,        '/Push/index', ),
 						),
 				),
 				array(
@@ -224,12 +196,9 @@ class MenuAction extends Action {
 				),
 				
 				array(
-						'murl_name' => '广告管理',
+						'murl_name' => '附近管理',
 						'curl_name' => array(
-								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
-								array('f', '广告上传管理' ,        '/Adverlist/index', ),
-								array('f', '模块广告管理' ,        '/Guanggao/index', ),
-								array('f', '发布审核管理' ,        '/Fabulist/index', ),
+								array('f', '附近审核管理' ,        '/Fabulist/index', ),
 								
 						),
 				),
@@ -237,58 +206,54 @@ class MenuAction extends Action {
 				
 				
 				array(
-						'murl_name' => '优惠券管理',
+						'murl_name' => '优惠信息管理',
 						'curl_name' => array(
-								array('f', '首页类型管理' ,        '/Maintype/index', ),
-								array('f', '首页数据管理' ,        '/Firsttype/index', ),
-								array('f', '优惠券类型管理' ,        '/Quantype/index', ),
-								array('f', '优惠券信息管理' ,        '/Youhuiquan/index', ),
+								
+								array('f', '热门饭票管理' ,        '/Youhuiquan/index', ),
 						),
 				),
 				
-				/* array(
-						'murl_name' => '商城配置信息',
-						'curl_name' => array(
-								array('f', '渠道信息管理' ,    '/Basicsite/index' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
-						),
-				), */
-				
-				
 				array(
-						'murl_name' => '商城配置信息',
+						'murl_name' => '商户信息管理',
 						'curl_name' => array(
+								
 								array('f', '商户开户管理' ,    '/Shanghu/index' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
+							/* 	array('f', '商户店铺管理' ,    '/Shanghu/store' , ), */
+						),
+				),
 				
+				array(
+						'murl_name' => '商城配置信息',
+						'curl_name' => array(
+								array('f', '商城轮播图' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城类型' ,    '/Shoptype/maintype' , ),
+								array('f', '商品类型' ,    '/Goodscategory/goodstype' , ),
+								array('f', '商品分类' ,    '/Goodscategory/addcategory' , ),//categorylist
+								array('f', '商品属性' ,    '/Goodscategory/attributelist' , ),
+								array('f', '商品列表' ,    '/Shopadd/index' , ),
+								
+								
 				
 						),
 				),
 				
 				array(
-						'murl_name' => '商城数据的查询',
+						'murl_name' => '商城订单查询',
 						'curl_name' => array(
 								array('f', '订单数据查询' ,    '/Orderlist/index' , ),
 								array('f', '商品评价查询' ,    '/Orderlist/pingjia' , ),
-								array('f', '兑换订单查询' ,    '/Orderlist/dealorder' , ),
-				
+								array('f', '虚拟订单查询' ,    '/Orderlist/dealorder' , ),
+								array('f', '实物订单查询' ,    '/Orderlist/shiwuorder' , ),
+								
 				
 						),
+						
 				),
-				
 				
 				
 				array(
 						'murl_name' => '数据查询',
 						'curl_name' => array(
-								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
-								array('f', '商城商品查询' ,   '/Productlist/shopgoods' , ),
-								array('f', '----------------' ),
-								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
 								array('f', '积分变动记录' ,          '/Scoredata/scorechang' , ),
 								array('f', '正常用户信息推送' ,   '/Scoredata/usertuisong' , ),
 								array('f', '临时用户信息推送' ,   '/Scoredata/tempusertuisong' , ),
@@ -297,15 +262,7 @@ class MenuAction extends Action {
 								
 						),
 				),
-				array(
-						'murl_name' => '系统管理',
-						'curl_name' => array(
-								array('f', '编辑操作用户' ,   '/Root/editoruser' , ),
-								array('f', '用户操作日志记录' , '/Root/caozuo_log' , ),
-								array('f', '管理员操作文档' ,  '/Root/roottext' , ),
-								array('f', '管理公告修改' ,   '/Root/gonggao' , ),
-						),
-				),
+				
 				array(
 						'murl_name' => '用户操作',
 						'curl_name' => array(
@@ -315,6 +272,18 @@ class MenuAction extends Action {
 						),
 				),
 				
+				array(
+						'murl_name' => '不在使用模块',
+						'curl_name' => array(
+								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
+								array('f', '广告上传管理' ,        '/Adverlist/index', ),
+								array('f', '模块广告管理' ,        '/Guanggao/index', ),
+								array('f', '产品信息管理' ,    '/Codelist/index' , ),
+								array('f', '首页数据管理' ,        '/Firsttype/index', ),
+								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
+								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
+						),
+				),
 		);
 		
 		
@@ -327,22 +296,16 @@ class MenuAction extends Action {
 								array('f', '用户在线状态' ,    '/Taskrelease/userstate' , ),
 						),
 				),
-				array(
-						'murl_name' => '数据处理工具',
-						'curl_name' => array(
-								
-						),
-				),
+				
+				
 				array(
 						'murl_name' => '配置信息',
 						'curl_name' => array(
-								
-								array('f', '产品信息管理' ,    '/Codelist/index' , ),
-								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
-								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
-								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
-								array('f', '开屏引导图' ,        '/Kaipingtu/index' , ),
-								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
+								array('f', '版本信息管理' ,       '/Versionlist/index' , ),
+								array('f', '首页类型管理' ,        '/Lunbotu/index' , ),
+								array('f', '首页分类管理' ,        '/Maintype/index', ),
+								array('f', '引导图管理' ,        '/Kaipingtu/index' , ),
+								array('f', '特供好货' ,        '/Quantype/index', ),
 								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
 						),
 				),
@@ -356,11 +319,8 @@ class MenuAction extends Action {
 				),
 				
 				array(
-						'murl_name' => '广告管理',
+						'murl_name' => '附近管理',
 						'curl_name' => array(
-								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
-								array('f', '广告上传管理' ,        '/Adverlist/index', ),
-								array('f', '模块广告管理' ,        '/Guanggao/index', ),
 								array('f', '发布审核管理' ,        '/Fabulist/index', ),
 								
 						),
@@ -369,70 +329,62 @@ class MenuAction extends Action {
 				
 				
 				array(
-						'murl_name' => '优惠券管理',
+						'murl_name' => '优惠信息管理',
 						'curl_name' => array(
-								array('f', '首页类型管理' ,        '/Maintype/index', ),
-								array('f', '首页数据管理' ,        '/Firsttype/index', ),
-								array('f', '优惠券类型管理' ,        '/Quantype/index', ),
-								array('f', '优惠券信息管理' ,        '/Youhuiquan/index', ),
+								
+								array('f', '热门饭票管理' ,        '/Youhuiquan/index', ),
 						),
 				),
-				/* array(
-						'murl_name' => '商城配置信息',
-						'curl_name' => array(
-								array('f', '渠道信息管理' ,    '/Basicsite/index' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
-						),
-				), */
 				
 				array(
-						'murl_name' => '商城配置信息',
+						'murl_name' => '商户信息管理',
 						'curl_name' => array(
+								
 								array('f', '商户开户管理' ,    '/Shanghu/index' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
+								array('f', '商户店铺管理' ,    '/Shanghu/store' , ),
+						),
+				),
 				
+				array(
+						'murl_name' => '商城配置信息',
+						'curl_name' => array(
+								array('f', '商城轮播图' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城类型' ,    '/Shoptype/maintype' , ),
+								array('f', '商品类型' ,    '/Goodscategory/goodstype' , ),
+								array('f', '商品分类' ,    '/Goodscategory/addcategory' , ),//categorylist
+								array('f', '商品属性' ,    '/Goodscategory/attributelist' , ),
+								array('f', '商品列表' ,    '/Shopadd/index' , ),
+								
+								
 				
 						),
 				),
 				
 				array(
-						'murl_name' => '商城数据的查询',
+						'murl_name' => '商城订单查询',
 						'curl_name' => array(
 								array('f', '订单数据查询' ,    '/Orderlist/index' , ),
 								array('f', '商品评价查询' ,    '/Orderlist/pingjia' , ),
 								array('f', '兑换订单查询' ,    '/Orderlist/dealorder' , ),
-				
+								array('f', '实物订单发货' ,    '/Orderlist/shiwuorder' , ),
+								
 				
 						),
 				),
+				
 				
 				array(
 						'murl_name' => '数据查询',
 						'curl_name' => array(
-								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
-								array('f', '商城商品查询' ,   '/Productlist/shopgoods' , ),
-								array('f', '----------------' ),
-								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
 								array('f', '积分变动记录' ,          '/Scoredata/scorechang' , ),
 								array('f', '正常用户信息推送' ,   '/Scoredata/usertuisong' , ),
 								array('f', '临时用户信息推送' ,   '/Scoredata/tempusertuisong' , ),
 								array('f', '用户意见反馈' ,        '/Suggest/index' , ),
+								array('f', '验证码发送' ,            '/Scoredata/codedata' , ),
 								
 						),
 				),
-				array(
-						'murl_name' => '系统管理',
-						'curl_name' => array(
-								array('f', '编辑操作用户' ,   '/Root/editoruser' , ),
-								array('f', '用户操作日志记录' , '/Root/caozuo_log' , ),
-								array('f', '管理员操作文档' ,  '/Root/roottext' , ),
-								array('f', '管理公告修改' ,   '/Root/gonggao' , ),
-						),
-				),
+				
 				array(
 						'murl_name' => '用户操作',
 						'curl_name' => array(
@@ -467,61 +419,29 @@ class MenuAction extends Action {
 		
 		//----------------------------------------------------------------------------------------------------
 		$urlarr1 = array(
-
+				
 				array(
 						'murl_name' => '用户状态',
 						'curl_name' => array(
 								array('f', '用户在线状态' ,    '/Taskrelease/userstate' , ),
 						),
 				),
-				array(
-						'murl_name' => '数据处理工具',
-						'curl_name' => array(
-								
-						),
-				),
 				
-				
-				array(
-						'murl_name' => '配置信息',
-						'curl_name' => array(
-				
-								array('f', '产品信息管理' ,    '/Codelist/index' , ),
-								array('f', '版本信息管理' ,    '/Versionlist/index' , ),
-								/* array('f', '参数信息管理' ,        '/Lunbotu/configshow', ), */
-								array('f', '轮播图的上传' ,        '/Lunbotu/index' , ),
-								array('f', '兑换码信息管理' ,        '/Duihuanma/index', ),
-								array('f', '每月礼包说明' ,        '/Monthprize/index', ),
-						),
-				),
 				array(
 						'murl_name' => '用户管理',
 						'curl_name' => array(
-				
+								
 								array('f', '正式用户信息' ,        '/Userlist/normaluser' , ),
 								array('f', '临时用户信息' ,        '/Userlist/tempuser' , ),
 						),
 				),
 				
-				array(
-						'murl_name' => '广告管理',
-						'curl_name' => array(
-								array('f', '任务列表信息' ,        '/Tasklist/index' , ),
-								array('f', '广告上传管理' ,        '/Adverlist/index', ),
-								array('f', '发布审核管理' ,        '/Fabulist/index', ),
-				
-						),
-				),
-				
-				
 				
 				array(
-						'murl_name' => '优惠券管理',
+						'murl_name' => '优惠信息管理',
 						'curl_name' => array(
-								array('f', '首页类型管理' ,        '/Maintype/index', ),
-								array('f', '首页数据管理' ,        '/Firsttype/index', ),
-								array('f', '优惠券类型管理' ,        '/Quantype/index', ),
-								array('f', '优惠券信息管理' ,        '/Youhuiquan/index', ),
+								
+								array('f', '热门饭票管理' ,        '/Youhuiquan/index', ),
 						),
 				),
 				
@@ -529,36 +449,40 @@ class MenuAction extends Action {
 				array(
 						'murl_name' => '商城配置信息',
 						'curl_name' => array(
-								array('f', '渠道信息管理' ,    '/Basicsite/index' , ),
-								array('f', '商品分类管理' ,    '/Shoptype/index' , ),
-								array('f', '商品添加管理' ,    '/Shopadd/index' , ),
-								array('f', '轮播图的上传' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城轮播图' ,    '/Shoplunbotu/index' , ),
+								array('f', '商城类型' ,    '/Shoptype/maintype' , ),
+								array('f', '商品列表' ,    '/Shopadd/index' , ),
+								
+								
+				
 						),
 				),
+				
+				array(
+						'murl_name' => '商城订单查询',
+						'curl_name' => array(
+								array('f', '订单数据查询' ,    '/Orderlist/index' , ),
+								array('f', '商品评价查询' ,    '/Orderlist/pingjia' , ),
+								array('f', '兑换订单查询' ,    '/Orderlist/dealorder' , ),
+								array('f', '实物订单发货' ,    '/Orderlist/shiwuorder' , ),
+								
+				
+						),
+				),
+				
+				
 				array(
 						'murl_name' => '数据查询',
 						'curl_name' => array(
-								array('f', '下载任务查询' ,   '/Productlist/downloadtask' , ),
-								array('f', '商城商品查询' ,   '/Productlist/shopgoods' , ),
-								array('f', '----------------' ),
-								array('f', '用户兑换记录' ,          '/Scoredata/duihuan' , ),
 								array('f', '积分变动记录' ,          '/Scoredata/scorechang' , ),
 								array('f', '正常用户信息推送' ,   '/Scoredata/usertuisong' , ),
 								array('f', '临时用户信息推送' ,   '/Scoredata/tempusertuisong' , ),
 								array('f', '用户意见反馈' ,        '/Suggest/index' , ),
-								array('f', '发布审核管理' ,        '/Fabulist/index', ),
+								array('f', '验证码发送' ,            '/Scoredata/codedata' , ),
 								
 						),
 				),
-				array(
-						'murl_name' => '系统管理',
-						'curl_name' => array(
-								array('f', '编辑操作用户' ,   '/Root/editoruser' , ),
-								array('f', '用户操作日志记录' , '/Root/caozuo_log' , ),
-								array('f', '管理员操作文档' ,  '/Root/roottext' , ),
-								array('f', '管理公告修改' ,   '/Root/gonggao' , ),
-						),
-				),
+				
 				array(
 						'murl_name' => '用户操作',
 						'curl_name' => array(
@@ -567,6 +491,7 @@ class MenuAction extends Action {
 								array('t', '退出系统'    ,  '/Login/logout' , ),
 						),
 				),
+				
 		);
 		
 		

@@ -43,7 +43,6 @@ class KaipingtuAction extends Action {
 		$listsql = "select * from xb_lunbotu where biaoshi='3' and flag='1' ";
 		$blist = $Model->query($listsql);
 		
-		
 		//释放内存
 		unset($sql_field, $sql_where, $sql_order);
 		
@@ -81,17 +80,7 @@ class KaipingtuAction extends Action {
 				$list[$keys]['isused']='不允许点击';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
-			
-			if(substr($list[$keys]['img'],0,7)=='http://' || substr($list[$keys]['img'],0,8)=='https://'){
-			
-			}else{
-				$list[$keys]['img'] = $arr['duibao-basic'].$list[$keys]['img'].'?imageView2/1/w/800/h/600/q/75|imageslim';
-			}
-			
-			
-			
-			
+			$list[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$list[$keys]['img'],'80','100');
 			
 		}
 		//数据的读出
@@ -103,20 +92,7 @@ class KaipingtuAction extends Action {
 				$blist[$keys]['flag']='<font style="background-color:#FF1700">&nbsp;&nbsp;关&nbsp;&nbsp;闭&nbsp;&nbsp;</font>';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//获取七牛访问链接https://
-			
-			if(substr($blist[$keys]['img'],0,7)=='http://' || substr($blist[$keys]['img'],0,8)=='https://'){
-					
-			}else{
-				$blist[$keys]['img'] = $arr['duibao-basic'].$blist[$keys]['img'].'?imageView2/1/w/400/h/300/q/75|imageslim';
-			}
-			
-			
-			//http://osjzw40am.bkt.clouddn.com/5940f1f6a104e.png?imageView2/1/interlace/1/q/80|imageslim  http://osv2nvwyw.bkt.clouddn.com/596cb49f25150.jpg?imageView2/1/w/100/h/100/q/75|imageslim
-			
-			
-			//imageView2/1/w/200/h/200/interlace/1/q/80|imageslim
-			
+			$blist[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$blist[$keys]['img'],'50','80');
 			
 		}
 					
@@ -489,127 +465,7 @@ class KaipingtuAction extends Action {
 	}
 	
 	
-	//后台配置文件展示
-	public function configshow(){
 	
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//判断用户是否登陆
-		$this->loginjudgeshow($this->lock_configshow);
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-	
-	
-		//拼接url参数
-		$yuurl = $this -> createurl($_GET);
-		$this -> assign('yuurl',$yuurl);
-	
-		//数据库的初始化
-		$Model = new Model();
-	
-		//生成排序字符串数据
-		$sql_order = " id desc ";
-	
-		//执行SQL查询语句
-		$list  = $Model -> table('xb_config')-> where('flag=1')-> select();
-	
-		$this -> assign('list',$list);
-	
-		// 输出模板
-		$this->display();
-	
-		printf(' memory usage: %01.2f MB', memory_get_usage()/1024/1024);
-	
-	}
-	
-	
-	//后台配置数据的修改
-	public function updateconfigshow(){
-		
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//判断用户是否登陆
-		$this->loginjudgeshow($this->lock_updateconfigshow);
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		
-		
-		//拼接url参数
-		$yuurl = $this -> createurl($_GET);
-		$this -> assign('yuurl',$yuurl);
-		
-		$id = $this->_post('id');
-		$update_submit = $this->_post('update_submit');
-		
-		
-		if($update_submit!=''){
-				
-		
-			$Model = new Model();
-		
-			$sqlpic       = "select * from xb_config where flag='1' and id='".$id."'";
-			$verdata_list = $Model->query($sqlpic);
-		
-		
-			if(count($verdata_list)<=0){
-				echo "<script>alert('非法操作');history.go(-1);</script>";
-				$this -> error('非法操作');
-			}
-		
-		}
-		$this->assign('list',$verdata_list[0]);
-		// 输出模板
-		$this->display();
-		printf(' memory usage: %01.2f MB', memory_get_usage()/1024/1024);
-		
-	}
-	
-	
-	//参数配置页面的添加
-	public function updateconfigshowdata(){
-	
-	
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//判断用户是否登陆
-		$this->loginjudgeshow($this->lock_updateconfigshowdata);
-		//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-	
-		//拼接url参数
-		$yuurl = $this -> createurl($_GET);
-		$this -> assign('yuurl',$yuurl);
-	
-		//获取相应的参数
-		$id            = $this->_post('id');
-		$qq            = $this->_post('qq');  //是否启用
-		$version       = $this->_post('version');
-		$companyinfo   = $this->_post('companyinfo');
-		$normalusernum     = $this->_post('normalusernum');
-		$normaluserscore    = $this->_post('normaluserscore');
-		$unnormalusernum     = $this->_post('unnormalusernum');
-		$unnormaluserscore    = $this->_post('unnormaluserscore');
-		
-		$update_submit = $this->_post('update_submit');
-	
-		$Model = new Model();
-	
-		$data=array();
-		$data['qq']           = $qq;
-		$data['version']      = $version;
-		$data['content']  = $companyinfo;
-		$data['normalusernum']      = $normalusernum;
-		$data['normaluserscore']    = $normaluserscore;
-		$data['unnormalusernum']    = $unnormalusernum;
-		$data['unnormaluserscore']  = $unnormaluserscore;
-		$data['	createtime']   = date('Y-m-d h:i:s');
-			
-			
-		$imagedata_sql = $Model->table('xb_config')->where ("flag=1 and id='".$id."'")->save($data);
-		
-	
-		if($imagedata_sql){
-			echo "<script>alert('数据修改成功！');window.location.href='".__APP__."/Kaipingtu/configshow".$yuurl."';</script>";
-			$this ->success('数据修改成功!','__APP__/Kaipingtu/configshow'.$yuurl);
-		}else{
-			echo "<script>alert('数据修改失败！'); history.go(-1);</script>";
-			$this->error('数据修改失败！');
-		}
-	}
 	
 	
 	
