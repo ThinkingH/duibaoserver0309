@@ -131,6 +131,10 @@ $("document").ready(function(){
 	<tr>
 		<td width="200" align="right">类型编号:</td>
 		<td>
+			<select name="xushitype" id="xushitype" >
+			{$optionxushitype}
+			</select>
+			--
 			<select name="type" id="type" >
 			{$optiontype}
 			</select>
@@ -189,9 +193,17 @@ $("document").ready(function(){
 	</tr> -->
 	
 	<tr>
-		<td width="200" align="right">商品金额价格:</td>
+		<td width="200" align="right">商品原价:</td>
 		<td>
 		<input type="text" name="price" id="price" size="30" maxlength="30" value="{$list['price']}">
+		<font size="-1" color="red">*单位为元</font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品现价:</td>
+		<td>
+		<input type="text" name="yuanprice" id="yuanprice" size="30" maxlength="30" value="{$list['yuanprice']}">
 		<font size="-1" color="red">*单位为元</font>
 		</td>
 	</tr>
@@ -214,9 +226,42 @@ $("document").ready(function(){
 	</tr>
 	
 	<tr>
+		<td width="200" align="right">兑换码类型:</td>
+		<td>
+			<select name="miyao_type" id="miyao_type">
+			{$optionmiyaotype}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">兑换码发放类型:</td>
+		<td>
+			<select name="fafang_type" id="fafang_type">
+			{$optionfafang}
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">商品领取方式:</td>
+		<td>
+			<select name="pickup" id="pickup">
+			{$optionpickup}
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
 		<td width="200" align="right">详情内容页外链:</td>
 		<td width="800">
 		<input type='text' name='xiangqingurl' id='xiangqingurl' size="150" maxlength="150"  value="{$list['xiangqingurl']}">
+		&nbsp;&nbsp;<font color="red" size="-1"></font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">视频链接:</td>
+		<td width="800">
+		<input type='text' name='video_url' id='video_url' size="150" maxlength="150"  value="{$list['video_url']}">
 		&nbsp;&nbsp;<font color="red" size="-1"></font>
 		</td>
 	</tr>

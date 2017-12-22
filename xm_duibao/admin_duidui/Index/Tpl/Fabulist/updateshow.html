@@ -41,7 +41,7 @@ $("document").ready(function(){
 <a href="__APP__/Fabulist/index{$yuurl}" class="yubutton yuwhite">返回发布信息查询页面</a>
 <br/><br/><br/>
 
-
+<font color="red">*审核之前，请进行信息的完善，*为必填字段，原价，现价和折扣三选二即可</font>
 <form action="__APP__/Fabulist/updatedata{$yuurl}" method="post" enctype="multipart/form-data">
 	
 <table class="mainTabled">
@@ -82,17 +82,18 @@ $("document").ready(function(){
 		</td>
 	</tr>
 	
-	<tr>
+	<!-- <tr>
 		<td width="200" align="right">所在子分类:</td>
 		<td>
 		<input type="text" name="childtype" id="childtype" size="50" maxlength="60" value="{$list['childtype']}">
 		</td>
-	</tr>
+	</tr> -->
 	
 	<tr>
 		<td align="right">标题:</td>
 		<td>
 			<input type="text" name="title" id="title" size="50" maxlength="60" value="{$list['title']}">
+			<font color="red" size="-1">*</font>
 		</td>
 	</tr>
 	
@@ -114,6 +115,7 @@ $("document").ready(function(){
 		<td width="200" align="right">原价(元):</td>
 		<td>
 		<input type="type" name="yuanprice" id="yuanprice" size="15" maxlength="15" value="{$list['yuanprice']}">
+		<font color="red" size="-1">*</font>
 		</td>
 	</tr>
 	
@@ -121,14 +123,15 @@ $("document").ready(function(){
 		<td width="200" align="right">现价(元):</td>
 		<td>
 		<input type="type" name="nowprice" id="nowprice" size="15" maxlength="15" value="{$list['nowprice']}">
+		<font color="red" size="-1">*</font>
 		</td>
 	</tr>
 	
 	<tr>
 		<td width="200" align="right">折扣:</td>
 		<td>
-		<input type="type" name="reamrk" id="reamrk" size="10" maxlength="10" value="{$list['reamrk']}">
-		<font color="red" size="-1">折扣取值为整数，例如1，2，3</font>
+		<input type="type" name="discount" id="discount" size="10" maxlength="10" value="{$list['discount']}">
+		<font color="red" size="-1">*</font>
 		</td>
 	</tr>
 	
@@ -136,7 +139,6 @@ $("document").ready(function(){
 		<td width="200" align="right">已领取人数:</td>
 		<td>
 		<input type="type" name="yilingcon" id="yilingcon" size="15" maxlength="15" value="{$list['yilingcon']}">
-		<font color="red" size="-1">没有可以为空</font>
 		</td>
 	</tr>
 	
@@ -152,7 +154,6 @@ $("document").ready(function(){
 		<td width="200" align="right">手机号:</td>
 		<td>
 			<input type="type" name="phone" id="phone" size="15" maxlength="15" value="{$list['phone']}">
-			<font color="red" size="-1">没有可以为空</font>
 		</td>
 	</tr>
 	
@@ -160,7 +161,6 @@ $("document").ready(function(){
 		<td width="200" align="right">商店名称:</td>
 		<td>
 			<input type="type" name="shopname" id="shopname" size="30" maxlength="30" value="{$list['shopname']}">
-			<font color="red" size="-1">没有可以为空</font>
 		</td>
 	</tr>
 	
@@ -168,7 +168,7 @@ $("document").ready(function(){
 </table>
 <br/><br/>
 
-<input type="submit" id="uupdate_submit" class="yubutton yuwhite" name="uupdate_submit" style="margin:15px 0px 0px 10px;" value="确认修改" />
+<input type="submit" id="uupdate_submit" class="yubutton yuwhite" name="uupdate_submit" style="margin:15px 0px 0px 10px;" value="确认审核" />
 <br/><br/>
 
 </form>

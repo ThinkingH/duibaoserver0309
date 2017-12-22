@@ -49,7 +49,7 @@ $("document").ready(function(){
 <table class="mainTabled" >
 
 <tr>
-	<td align="center">是否使用</td>
+	<td align="center">是否上架</td>
 	<td align="center">是否过期</td>
 	<td align="center">优惠券类型</td>
 	<td align="center"></td>
@@ -95,15 +95,14 @@ $("document").ready(function(){
 		<td width="50">&nbsp;</td>
 		<td width="50"><b>自增编号</b></td>
 		<td width="70"><b>是否上架</b></td>
-		<!-- <td width="70"><b>是否推荐</b></td> -->
-		<td width="70"><b>商品类型</b></td>
-		<td width="70"><b>是否有效</b></td>
+		<td width="70"><b>是否过期</b></td>
+			<td width="70"><b>优惠券类型</b></td>
 		<td width="140"><b>标题</b></td>
 		<td width="70"><b>价格(元)</b></td>
 		<td width="140"><b>有效期</b></td>
 		<td width="400"><b>优惠说明</b></td>
-		<td width="400"><b>优惠券图片</b></td>
-		<td width="70"><b>抓取时间</b></td>
+		<td width="150"><b>优惠券图片</b></td>
+		<td width="100"><b>抓取时间</b></td>
 		
 		<td width="80"><b>原链接</b></td>
 	</tr>
@@ -123,22 +122,16 @@ $("document").ready(function(){
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="删除" />
 			</form> -->
-			
-			<br>
 			<form action="__APP__/Youhuiquan/updateflagdata{$yuurl}" method="post" style="margin:0px">
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<input type="hidden" name="flag" value="2" />
 			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="作废" />
 			</form>
-			
-			<br>
 			<form action="__APP__/Youhuiquan/updateflagdata{$yuurl}" method="post" style="margin:0px">
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<input type="hidden" name="flag" value="1" />
 			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="上架" />
 			</form>
-			
-			<br>
 			<form action="__APP__/Youhuiquan/updateflagdata{$yuurl}" method="post" style="margin:0px">
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<input type="hidden" name="flag" value="9" />
@@ -149,14 +142,14 @@ $("document").ready(function(){
 		<td>{$vo.id}</td>
 		<td>{$vo.flag}</td>
 		<!-- <td>{$vo.tuijian}</td> -->
-		<td>{$vo.type}</td>
 		<td>{$vo.youxiao}</td>
+		<td>{$vo.type}</td>
 		<td>{$vo.title}</td>
 		<td>{$vo.jiage}</td>
 		<td>{$vo.youxiaoqi}</td>
 		<td>{$vo.content}</td>
 		 <td>
-		<img src="{$vo.imgurl}" width="360"/>
+		<img src="{$vo.imgurl}" width="150"/>
 		</td>
 		<td>{$vo.zhuaqutimes}</td>
 	<td>

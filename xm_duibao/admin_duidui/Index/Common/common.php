@@ -9,107 +9,118 @@ function convert_arr_key($arr, $key_name)
 	return $arr2;
 }
 
+
+/**
+ * 将数组中的字段拼接成url参数
+ * @param unknown $urlarr
+ * @return string
+ */
+ function hy_urlcreate( $urlarr=array()) {
+
+	$baseurl = '';
+
+	if( is_array($urlarr) && count($urlarr)>0 ) {
+
+		foreach($urlarr as $key => $val) {
+			$baseurl .= $key.'='.urlencode($val).'&';
+		}
+
+		$baseurl = substr($baseurl,0,(strlen($baseurl)-1));
+	}
+
+	return $baseurl;
+
+}
+
 //七牛图片上传
-function uploadqiniu($bucket,$filepath,$savename){
-	
-	/* if($bucket=='1'){
-		$bucket='duibao-basic';
-	}else if($bucket=='2'){
-		$bucket='duibao-business';
-	}else if($bucket=='3'){
-		$bucket='duibao-find';
-	}else if($bucket=='4'){
-		$bucket='duibao-shop';
-	}else if($bucket=='5'){
-		$bucket='duibao-user';
-	} */
-	
-	//$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
-	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
-	
-	$data = array(
+function upload_qiniu($bucket,$filepath,$savename,$rewrite='no'){
+	$qiniurl = QINIUURL.'hy_upload.php';
+	$dataarr = array(
 			'bucket'   => $bucket,
 			'filepath' => $filepath,
 			'savename' => $savename,
-	
+			'rewrite' => $rewrite,
 	);
-	
+	$datastr = hy_urlcreate($dataarr);
 	//模拟数据访问
-	$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
-	
+	$r = vpost($qiniurl,$datastr,$header=array(),$timeout=5000 );
 	if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){
-		return $r;
-	}else{
-		return false;
-	}
-	
-	
-}
-//七牛图片上传--------2
-function upload_qiniu($bucket,$filepath,$savename){
-	
-	//测试服务器的地址
-	//$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_upload.php';
-	//正式服务器的地址
-	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
-	
-	$data = array(
-			'bucket'   => $bucket,
-			'filepath' => $filepath,
-			'savename' => $savename,
-	
-	);
-	
-	//模拟数据访问
-	$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
-	
-	if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){
-		
 		$truepath = json_decode($r['content'], true);
-		//$arr = unserialize(BUCKETSTR);//获取七牛访问链接
-		$trueurl= $truepath['key'];//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
-		return $trueurl;
+		$filename= $truepath['key'];
+		return $filename;
 	}else{
 		return false;
 	}
-	
-	
 }
 
-
-//七牛图片模拟删除
-function delqiuniu($bucket,$filename){
-	
-	
-	/* $fenge = explode('?',$filepath);
-	
-	$fengge1 = explode('/',$fenge[0]);
-	
-	$filename = $fengge1[3]; */
-	//测试服务器的地址
-	//$qiniurl = 'http://120.27.34.239:8018/hyqiniu/init/hy_delete.php';
-	//正式服务器的地址
-	$qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_delete.php';
-	
-	$data = array(
-			'delbucket' => $bucket,
-			'delname'   => $filename,
+//七牛图片删除
+function delete_qiniu($bucket,$delname){
+	$qiniurl = QINIUURL.'hy_delete.php';
+	$dataarr = array(
+			'delbucket'   => $bucket,
+			'delname' => $delname,
 	);
-	
+	$datastr = hy_urlcreate($dataarr);
 	//模拟数据访问
-	$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
-	
-	
-	if($r['content']=='ok' && $r['httpcode']=='200'){
-		
+	$r = vpost($qiniurl,$datastr,$header=array(),$timeout=5000 );
+	if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){
 		return true;
-		
 	}else{
 		return false;
 	}
-	
-	
 }
+
+
+//七牛图片的获取
+function hy_qiniuimgurl($bucketname='',$imgname='',$width='',$height='',$canshu=true) {
+	$qiniubucketarr = json_decode(QINIUBUCKETSTR,true);
+	$returnimgurl = '';
+	if(''==$imgname) {
+		$bucketurl = isset($qiniubucketarr['duibao-basic'])?$qiniubucketarr['duibao-basic']:'';
+		if(''==$bucketurl) {
+			return '';
+		}else {
+			$returnimgurl = $bucketurl.'notfounddata.png';
+			if($canshu) {
+				$returnimgurl .= '?imageView2/1';
+				if($width!='') {
+					$returnimgurl .= '/w/'.$width;
+				}
+				if($height!='') {
+					$returnimgurl .= '/h/'.$height;
+				}
+				$returnimgurl .= '/q/75';
+				$returnimgurl .= '|imageslim';
+			}
+			return $returnimgurl;
+		}
+			
+	}else {
+			
+		$bucketurl = isset($qiniubucketarr[$bucketname])?$qiniubucketarr[$bucketname]:'';
+		if($bucketurl!='') {
+			if(substr($imgname,0,4)=='http') {
+				$returnimgurl = $imgname;
+			}else {
+				$returnimgurl = $bucketurl.$imgname;
+			}
+			if($canshu) {
+				$returnimgurl .= '?imageView2/1';
+				if($width!='') {
+					$returnimgurl .= '/w/'.$width;
+				}
+				if($height!='') {
+					$returnimgurl .= '/h/'.$height;
+				}
+				$returnimgurl .= '/q/75';
+				$returnimgurl .= '|imageslim';
+			}
+		}
+		return $returnimgurl;
+	}
+
+}
+
 
 
 //本地文件的删除
@@ -121,39 +132,6 @@ function delfile($delurl){
 }
 
 
-//http://osjzw40am.bkt.clouddn.com/5940f1f6a104e.png?imageView2/1/w/400/h/155/q/75|imageslim
-		//七牛文件的上传596c7fd36d942.png    http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png   http://osjzw40am.bkt.clouddn.com/5940f1f6a104e.png?imageView2/1/w/400/h/155/q/75|imageslim
-		/* $qiniurl = 'http://127.0.0.1:8001/hyqiniu/init/hy_upload.php';
-		
-		$data = array(
-				'bucket' => 'img-duibaoxinyouxingkong',
-				'filepath'=> $upload->savePath.$info[0]['savename'],
-				'savename' => $info[0]['savename'],
-		
-		);
-		
-		//模拟数据访问
-		$r=vpost($qiniurl,$data,$header=array(),$timeout=5000 );
-		
-		print_r($r);exit; */
-		
-		/* Array ( 
-		 * [content] => {"hash":"FjfaAm5Ov5bSYKmHKmnHFTK-l887","key":"596c8964b90a6.jpg"} [httpcode] => 200 [run_time] => 93 [errorno] => 0 ) */
-		
-		/* $filepath = $upload->savePath.$info[0]['savename'];//图片绝对路径
-		$savename = $info[0]['savename'];//图片名称
-		
-		$r = qiniu($filepath,$savename);
-		
-		if(substr($r['content'],0,1)!='#' && $r['httpcode']=='200'){//图片上传成功
-			
-			$truepath = json_decode($r['content'], true); 
-			
-			$trueurl= 'http://osv2nvwyw.bkt.clouddn.com/'.$truepath['key'];//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png   
-			
-			
-		}
-		 */
 
 
 /**
@@ -223,41 +201,6 @@ function vpost($url,$data,$header=array(),$timeout=5000 ){ // 模拟提交数据
 
 
 
-
-/* //七牛云存储
-
-function uploadQiNiu(){
-	
-	
-	import('Qiniu.Auth');
-
-	// 用于签名的公钥和私钥
-	$accessKey = '**';
-	$secretKey = '**';
-
-	// 初始化签权对象
-	$auth = new Auth($accessKey, $secretKey);
-
-	// 空间名  https://developer.qiniu.io/kodo/manual/concepts
-	$bucket = 'bucket-name';
-	// 生成上传Token
-	$token = $auth->uploadToken($bucket);
-	echo $token;exit;
-	// 构建 UploadManager 对象
-	$uploadMgr = new UploadManager();
-	// 上传文件到七牛
-	$filePath = './php-logo.png';
-	$key = 'php-logo.png';
-	list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-	echo "\n====> putFile result: \n";
-	if ($err !== null) {
-		var_dump($err);
-	} else {
-		var_dump($ret);
-	}
-} */
-
-
 //邮件发送封装函数
 function hy_common_sendemail($mailto='', $subject='通知', $body='') {
 
@@ -277,8 +220,6 @@ function hy_common_sendemail($mailto='', $subject='通知', $body='') {
 			return 'err';
 		}
 	}
-
-
 }
 
 

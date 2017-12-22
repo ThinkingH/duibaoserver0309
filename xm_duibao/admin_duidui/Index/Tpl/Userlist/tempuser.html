@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<load href="__PUBLIC__/Css/admin.css" />
+<load href="__PUBLIC__/Css/main.css" />
 
 <script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
@@ -40,18 +40,15 @@ $("document").ready(function(){
 </head>
 
 <body>
-<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
-	<tr height="28"><td background="__PUBLIC__/Images/title_bg1.jpg">
-		<font size="-1" ><b>当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;临时用户信息&nbsp;#&nbsp;临时用户信息查询</b></font></td></tr>
-  	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
-	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
-</table>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;临时用户信息&nbsp;#&nbsp;临时用户信息查询
+</div>
 
 <!-- <a href="__APP__/Basicsite/addsiteshow{$yuurl}" class="yubutton yuwhite">添加渠道信息</a>
 <br/><br/> -->
 
 <form action="__APP__/Userlist/tempuser" method="get" >
-<table class="mainTabled" >
+<table class="table-list" >
 
 <tr>
 	<td align="center">临时id</td>
@@ -83,16 +80,15 @@ $("document").ready(function(){
 </form>
 <br/>
 
-<table class="mainTables" width="1500">
+<table class="mainTables" width="800">
 <thead>
 	<tr>
 		<!-- <td width="50">&nbsp;</td> -->
 		<td width="50">&nbsp;</td>
 		<td width="50">&nbsp;</td>
-		<td width="200"><b>自增编号<br/></b></td>
-		<!-- <td width="150"><b>通讯秘钥<br/></b></td> -->
-		<td width="200"><b>可用积分</b></td>
-		<!-- <td width="80"><b>冻结积分</b></td> -->
+		<td width="150"><b>自增编号<br/></b></td>
+		<td width="100"><b>可用积分</b></td>
+		<td width="150"><b>活跃时间<br/></b></td>
 		<td width="200"><b>创建时间<br/></b></td>
 		<td width="300"><b>备注<br/></b></td>
 		
@@ -138,7 +134,7 @@ $("document").ready(function(){
 		<td>{$vo.id}</td>
 		<!-- <td>{$vo.tokenkey}</td> -->
 		<td>{$vo.keyong_jifen}</td>
-		<!-- <td>{$vo.dongjie_jifen}</td> -->
+		<td>{$vo.logintime}</td>
 		<td>{$vo.create_datetime}</td>
 		<td>{$vo.remark}</td>
 		

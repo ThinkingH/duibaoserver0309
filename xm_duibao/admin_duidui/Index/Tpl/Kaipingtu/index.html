@@ -11,22 +11,17 @@
 $("document").ready(function(){
 	
 	$(".delete_submit").click(function(){
-		
 		if(confirm("您确认要删除此条数据吗？")) {
-			
 		}else {
 			return false;
 		}
 	});
 	
-		
 	$(".mainTables>tbody>tr>td").hover(function(){
 		$(this).parent().children().addClass('yu_mourse_stop_change');
 	},function(){
 		$(this).parent().children().removeClass('yu_mourse_stop_change');
 	});
-	
-	
 	
 });
 
@@ -42,22 +37,19 @@ $("document").ready(function(){
 	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
 </table>
 
-<div style="text-align:center"><h1>开屏引导图的上传</h1></div>
-<!-- <a href="__APP__/Lunbotu/addlunbotushow{$yuurl}" class="yubutton yuwhite">添加轮播图</a> -->
-<br/><br/>
+<div><h2>开屏引导图的上传</h2></div>
+<br/>
 
-<table class="mainTables" width="1650">
+<table class="mainTables" width="1000">
 <thead>
 	<tr>
 		<td width="20">&nbsp;</td>
 		<td width="20">&nbsp;</td>
 		<td width="25"><b>状态<br/></b></td>
-		<td width="150"><b>轮播图地址</b></td>
-		<td width="150"><b>轮播图展示</b></td>
+		<td width="50"><b>轮播图展示</b></td>
 		<td width="20"><b>跳转类型<br/></b></td>
 		<td width="150"><b>跳转链接</b></td>
 		<td width="30"><b>是否可以点击<br/></b></td>
-		<td width="200"><b>跳转链接内容<br/></b></td>
 		<td width="60"><b>上传时间<br/></b></td>
 		<td width="60"><b>跳转链接（自己内部的跳转链接）<br/></b></td>
 	</tr>
@@ -82,12 +74,10 @@ $("document").ready(function(){
 		</td>
 		
 		<td>{$vo.flag}</td>
-		<td>{$vo.img}</td>
-		<td><img alt="" src="{$vo.img}" width="200"></td>
+		<td><img alt="" src="{$vo.img}"></td>
 		<td>{$vo.action}</td>
 		<td>{$vo.imgurl}</td>
 		<td>{$vo.isused}</td>
-		<td>{$vo.content}</td>
 		<td>{$vo.createdatetime}</td>
 		<td>{$vo.value}</td>
 	</tr>
@@ -99,9 +89,8 @@ $("document").ready(function(){
 <br/><br/>
 
 
-<div style="text-align:center"><h1>新用户好礼弹框</h1></div>
-<!-- <a href="__APP__/Lunbotu/addlunbotushow{$yuurl}" class="yubutton yuwhite">添加轮播图</a> -->
-<br/><br/>
+<div><h2>新用户好礼弹框</h2></div>
+<br/>
 
 <table class="mainTables" width="1000">
 <thead>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<load href="__PUBLIC__/Css/admin.css" />
+<load href="__PUBLIC__/Css/main.css" />
 
 <script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
@@ -55,15 +55,16 @@ $("document").ready(function(){
 
 <tr>
 	<td align="center">是否启用</td>
+	<td align="center">编号</td>
 	<td align="center">手机号</td>
 	<td align="center">用户昵称</td>
 	<td align="center">性别</td>
-	<td align="center">生日</td>
+	<!-- <td align="center">生日</td>
 	<td align="center">qq</td>
-	<td align="center">微信</td>
+	<td align="center">微信</td> -->
 	<td align="center">创建时间</td>
-	<td align="center">机型</td>
-	<td align="center">等级</td>
+	<!-- <td align="center">机型</td> -->
+	<!-- <td align="center">等级</td> -->
 	<td align="center"></td>
 </tr>
 
@@ -75,6 +76,9 @@ $("document").ready(function(){
 		</select>
 	</td>
 	
+	<td>
+		<input type="text" name="bianhao" id="bianhao" value="{$bianhao}" size="10" maxlength="10" />
+	</td>
 	<td>
 		<input type="text" name="phone" id="phone" value="{$phone}" size="15" maxlength="20" />
 	</td>
@@ -90,33 +94,33 @@ $("document").ready(function(){
 		</select>
 	</td>
 	
-	<td>
+	<!-- <td>
 		<input type="text" size="10" maxlength="10" name="birthdate_s" value="{$birthdate_s}" onclick="WdatePicker()" />--
 		<input type="text" size="10" maxlength="10" name="birthdate_e" value="{$birthdate_e}" onclick="WdatePicker()" />
-	</td>
+	</td> -->
 	
-	<td>
+	<!-- <td>
 		<input type="text" name="qq" id="qq" value="{$qq}" size="15" maxlength="15" />
-	</td>
+	</td> -->
 	
-	<td>
+	<!-- <td>
 		<input type="text" name="weixin" id="weixin" value="{$weixin}" size="15" maxlength="20" />
-	</td>
+	</td> -->
 	
 	<td>
-		<input type="text" name="date_s" id="date_s" value="{$date_s}" onclick="WdatePicker()" />--
-		<input type="text" name="date_e" id="date_e" value="{$date_e}" onclick="WdatePicker()" />
+		<input type="text" name="date_s" id="date_s" value="{$date_s}" onclick="WdatePicker()" size="10" maxlength="10"/>--
+		<input type="text" name="date_e" id="date_e" value="{$date_e}" onclick="WdatePicker()" size="10" maxlength="10"/>
 	</td>
 	
-	<td>
+	<!-- <td>
 		<select name="phonetype">
 			{$optionphonetype}
 		</select>
-	</td>
+	</td> -->
 	
-	<td>
+	<!-- <td>
 		<input type="text" name="userlevel" id="userlevel" value="{$userlevel}" size="8" maxlength="10" />
-	</td>
+	</td> -->
 	
 	
 	<td>
@@ -130,34 +134,28 @@ $("document").ready(function(){
 <table class="mainTables" width="100%">
 <thead>
 	<tr>
-		<td width="65">&nbsp;</td>
+		<td width="5%">&nbsp;</td>
 		<!-- <td width="65">&nbsp;</td> -->
-		<td width="35">&nbsp;</td>
-		<td width="35">&nbsp;</td>
-		<td width="50"><b>自增编号<br/></b></td>
-		<td width="50"><b>是否启用<br/></b></td>
-		<td width="90"><b>手机号</b></td>
-		<td width="150"><b>微信标识id</b></td>
-		<td width="60"><b>手机机型<br/></b></td>
-		<td width="100"><b>可用积分<br/></b></td>
-		<td width="100"><b>冻结积分<br/></b></td>
-		<!-- <td width="200"><b>密码<br/></b></td>
-		<td width="200"><b>通信秘钥<br/></b></td> -->
-		<td width="50"><b>用户等级<br/></b></td>
+		<td width="3%">&nbsp;</td>
+		<td width="3%">&nbsp;</td>
+		<td width="3%"><b>是否启用<br/></b></td>
+		<td width="4%"><b>自增编号<br/></b></td>
+		<td width="6%"><b>手机号</b></td>
+		<td width="9%"><b>微信标识id</b></td>
+		<td width="9%"><b>极光id</b></td>
+		<td width="4%"><b>会员标识</b></td>
+		<td width="9%"><b>会员到期时间</b></td>
+		<td width="8%"><b>活跃时间</b></td>
+		<td width="3%"><b>会员天数</b></td>
+		<td width="5%"><b>可用积分<br/></b></td>
+		<td width="5%"><b>冻结积分<br/></b></td>
+		<td width="4%"><b>用户等级<br/></b></td>
+		<td width="7%"><b>用户昵称</b></td>
+		<td width="3%"><b>性别</b></td>
+		<td width="5%"><b>生日</b></td>
+		<td width="8%"><b>创建时间</b></td>
+		<td width="5%"><b>备注</b></td>
 		
-		<!-- <td width="100"><b>可用金额（分）<br/></b></td> -->
-		<!-- <td width="100"><b>冻结金额（分）<br/></b></td> -->
-		
-		<td width="130"><b>用户昵称</b></td>
-		<td width="50"><b>性别</b></td>
-		<td width="120"><b>生日</b></td>
-		<td width="140"><b>邮箱</b></td>
-		<td width="120"><b>qq</b></td>
-		<td width="150"><b>微信</b></td>
-		
-		<td width="120"><b>创建时间</b></td>
-		<td width="100"><b>备注</b></td>
-		<td width="100"><b>极光id</b></td>
 		
 	</tr>
 </thead>
@@ -197,28 +195,23 @@ $("document").ready(function(){
 			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="删除" />
 			</form>
 	</td>
-		<td>{$vo.id}</td>
 		<td>{$vo.is_lock}</td>
+		<td>{$vo.id}</td>
 		<td>{$vo.phone}</td>
 		<td>{$vo.openid}</td>
-		<td>{$vo.phonetype}</td>
+		<td>{$vo.jiguangid}</td>
+		<td>{$vo.vipflag}</td>
+		<td>{$vo.vip_endtime_one}</td>
+		<td>{$vo.logintime}</td>
+		<td>{$vo.day}</td>
 		<td>{$vo.keyong_jifen}</td>
 		<td>{$vo.dongjie_jifen}</td>
-		
-		<!-- <td>{$vo.passwd}</td>
-		<td>{$vo.tokenkey}</td> -->
 		<td>{$vo.userlevel}</td>
-		<!-- <td>{$vo.keyong_money}</td> -->
-		<!-- <td>{$vo.dongjie_money}</td> -->
 		<td>{$vo.nickname}</td>
 		<td>{$vo.sex}</td>
 		<td>{$vo.birthday}</td>
-		<td>{$vo.email}</td>
-		<td>{$vo.qq}</td>
-		<td>{$vo.weixin}</td>
 		<td>{$vo.create_datetime}</td>
 		<td>{$vo.remark}</td>
-		<td>{$vo.jiguangid}</td>
 	</tr>
 	</volist>
 </tbody>

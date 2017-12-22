@@ -25,8 +25,6 @@ $("document").ready(function(){
 		$(this).parent().children().removeClass('yu_mourse_stop_change');
 	});
 	
-	
-	
 });
 
 
@@ -46,13 +44,14 @@ $("document").ready(function(){
 <table class="mainTabled" >
 
 <tr>
-	<td align="center">订单创建时间</td>
+	
+	<td align="center">订单编号</td>
 	<td align="center">用户手机号</td>
+	<td align="center">商家编号</td>
 	<td align="center">订单号</td>
 	<td align="center">商品名称</td>
-	<td align="center">商品类型</td>
 	<td align="center">订单状态</td>
-	<td align="center">是否兑换</td>
+	<td align="center">订单创建时间</td>
 	<td align="center"></td>
 </tr>
 
@@ -60,12 +59,17 @@ $("document").ready(function(){
 <tr>
 	
 	<td>
-		<input type="text" size="10" maxlength="10" name="date_s" value="{$date_s}" onclick="WdatePicker()" />--
-		<input type="text" size="10" maxlength="10" name="date_e" value="{$date_e}"  onclick="WdatePicker()"/>
+	<input type="text" name="bianhao" value="{$bianhao}" size="8" maxlength="8">
 	</td>
 	
 	<td>
 	<input type="text" name="phone" value="{$phone}" size="15" maxlength="15">
+	</td>
+	
+	<td >
+		<select name="siteid">
+			{$optionsiteid}
+		</select>
 	</td>
 	
 	<td>
@@ -77,23 +81,15 @@ $("document").ready(function(){
 	</td>
 	
 	<td >
-		<select name="miyao">
-			{$optiontype}
-		</select>
-	</td>
-	
-	<td >
 		<select name="zstatus">
 			{$optionstatus}
 		</select>
 	</td>
 	
-	<td >
-		<select name="duihuan">
-			{$optionduihuan}
-		</select>
+	<td>
+		<input type="text" size="10" maxlength="10" name="date_s" value="{$date_s}" onclick="WdatePicker()" />--
+		<input type="text" size="10" maxlength="10" name="date_e" value="{$date_e}"  onclick="WdatePicker()"/>
 	</td>
-	
 	
 	<td>
 		<input type="submit" class="yubuttons yuwhite" name="submit_select" id="submit_select" value="查询指定匹配内容" />
@@ -107,10 +103,10 @@ $("document").ready(function(){
 <thead>
 	<tr>
 		<td width="50">&nbsp;</td>
-		<td width="50"><b>自增编号<br/></b></td>
+		<td width="50"><b>订单编号<br/></b></td>
 		<td width="100"><b>用户手机号<br/></b></td>
-		<td width="80"><b>标识用户id<br/></b></td>
-		<td width="120"><b>渠道编号</b></td>
+		<td width="80"><b>用户编号<br/></b></td>
+		<td width="120"><b>商家编号</b></td>
 		<td width="100"><b>商品类型</b></td>
 		<td width="200"><b>商品名称</b></td>
 		<td width="80"><b>商品数量</b></td>
@@ -123,18 +119,29 @@ $("document").ready(function(){
 		<td width="150"><b>密码<br/></b></td>
 		<td width="150"><b>订单创建时间<br/></b></td>
 		<td width="150"><b>订单领取时间<br/></b></td>
+		<td width="150"><b>订单评论时间<br/></b></td>
 	</tr>
 </thead>
 
 <tbody>
 	<volist name="list" id="vo" empty="没有对应数据" >
 	<tr>
+	
+		<php>if($vo['keystr']==''){</php>
 		<td>
 			<form action="__APP__/Orderlist/updateshow{$yuurl}" method="post" style="margin:0px">
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="兑换" />
 			</form>
 		</td>
+		<php>}else{</php>
+		<td>
+			<form action="__APP__/Orderlist/updateshow{$yuurl}" method="post" style="margin:0px">
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="已兑换"  disabled="disabled"/>
+			</form>
+		</td>
+		<php>}</php>
 		
 		<php>if($vo['keystr']==''){</php>
 		<td><font style="background-color:#FF1700">{$vo.id}</font></td>
@@ -156,7 +163,8 @@ $("document").ready(function(){
 		<td>{$vo.keystr}</td>
 		<td>{$vo.passwd}</td>
 		<td>{$vo.order_createtime}</td>
-		<td>{$vo.fh_shouhuoren}</td>
+		<td>{$vo.fh_fahuotime}</td>
+		<td>{$vo.pingjia_createtime}</td>
 	</tr>
 	</volist>
 </tbody>

@@ -76,6 +76,8 @@ class ShoplunbotuAction extends Action {
 			}else if($list[$keys]['isused']=='2'){
 				$list[$keys]['isused']='不允许点击';
 			}
+			
+			$list[$keys]['img'] = hy_qiniuimgurl('duibao-shop',$list[$keys]['img'],'150','50');
 	
 		}
 			
@@ -178,7 +180,7 @@ class ShoplunbotuAction extends Action {
 		$pathname = $info[0]['savepath'].$info[0]['savename'];
 		$savename = $info[0]['savename'];
 		
-		$picurl=upload_qiniu('duibao-basic',$pathname,$savename);
+		$picurl=upload_qiniu('duibao-shop',$pathname,$savename);
 		$data['img']          = $picurl;
 			
 		//本地文件的删除
@@ -357,27 +359,12 @@ class ShoplunbotuAction extends Action {
 			}
 	
 			$infof  =   $upload->upload();
-	/*  $picurl=upload_qiniu('duibao-basic',$pathname,$savename);
-			$data['picurl']          = $picurl;
-			
-			//本地文件的删除
-			delfile($pathname);
-			
-			$data_sql = "select picurl from ad_advertisement where id='".$id."'";
-			$data_list = $Model->query($data_sql);
-			
-			if(substr($data_list[0]['picurl'],0,7)!='http://'){
-				
-				//云存储上删除
-				delqiuniu('duibao-basic',$data_list[0]['picurl']);
-				
-			}*/
 			if($infof===true){
 				
 				$info   =  $upload->getUploadFileInfo();
 				$apkurl = $info[0]['savepath'].$info[0]['savename'];
 				$savename = $info[0]['savename'];
-				$picurl=upload_qiniu('duibao-basic',$apkurl,$savename);
+				$picurl=upload_qiniu('duibao-shop',$apkurl,$savename);
 				$data['img']          = $picurl;
 				
 				//本地文件的删除
@@ -386,13 +373,9 @@ class ShoplunbotuAction extends Action {
 				$data_sql = "select img from xb_lunbotu where id='".$id."'";
 				$data_list = $Model->query($data_sql);
 				
-				if(substr($data_list[0]['img'],0,7)!='http://'){
-					//云存储上删除
-					delqiuniu('duibao-basic',$data_list[0]['img']);
-				}
+				delete_qiniu('duibao-shop',$seldata_list[0]['img']);
 				
 			}
-	
 	
 			$data['flag']        = $flag;
 			$data['action']      = $tztype;
@@ -418,7 +401,6 @@ class ShoplunbotuAction extends Action {
 	
 	
 		//页面的删除
-		//删除操作
 		public function deletelunbodata(){
 	
 			//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -451,13 +433,7 @@ class ShoplunbotuAction extends Action {
 				$seldata_sql  = "select img from xb_lunbotu where id='".$id."'";
 				$seldata_list = $Model->query($seldata_sql);
 	
-				$filepath=$seldata_list[0]['img'];
-				
-				if(substr($filepath,0,7)!='http://'){
-					//云存储上删除
-					delqiuniu('duibao-basic',$filepath);
-				}
-	
+				delete_qiniu('duibao-shop',$seldata_list[0]['img']);
 	
 				//说明此数据没有关联数据，可以删除
 				$ret = $Model -> table('xb_lunbotu') -> where("id='".$id."'") -> delete();

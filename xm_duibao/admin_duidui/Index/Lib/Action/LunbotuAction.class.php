@@ -31,19 +31,19 @@ class LunbotuAction extends Action {
 		$Model = new Model();
 		
 		//轮播图的读取
-		$list_sql = "select * from xb_lunbotu where flag=1 and biaoshi=9  order by id desc ";
+		$list_sql = "select * from xb_lunbotu where  biaoshi=9  order by id desc ";
 		$list     = $Model->query($list_sql);
 		
 		//热门免费的读取
-		$hot_sql  = "select * from xb_lunbotu where flag='1' and biaoshi='5' order by picname desc limit 3 ";
+		$hot_sql  = "select * from xb_lunbotu where  biaoshi='5' order by picname desc limit 3 ";
 		$hot_list = $Model->query($hot_sql); 
 		
 		//特供优惠
-		$youhui_sql = "select * from xb_lunbotu where flag='1' and biaoshi='6' order by picname desc limit 4";
+		$youhui_sql = "select * from xb_lunbotu where  biaoshi='6' order by picname desc limit 4";
 		$youhui_list = $Model->query($youhui_sql);
 		
 		//抽奖转盘
-		$chouprize_sql = "select * from xb_lunbotu where flag=1 and biaoshi=7  order by id desc";
+		$chouprize_sql = "select * from xb_lunbotu where  biaoshi=7  order by id desc";
 		$chouprize_list = $Model->query($chouprize_sql);
 		
 		//数据的读出
@@ -85,13 +85,9 @@ class LunbotuAction extends Action {
 				$list[$keys]['type']='跳转内部链';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
+			//600 300
+			$list[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$list[$keys]['img'],'90','30');
 			
-			if(substr($list[$keys]['img'],0,7)=='http://' || substr($list[$keys]['img'],0,8)=='https://'){
-				
-			}else{
-				$list[$keys]['img'] = $arr['duibao-basic'].$list[$keys]['img'].'?imageView2/1/w/500/h/200/q/75|imageslim';
-			}
 		}
 			
 		//热门数据
@@ -127,13 +123,7 @@ class LunbotuAction extends Action {
 				$hot_list[$keys]['isused']='不允许点击';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
-			
-			if(substr($hot_list[$keys]['img'],0,7)=='http://' || substr($hot_list[$keys]['img'],0,8)=='https://'){
-				
-			}else{
-				$hot_list[$keys]['img'] = $arr['duibao-basic'].$hot_list[$keys]['img'].'?imageView2/1/w/300/h/150/q/75|imageslim';
-			}
+			$hot_list[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$hot_list[$keys]['img'],'60','60');
 		}
 		//特供优惠
 		foreach ($youhui_list as $keys=>$vals){
@@ -174,13 +164,7 @@ class LunbotuAction extends Action {
 				$youhui_list[$keys]['type']='跳转内部链';
 			}
 			
-			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
-			
-			if(substr($youhui_list[$keys]['img'],0,7)=='http://' || substr($youhui_list[$keys]['img'],0,8)=='https://'){
-				
-			}else{
-				$youhui_list[$keys]['img'] = $arr['duibao-basic'].$youhui_list[$keys]['img'].'?imageView2/1/w/300/h/150/q/75|imageslim';
-			}
+			$youhui_list[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$youhui_list[$keys]['img'],'100','50');
 				
 		}
 
@@ -223,13 +207,7 @@ class LunbotuAction extends Action {
 				$chouprize_list[$keys]['type']='跳转内部链';
 			}
 				
-			$arr = unserialize(BUCKETSTR);//七牛云存储连接$arr['duibao-basic']
-				
-			if(substr($chouprize_list[$keys]['img'],0,7)=='http://' || substr($chouprize_list[$keys]['img'],0,8)=='https://'){
-		
-			}else{
-				$chouprize_list[$keys]['img'] = $arr['duibao-basic'].$chouprize_list[$keys]['img'].'?imageView2/1/w/500/h/200/q/75|imageslim';
-			}
+			$chouprize_list[$keys]['img'] = hy_qiniuimgurl('duibao-basic',$chouprize_list[$keys]['img'],'80','30');
 		}
 		$this -> assign('list',$list);
 		$this -> assign('list1',$hot_list);
@@ -335,9 +313,8 @@ class LunbotuAction extends Action {
 		$pathurl  = $info[0]['savepath'].$info[0]['savename'];
 		$savename = $info[0]['savename'];//图片名称
 		
-		//图片上传
+		//图片上传upload_qiniu($bucket,$filepath,$savename,$rewrite='no')
 		$r=upload_qiniu('duibao-basic',$pathurl,$savename);
-		
 		
 		if($r){
 			$data['img']  = $r;
@@ -366,7 +343,6 @@ class LunbotuAction extends Action {
 		$imagedata_sql = $Model->table('xb_lunbotu')->add($data);
 		
 		if($imagedata_sql){//说明文件上传成功
-			
 			echo "<script>alert('轮播图添加成功！');window.location.href='".__APP__."/Lunbotu/index".$yuurl."';</script>";
 			$this ->success('轮播图添加成功!','__APP__/Lunbotu/index'.$yuurl);
 		}else{
@@ -546,26 +522,18 @@ class LunbotuAction extends Action {
 			$r=upload_qiniu('duibao-basic',$apkurl,$savename);
 			
 			if($r){
-				
 				$data['img']          = $r;
 			}
 			
-			
-			
 			//本地图片的删除
 			delfile($apkurl);
-			
 			
 			//对应云存储的删除
 			$seldata_sql  = "select img from xb_lunbotu where id='".$id."'";
 			$seldata_list = $Model->query($seldata_sql);
 			
-				
-			$bucket= 'duibao-basic';//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
-			$filename = $seldata_list[0]['img'];
-				
-			delqiuniu($bucket,$filename);
-			
+			//七牛云上图片删除
+			delete_qiniu('duibao-basic',$seldata_list[0]['img']);
 		}
 		
 		$data['flag']        = $flag;
@@ -612,7 +580,6 @@ class LunbotuAction extends Action {
 		if($delete_submit!=''){
 				
 			if($id==''){
-	
 				echo "<script>alert('非法操作！'); history.go(-1);</script>";
 				$this->error('非法操作！');
 			}
@@ -621,17 +588,12 @@ class LunbotuAction extends Action {
 			//数据库初始化
 			$Model = new Model();
 			
-			
 			//对应安装包的删除
 			$seldata_sql  = "select img from xb_lunbotu where id='".$id."'";
 			$seldata_list = $Model->query($seldata_sql);
 				
-			$filepath=$seldata_list[0]['img'];
-			
-			$bucket= 'duibao-basic';//http://osv2nvwyw.bkt.clouddn.com/596c7fd36d942.png
-			
-			$deldata = delqiuniu($bucket,$filepath);
-			
+			//七牛云上图片删除
+			delete_qiniu('duibao-basic',$seldata_list[0]['img']);
 			
 			//说明此数据没有关联数据，可以删除
 			$ret = $Model -> table('xb_lunbotu') -> where("id='".$id."'") -> delete();

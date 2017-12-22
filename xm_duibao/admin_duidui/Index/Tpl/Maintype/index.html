@@ -10,32 +10,6 @@
 <script type="text/javascript">
 $("document").ready(function(){
 	
-	
-	
-	/* //数据添加确认
-	$("#submit").click(function() {
-		
-		var wtype = $("#wtype").val();
-		var ftype = $("#ftype").val();
-		
-		
-		$.ajax({
-			type: "POST",
-			async: false,
-			url: "__APP__/Maintype/ajax_wangzhan",
-			data: "wtype="+wtype+"ftype="+ftype,
-			success: function(data){
-				if (data == 'no') {
-					$("#sucflag").val('no');
-				}else {
-					$("#sucflag").val('ok');
-				}
-			}
-		});
-		
-	}); */
-	
-	
 	$(".delete_submit").click(function(){
 		
 		if(confirm("您确认要删除此条数据吗？")) {
@@ -66,47 +40,6 @@ $("document").ready(function(){
 		<font size="-1" ><b>当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;首页类型管理</b></font></td></tr>
   	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
 	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
-</table>
-
-<br/><br/>
-
-<h2>网站类型设置,现在主要分1或2两种</h2>
-<table class="mainTables" width="900">
-<thead>
-	<tr>
-		<td width="60">&nbsp;</td>
-		<td width="130"><b>网站类型</b></td>
-	</tr>
-</thead>
-
-<tbody>
-	
-	<tr>
-		<td>
-			<form action="__APP__/Maintype/wwupdatetypeshow{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="type" value="11" />
-			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="首页优惠信息修改" />
-			</form>
-		</td>
-		<td>{$wtype}</td>
-	</tr>
-	
-</tbody>
-
-<tbody>
-	
-	<tr>
-		<td>
-			<form action="__APP__/Maintype/wwupdatetypeshow{$yuurl}" method="post" style="margin:0px">
-			<input type="hidden" name="type" value="22" />
-			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="发现数据信息修改" />
-			</form>
-		</td>
-		<td>{$ftype}</td>
-	</tr>
-	
-</tbody>
-
 </table>
 
 <br/><br/>
@@ -203,9 +136,6 @@ $("document").ready(function(){
 
 <center>{$page}</center>
 
-
-
-<center>{$page}</center>
 
 <br/><br/><br/><br/><br/><br/>
 End!

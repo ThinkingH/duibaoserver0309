@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<load href="__PUBLIC__/Css/admin.css" />
+<load href="__PUBLIC__/Css/main.css" />
 
 <script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
@@ -60,12 +60,9 @@ $("document").ready(function(){
 </head>
 
 <body>
-<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" >
-	<tr height="28"><td background="__PUBLIC__/Images/title_bg1.jpg">
-		<font size="-1" ><b>当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;正式用户信息&nbsp;#&nbsp;&nbsp;#&nbsp;积分变动</b></font></td></tr>
-	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
-	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
-</table>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;正式用户信息&nbsp;#&nbsp;&nbsp;#&nbsp;积分变动
+</div>
 
 <br/>
 
@@ -75,7 +72,7 @@ $("document").ready(function(){
 
 <form action="__APP__/Userlist/jifenshowdata{$yuurl}" method="post" >
 	
-<table class="mainTabled">
+<table class="table-list">
 	<input type="hidden" name="id" value="{$list['id']}" />
 	<input type="hidden" name="tablename" value="1" />
 	
@@ -142,7 +139,7 @@ $("document").ready(function(){
 <br/><br/><br/><br/>
 
 <h2>最近30条变更日志记录</h2>
-<table class="mainTables" width="1300px">
+<table class="table-list" width="1300px">
 <thead>
 	<tr>
 		<td width="60"><b>标识编号</b></td>

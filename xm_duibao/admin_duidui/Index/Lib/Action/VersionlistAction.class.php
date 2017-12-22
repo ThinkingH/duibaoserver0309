@@ -584,8 +584,8 @@ class VersionlistAction extends Action{
 	
 	
 		if($imagedata_sql){
-			echo "<script>alert('数据修改成功！');window.location.href='".__APP__."/Versionlist/configshow".$yuurl."';</script>";
-			$this ->success('数据修改成功!','__APP__/Versionlist/configshow'.$yuurl);
+			echo "<script>alert('数据修改成功！');window.location.href='".__APP__."/Versionlist/index".$yuurl."';</script>";
+			$this ->success('数据修改成功!','__APP__/Versionlist/index'.$yuurl);
 		}else{
 			echo "<script>alert('数据修改失败！'); history.go(-1);</script>";
 			$this->error('数据修改失败！');
