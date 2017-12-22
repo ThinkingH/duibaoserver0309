@@ -60,7 +60,7 @@ class HyXb805 extends HyXb{
 		
 		
 		//判断该用户在一天之内的发布次数（一天只限制发布3次）
-		$panduansql = "select count(*) as num from z_tuanmainlist where userid='".parent::__get('xb_userid')."' and faflag='1' 
+		$panduansql = "select count(*) as num from z_fabulist where userid='".parent::__get('xb_userid')."' and faflag='1' 
 				and create_datetime>='".date('Y-m-d 00:00:00')."' and create_datetime<='".date('Y-m-d 23:59:59')."'"; 
 		parent::hy_log_str_add($panduansql);
 		$panduanlist = parent::__get('HyDb')->get_row($panduansql);
@@ -99,21 +99,21 @@ class HyXb805 extends HyXb{
 			$theurl = 'http://127.0.0.1/'.date('YmdHis').mt_rand(1000,9999);
 			
 			//发布数据的入库处理
-			$insertsql = "insert into z_tuanmainlist (hyflag,shstatus,userid,faflag,theurl,
+			$insertsql = "insert into z_fabulist (hyflag,shstatus,userid,faflag,
 						create_datetime,maintype,title,picurl,
-						yuanprice,nowprice,reamrk,address,
-						lat,lng,over_datetime,zflag,phone) values 
-						('1','99','".parent::__get('xb_userid')."','1','".$theurl."',
+						yuanprice,nowprice,discount,address,
+						lat,lng,over_datetime,phone) values 
+						('1','99','".parent::__get('xb_userid')."','1',
 						'".date('Y-m-d H:i:s')."','".$this->type."','".$this->proname."','".$filenameurl."', 
 							'".$this->yuanprice."','".$this->nowprice."','".$this->discount."','".$this->address."',
-							'".$this->lat."','".$this->lng."','".$this->over_datetime."','1','".$this->phone."')";
+							'".$this->lat."','".$this->lng."','".$this->over_datetime."','".$this->phone."')";
 			
 			$insertlist = parent::__get('HyDb')->execute($insertsql);
 			
 			if($insertlist===true){
 				
 				//判断该用户在一天之内的发布次数（一天只限制发布3次）
-				$panduansql = "select count(*) as num from z_tuanmainlist where userid='".parent::__get('xb_userid')."' and faflag='1' 
+				$panduansql = "select count(*) as num from z_fabulist where userid='".parent::__get('xb_userid')."' and faflag='1' 
 				and create_datetime>='".date('Y-m-d 00:00:00')."' and create_datetime<='".date('Y-m-d 23:59:59')."'";
 				parent::hy_log_str_add($panduansql);
 				$panduanlist = parent::__get('HyDb')->get_row($panduansql);

@@ -66,6 +66,21 @@ class HyXb532 extends HyXb{
 						where  shop_userbuy.productid = shop_product.id and shop_userbuy.id='".$this->quanid."'  ";
 		$duihuan_list = parent::__get('HyDb')->get_row($duihuan_sql);
 		
+		/* $replace = array("\t", "\r", "\n",);
+			
+		//图片展示
+		$arr = unserialize(BUCKETSTR);//获取七牛访问链接
+		if(substr($youhuiquanconflist[$keys]['img'],0,7)=='http://' ||substr($youhuiquanconflist[$keys]['img'],0,8)=='https://' ){
+			//[$keys]['img'] = 'https://ojlty2hua.qnssl.com/image-1500545214106-NTk1Y2FlOWNlMzE2MC5wbmc=.png?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+		}else{
+			$youhuiquanconflist[$keys]['img'] = $arr['duibao-basic'].$youhuiquanconflist[$keys]['img'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+			$youhuiquanconflist[$keys]['img'] = str_replace($replace, '', $youhuiquanconflist[$keys]['img']);
+		
+		} */
+		//echo 'mmmm';
+		$duihuan_list['mainpic'] = parent::qiniu_pic_url('duibao-shop',$duihuan_list['mainpic'],'1000','1000',$imageslim='75');
+		
 		
 		if($duihuan_list['address_id']==null){
 			$duihuan_list['address_id'] ='';
@@ -143,8 +158,10 @@ class HyXb532 extends HyXb{
 		//金额的展示方式 number_format($duihuan_list[$keys]['price']/100);
 		if($duihuan_list['feetype']=='1'){
 			$duihuan_list['moneyscore']  = '￥'.number_format($duihuan_list['price']/100,2).'+'.$duihuan_list['score'].'馅饼';
+			$duihuan_list['price']  = number_format($duihuan_list['price']/100,2).'+'.$duihuan_list['score'].'馅饼';
 		}else if($duihuan_list['feetype']=='2'){
 			$duihuan_list['moneyscore']  = '￥'.number_format($duihuan_list['price']/100,2);
+			$duihuan_list['price']  = number_format($duihuan_list['price']/100,2);
 		}else if($duihuan_list['feetype']=='4' || $duihuan_list['feetype']=='5'){
 			$duihuan_list['moneyscore']  = '免费';
 		}
@@ -232,7 +249,7 @@ class HyXb532 extends HyXb{
 		}else if($duihuan_list['status']=='6'){//已删除
 			$duihuan_list['statusmsg']='已删除';
 		}
-		
+		$duihuan_list['nflag']='1';
 		
 			
 		if(count($duihuan_list)>0){

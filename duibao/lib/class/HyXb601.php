@@ -110,7 +110,7 @@ class HyXb601 extends HyXb{
 				if(substr($selsql[$keys]['smallpic'],0,7)=='http://' ||substr($selsql[$keys]['smallpic'],0,8)=='https://' ){
 					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
 				}else{
-					$selsql[$keys]['smallpic'] = $arr['duibao-basic'].$selsql[$keys]['smallpic'].'imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
+					$selsql[$keys]['smallpic'] = $arr['duibao-basic'].$selsql[$keys]['smallpic'].'?imageView2/1/w/'.$this->width.'/h/'.$this->height.'/q/75|imageslim';
 					$selsql[$keys]['smallpic'] = str_replace($replace, '', $selsql[$keys]['smallpic']);
 				}
 				
