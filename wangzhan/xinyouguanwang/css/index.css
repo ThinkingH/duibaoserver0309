@@ -1,0 +1,155 @@
+
+
+/* 轮播 */
+.swiper-container { width: 100%;height: 100%;}
+.slide_v{ width: 100%; height: 100%; overflow: hidden; position: relative;}
+.swiper-slide-active_v .bg{ 
+    -webkit-transition:16s 0s all ease;
+    transition:16s 0s all ease;
+    transform:scale(1.1,1.1);
+    -webkit-transform:scale(1.1,1.1);
+}
+
+.next {position: fixed; z-index: 100; width: 50px;height: 50px; overflow: hidden; background: url(../images/up.png);background-size:100%;bottom: 30px;left: 50%;text-align: center;margin-left: -25px;
+    -webkit-animation: arrowUp 2s infinite ease-in;
+    -moz-animation: arrowUp 2s infinite ease-in;
+    -o-animation: arrowUp 2s infinite ease-in;
+    -ms-animation: arrowUp 2s infinite ease-in;
+    animation: arrowUp 2s infinite ease-in;
+}
+@-webkit-keyframes arrowUp {
+    0% {transform:translateY(42px);opacity: 0;}
+    60% {transform:translateY(12px); opacity: 1;}
+    100% {transform:translateY(0px); opacity: 0;}
+}
+@-moz-keyframes arrowUp {
+    0% {transform:translateY(42px);opacity: 0;}
+    60% {transform:translateY(12px); opacity: 1;}
+    100% {transform:translateY(0px); opacity: 0;}
+}
+@-o-keyframes arrowUp {
+    0% {transform:translateY(42px);opacity: 0;}
+    60% {transform:translateY(12px); opacity: 1;}
+    100% {transform:translateY(0px); opacity: 0;}
+}
+@-ms-keyframes arrowUp {
+    0% {transform:translateY(42px);opacity: 0;}
+    60% {transform:translateY(12px); opacity: 1;}
+    100% {transform:translateY(0px); opacity: 0;}
+}
+@keyframes arrowUp {
+    0% {transform:translateY(42px);opacity: 0;}
+    60% {transform:translateY(12px); opacity: 1;}
+    100% {transform:translateY(0px); opacity: 0;}
+}
+
+
+
+.swiper-pagination-bullet{width: 12px; height: 12px; margin: 10px 0px; border:1px solid #007aff; background: #fff; opacity:1;}
+.swiper-pagination-bullet-active{ background: #007aff;}
+
+.bg1{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic1.jpg) center center no-repeat; background-size:cover;}
+.bg1_img1{ margin-top: 100px;}
+.bg2{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic2.jpg) center center no-repeat; background-size:cover;}
+.bg2_img1{ position: absolute; left: 55%; top:32%;}
+.bg2_img2{ position: absolute; left: 55%; top:45%;}
+.bg3{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic3.jpg) center center no-repeat; background-size:cover;}
+.bg3_img1{ position: absolute; left: 55%; top:32%;}
+.bg3_img2{ position: absolute; left: 55%; top:45%;}
+.bg4{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic4.jpg) center center no-repeat; background-size:cover;}
+.bg4_img1{ position: absolute; left: 10%; top:40%;}
+.bg4_img2{ position: absolute; left: 10%; top:52%;}
+.bg5{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic5.jpg) center center no-repeat; background-size:cover;}
+.bg5_img1{ position: absolute; left: 55%; top:32%;}
+.bg5_img2{ position: absolute; left: 55%; top:45%;}
+.bg6{ width: 100%; height: 100%; overflow: hidden; background: url(../images/index_pic6.jpg) center center no-repeat; background-size:cover;}
+.bg6_img1{ position: absolute; left: 10%; top:40%;}
+.bg6_img2{ position: absolute; left: 10%; top:52%;}
+.bg7{ width: 100%; height: 100%; overflow: hidden; background: #1e1b29;}
+.text{ width: 100%;background: #000; opacity:0.5; position: absolute; left: 0px; bottom: 0px;}
+.gonggao{width: 100%; height: 80px; position: absolute; left: 0px; bottom: 0px; color: #fff; font-size: 20px; line-height: 80px; padding-left: 40px; text-align:center;}
+.gonggao a{float:left;line-height:80px; color: #fff;margin-right:20px;width:27%;display:inline-block;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.gonggao span{line-height:80px;float:left;}
+.topnews{width:270px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;display:block;}
+/* 轮播第一屏登陆 */
+.login_register{ width:455px; height: 330px; position: absolute; left: 50%; top:50%; margin-left: -227px; margin-top: -165px;}
+.alert_box{ width: 208px; min-height: 328px; overflow: hidden; padding: 0px 45px; background: rgba(0,0,0,0.4);border:1px solid transparent; border-radius: 8px;color: #fff; float: right;}
+.alert_box_title{ width: 100%; overflow:hidden;}
+.alert_box_title h3{ font-size: 18px; margin-top: 30px; letter-spacing: 0.15em; cursor:pointer;}
+.input_box{ overflow: hidden; margin-top: 8px;}
+.input_box label{ float: left;}
+.input_box label img{ width: 32px; height: 32px;}
+.input_box input{ width: 170px; height: 30px; border:none; padding-left: 5px;}
+.yzm_box{ overflow: hidden; margin-top: 8px;}
+.yzm_box input{ width: 105px; height: 30px; border:none; padding-left: 5px; float: left; margin-right: 10px;}
+.yzm_box label{ float: left;}
+.yzm_box label img{ width: 32px; height: 32px;}
+.yzm_box span{ float: left;}
+.yzm_box span img{ height: 32px;}
+.submit_but{ width:100%; height: 40px; border: none; border-radius: 3px; font-size: 16px; color: #fff; margin-top: 20px; background: #00bbee; cursor: pointer; margin-bottom: 10px;}
+.link_left{ float: left; color: #fff;}
+.link_right{ float: right; color: #fff;}
+#qiye{ color: #00bbee;}
+#qiye_box{ overflow: hidden;}
+#geren_box{ overflow: hidden; display: none;}
+
+.login_qiye{ width:200px; height: 40px; overflow: hidden; display: block;margin:0 auto; background: #0080e3; border-radius: 5px; font-size: 14px; line-height: 40px; color: #fff; text-align: center;}
+.login_qiye:hover{ background: #fff;  color: #0080e3;}
+.login_geren{ width:200px; height: 40px; overflow: hidden; display: block; float: right; background: #fd8300; border-radius: 5px; font-size: 14px; line-height: 40px; color: #fff; text-align: center;}
+.login_geren:hover{ background: #fff;  color: #fd8300;}
+
+
+
+/* 底部 */
+.footer_main{ width: 100%; background: #f5f5f5; overflow: hidden; padding-top:100px;}
+.footer_main_ul{ width: 1200px; height: auto; margin: 0 auto; padding-bottom: 30px; overflow: hidden; position:relative;}
+.footer_main_ul li{ width: 360px; float: left; margin-top: 30px; margin-right: 40px;}
+.footer_main_ul li span{ width: 64px; height: 64px; overflow: hidden; display: block; float: left;}
+.footer_main_ul li div{ width: 288px; float: right;}
+.footer_main_ul li div h3{ width: 100px; height: 23px; line-height: 9999em; margin-top: 10px;}
+.footer_main_ul li div p{ font-size: 14px; line-height: 20px; margin-top: 10px;}
+.footer_main_ul li div p a{ color: #666666;}
+
+.footer_main_span1{ background: url(../images/main.png) 0px 0px no-repeat;}
+.footer_main_span2{ background: url(../images/main.png) -65px 0px no-repeat;}
+.footer_main_span3{ background: url(../images/main.png) -130px 0px no-repeat;}
+.footer_main_span4{ background: url(../images/main.png) -195px 0px no-repeat;}
+.footer_main_span5{ background: url(../images/main.png) -259px 0px no-repeat;}
+
+.footer_main_h31{ background: url(../images/main.png) -322px 0px no-repeat;}
+.footer_main_h32{ background: url(../images/main.png) -322px -24px no-repeat;}
+.footer_main_h33{ background: url(../images/main.png) -322px -48px no-repeat;}
+.footer_main_h34{ background: url(../images/main.png) -422px 0px no-repeat;}
+.footer_main_h35{ background: url(../images/main.png) -422px -24px no-repeat;}
+.footer_ewm{ text-align: center;}
+
+
+
+.qianbao_1{ overflow: hidden; background:#d6d6d7 url(../images/qianbao_1.jpg) center no-repeat;}
+.qianbao_2{ overflow: hidden; background:#d6d6d7 url(../images/qianbao_2.jpg) center no-repeat;}
+.qianbao_3{ overflow: hidden; background:#d6d6d7 url(../images/qianbao_3.jpg) center no-repeat;}
+.qianbao_4{ overflow: hidden; background:#d6d6d7 url(../images/qianbao_4.jpg) center no-repeat;}
+.qianbao_5{ overflow: hidden; background:#d6d6d7 url(../images/qianbao_5.jpg) center no-repeat;}
+
+.download_box{ width: 1000px; height: 100%; overflow: hidden; margin: 0 auto; position: relative;}
+.download{ width: 550px; height: auto; overflow: hidden; position: absolute; right: 0; bottom: 12%;}
+.download img{ width: 230px; height: 230px; float: left;}
+.download div{ float: right;}
+.download div a{ width:200px; height: 50px; display: block; border-radius: 5px; font-size: 22px; margin-bottom: 40px; line-height: 50px; padding-left: 55px; color: #515151;}
+.download p{ width: 100%; overflow: hidden; font-size: 20px; color: #fff; margin-top: 10px;}
+.down_iphone{ background:#fff url(../images/iphone.jpg) 20px center no-repeat; margin-top: 45px;}
+.down_android{ background:#fff url(../images/android.jpg) 20px center no-repeat;}
+.down_360{ background:#fff url(../images/360.jpg) 20px center no-repeat;}
+
+
+.guanggao{ width: 300px; height: 200px; position: fixed; right: 0; bottom:0px; z-index: 9999;display: none;}
+.colse{ width: 30px; height: 30px; position: absolute; right: 0px; top:0px; cursor: pointer;}
+
+
+
+
+
+
+
+
+
