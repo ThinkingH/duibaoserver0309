@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$list.name}</title>
+	    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="Keywords" content="一带一路,自贸区,期货,雾霾,核电,互联网金融,石油,煤炭,铁矿石,天然气,有色金属,新能源,塑料,钢铁,大宗商品,中铁国恒"/>
+	<meta name="Description" content="中铁国恒大宗财经，是整合大宗行业信息，提供产业资讯，梳理公司报道，解读大宗数据的行业领先的大宗商品资讯平台。" />
+	<include file="./Public/daohang/dazongcaijing/yangshi.html" />
+
+</head>
+<body>
+
+<include file="./Public/daohang/dazongcaijing/nav.html" />
+
+	
+	<!-- 图文、洞察、专题 b -->
+	<div class="dz-news">
+		<div class="content wrap1 clearfix f_lc">
+			<!-- 详情页左边 b -->
+			<div class="dz-news-l fl f_ld">
+            	<!-- up部分 b -->
+                    <div class="f_detail_content">
+                        
+						<div class="f_list_crumbs">
+												<span>
+												<a>
+												大宗财经</a></span> > 
+												<span>
+												<a>
+												宏观信息</a></span> >  
+												<span class="f_cru_col">正文</span></div>
+
+                        <!-- 文章部分 b -->
+                        <div class="f_detail_n">
+                        	<div class="f_detail_title">{$list.name}</div>
+                            <div class="f_detail_a clearfix">
+                            	<div class="fl"><span><a>{$list.writeuser}</a></span>    |    
+				<span class="f_da">{$list.sendtime}</span></div>
+								<div class="fr">
+																	</div>
+                            </div>
+                            <div class="f_detail_text">
+                            {$list.content}
+																
+							</div>
+                        </div>
+                    </div>
+              
+			</div>
+			<!-- 详情页左边 e -->
+            <!-- 列表右侧b -->
+			<div class="fr f_list_r">
+                <div class="dz-news-r">
+							<div class="jyd-title">
+					<h3>热文</h3>
+					<p>Hot article</p>
+				</div>
+	    					<div class="dz-subject dz-hotwords">
+					<div class="dz-subject-cell"><a href="__APP__/News/wzlist/id/6" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/picture/1.gif" alt="">
+			</div>
+				<span>
+	                        					“十三五”能源规划有望近期出炉
+				</span></a>
+				<div class="dz-stats clearfix">
+					
+				</div>
+			</div>
+		</div>
+	    					<div class="dz-subject dz-hotwords">
+					<div class="dz-subject-cell"><a href="__APP__/News/wzlist/id/11" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/picture/2.gif" alt="">
+			</div>
+				<span>
+	                        					华能国际上半年营收529.24亿 4原因致发电量下降
+				</span></a>
+				<div class="dz-stats clearfix">
+					
+				</div>
+			</div>
+		</div>
+	    					<div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/wzlist/id/9" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/picture/3.gif" alt="">
+			</div>
+				<span>
+	                        					天然气管网改革令中石油陷矛盾 业务拆分或将受阻
+				</span></a>
+				<div class="dz-stats clearfix">
+					
+				</div>
+			</div>
+		</div>
+	    
+			                    <!-- dz 热文 e -->
+                </div>
+                <div class="f_list_call">
+                <!-- 相关文章 b -->
+                    <div class="dz-news-r">
+			                        <div class="jyd-title">
+                            <h3>相关文章</h3>
+                           
+                        </div>
+
+			
+	<div class="dz-subject-cell f_lh" id="xgList">
+			
+			<volist name="wenzhang" id="vo">
+	    		<p newsId="200002282">
+				<a  href="__APP__/News/wzlist/id/{$vo.id}"  target="_blank">
+					{$vo.name}
+				</a>							
+				</p>
+		</volist>
+				 </div>
+
+                    </div>
+                <!-- 相关文章 e -->
+                </div>
+               
+		    </div>
+            <!-- 列表右侧e -->
+		</div>
+	</div>
+	<!-- 图文、洞察、专题 e -->
+	<!-- footer b -->
+   
+   <include file="./Public/daohang/shouye/footer.html" />
+   
+   
+   
+	<!-- 返回顶部 b -->
+	<div class="gotop"></div>
+	<!-- 返回顶部 e -->
+</body>
+</html>

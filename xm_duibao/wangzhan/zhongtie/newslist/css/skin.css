@@ -1,0 +1,50 @@
+﻿@charset "utf-8";
+/****************
+ * @description : CMS频道皮肤1
+ * @author   : jinglei  <jinglei@staff.sina.com.cn>
+ * @date     : 2013-08-23
+ ****************/
+/*css script*/
+a:hover, a:active, a:focus{color:#377cce;}
+.mainNav .levelOne,.mainNav .levelTwo{ background-size:12px auto}
+
+/*header*/
+.articleHead a{ color:#fff}
+.articleHead .mainNav{
+background: #F0F4F6;
+
+}
+.mainNav .navLine{
+border-left:1px solid #5bafdf;background:#3097d0;
+}
+.articleHead .navGroup{
+border-top:1px solid #71bae3;border-bottom:1px solid #44a1d4;background:#58aede;
+}
+.articleHead .nav_center_Group{
+background:#58aede;border-top:1px solid #71bae3;border-bottom:1px solid #44a1d4;
+}
+.hideBottomLine {background:#58aede;}
+
+/*广告*/
+.advertise{background:#f1f9ff;}
+.advertise a{ color:#256aba}
+
+/*活动广告*/
+.active_h2{background:#fefdf4; }
+.active_h2 a{color:#377cce; }
+
+/* login area */
+.w_login{background:#f4f4f4;}
+a.login_btn{color:#fff; background:#58aede}
+a.reg_btn{color:#b0b9bf; background:#ebebeb}
+
+/*频道导航*/
+.p_nav,.p_nav.fivenav,.p_nav.fournav{
+background:#f4f4f4;border-top:1px solid #f4f4f4;border-bottom:1px solid #f4f4f4;
+}
+.p_nav_second{background:#f4f4f4;border-top:1px solid #ddd;border-bottom:1px solid #ddd;
+-moz-box-shadow:inset 0px 1px 0px #fff;
+-webkit-box-shadow:inset 0px 1px 0px #fff;
+box-shadow:inset 0px 1px 0px #fff;
+}
+.p_nav_second a{ color:#888;}

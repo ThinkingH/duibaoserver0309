@@ -1,0 +1,130 @@
+
+
+
+<!-- 图文新闻 e -->
+            <!-- 列表右侧b -->
+			<div class="fr f_list_r" style="float:left;padding-left:40px;">
+                <div class="dz-news-r">
+								<div class="jyd-title">
+					<h3>热文</h3>
+				</div>
+
+
+                    <!-- dz 热文 b -->
+			
+						
+	    					<div class="dz-subject dz-hotwords">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/9" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160620142201_195.png" alt="">
+			</div>
+				<span>
+	                       煤企主动增产难度
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl">2016-10-25</i>
+					<a class="fr" href="__APP__/News/oillist/id/9" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+	    					<div class="dz-subject dz-hotwords">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/16" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160620162944_727.png" alt="">
+			</div>
+				<span>
+	           50天开5次会 发改委觅招化解“燃煤”之急
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-25</i>
+					<a class="fr" href="__APP__/News/oillist/id/16" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+	    					<div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/10" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160619125044_105.jpg" alt="">
+			</div>
+				<span>
+	                       山西煤炭“去产能”再加码
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-25</i>
+					<a class="fr" href="__APP__/News/oillist/id/10" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/8" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160714094939_191.png" alt="">
+			</div>
+				<span>
+	                      郑商所上调动力煤品种交易手续费2元/手
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-25</i>
+					<a class="fr" href="__APP__/News/oillist/id/8" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+	    
+	    
+	    <div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/54" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160718100911_266.png" alt="">
+			</div>
+				<span>
+	                        煤炭供应不紧缺 产煤大县缘何上演“抢煤大战”？
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-19</i>
+					<a class="fr" href="__APP__/News/oillist/id/54" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/7" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160720094725_454.png" alt="">
+			</div>
+				<span>
+	                  煤荒背后的去产能歧路：上下游行业现失衡
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-26</i>
+					<a class="fr" href="__APP__/News/oillist/id/7" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="dz-subject dz-hotwords noborder">
+					<div class="dz-subject-cell"><a href="__APP__/News/oillist/id/21" target="_blank">
+			<div class="imgboxw">
+				<img  widht="333" src="__PUBLIC__/newpic/news2/picture/jyd_20160715095744_633.png" alt="">
+			</div>
+				<span>
+	                    煤炭先进产能释放扩围 超预期需求或支撑煤价
+				</span></a>
+				<div class="dz-stats clearfix">
+					<i class="fl"> 2016-10-24</i>
+					<a class="fr" href="__APP__/News/oillist/id/21" target="_blank">详情</a>
+				</div>
+			</div>
+		</div>
+			
+		    <!-- dz 热文 e -->
+                </div>
+                <div class="f_list_call">
+               
+
+                <!-- 联系我们 e -->
+                </div>
+		    </div>
+            <!-- 列表右侧e -->
+		</div>
+	</div>

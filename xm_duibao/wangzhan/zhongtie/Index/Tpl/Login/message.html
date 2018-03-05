@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="./Public/daohang/shouye/header.html" />
+
+<body>
+	<!-- 导航条部分 -->
+	<include file="./Public/daohang/shouye/nav_logo.html" />
+	
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/logincss.html" />
+  	
+  	<script type="text/javascript">
+	
+	$("document").ready(function(){
+		
+		 $("#submit").click(function(){
+			
+			var company = ("#company").val();
+			var name    = ("#name").val();
+			var phone   = ("#phone").val();
+			var qq      = ("#QQ").val();
+			var email   = ("#email").val();
+			var address = ("#adcompany").val();
+			
+			var reg = /^\w+@\w+\.(com|cn|com.cn|net|org)$/;
+			var res = reg.test(email);
+			
+			if(company==''){
+		  		alert('请填写公司名称！');
+		  		return false;
+		  	}
+			
+			if(name==''){
+				alert('请填写联系人！');
+		  		return false;
+			}
+			
+			if(phone.length!=11 || !$.isNumeric(phone)){
+				alert('请填写正确的手机号！');
+		  		return false;
+			}
+			
+			if(!$.isNumeric(qq)||qq.length>11){
+		  		alert('请填写正确的qq号！');
+		  		return false;
+		  		
+		  	}
+			
+			if(email==''){
+				alert('请填写邮箱！');
+		  		return false;
+			}
+			
+			if(!res){
+				alert('请填写正确的邮箱！');
+		  		return false;
+			}
+			
+			if(address==''){
+				
+				alert('请填写公司地址！');
+		  		return false;
+			}
+		}); 
+		
+		
+	});
+
+	</script>
+	
+	
+	
+	
+	 <div class="register-bg clear yahei" style="margin-top:0px;background-color:#FBEBD1;">
+    <div class="register">
+        <div class="r-header">
+            <div class="reg-step reg-step3"></div>
+        </div>
+        <div class="reg-body" style="margin-top: 20px;">
+            <div class="registerdetail clear">
+                <div class="detail-box">
+                    <div class="detail-bg"></div>
+                    <div class="detail-panel">
+					<form action="" id="form0" method="post">    
+                            <div class="reg-line">
+                                <label for="">公司名称：</label>
+                                <input class="u-txt"  id="company" maxlength="50" name="company" type="text" value="" />
+                                <div class="error-msg"><span class="field-validation-valid"></span></div>
+                            </div>
+                            
+                            <div class="reg-line">
+                                <label for="">联系人：</label>
+                                <input class="u-txt" id="name" maxlength="10" name="name" type="text" value="" />
+                                <div class="error-msg"><span class="field-validation-valid"></span></div>
+                            </div>
+                            
+                           
+                             <div class="reg-line">
+                                <label for="">联系电话</label>
+                                <input class="u-txt" id="phone" maxlength="15" name="phone" type="text"/>
+                                                          
+                            </div>
+
+                            <div class="reg-line">
+                                <label for="">QQ：</label>
+                                <input class="u-txt"  id="QQ" maxlength="12" name="QQ" type="text" value="" />
+                                <div class="error-msg"><span class="field-validation-valid" ></span></div>
+                            </div>
+                            <div class="reg-line">
+                                <label for="">Email：</label>
+                                <input class="u-txt" id="email" maxlength="50" name="email" type="text" value="" />
+                                <div class="error-msg"><span class="field-validation-valid"></span></div>
+                            </div>
+                             <div class="reg-line">
+                                <label for="">公司地址：</label>
+                                <input class="u-txt"  id="adcompany" maxlength="150" name="adcompany" type="text"   />
+                                <div class="error-msg"><span class="field-validation-valid" ></span></div>
+                            </div>
+                           
+                            <div class="reg-m">
+                                <input class="r-btn" type="submit" id="submit" name="submit">
+                            </div>
+                  </form>               
+                
+              </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 
+</div>
+	
+
+	<include file="./Public/daohang/shouye/footer.html" />
+	
+	
+</body>
+</html>

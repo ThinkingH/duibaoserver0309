@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中铁国恒大宗财经-列表页</title>
+	<!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="Keywords" content="一带一路,自贸区,期货,雾霾,核电,互联网金融,石油,煤炭,铁矿石,天然气,有色金属,新能源,塑料,钢铁,大宗商品,中铁国恒"/>
+	<meta name="Description" content="中铁国恒大宗财经，是整合大宗行业信息，提供产业资讯，梳理公司报道，解读大宗数据的行业领先的大宗商品资讯平台。" />
+
+	<link rel="stylesheet" href="__PUBLIC__/newpic/news2/css/resetcss.css">
+	<link rel="stylesheet" href="__PUBLIC__/newpic/news2/css/public.css">
+	<link href="__PUBLIC__/newpic/news2/css/list.css" rel="stylesheet" type="text/css">
+	<script src="__PUBLIC__/newpic/news2/js/jquery-1.8.3.min.js"></script>
+	<!-- js函数引用库 jsbank.js b -->
+	<script src="__PUBLIC__/newpic/news2/js/jsbank.js"></script>
+	<script src="__PUBLIC__/newpic/news2/js/public.js"></script>
+	<!-- js函数引用库 e -->
+	<!-- 页面其他效果js index315.js b -->
+    <script src="__PUBLIC__/newpic/news2/js/jquery.more.js"></script>
+	<!-- 页面其他效果js e -->
+	<script src="__PUBLIC__/newpic/news2/js/track-record.js"></script>
+	 
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+	
+
+	
+</head>
+<body>
+
+	<include file="./Public/daohang/newdaohang/dazong.html" />
+	
+	<!-- menu e -->
+	
+	<!-- 图文、洞察、专题 b -->
+	<div class="dz-news">
+		<div class="content wrap1 clearfix f_lc" style="width:1200px;">
+			<!-- 图文新闻 b -->
+			<div class="dz-news-l fl f_ld">
+				
+
+				<div class="f_list_title clearfix">
+                	<div class="f_list_crumbs fl">
+						<span><a href="/dazong/index.html">大宗财经</a></span>   
+						<span class="f_cru_col">行业动态</span>
+					</div>		
+			
+                    <div class="f_list_fl fr clearfix">
+		            <ul><li class="f_lg">分类</li>
+			    <li class="f_lf">
+				<a href="__APP__/News/dazongchanye.html" target="_blank">钢铁</a>
+			    </li>
+				<li class="f_lf">
+				<a href="__APP__/News/dazongchem.html" target="_blank">化工</a>
+			    </li>
+				
+				  			        			    							    							    							    							    							    							    							                            </ul>
+		        </div>
+                </div>
+                <!-- 点击加载更多内容-请在ul里边添加‘showMoreNChildren’和  pagesize="n" 点击加载div部分在jquery.more.js里边 b -->
+				
+               <ul class="f_le showMoreNChildren" pagesize="10">
+            	
+            	<php>for($i=3;$i<=10;$i++){</php>
+            	<volist name='list' id='vo'>
+            		
+            	<li>
+        	    <a target="_blank" href="__APP__/News/oillist/id/{$vo.id}">
+			    <div class="imgbox fl">
+				<img src="__PUBLIC__/news/{$i}.jpg" height="150" >
+			    </div>	
+				<h2>
+		    			{$vo.title}
+		    		</h2>
+				<p><span>
+		    			{$vo.tcontent}
+		    		</span><span><b>[详细]</b></span></p></a>
+		    		
+		<div class="dz-news-stats clearfix">
+		    <span class="fl">{$vo.contenttime}</span>
+		    <a class="fr"> 石油</a>
+		</div>
+	    </li>
+	   
+	    </volist>
+	     <php>}</php>
+            	
+    </ul>
+              
+			</div>
+			
+			<!-- 图文新闻 e -->
+            <!-- 列表右侧b -->
+            
+             <include file="./Public/daohang/dazongcaijing/redian.html" />
+	
+	
+	<!-- 图文、洞察、专题 e -->
+	<!-- footer b -->
+	
+     <include file="./Public/daohang/footer.html" />
+     
+	<!-- footer e -->
+	<!-- 返回顶部 b -->
+	<div class="gotop"></div>
+	<!-- 返回顶部 e -->
+</body>
+</html>

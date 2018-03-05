@@ -1,0 +1,115 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--为了让 IE 浏览器运行最新的渲染模式-->
+    <meta name="renderer" content="webkit"><!--让国产浏览器启用高速模式-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>卖家管理-商品发布</title>
+    <style type="text/css">
+    .hint-in-back{border:none; width:200px; height:32px; line-height:32px;color:#fff; background-color:#B62E28;border-radius:5px; font-size:14px;}
+    </style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- easyui 控件 -->
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/icon.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/easyui.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/common1.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/bootstrap-ie6.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/ie.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/index.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/coal.css" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/newpic/xq/css/common_f.css" type="text/css">
+
+<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+</head>
+  
+<body>
+<include file="./Public/daohang/newdaohang/xiangqingnav.html" />
+<!-- #F2F4F6 -->
+<div class="z_bj" style="background-color:#fff;">
+ <!--main-->
+
+<div class="w980 clearfix yhei">
+	<div class="f14 border_e lh14"><a href="__APP__/Index/index">首页</a>  &gt;  <a href="__APP__/Index/cocalcommerce">商城品牌</a>&gt;  <a href="__APP__/Index/index">中铁国恒</a></div>
+	<div class="fl buy_jyd_l" style="height:700px;">
+    	<div class="bjyd_title">中铁国恒</div>
+        <div class="border_b f12">
+        	<div class="lh28 bjyd_cf backff f_height2" style="background-color:#F2F4F6;">
+	        		发热量：5000kcal；
+        		
+	        		全水：&le;19%；
+        		
+	        		全硫：0.8%；
+        		
+	        		灰分：&le;20%；
+        		
+	        		挥发分：&gt;25%；
+        		
+	        		灰熔点：&gt;1150℃；
+        		
+	        		粒度：0-50mm；
+        	</div>
+        </div>
+        
+        <div class="bjyd_dl f12 bjyd_cf border_b backff" style=" height:500px; position:relative;background-color:#F2F4F6;">
+       
+        	<dl class="clearfix">
+                <dt>煤种：</dt>
+                <dd>{$xiangqing.type}</dd>
+            </dl>
+            <dl class="clearfix">
+                <dt>数量：</dt>
+                 <dd>{$xiangqing.shuliang}</dd>
+            </dl>
+            <dl class="clearfix">
+                <dt>低位热值：</dt>
+                <dd>{$xiangqing.rezhi}</dd>
+            </dl>
+            <dl class="clearfix">
+                <dt>价格：</dt>
+                <dd>{$xiangqing.jiage}</dd>
+            </dl>
+            <dl class="clearfix">
+                <dt>硫分：</dt>
+                <dd>{$xiangqing.liufen}</dd>
+            </dl>            
+            
+             <dl class="clearfix">
+                <dt>交货地：</dt>
+                <dd>{$xiangqing.address}</dd>
+            </dl>
+            <!--  <dl class="clearfix">
+                <dt>货物类型：</dt>
+                <dd>{$xiangqing.producttype}</dd>
+            </dl>
+             <dl class="clearfix">
+                <dt>交易公司：</dt>
+                <dd>{$xiangqing.company}</dd>
+            </dl>
+             <dl class="clearfix">
+                <dt>交易时间：</dt>
+                <dd>{$xiangqing.createtime}</dd>
+            </dl> -->
+           
+        </div>
+        <!-- 去掉是否已经登陆的判断 -->
+        
+    </div>
+<!-- 大图end -->
+   </div>
+  </div>
+    
+            
+        
+ </div>
+</div>
+
+<include file="./Public/daohang/cocalcommerce/footer.html" />
+</body>
+
+</html>

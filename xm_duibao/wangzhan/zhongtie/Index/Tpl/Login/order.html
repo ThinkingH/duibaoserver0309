@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="./Public/daohang/shouye/header.html" />
+
+	
+	<!-- 用户登录的css -->
+	
+	<link href="__PUBLIC__/login/css/common.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/common_1.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/m.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/style.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/showloading.css"  type="text/css"  rel="stylesheet" />
+	<script type=text/javascript src="__PUBLIC__/login/js/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="__PUBLIC__/login/css/login.css"/>
+ 	
+ 	<link href="__PUBLIC__/login/css/help.css" rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/richedit.css" rel="stylesheet" />
+	
+	<style type="text/css">
+	.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-size:14px;
+		}
+		td, th {
+		    padding: 0;
+		}
+		tbody {
+		    display: table-row-group;
+		    vertical-align: middle;
+		    border-color: inherit;
+		}
+		
+		.table {
+		    width: 100%;
+		    max-width: 100%;
+		    margin-bottom: 20px;
+		}
+		table {
+		    background-color: transparent;
+		}
+		table {
+		    border-spacing: 0;
+		    border-collapse: collapse;
+		}
+		
+		a {
+		    color: #337ab7;
+		    text-decoration: none;
+		}
+		a {
+		    background-color: transparent;
+		}
+			</style>
+ 	 
+  	
+
+<body>
+	<!-- 导航条部分 -->
+	<include file="./Public/daohang/login/qita.html" />
+	
+	<!-- 登录的样式-->
+	
+	<include file="./Public/daohang/login/logincss.html" />
+  	
+  	
+	<div class="main" style="border-top: 4px solid #ffffff;">
+    <div class="help">
+        <!-- <div class="tip_index" style="margin-left:370px;">
+            <i class="iconfont">&#xf014a;</i>
+            	您当前位置： <a href="__APP__/Index/index">首页</a> - <a href="javascript:void(0)">订单中心</a>
+        </div>E0E0E0 -->
+        <div class="help-side" style="margin-left:390px;height:400px;">
+            <h2 style="background-color: #45a4e8;">订单中心</h2>
+            
+	<ul class="h-menu">
+	        <li class="hover">
+	                <a href="__APP__/Login/order" class="h-title show" style="background-color:#66b2e8;">我的订单</a>
+	        </li>
+	       <li class="hover">
+	                <a href="__APP__/Login/info" target="_parent" class="h-title show" style="background-color:#66b2e8;">资质文件上传</a>
+	        </li>
+	        
+	        
+	          <li class="hover">
+	                <a class="h-title show" style="background-color: #E0E0E0;height:850px;"></a>
+	          </li>
+	</ul>
+
+        </div>
+        
+        <div class="help-content" style="width:1000px;height:100%;">
+            <div class="tit">我的最近订单</div>
+    	</div>
+    	
+    	<div class="help-content" style="margin-top:5px;width:1000px;height:100%;">
+    	
+    		 <div class="content_public_list" style="height:100%;">
+									<div class="table-responsive">
+										<table class="table">
+											<tbody>
+												<tr>
+													<td>订单号</td>
+													<td>公司名称</td>
+													<td>电话</td>
+													<td>需求</td>
+													<td style="padding-left:60px;">订单时间</td>
+													<td style="width:90px;">订单状态</td>
+													<!-- <td>文件上传</td> -->
+												</tr>
+												
+												<volist name="list" id="vo">
+												 <tr class="">
+													<td class="td_w90" style="padding-left:18px;"><span class="pz">&nbsp;&nbsp;&nbsp;&nbsp;{$vo.id}</span></td>
+													<td class="td_w85"><span class="ph">{$vo.company}</span></td>
+													<td class="td_w100">{$vo.phone}</td>
+													<td class=" td_w85">{$vo.comment}</td>
+													<td class="td_w90" style="width:250px;">{$vo.tijiao_time}</td>													
+													<td class="td_w105"><a href="">{$vo.flags}</a></td>
+													
+													<!-- <php>if($vo['flag']=='10'&&$vo['filecheck']=='9'){</php>
+													<td class="td_w105"><a href="__APP__/Login/info/id/{$vo.id}">请上传资质文件！</a></td>
+													
+													<php>}else if($vo['filecheck']=='1'){</php>
+													
+													<td class="td_w105"><a>文件上传成功！</a></td>
+													
+													<php>}else if($vo['filecheck']=='2'||$vo['filecheck']=='3'){</php>
+													<td class="td_w105"><a>文件审核通过！</a></td>
+													<php>}else if($vo['filecheck']=='9'){</php>
+													<td class="td_w105"><a href="__APP__/Login/info/id/{$vo.id}">请上传资质文件！</a></td>
+													<php>}</php> -->
+												</tr>
+												</volist>
+												
+											</tbody>
+											
+										</table>
+									</div>
+								</div>
+    	
+					</div>
+				</div>
+	<center>{$page}</center>
+	<br>
+
+	<include file="./Public/daohang/shouye/footer.html" />
+	
+	
+</body>
+</html>

@@ -1,0 +1,140 @@
+
+
+
+
+<!-- 导航部分 -->
+<div class="trackBox" comid="100001004" comType="1"></div>
+
+
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+       
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Login/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:50px;">
+                    <a href="__APP__/Login/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+      
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">订单中心</a>
+                </div>
+                 <div class="t-m-bd  menu-list">
+                    <ul class="t-m-panel">
+                        <li><a href="" target="_blank">关于我们</a></li>
+                        <li><a href="" target="_blank">帮助中心</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Login/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->
+
+
+
+
+
+
+	<!-- top b -->
+	<div class="jyd-top">
+		<div class="content wrap" >
+			<!-- logo图片 全站静态碎片 -->
+						<div class="logo fl"><a><img src="__PUBLIC__/picture/logo3.png" alt=""></a></div>
+						<div class="page-title fl net" style="margin-top:31px;">大宗商品</div>
+						<!-- <div class="page-title fl">大宗商品</div> -->
+			<div class="phonenum fr"><img src="__PUBLIC__/picture/400.png" alt=""></div>
+			
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+	<!-- top e -->
+
+<!-- 右侧漂浮 floatbox b -->
+		<div class="jyd-floatbox">
+		<i class="close"></i>
+		<h2>微信扫一扫</h2>
+		<dl>
+			<dt><img src="__PUBLIC__/picture/wx.gif" alt=""></dt>
+			<dd>大宗商品供应链</dd>
+		</dl>
+	</div>
+
+
+
+<!--  -->
+	
+<!-- 导航栏 --><!--  style="background: #E23638;" -->
+		<div class="jyd-menu" style="background: #E23638;">
+		<div class="content wrap">
+			<a href="__APP__/Index/index.html" class="jyd-home" style="width: 143px;padding-left: 28px;">
+				<h2>首页</h2>
+				<p>Home Page</p>
+			</a>
+			<a href="__APP__/News/dazongmacrooil.html" target="_blank" class="jyd-dzcj">
+				<h2>宏观信息</h2> 
+				<p> 
+				<span>Macro information</span>
+				<i class="jyd-icon fl"></i>
+				</p>
+			</a>
+			<a href="__APP__/News/dazongchanye.html" target="_blank" class="jyd-dzsw">
+				<h2>大宗产业</h2>
+				<p>
+				<span>Big business</span>
+				<i class="jyd-icon fl"></i>	
+				</p>
+			</a>
+			<a href="__APP__/News/dazongchinanews.html" class="jyd-wlrz" target="_blank">
+				<h2>行业动态</h2>
+				<p>
+				<span>Industry dynamic</span>
+				<i class="jyd-icon fl"></i>
+				</p>
+			</a>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>

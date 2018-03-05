@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="./Public/daohang/shouye/header.html" />
+
+	<link href="__PUBLIC__/pic1/css/global.css" type="text/css" rel="stylesheet" />
+	<link href="__PUBLIC__/pic1/css/315index.css"  type="text/css"  rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pic10/style/default_blue.css"/>
+	<!-- 用户登录的css -->
+	
+	<link href="__PUBLIC__/login/css/common.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/common_1.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/m.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/style.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/showloading.css"  type="text/css"  rel="stylesheet" />
+	<script type=text/javascript src="__PUBLIC__/login/js/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="__PUBLIC__/login/css/login.css"/>
+ 	
+ 	<link href="__PUBLIC__/login/css/help.css" rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/richedit.css" rel="stylesheet" />
+	
+	<style>
+	
+	.yubutton {  
+		    margin: 1px 2px;  
+		    outline: none;  
+		    cursor: default;  
+		    text-align: center;  
+		    text-decoration: none;  
+		    padding: .75em 2em .8em;
+			outline: none;
+			display: inline-block;
+			*display: inline;
+			zoom: 1;
+			
+			border:0px purple\9;
+			border-collapse:collapse\9;
+			border-style:solid\9;
+			_background-color:#D5D1FF;
+		}
+		
+		.yuwhite {  
+		    color: purple;
+		    border: solid 1px #b7b7b7;  
+		    background: #fafafa;
+		    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e4e4e4));  
+		    background: -moz-linear-gradient(top,  #fafafa,  #e4e4e4);  
+		    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#e4e4e4');  
+		}
+		
+		.mc {
+    		line-height: 20px;
+			}
+		#rankinfo li {
+   			 line-height: 30px;
+		}
+		.rank {
+		    margin-right: 10px;
+		    display: inline-block;
+		    height: 17px;
+		    line-height: 17px;
+		}
+
+		li {
+		    list-style: none;
+		    font-size:14px;
+		}
+
+	
+	</style>
+	
+
+<body>
+	<!-- 导航条部分 -->
+	<include file="./Public/daohang/login/qita.html" />
+	
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/logincss.html" />
+  	
+  	<script type="text/javascript">
+  	 $("document").ready(function(){
+  		 
+  		 
+  	 });
+  	</script>
+	
+	
+	
+	
+	<div class="main" style="border-top: 4px solid #ffffff; height:730px;">
+    <div class="help">
+       <!--  <div class="tip_index" style="margin-left:370px;">
+            <i class="iconfont">&#xf014a;</i>
+            	您当前位置： <a href="__APP__/Index/index">首页</a> - <a href="javascript:void(0)">订单中心</a>
+        </div> -->
+        <div class="help-side" style="margin-left:390px;">
+            <h2 style="background-color:#66b2e8;">会员中心</h2>
+            
+		<ul class="h-menu">
+	        <li class="hover">
+	                <a href="__APP__/Login/userinfo" class="h-title show" style="background-color:#66b2e8;">个人信息</a>
+	        </li>
+	        <li class="hover">
+	                <a href="#" class="h-title show" style="background-color:#66b2e8;"></a>
+	        </li>
+	        
+	        <li class="hover">
+	                <a class="h-title show" style="background-color: #E0E0E0;height:300px;"></a>
+	        </li>
+		</ul>
+	  
+        </div>
+        
+    	
+	    	<div class="help-content" style=" margin-top:10px;width:900px;height:400px;">
+	    		<div class="tit" style="width:100px;height:100px;"><img alt="" src="__PUBLIC__/login/picture/2.gif" width="100px" height="100px"></div>
+	    		<div style="padding-top:15px;"><a style="margin-top:30px; padding-bottom:20px;">用户名：{$username}</a></div>
+	    		
+	    		
+	    		
+	    		<div class="mc" id="rankinfo" style="padding-top:20px;">
+                     <div class="mc" id="rankinfo">
+				
+				<ul>
+		        <li class="rank r2">您的会员级别是：<a href="" target="_blank"><span class="ftx-04">{$list['flag']}</span></a></li> 
+				
+		      	<li class="tlimit">会员的购买时间：{$list['buytime']}</li>
+		      	
+		      	<li class="tlimit">会员的到期时间：{$list['overtime']}</li>
+		      	
+		      	<li class="tlimit">会员级别有效期：{$list['hymonth']}月</li>
+				
+			</ul>
+</div>
+</div>
+	    		
+	    	
+			</div>
+ 
+</div>
+	
+
+	<include file="./Public/daohang/shouye/footer.html" />
+	
+	
+</body>
+</html>

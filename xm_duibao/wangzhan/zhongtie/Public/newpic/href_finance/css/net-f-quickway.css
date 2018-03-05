@@ -1,0 +1,94 @@
+﻿@charset "utf-8";
+/* 面包屑导航 b */
+.sub-menu{
+	padding: 14px 0;
+	background: transparent;
+}
+.f_list_crumbs{
+	font-size:18px;
+	color:#000;
+	line-height:31px;
+}
+.f_list_crumbs a:hover{
+	color:#000;}
+.f_list_crumbs span.f_cru_col{ 
+	color:#053981;
+}
+/* 面包屑导航 e */
+
+/* 中间内容 b */
+.nfq-main{
+	margin-bottom: 14px;
+}
+.nfq-main .content{
+	width: 1098px;
+	border:1px solid #dadada;
+}
+.left-tabs{
+	padding-top:20px;
+	width: 174px;
+	height: 600px;
+	background: #43b3e6;
+	text-align: center;
+}
+.left-tabs a{
+	display: block;
+	padding: 20px 0;
+	font-size: 16px;
+	color: #ffffff;
+}
+.left-tabs a.cur{
+	background: #ffffff;
+	color: #43b3e6;
+}
+.r-conbox{
+	padding: 25px 0px 25px 0px;
+}
+.right-content{
+	position: relative;
+	width: 924px;
+	height: 570px;
+	font-size: 14px;
+	color: #6e6e6e;
+	overflow: hidden;
+}
+.right-content .scrollBody{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0 40px;
+	width: 844px;
+}
+.right-content .scrollBody h2{
+	padding-bottom: 5px;
+	font-size: 24px;
+	color: #43b3e6;
+	font-weight: bold;
+	padding-top:25px;
+}
+.right-content .scrollBody h3{
+	padding:20px 0 15px;
+	font-size: 16px;
+	color: #3d3d3d;
+}
+.right-content .scrollBody p{
+	line-height: 26px;
+}
+.borderbtm-2px{
+	width: 120px;
+	height: 2px;
+	background: #dadada;
+}
+.fmt15{
+	margin-bottom:20px;
+}
+
+.right-content .scrollBody h2.f_rzms{
+  padding-bottom: 5px;
+  font-size: 24px;
+  color: #43b3e6;
+  font-weight: bold;
+  padding-top: 0px;
+}
+/* 中间内容 e */
+.scrollBar{position:absolute;width:4px;right:0px;top:0px;background:#a3a3a3;cursor:pointer;}
