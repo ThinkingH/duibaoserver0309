@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/main.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+
+<script type="text/javascript">
+
+$("document").ready(function(){
+	
+	$("#add_submit").click(function() {
+	var theurl =$("#theurl").val();
+	var imgurl =$("#imgurl").val();
+	var type =$("#type").val();
+	
+	if(theurl==''){
+		alert('原链接不能为空！');
+		return false;
+	}
+	
+	if(imgurl==''){
+		alert('图片链接不能为空！');
+		return false;
+	}
+	
+	if(type==''){
+		alert('商品类型不能为空！');
+		return false;
+	}
+	
+	
+	
+		
+	if(confirm("您确认要添加数据吗？")) {
+		//alert('ok');
+		
+	}else {
+		return false;
+	}
+	
+	})
+	
+});
+
+</script>
+</head>
+
+<body>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;优惠券信息的添加
+</div>
+<br/>
+
+<a href="__APP__/Youhuiquan/index{$yuurl}" class="yubutton yuwhite">返回优惠券信息查询页面</a>
+<br/><br/><br/>
+
+
+<form action="__APP__/Youhuiquan/addquantypedata{$yuurl}" method="post" enctype="multipart/form-data">
+	
+<table class="table-edit">
+
+	<tr>
+		<td width="200" align="right">是否上架：</td>
+		<td width="900" name="flag">
+			<select name="flag">
+				<option value="9">下架</option>
+				<option value="1">上架</option>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品类型:</td>
+		<td width="900">
+			<input type="text" name="type" id="type" size="20" maxlength="20">
+		</td>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">是否有效:</td>
+		<td width="900">
+			<select name="youxiao">
+			{$optionok}
+			</select>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">商品标题:</td>
+		<td width="900">
+			<input type="text" name="title" id="title" size="100" maxlength="100">
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">价格:</td>
+		<td width="900">
+			<input type="text" name="jiage" id="jiage" size="30" maxlength="30">
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">有效期:</td>
+		<td width="900">
+			<input type="text" name="youxiaoqi" id="youxiaoqi" size="100" maxlength="100">
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">优惠说明:</td>
+		<td width="900">
+			<textarea id="content" name="content" rows="12" cols="90"></textarea>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">图片链接:</td>
+		<td width="900">
+			<textarea id="imgurl" name="imgurl" rows="3" cols="150"></textarea>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">原链接:</td>
+		<td width="900">
+			<textarea id="theurl" name="theurl" rows="3" cols="150"></textarea>
+		</td>
+	</tr>
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="add_submit" class="yubutton yuwhite" name="add_submit" style="margin:15px 0px 0px 10px;" value="确认添加" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>

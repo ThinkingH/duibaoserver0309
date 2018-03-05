@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/main.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+
+<script type="text/javascript">
+$("document").ready(function(){
+	//数据添加确认
+	$("#update_submit").click(function() {
+		
+		
+		
+		if(confirm("您确认要修改数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+		
+	});
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;实物商品发货
+</div>
+
+<br/>
+
+<a href="__APP__/Orderlist/shiwuorder{$yuurl}" class="yubutton yuwhite">返回订单信息查询页面</a>
+<br/><br/><br/>
+
+
+<form action="__APP__/Orderlist/updatedata{$yuurl}" method="post" enctype="multipart/form-data">
+	
+<table class="table-list">
+<input type="hidden" name="id" value="{$list['id']}" />
+<input type="hidden" name="type" value="2" />
+
+	<tr>
+		<td width="200" align="right">自增编号：</td>
+		<td width="800">
+			{$list['id']}
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品名称：</td>
+		<td>
+			{$list['name']}
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">商品数量：</td>
+		<td>
+			{$list['productnum']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">花费金额（元）：</td>
+		<td>
+			{$list['price']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">花费积分（分）：</td>
+		<td>
+			{$list['score']}
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">订单号:</td>
+		<td>
+			{$list['orderno']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">订单创建时间:</td>
+		<td>
+			{$list['order_createtime']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">支付订单号:</td>
+		<td>
+			{$list['zhifu_order']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">订单支付时间:</td>
+		<td>
+			{$list['zhifu_createtime']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">收货人手机号:</td>
+		<td>
+			{$alist['mobile']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">收货人姓名:</td>
+		<td>
+			{$alist['shouhuoren']}
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">收货人地址:</td>
+		<td>
+			{$alist['province']}{$alist['address']}
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">快递单号:</td>
+		<td>
+			{$list['shiping_name']}
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">快递名称:</td>
+		<td>
+			{$list['shipingorder']}
+		</td>
+	</tr>
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="update_submit" class="yubutton yuwhite" name="update_submit" style="margin:15px 0px 0px 10px;" value="确认发货" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>

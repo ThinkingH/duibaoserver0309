@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/main.css"  />
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	$(".delete_submit").click(function(){
+		
+		if(confirm("您确认要删除此条数据吗？")) {
+			
+		}else {
+			return false;
+		}
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;优惠券类型管理
+</div>
+
+<a href="__APP__/Quantype/addtypeshow{$yuurl}" class="yubutton yuwhite">添加优惠券类型</a>
+<br/><br/>
+
+<table class="table-list" width="900">
+<thead>
+	<tr>
+		<td width="60">&nbsp;</td>
+		<td width="60">&nbsp;</td>
+		<td width="60"><b>是否启用</b></td>
+		<td width="100"><b>优惠券类型<br/></b></td>
+		<td width="150"><b>优惠券名称<br/></b></td>
+		<td width="150"><b>小图片logo<br/></b></td>
+		<td width="130"><b>上传时间<br/></b></td>
+	</tr>
+</thead>
+
+<tbody>
+	<volist name="list" id="vo" empty="没有对应数据" >
+	<tr>
+	
+		<td>
+			<form action="__APP__/Quantype/updatetypeshow{$yuurl}" method="post" style="margin:0px">
+			<input type="hidden" name="kindtype" value="{$vo.kindtype}" />
+			<input type="submit" class="yubuttonss yuwhite" name="update_submit" value="修改" />
+			</form>
+		</td>
+		
+		<td>
+			<form action="__APP__/Quantype/deletetypedata{$yuurl}" method="post" style="margin:0px">
+			<input type="hidden" name="kindtype" value="{$vo.kindtype}" />
+			<input type="submit" class="yubuttonss yuwhite delete_submit" name="delete_submit" value="删除" />
+			</form>
+		</td>
+		<td>{$vo.flags}</td>
+		<td>{$vo.kindtype}</td>
+		<td>{$vo.kindname}</td>
+		<td><img src="{$vo.smallpic}" /></td>
+		<td>{$vo.createtime}</td>
+	</tr>
+	</volist>
+</tbody>
+
+</table>
+
+<br/><br/>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>
