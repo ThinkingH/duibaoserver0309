@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+
+
+<script type="text/javascript">
+$("document").ready(function(){
+	//数据添加确认
+	$("#add_submit").click(function() {
+		
+		var fenleiname = $("#fenleiname").val();
+		
+		if(fenleiname==''){
+			alert('分类名称不能为空!');
+			return false;
+		}
+		
+		if(confirm("您确认要添加数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+		
+	});
+	
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" >
+	<tr height="28"><td background="__PUBLIC__/Images/title_bg1.jpg">
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;商品分类管理&nbsp;#&nbsp;&nbsp;#&nbsp;商品分类</b></font></td></tr>
+	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td background="__PUBLIC__/Images/shadow_bg.jpg"></td></tr>
+</table>
+
+<br/>
+
+<!-- <a href="__APP__/Goodscategory/categorylist{$yuurl}" class="yubutton yuwhite">返回商品分类展示页面</a> -->
+<br/><br/><br/>
+
+
+<form action="__APP__/Goodscategory/goods_type_add{$yuurl}" method="post" enctype="multipart/form-data">
+	
+<table class="mainTabled">
+
+
+	<tr>
+		<td width="200" align="right">分类名称:</td>
+		<td width="800">
+			<input type="text" name="name" id="fenleiname" size="30" maxlength="30"  />
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">上级分类:</td>
+		<td width="800">
+			<select name="pid" id="pid">
+                <option value="0">顶级分类</option>
+                <foreach name="data" item="v" >                                            
+                <option value="{$v[id]}">{$v[level]}级分类&nbsp;{$v[name]}</option>
+                </foreach>                
+           </select>
+           
+		</td>
+	</tr>
+	
+	<!-- <tr>
+		<td width="200" align="right">二级分类:</td>
+		<td width="800">
+           <select name="parent_id_2" id="parent_id_2"  class="small form-control">
+                <option value="0">请选择商品分类</option>
+           </select>
+           
+		</td>
+	</tr> -->
+	
+	
+	<tr>
+		<td width="200" align="right">是否启用：</td>
+		<td width="800" name="flag">
+			<select name="flag" id="flag" >
+			{$optionflag}
+			</select>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">排序:</td>
+		<td width="800">
+			<input type="text" name="sort_order" id="sort_order" size="10" maxlength="10" value="100" />
+		</td>
+	</tr>
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="add_submit" class="yubutton yuwhite" name="add_submit" style="margin:15px 0px 0px 10px;" value="确认添加" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>
