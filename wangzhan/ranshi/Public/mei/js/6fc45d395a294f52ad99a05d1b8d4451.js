@@ -1,0 +1,10 @@
+document.writeln("<dl class=\"foot_list\">");
+document.writeln("<dt>");
+document.writeln("<i class=\"fa fa-shopping-cart\"></i> ");document.writeln("我要卖煤炭</dt>");
+document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/105/classid/43\">");
+document.writeln("如何单条发布报价");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/107/classid/43\">");
+document.writeln("如何批量发布报价单");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/106/classid/43\">");
+document.writeln("如何报价采购信息");
+document.writeln("</a></dd>");document.writeln("</dl>");

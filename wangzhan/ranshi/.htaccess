@@ -1,0 +1,17 @@
+#GZIP压缩模块配置
+<ifmodule mod_deflate.c>
+#启用对特定MIME类型内容的压缩
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/x-httpd-php application/x-javascript application/javascript application/x-font-woff #设置对压缩的文件
+</ifmodule>
+
+#开启缓存
+<FilesMatch ".(ico)$">
+Header set Cache-Control "max-age=14400"
+</FilesMatch>
+<FilesMatch ".(gif|jpg|jpeg|png)$">
+Header set Cache-Control "max-age=259200"
+</FilesMatch>
+<FilesMatch ".(css|js|map|font|woff)$">
+Header set Cache-Control "max-age=259200"
+</FilesMatch>

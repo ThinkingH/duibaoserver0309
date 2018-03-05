@@ -1,0 +1,102 @@
+
+<include file="./Public/Template/header.html" />
+
+<body data-spm="7791109" class="index">
+
+<include file="./Public/Template/daohang.html" />
+
+<div class="parallax parallax-4" data-spm="5" >
+
+		
+			<div class="container">				
+				<div class="row">
+					<div class="col-md-12 box m-t-10">
+						<div class="list_content_title ">
+							<div class="list_title fl"><span class="fcolor_0 green-text">详细供应信息</span></div>
+							
+							<a href="__APP__/Xianhuoziyuan/fabu" class="btn btn-success pull-right m-t-10">发布需求</a>
+						</div>
+						<div class="table-responsive">
+						
+						<table class="table table-bordered text-center">
+							<tbody>
+							<tr>
+							<th class="green lighten-5" colspan="8"><font class="blue-text"> </font>产品指标</th></tr>
+							<tr>
+								<td>产品编号</td>
+								<td colspan="7">{$list_cha.id}</td>
+							</tr>
+							<tr>
+								<td>煤炭种类</td>
+								<td class="blue-text">
+								
+								{$list_cha.m_type}							
+								</td>
+								<td style="width:90px;">品名</td>
+								<td class="blue-text">{$list_cha.m_name}</td>
+								<td style="width:90px;">低位热值</td>
+								<td class="blue-text">{$list_cha.m_diweirezhi}</td>
+								<td style="width:115px;">全水份</td>
+								<td class="blue-text">{$list_cha.c_quanshuifen}</td>
+							</tr>
+							<tr>
+								<td>内水份</td>
+								<td class="blue-text">{$list_cha.c_neishuifen}</td>
+								<td>全硫份</td>
+								<td class="blue-text">{$list_cha.c_quanliufen}</td>
+								<td>灰分</td>
+								<td class="blue-text">{$list_cha.c_huifen}</td>
+								<td>空干基挥发份</td>
+								<td class="blue-text">{$list_cha.c_huifafen}</td>
+							</tr>
+							
+							<tr><th class="green lighten-5" colspan="8">供应基本信息</th></tr>
+							<tr>
+								<td>交货地点</td>
+								<td class="blue-text">
+									{$list_cha.m_jiaohuodi}</td>
+								<td>交货方式</td>
+								<td class="blue-text">场地自提</td>
+								<td style="vertical-align: middle;">供应数量</td>
+								<td style="vertical-align: middle;" class="fcolor_1">{$list_cha.m_shuliang}</td>
+								<td style="vertical-align: middle;" rowspan="4"><span style="font-size: 30px;">价格</span><br></td>
+								<td rowspan="4" style="text-align: center;vertical-align:middle;color:#ff0000;">{$list_cha.m_jiage}元/吨</td>
+							</tr>
+							
+							<tr>
+								<td>检验机构</td>
+									<td colspan="3" style="width: 200px;" class=" blue-text">无</td>
+								
+							</tr>
+							<tr>
+								<tr><th class="green lighten-5"  colspan="8">专属交易员</th></tr>
+								<tr>
+									<td>
+										<div class="row-m no-margin hidden-xs">
+											<div class="notice" style="text-align: center;">
+												<div class="person-img inline-block" style="float: inherit;height:70px;"> 
+												</div>
+											</div>
+										</div>
+									</td>
+									<td class="blue-text" style="vertical-align: middle">杜加成</td>
+									<td style="vertical-align: middle">联系方式 </td>
+									<td colspan="3" class="blue-text" style="vertical-align: middle">***-***-***</td>
+									<td style="vertical-align: middle">客服QQ</td>
+									<td class="blue-text" style="vertical-align: middle">
+										<a target="_blank" href=""><img border="0" src="__PUBLIC__/mei/picture/qq.gif" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+									</td>
+								</tr>
+							</tr>
+							</tbody>
+						</table>
+						</div>
+						
+					</div>
+					
+				</div>
+				</div>
+			</div>
+<include file="./Public/Template/foot1.html" />
+
+</body>

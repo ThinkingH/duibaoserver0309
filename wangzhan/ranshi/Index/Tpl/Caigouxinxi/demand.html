@@ -1,0 +1,110 @@
+
+<include file="./Public/Template/header.html" />
+<body>
+<include file="./Public/Template/daohang.html" />
+
+     <div class="parallax parallax-4" data-spm="5" >
+      <div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="hm_search">
+							
+							
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-9 box">
+						<div class="">
+							<ul class="row no-margin">
+							<volist name="list" id="vo">
+								<li class="col-md-12 box no-padding grey lighten-5">
+									<div class="row-l col-md-2 no-padding green">
+										<div class="l-top">
+											<div class="big ellipsis">
+												{$vo.m_type}
+											</div>
+											<div class="small">{$vo.m_shuliang}/{$vo.m_diweirezhi}</div>
+										</div>
+										<div class="l-bottom ellipsis">{$vo.m_shuliang}吨</div>
+									</div>
+									<div class="col-md-7">
+									<div class="row-m ">
+										<div class="content">
+											<p class="line1">
+												求购：
+												<span class="item">{$vo.m_shuliang}吨</span>
+												<span class="item">{$vo.m_type}</span>
+												<span class="item">{$vo.m_diweirezhi}</span>
+												<!-- <span class="item">0.8%</span> -->
+												
+											</p>
+											<p class="line2">
+												交货地：
+												<span class="item">{$vo.m_jiaohuodi} </span>
+												<span class="item">
+												   配送方式：
+													场地自提	
+												</span>
+											</p>
+										</div>
+										<div class="notice ">
+											<div class="person-img inline-block"> </div>
+											<div class="info hm_tips">
+												<p class="person ellipsis" style="display: inline-block">跟进交易员：</p>
+												<p class="time ellipsis pull-right" style="display: inline-block">更新时间：{$vo.m_date}
+													</p>
+												<p class="tel ellipsis">联系方式：***-****-*** </p>
+												
+											</div>
+										</div>
+									</div>
+									</div>
+									<div class="col-md-3">
+										<div class="row-r ">
+												<br/>
+												<p style="height: 30px;line-height: 30px; margin-top: 5px; margin-bottom: 5px;font-size: 20px;text-align: center;color: #ff7800;"></p>
+																									
+												<p class="r-top"> <font style="color:red">已完成</font> </p>											
+										</div>
+									</div>
+								</li>
+							</volist>
+						</div>
+						
+						<nav class="pager">
+							<div class="current">  
+						    {$page}
+							 
+							</div>						
+						</nav>
+					</div>
+					
+					<div class="col-md-3">
+						<div class=" content_caigou box">
+							<h4 class="public_title">
+								<span class="fcolor_1 green-text">免费委托找货</span>
+							</h4>
+							<div class="mj_content padding20">
+								<div class="progress-wrap">
+									<span class="step  inline-block">填写需求</span>
+									<span class="step-split inline-block"><i class="glyphicon glyphicon-menu-right"></i></span>
+									<span class="step step2  inline-block">撮合交易</span>
+									<span class="step-split  inline-block"><i class="glyphicon glyphicon-menu-right"></i></span>
+									<span class="step step3  inline-block">交易成功</span>
+								</div>
+								<p class="try">快来试试</p>
+								<a href="__APP__/Caigouxinxi/fabujieshou" class="btn btn-success btn-block">我要委托找货</a>
+							</div>
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+        </div>
+</body>
+
+<include file="./Public/Template/foot1.html" />
