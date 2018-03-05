@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/main.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	/* $('#upprice').bind('input propertychange', function() { 
+		//进行相关操作 
+		var upprice = $(this).val();
+		var yuan_upprice = upprice/1000;
+		
+		$("#yuanprice_show").empty();
+		$("#yuanprice_show").append(yuan_upprice+'元');
+		
+		
+	}); */
+	//数据添加确认
+	$("#jifenup_submit").click(function() {
+		
+		var remark     = $("#remark").val();
+		var jifenutype = $("#jifenutype").val();
+		var upprice    = $("#upprice").val();
+		
+		if(remark=='') {
+			alert('资金变更说明不能为空');
+			return false;
+		}
+		if(jifenutype=='add') {
+			if(upprice.substring(0,1)!='+') {
+				alert('资金与类型不一致，资金请以+号开头');
+				return false;
+			}
+		}else if(jifenutype=='plus') {
+			if(upprice.substring(0,1)!='-') {
+				alert('资金与类型不一致，资金请以-号开头');
+				return false;
+			}
+		}
+		
+		
+		if(confirm("您确认要修改数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+		
+	});
+	
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;临时用户信息&nbsp;#&nbsp;&nbsp;#&nbsp;积分变动
+</div>
+
+<br/>
+
+<a href="__APP__/Userlist/tempuser{$yuurl}" class="yubutton yuwhite">返回临时用户信息查询页面</a>
+<br/><br/><br/>
+
+
+<form action="__APP__/Userlist/jifenshowdata{$yuurl}" method="post" >
+	
+<table class="table-edit">
+	<input type="hidden" name="id" value="{$list['id']}" />
+	<input type="hidden" name="tablename" value="2" />
+	
+	<tr>
+		<td width="200" align="right">自增编号:</td>
+		<td width="800">
+			<b>{$list['id']}</b>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">通讯秘钥:</td>
+		<td width="800">
+			<b>{$list['tokenkey']}</b>
+		</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="200" align="right">可用积分(元):</td>
+		<td width="800">
+			<b>{$list['keyong_jifen']}</b>
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td width="200" align="right">积分变更说明:</td>
+		<td width="800">
+			<input type="text" name="remark" id="remark" size="100" maxlength="60" />
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">积分操作类型:</td>
+		<td width="800">
+			<select name="jifentype" id="jifentype">
+				<option value="add">增加+</option>
+				<option value="plus">减少-</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">积分变动(分，1元=100积分，增加以+开头，减少以-开头):</td>
+		<td width="800">
+			<input type="text" name="upprice" id="upprice" size="30" maxlength="30"  />
+			&nbsp;&nbsp;<b><span id="yuanprice_show"></span></b>
+		</td>
+	</tr>
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="jifenup_submit" class="yubutton yuwhite" name="jifenup_submit" style="margin:15px 0px 0px 10px;" value="确认修改" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/>
+
+<h2>最近30条变更日志记录</h2>
+<table class="table-list" width="1300px">
+<thead>
+	<tr>
+		<td width="60"><b>标识编号</b></td>
+		<td width="100"><b>用户id</b></td>
+		<td width="100"><b>变更积分</b></td>
+		<td width="60"><b>积分变更类型</b></td>
+		<td width="200"><b>积分变更描述</b></td>
+		<td width="200"><b>积分变更说明</b></td>
+		<td width="120"><b>积分変动时间</b></td>
+	</tr>
+</thead>
+
+<tbody>
+	<volist name="loglist" id="vo" empty="没有对应数据" >
+	<tr>
+		<td>{$vo.id}</td>
+		<td>{$vo.userid}</td>
+		<td>{$vo.score}</td>
+		<td>{$vo.type}</td>
+		<td>{$vo.getdescribe}</td>
+		<td>{$vo.remark}</td>
+		<td>{$vo.gettime}</td>
+		
+		
+	</tr>
+	</volist>
+</tbody>
+
+</table>
+
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>

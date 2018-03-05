@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/main.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+
+<!-- '1'  => '通知',
+	'2'  => '热门饭票',
+	'3'  => '商品详情页',
+	'4'  => '商品分类',
+	'11' => '跳外链' -->
+
+<script type="text/javascript">
+
+$("document").ready(function(){
+	
+	$("#tuisongid").empty();
+	$("#tuisongname").empty();
+	$("#tuisongid").hide();
+	$("#tuisongname").hide();
+	
+	$("#flag").live('change',function(){
+		
+		var flag = $("#flag").val();
+		
+		//跳转到热门饭券
+		if(flag=='2'){
+			
+			$("#tuisongid").show();
+			$("#tuisongid").empty();
+			
+			$("#tuisongname").hide();
+			
+			$("#dd").empty();
+			$("#dd").append('*填写热门饭券的编号eg 0--kdj 1-hbb 3-mdl 4-zgf');
+		}
+		
+		//跳转商品详情页
+		if(flag=='3'){
+			
+			$("#tuisongid").show();
+			$("#tuisongid").empty();
+			
+			$("#dd").empty();
+			$("#dd").append('*填写商品的id编号');
+		}
+		
+		//跳转到商品分类
+		if(flag=='4'){
+			
+			$("#tuisongid").show();
+			$("#tuisongid").empty();
+			
+			$("#tuisongname").show();
+			$("#tuisongname").empty();
+			
+			$("#ff").empty();
+			$("#dd").empty();
+			$("#dd").append('*类型编号11-流量 13-会员卡');
+			$("#ff").append('*填写热门饭券的编号eg 0--kdj 1-hbb 3-mdl 4-zgf');
+			
+		}
+		
+		//跳转外链
+		if(flag=='11'){
+			
+			$("#tuisongid").show();
+			$("#tuisongid").empty();
+			
+			$("#tuisongname").show();
+			$("#tuisongname").empty();
+			
+			$("#ff").empty();
+			$("#dd").empty();
+		}
+		
+	});
+	
+	
+	
+	//数据添加确认
+	$("#update_submit").click(function() {
+		
+		if(confirm("您确认要修改数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+		
+	});
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div class="hy_daohangtiao">
+当前位置&nbsp;#&nbsp;配置信息&nbsp;#&nbsp;&nbsp;#&nbsp;push推送
+</div>
+
+<br/>
+
+<!-- $action_arr = array(
+				//'1'  => '通知',
+				'2'  => '热门饭票',
+				'3'  => '商品详情页',
+				'4'  => '商品分类',
+				'11' => '跳外链'
+		); -->
+
+<!-- <a href="__APP__/Lunbotu/index{$yuurl}" class="yubutton yuwhite">返回轮播图信息查询页面</a> -->
+<br/><br/><br/>
+
+
+<form action="__APP__/Push/index{$yuurl}" method="post" enctype="multipart/form-data">
+	
+<table class="table-list">
+
+<tr>
+		<td width="200" align="right">推送平台：</td>
+		<td width="800" name="platform">
+			<select name="platform" id="platform" >
+				<option value ="all">所有平台</option>
+				<option value="android">安卓</option>
+				<option value="ios">ios</option>
+			</select>
+		</td>
+	</tr>
+
+
+
+	<tr>
+		<td width="200" align="right">推送类型：</td>
+		<td width="800" name="flag">
+			<select name="flag" id="flag" >
+				<option value ="1"></option>
+				<option value ="2">热门饭票</option>
+				<option value ="3">商品详情页</option>
+				<option value="4">商品分类</option>
+				<option value="11">跳外链</option>
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">推送内容:</td>
+		<td>
+			<input type="text" name="tuisongcontent" id="tuisongcontent" size="50" maxlengh="50" value="">
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">推送编号:</td>
+		<td>
+			<input type="text" name="tuisongid" id="tuisongid" size="10" maxlengh="10" value="">
+			<font color="red" size="-1" id="dd"></font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">推送名称:</td>
+		<td>
+			<input type="text" name="tuisongname" id="tuisongname" size="10" maxlengh="10" value="">
+			<font color="red" size="-1" id="ff"></font>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">跳转链接:</td>
+		<td>
+			<input type="text" name="tuiurl" id="tuiurl" size="100" maxlengh="100" value="">
+			<font color="red" size="-1" id="ff"></font>
+		</td>
+	</tr>
+	
+	
+</table>
+<br/><br/>
+
+<input type="submit" id="update_submit" class="yubutton yuwhite" name="update_submit" style="margin:15px 0px 0px 10px;" value="确认修改" />
+<br/><br/>
+
+</form>
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>
