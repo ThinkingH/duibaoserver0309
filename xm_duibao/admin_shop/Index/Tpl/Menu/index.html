@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    <style type="text/css">
+    	a {
+		    color: #ffffff;
+		    text-decoration: none;
+			}
+		.nav > li > a:hover, .nav > li > a:focus{
+				text-decoration: none;
+    			 background-color: #000;
+    			 color: #ffffff;
+		}
+    
+    
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" >
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="">
+                <ul class="nav" id="main-menu" style="height:850px;">
+
+                    <li>
+                        <a class="active-menu" href="index.html" style="background-color:#333"><i class="fa fa-dashboard ">管理首页</i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>商户管理<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="__APP__/User/userinfo" target="main_x" ><i class="fa fa-toggle-on"></i>商户信息</a>
+                            </li>
+                            <li>
+                                <a href="__APP__/User/store" target="main_x" ><i class="fa fa-bell "></i>店铺信息</a>
+                            </li>
+                            <li>
+                                <a href="__APP__/User/shopstore" target="main_x" ><i class="fa fa-bell "></i>第三方网址</a>
+                            </li>
+                            
+                            
+                           
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="fa fa-yelp "></i>商品管理<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="__APP__/Shoparr/shoptype" target="main_x" ><i class="fa fa-coffee"></i>商品类型</a>
+                            </li>
+                            <li>
+                                <a href="__APP__/Shoparr/shopcategory" target="main_x" ><i class="fa fa-coffee"></i>商品分类</a>
+                            </li>
+                            <li>
+                                <a href="__APP__/Shoparr/shopattribute" target="main_x" ><i class="fa fa-coffee"></i>商品属性</a>
+                            </li>
+                            <li>
+                                <a href="__APP__/Shop/shoplist" target="main_x" ><i class="fa fa-coffee"></i>商品列表</a>
+                            </li>
+                           <!--  <li>
+                                <a href="__APP__/Shop/shopadd" target="main_x"><i class="fa fa-flash "></i>商品发布</a>
+                            </li> -->
+                            <li>
+                                <a href="__APP__/Shop/beforeshopadd" target="main_x"><i class="fa fa-flash "></i>商品发布</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                    
+                     <li>
+                        <a href="#"><i class="fa fa-bicycle "></i>订单管理<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                           
+                             <li>
+                                <a href="__APP__/Order/index" target="main_x" ><i class="fa fa-desktop "></i>虚拟订单 </a>
+                            </li>
+                             <li>
+                                <a href="__APP__/Order/hexiao" target="main_x" ><i class="fa fa-code "></i>实物订单</a>
+                            </li>
+                            <!--  <li>
+                                <a href="__APP__/Order/hexiaoshow" target="main_x" ><i class="fa fa-code "></i>核销订单</a>
+                            </li> -->
+                             
+                           
+                        </ul>
+                    </li>
+                     
+                   
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap "></i>用户操作 <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="__APP__/Passwdrewrite/index?{$ruser}" target="main_x" ><i class="fa fa-bicycle "></i>密码修改</a>
+                            </li>
+                             <li>
+                                <a onclick="if (confirm('确定要退出吗？')) return true; else return false;" href="__APP__/Login/logout?{$ruser}" target="_top" ><i class="fa fa-flask "></i>用户退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                   
+                </ul>
+
+            </div>
+
+        </nav>
+        
+    </div>
+    
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.js"></script>
+    <script src="__PUBLIC__/js/jquery.metisMenu.js"></script>
+    <script src="__PUBLIC__/js/custom.js"></script>
+    
+
+
+</body>
+</html>

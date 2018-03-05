@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+	<script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+	
+	 <style>
+        .thumbnail img{ width:460px; height:270px; }
+     </style>
+   
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px; width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商品管理</a></li>    
+			        <li><a>商品发布</a></li>    
+				</ol>
+			</div>
+           <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> 商品上传模板</h3>
+        </div>
+        <div class="panel-body">
+        <!-- 模板列表 -->
+            <div class="row">                
+		        <div class="col-sm-6 col-md-4">
+                   <div class="thumbnail">
+                   <!--   <img src="" /> -->
+                     <div class="caption">
+                       <h3>流量商品上传模板</h3>
+                       <p>该模板只支持流量类型商品的上传</p>
+                       <p>   
+                       <php>if(session(HYSESSQZ.'siteid')=='1000'){</php>                             
+                           <a href="__APP__/Shop/shopadd_liuliang" target="main_x" class="btn btn-success" role="button">上传商品</a> 
+                       <php>}else{</php>  
+                        <a href="__APP__/Shop/shopadd_liuliang" target="main_x" class="btn btn-success" role="button" disabled="disabled">上传商品</a>    
+                        <php>}</php>                                
+                       </p>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="col-sm-6 col-md-4">
+                   <div class="thumbnail">
+                    <!--  <img src="" /> -->
+                     <div class="caption">
+                       <h3>虚拟兑换商品上传模板</h3>
+                       <p>该模板支持虚拟商品，进行在线兑换，发放卡密的商品</p>
+                       <p>                                
+                         <a href="__APP__/Shop/shopadd_xuni" target="main_x" class="btn btn-success" role="button">上传商品</a>                                
+                       </p>
+                     </div>
+                   </div>
+                </div>         
+                <div class="col-sm-6 col-md-4">
+                   <div class="thumbnail">
+                    <!--  <img src="" /> -->
+                     <div class="caption">
+                       <h3>在线支付商品上传模板</h3>
+                       <p>该模板支付在线支付的实物商品</p>
+                       <p>                                
+                         <a href="__APP__/Shop/shopadd_shiwu" target="main_x" class="btn btn-success" role="button">上传商品</a>                                
+                       </p>
+                     </div>
+                   </div>
+                </div>         
+            </div>
+        <!-- 模板列表 end-->
+        </div>
+      </div>
+    </div>
+    <!-- /.row --> 
+  </section>
+
+        </div>
+        
+</body>
+</html>

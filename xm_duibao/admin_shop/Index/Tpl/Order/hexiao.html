@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    
+    <script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+   <script language="javascript" type="text/javascript" src="__PUBLIC__/datejs/datexxx/WdatePicker.js"></script>
+    
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$(".delete_submit").click(function(){
+			
+			if(confirm("您确认要删除此条数据吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+					<ol class="breadcrumb" style="background-color:#FFFFFF;">
+				        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+				        <li><a>订单管理</a></li>    
+				        <li><a>实物订单</a></li>    
+					</ol>
+				</div>
+            <div id="page-inner">
+                <div class="row">
+                </div>
+                <!-- /. ROW  -->
+                <div class="navbar navbar-default" style="background-color: #f5f5f5;border: 1px solid #ddd; border-radius: 4px;  min-height: 50px; width:100%;" >
+		             <form action="__APP__/Order/hexiao{$yuurl}" id="search-form2" class="navbar-form form-inline" method="get"  style="padding:10px;">
+		                
+		                 <div class="form-group" >
+		                  <div class="input-group">
+							<input type="text" class="form-control" name="date_s" value="{$date_s}" onclick="WdatePicker()" placeholder="开始查询时间" />
+		                  </div>
+		                </div>               
+		                 <div class="form-group" >
+		                  <div class="input-group">
+							<input type="text" class="form-control" name="date_e" value="{$date_e}"  onclick="WdatePicker()" placeholder="结束查询时间"/>
+		                  </div>
+		                </div>               
+		               
+		                
+		                
+		                <div class="form-group" >
+		                  <div class="input-group">
+		                    <input type="text" name="good_name" value="{$good_name}" placeholder="商品名称"  class="form-control">
+		                  </div>
+		                </div>  
+		                             
+		               
+		                <div class="form-group" >
+		                  <div class="input-group">
+		                    <input type="text" name="orderno" value="{$orderno}" placeholder="订单编号"  class="form-control">
+		                  </div>
+		                </div>               
+		                <div class="form-group" >
+		                  <div class="input-group">
+		                    <input type="text" name="phone" value="{$phone}" placeholder="手机号"  class="form-control">
+		                  </div>
+		                </div>  
+		                
+		                <div class="form-group" >
+		                  <div class="input-group">
+		                  <select name="zstatus" class="form-control">
+							{$optionstatus}
+						</select>
+                  </div>
+                </div>                
+		
+		                <!--排序规则-->
+		                <input type="submit" class="btn btn-primary" value="查询" >
+		              </form>
+          </div>
+              
+            <div class="row" style="width:100%;">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>操作</th>
+                                            <th>编号</th>
+                                            <th>订单状态</th>
+                                            <th>用户编号</th>
+                                            <th>用户手机号</th>
+                                            <th>商户编号</th>
+                                            <th>类型编号</th>
+                                            <th>商品名称</th>
+                                            <th>购买数量</th>
+                                            <th>花费积分(分)</th>
+                                            <th>花费金额(元)</th>
+                                            <th>订单编号</th>
+                                            <th>订单时间</th>
+                                            <th>核销时间</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="list" id="vo" empty="没有对应数据" >
+                                        <tr>
+                                        <td>
+												<form action="__APP__/Order/shiwuupdateshow{$yuurl}" method="post" style="margin:0px">
+												<input type="hidden" name="id" value="{$vo.id}" />
+												<input type="hidden" name="orderno" value="{$vo.orderno}" />
+												<input type="hidden" name="keystr" value="{$vo.keystr}" />
+												<php>if($vo['status']=='4'){</php>
+												<input type="submit" class="btn btn-success" name="uupdate_submit" id="uupdate_submit" value="查看" style="padding: 3px 6px;"/>
+												<php>}else if($vo['status']=='3'){</php>
+												<input type="submit" class="btn btn-danger" name="uupdate_submit" id="uupdate_submit" value="核销" style="padding: 3px 6px;"  />
+												<php>}</php>
+												</form>
+											</td>
+                                            <td>{$vo.id}</td>
+											<td>{$vo.status}</td>
+											<td>{$vo.userid}</td>
+											<td>{$vo.phone}</td>
+											<td>{$vo.siteid}</td>
+											<td>{$vo.typeid}</td>
+											<td>{$vo.name}</td>
+											<td>{$vo.productnum}</td>
+											<td>{$vo.score}</td>
+											<td>{$vo.price}</td>
+											<td>{$vo.orderno}</td>
+											<td>{$vo.order_createtime}</td>
+											<td>{$vo.fh_shouhuotime}</td>
+                                        </tr>
+                                        </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        <center>{$page}</center>
+            </div>
+        </div>
+
+
+</body>
+</html>

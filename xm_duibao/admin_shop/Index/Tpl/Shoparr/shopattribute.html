@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    
+    <link href="__PUBLIC__/js/bootstrap.js"  />
+    <link href="__PUBLIC__/js/myAjax.js"  />
+    <script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$(".delete_submit").click(function(){
+			
+			if(confirm("您确认要删除此条数据吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+
+<script>
+function del_fun(del_url)
+{
+    if(confirm("确定要删除吗?"))
+        location.href = del_url;
+}  
+
+</script>
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商品管理</a></li>    
+			        <li><a href="__APP__/Shoparr/shopattribute">商品属性</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+                
+                <!--  -->
+                
+              <div class="navbar navbar-default" style="background-color: #f5f5f5;border: 1px solid #ddd; border-radius: 4px;  min-height: 50px;">
+              <form action="__APP__/Shoparr/shopattribute{$yuurl}" id="search-form2" class="navbar-form form-inline" method="post"  style="padding:10px;">
+                <div class="form-group">
+                    <td>
+						<select name="type" class="small form-control">
+							{$optiontype}
+						</select>
+					</td>
+                  </div>
+
+                <!--排序规则-->
+                <input type="submit" class="btn btn-primary" value="查询" >
+              </form>
+          </div>
+          
+          
+              
+            <div class="row">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="height:50px;">
+                            <div class="row navbar-form" style="margin-top:-1px;">
+			                <button type="submit" onclick="location.href='{:U('Shoparr/attributelist',array('id'=>'0'))}'"  class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增商品属性</button>
+			                </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="box-body">
+	           <div class="row">
+	            <div class="col-sm-12">
+	              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+	                 <thead>
+	                   <tr role="row">
+	                   	   <th valign="middle">编号ID</th>
+		                   <th valign="middle">属性名称</th>
+		                   <th valign="middle">商品类型</th>
+		                   <th valign="middle">属性值</th>
+		                   <th valign="middle">是否开启</th>
+		                   <th valign="middle">操作</th>
+	                   </tr>
+	                 </thead>
+			<tbody>
+			<volist name="list" id="list" empty="没有对应数据" > 
+			  		<tr>
+			  			  <td>{$list.id}</td>
+					      <td>{$list.attr_name}</td>
+					      <td>{$typename[$list[type_id]]}</td>
+					      <td>{$list.attr_values|mb_substr=0,30,'utf-8'}</td>
+					      <td>{$flag[$list[flag]]}</td>
+	                     <td>
+	                     
+	                      <a class="btn btn-primary" href="{:U('Shoparr/attributelist',array('id'=>$list['id']))}"><i class="fa fa-pencil"></i></a>
+	                      <a class="btn btn-danger" href="javascript:del_fun('{:U('Shoparr/delattributelist',array('id'=>$list['id']))}');"><i class="fa fa-trash-o"></i></a>
+			     		</td>
+	                   </tr>
+	                </volist> 
+	                   </tbody>
+	               </table>
+	               
+	              </div>
+	              
+	             </div>
+	               
+		               <div class="row">
+			               <div class="col-sm-5">
+			               <div class="dataTables_info" id="example1_info" role="status" aria-live="polite"></div></div>                                   
+		               </div>
+	             </div><!-- /.box-body -->
+                        </div>
+                        
+                    </div>
+                </div>
+               
+            </div>
+            
+            
+        <center>{$page}</center>
+            </div>
+        </div>
+
+
+</body>
+</html>

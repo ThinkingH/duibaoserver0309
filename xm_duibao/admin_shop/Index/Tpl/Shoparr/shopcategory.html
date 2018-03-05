@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    
+    <link href="__PUBLIC__/js/bootstrap.js"  />
+    <link href="__PUBLIC__/js/myAjax.js"  />
+    <script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+   <script language="javascript" type="text/javascript" src="__PUBLIC__/datejs/datexxx/WdatePicker.js"></script>
+    
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$(".delete_submit").click(function(){
+			
+			if(confirm("您确认要删除此条数据吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+
+<script>
+function del_fun(del_url)
+{
+    if(confirm("确定要删除吗?"))
+        location.href = del_url;
+}  
+
+</script>
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商品管理</a></li>    
+			        <li><a>商品分类</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="height:50px;">
+                            <div class="row navbar-form" style="margin-top:-1px;">
+			                <button type="submit" onclick="location.href='{:U('Shoparr/shopcategoryshow',array('type'=>'1'))}'"  class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增商品类型</button>
+			                </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="box-body">
+	           <div class="row">
+	            <div class="col-sm-12">
+	              <table id="list-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+	                 <thead>
+	                   <tr role="row">
+	                   	   <th valign="middle">分类ID</th>
+		                   <th valign="middle">分类名称</th>
+		                   <!-- <th valign="middle">排序</th> -->
+		                   <th valign="middle">操作</th>
+	                   </tr>
+	                 </thead>
+			<tbody>
+			<foreach name="cat_list" item="vo" key="k" >
+			  		<tr role="row" align="center" class="{$vo.level}" id="{$vo.level}_{$vo.id}" <if condition="$vo[level] gt 1">style="display:none"</if>>
+			  			 <td>{$vo.id}</td>
+	                     <td align="left" style="padding-left:<?php echo ($vo[level] * 5); ?>em"> 
+	                      <if condition="$vo.have_son eq 1">
+		                   <span class="glyphicon glyphicon-plus btn-warning" style="padding:2px; font-size:12px;"  id="icon_{$vo.level}_{$vo.id}" aria-hidden="false" onclick="rowClicked(this)" ></span>&nbsp;				    
+					      </if>
+                             <span>{$vo.name}</span>
+			     		 </td>
+	                     <!-- <td>
+                         <input type="text" onchange="updateSort('{$vo.id}',this)"   onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" size="4" value="{$vo.sort}" class="input-sm" />
+                         </td> -->
+	                     <td>
+	                     
+	                      <a class="btn btn-primary" href="{:U('Shoparr/shopcategoryshow',array('id'=>$vo['id']))}"><i class="fa fa-pencil"></i></a>
+	                      <a class="btn btn-danger" href="javascript:del_fun('{:U('shoparr/delGoodsCategory',array('id'=>$vo['id']))}');"><i class="fa fa-trash-o"></i></a>
+			     		</td>
+	                   </tr>
+	                  </foreach>
+	                   </tbody>
+	               </table></div></div>
+		               
+	             </div><!-- /.box-body -->
+                        </div>
+                        
+                    </div>
+                </div>
+               
+            </div>
+            
+            
+            
+            
+            
+        <center>{$page}</center>
+            </div>
+        </div>
+<script type="text/javascript">
+
+//拍讯字段的更改('Shoparr','id','{$vo.id}','sort_order',this)
+function updateSort(id_value,obj){		       
+ 		var value = $(obj).val();
+		$.ajax({
+			type: "GET",
+			url:"__APP__/Shopattr/changeTableVal",	
+			data: {'id':id_value,'sort':value},  
+			success: function(data){									
+				layer.msg('更新成功', {icon: 1});   
+			}
+		});		
+}
+
+    
+// 以下是 bootstrap 自带的  js
+function rowClicked(obj)
+{
+  span = obj;
+
+  obj = obj.parentNode.parentNode;
+
+  var tbl = document.getElementById("list-table");
+
+  var lvl = parseInt(obj.className);
+
+  var fnd = false;
+  
+  var sub_display = $(span).hasClass('glyphicon-minus') ? 'none' : '' ? 'block' : 'table-row' ;
+  //console.log(sub_display);
+  if(sub_display == 'none'){
+	  $(span).removeClass('glyphicon-minus btn-info');
+	  $(span).addClass('glyphicon-plus btn-warning');
+  }else{
+	  $(span).removeClass('glyphicon-plus btn-info');
+	  $(span).addClass('glyphicon-minus btn-warning');
+  }
+
+  for (i = 0; i < tbl.rows.length; i++)
+  {
+      var row = tbl.rows[i];
+      
+      if (row == obj)
+      {
+          fnd = true;         
+      }
+      else
+      {
+          if (fnd == true)
+          {
+              var cur = parseInt(row.className);
+              var icon = 'icon_' + row.id;
+              if (cur > lvl)
+              {
+                  row.style.display = sub_display;
+                  if (sub_display != 'none')
+                  {
+                      var iconimg = document.getElementById(icon);
+                      $(iconimg).removeClass('glyphicon-plus btn-info');
+                      $(iconimg).addClass('glyphicon-minus btn-warning');
+                  }else{               	    
+                      $(iconimg).removeClass('glyphicon-minus btn-info');
+                      $(iconimg).addClass('glyphicon-plus btn-warning');
+                  }
+              }
+              else
+              {
+                  fnd = false;
+                  break;
+              }
+          }
+      }
+  }
+
+  for (i = 0; i < obj.cells[0].childNodes.length; i++)
+  {
+      var imgObj = obj.cells[0].childNodes[i];
+      if (imgObj.tagName == "IMG")
+      {
+          if($(imgObj).hasClass('glyphicon-plus btn-info')){
+        	  $(imgObj).removeClass('glyphicon-plus btn-info');
+        	  $(imgObj).addClass('glyphicon-minus btn-warning');
+          }else{
+        	  $(imgObj).removeClass('glyphicon-minus btn-warning');
+        	  $(imgObj).addClass('glyphicon-plus btn-info');
+          }
+      }
+  }
+
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用户登录</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+<body style="background-color: #E2E2E2;">
+    <div class="container">
+        <div class="row text-center " style="padding-top:100px;">
+            <div class="col-md-12">
+               <p style="font-size:26px;">用户登录</p>
+            </div>
+        </div>
+         <div class="row ">
+               
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                           
+                            <div class="panel-body">
+                                <form method="post" action="__APP__/Login/login_x">
+                                       <br />
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
+                                            <input type="text" class="form-control" name="username" placeholder="请输入用户名 " />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                                            <input type="password" class="form-control" name="passwd" placeholder="请输入密码" />
+                                        </div>
+                                         <br />
+                                    <!--  <a href="index.html" class="btn btn-primary ">登录</a> -->
+                                     <input type="submit" name="submit" value="登  陆  "  class="btn btn-primary" style="width:280px;text-align:center;"/>
+                                    </form>
+                            </div>
+                           
+                        </div>
+
+                
+        </div>
+        
+       
+<div style="text-align:center;padding-top:100px;"><p><font style="color:#F00;">*新用户提交资料后，需管理员审核，审核成功后账号和初始密码将以邮件的形式发送给您，请及时关注邮件通知</font></p></div>
+<div style="text-align:center;padding-left:5px;padding-right:5px;"><p><font style="color:#F00;">*建议使用pc浏览器访问网址http://xbapp.xinyouxingkong.com/admin_shop/admin_y.php</font></p></div>
+    </div>
+
+</body>
+</html>

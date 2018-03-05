@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+   <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+   <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+   <script src="__PUBLIC__/js/layer/layer.js"></script>
+ <script>
+    function checkUserUpdate(){
+        var lianxiren = $('input[name="lianxiren"]').val();
+        var mobile = $('input[name="phone"]').val();
+        var company = $('input[name="company"]').val();
+        var address = $('input[name="address"]').val();
+       error='';
+        if(lianxiren == ''){
+            error += "联系人不能为空\n";
+            alert(error);
+            return false;
+        }
+        
+        if(!checkMobile(mobile) && mobile != ''){
+            error += "联系方式填写有误\n";
+            alert(error);
+            return false;
+        }
+        
+        if(company == ''){
+            error += "公司名称不能为空\n";
+            alert(error);
+            return false;
+        }
+        if(address == ''){
+            error += "公司地址不能为空\n";
+            alert(error);
+            return false;
+        }
+        
+        
+       /*  if(error){
+            layer.alert(error, {icon: 2});  //alert(error);
+         // showErrorMsg(error);
+            return false;
+        } */
+        if(confirm("您确认要进行该操作吗？")) {
+			
+		}else {
+			return false;
+		}
+
+    }
+    
+  function checkMobile(tel) {
+	 
+	var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+ 	if (reg.test(tel)) {
+ 		return true;
+ 	}else{
+ 		return false;
+ 	}
+ }
+
+ function checkEmail(str){
+ 	var reg = /^[a-z0-9]([a-z0-9\\.]*[-_]{0,4}?[a-z0-9-_\\.]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+([\.][\w_-]+){1,5}$/i;
+ 	if(reg.test(str)){
+ 		return true;
+ 	}else{
+ 		return false;
+ 	}
+ }
+    
+    
+  function showErrorMsg(msg){
+    	alert(msg);
+    	return false;
+    }
+ 
+</script> 
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        <div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商户管理</a></li>    
+			        <li><a href="__APP__/User/userinfo" target="main_x">商户信息</a></li>    
+			        <li><a>商户信息编辑</a></li>          
+				</ol>
+			</div>
+            <div id="page-inner">
+                <div class="row">
+			      <div class="col-sm-12">
+			        <div class="panel panel-default">
+			            <div class="pull-right">
+			                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+			            </div>
+			            <div class="panel-heading">
+			                <h3 class="panel-title"><i class="fa fa-list"></i>修改商户信息</h3>
+			            </div>
+			            <div class="panel-body">
+			            	<form action="__APP__/User/usereditdata{$yuurl}" method="post" enctype="multipart/form-data" onsubmit="return checkUserUpdate(this);" >
+			            	<input type="hidden" name="id" value="{$list['id']}" />
+			                    <table class="table table-bordered">
+			                    <tbody>
+			                    <tr>
+			                        <td class="col-sm-2">商户编号:</td>
+			                        <td >{$list['id']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>审核状态：</td>
+			                        <td>{$list['checkstatus']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>联系人:</td>
+			                       <td><input type="text" class="form-control" name="lianxiren" value="{$list['lianxiren']}" style="width:40%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>联系方式:</td>
+			                        <td><input class="form-control" name="phone" id="phone" type="text" value="{$list['phone']}" style="width:40%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>邮箱:</td>
+			                        <td><input class="form-control" name="email" id="email" type="text" value="{$list['email']}" style="width:40%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>公司名称:</td>
+			                        <td><input class="form-control" name="company" id="company" type="text" value="{$list['company']}" style="width:50%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>公司地址:</td>
+			                        <td><input class="form-control" name="address" id="address" type="text" value=" {$list['address']}" style="width:50%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>自提地址:</td>
+			                        <td> <input class="form-control" name="zitiaddress" id="zitiaddress" type="text" value=" {$list['zitiaddress']}" style="width:50%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>营业执照:</td>
+			                        <td><input type="file" name="bussinelicence1" class="form-control" id="bussinelicence1" onchange="preview(this)" style="width:50%" >
+			                        <div id="preview" style="position:relative; top:5px; left:10px;"><img alt="" src="{$list['bussinelicence1']}" width="200"></div>  
+			                        </td><!-- onchange="preview(this)" -->
+			                    </tr>
+			                    
+			                    <tr>
+			                    <td></td>
+			                    <td><input type="submit" id="uupdate_submit" class="btn btn-primary uupdate_submit" name="uupdate_submit" style="margin:15px 0px 0px 10px;" value="确认修改" /></td>
+			                    </tr>
+			                    </tbody>
+			                </table>
+			                </form>
+			            </div>
+			            
+			            
+			        </div>
+			 	  </div> 
+    		</div>    
+        
+            </div>
+        </div>
+        <!--图片预览  -->
+   <script src="__PUBLIC__/js/picview.js"></script>      
+</body>
+</html>
