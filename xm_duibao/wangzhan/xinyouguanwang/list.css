@@ -1,0 +1,125 @@
+
+.article{width: 100%; height: auto;}
+.banner_shoukuan{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../picture/xianbing.png) center center no-repeat;min-width:1200px;}
+.banner_fukuan{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../images/banner_fukuan.jpg) center center no-repeat;min-width:1200px;}
+.banner_jiesuan{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../images/banner_jiesuan.jpg) center center no-repeat;min-width:1200px;}
+.banner_pingtai{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../images/banner_pingtai.jpg) center center no-repeat;min-width:1200px;}
+.banner_zengzhi{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../images/banner_zengzhi.jpg) center center no-repeat;min-width:1200px;}
+.banner_yxzx{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../picture/shanghu.png) center center no-repeat;min-width:1200px;}
+.banner_yxzx a{ width: 200px; height: 30px; overflow: hidden; line-height: 30px; text-align: center; display: block; border: 1px solid #6a2051; background: #6a2051; border-radius: 15px; font-size: 16px; color: #fff;position: absolute; left:0px; top: 250px; }
+.banner_yxzx a:hover{ background: #00A7EA;border: 1px solid #00A7EA; color: #fff;}
+.banner_jjfa{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../picture/banner_jjfa.jpg) center center no-repeat;}
+.banner_jjfa a{ width: 200px; height: 30px; overflow: hidden; line-height: 30px; text-align: center; display: block; border: 1px solid #c66076; background: #c66076; border-radius: 15px; font-size: 16px; color: #fff;position: absolute; left:0px; top: 270px; }
+.banner_jjfa a:hover{ background: #00A7EA;border: 1px solid #00A7EA; color: #fff;}
+.banner_zhap{ width: 100%; height: 480px; overflow: hidden; margin-top: 100px; background: url(../images/banner_zhap.jpg) center center no-repeat;min-width:1200px;}
+.box1200{ width: 1200px; height: 480px; overflow: hidden; margin: 0 auto; position: relative;}
+.gnjs{ width: 100%;min-width:1200px; height: 100px; background:#f9f9f9 url(../picture/gnjs.jpg) center center no-repeat;}
+.tsfw{ width: 100%;min-width:1200px; height: 100px; background:#f9f9f9 url(../picture/tsfw.jpg) center center no-repeat;}
+.gnjs_position{position: fixed; top: 0px; left: 0px;}
+.gnjs_list{ width: 1200px; height: auto; margin: 0 auto;}
+.gnjs_list li{ width: 100%; height:400px; background: url(../images/fgx.png) center bottom no-repeat; margin-top: 60px; padding-bottom: 60px;}
+.gnjs_list li img{ width: 500px; height: 400px;}
+.gnjs_list li div{ width: 650px; height: auto; margin-top: 100px;}
+.gnjs_list li div h3{ font-size: 46px; color: #424242; line-height: 70px;}
+.gnjs_list li div h3 a{ color: #424242;}
+.gnjs_list li div h3 a:hover{ color: #32a5e7;}
+.gnjs_list li div p{ font-size:18px; color: #999; line-height: 32px;}
+.gnjs_list li div p a{ color: #999;}
+.gnjs_list li div p a:hover{ color: #32a5e7;}
+
+
+
+.jjfa_list{width: 1200px; height: auto; margin: 0 auto;}
+.jjfa_list dd{ width: 400px; height:234px; float: left; margin-top: 20px; position: relative;}
+.jjfa_list dd img{ width: 100%;}
+.jjfa_list dd div{ width: 320px; height: 154px; overflow: hidden; position: absolute; left: 0px; top:0px; padding: 40px; display: none;}
+.jjfa_list dd div h3{ font-size: 36px; color: #fff;}
+.jjfa_list dd div h3 a{ color: #fff;}
+.jjfa_list dd div h4{ font-size: 18px; color: #fff; margin-top: 10px;}
+.jjfa_list dd div h4 a{ color: #fff;}
+.jjfa_list dd div p{ font-size:14px; color: #fff; margin-top: 10px;}
+.jjfa_list dd div p a{ color: #fff;}
+
+.jjfa_list dt{ width: 600px; height:448px; float: left; position: relative;}
+.jjfa_list dt img{ width: 100%;}
+.jjfa_list dt div{ width: 520px; height: 368px; overflow: hidden; position: absolute; left: 0px; top:0px; padding: 40px; background-color:rgba(8,114,161,0.7);display: none;}
+.jjfa_list dt div h3{ font-size: 36px; color: #fff;}
+.jjfa_list dt div h3 a{ color: #fff;}
+.jjfa_list dt div h4{ font-size: 18px; color: #fff; margin-top: 10px;}
+.jjfa_list dt div h4 a{ color: #fff;}
+.jjfa_list dt div p{ font-size:14px; color: #fff; margin-top: 10px;}
+.jjfa_list dt div p a{ color: #fff;}
+
+
+.zhaq_box{ width: 1200px; height: auto; overflow: hidden; margin: 30px auto;}
+.zhaq_dl { width: 100%; overflow: hidden; height: auto; float: left; padding-bottom:30px; display: none;}
+.zhaq_dl dt{ width: 1198px; height: auto; overflow: hidden; padding: 20px 0px; border: 1px solid #ccc; border-top: none;}
+.zhaq_dl dt h3{ width: 299px; font-weight: normal; font-size:18px; text-align: center; float: left;}
+.zhaq_dl dd{ width: 1098px; height: auto; margin-top: 30px; padding: 0px 50px;}
+.zhaq_dl dd h3{ font-weight: normal; font-size: 16px;}
+.zhaq_dl dd p{ font-size: 14px; color: #666; margin-top: 10px; text-indent: 2em;}
+.zhaq_title{ width: 100%; height: auto; overflow: hidden;}
+.zhaq_title li{ width: 400px; float:left; text-align: center; padding: 10px 0px; border-bottom: 1px solid #ccc; font-size: 20px; cursor: pointer;}
+.zhaq_title .zhap_c{width: 398px; border: 1px solid #ccc; border-bottom: none;}
+
+
+.help{ width: 100%; height: 930px; overflow: hidden; margin-top: 100px;}
+.help dd{ width: 50%; height: 50%; overflow: hidden; float: left; position:relative;}
+.help dd h3{ font-size: 60px; color: #ebf0f3; position: absolute;}
+.help dd div{ width: 86%; height: 100%; overflow: hidden; padding: 10% 8% 0% 6%; background:rgba(0,0,0,0.4); position: absolute; left: 0px; top: 0px; display: none;}
+.help dd div p{ font-size: 24px; color: #fff;}
+
+
+.help .help_dd1{ background: #00d6c7;}
+.help .help_dd1 h3{ left:6%; bottom: 5%;}
+
+.help .help_dd2{ background: #fff;}
+.help .help_dd2 div{text-align: right;}
+.help .help_dd2 h3{ right:8%; bottom: 5%; color: #999;}
+
+.help .help_dd3{ background: #fff;}
+.help .help_dd3 div{ padding-top: 15%;}
+.help .help_dd3 h3{ left:6%; top: 5%; color: #999;}
+
+.help .help_dd4{ background: #dcde1e;}
+.help .help_dd4 div{ text-align: right; padding-top: 15%;}
+.help .help_dd4 h3{ right:8%; top: 5%; }
+
+.help .bzzx_pic1{ position: absolute; right: 8%; top: 0px;}
+.help .bzzx_pic2{ position: absolute; left: 8%; top: 0px;}
+.help .bzzx_pic3{ position: absolute; right: 8%; bottom: 0px;}
+.help .bzzx_pic4{ position: absolute; left: 8%; bottom: 0px;}
+
+
+.help .hover{
+	animation:scale 0.75s forwards cubic-bezier(0,1,.5,1);
+	-moz-animation:scale 0.75s forwards cubic-bezier(0,1,.5,1); /* Firefox */
+	-webkit-animation:scale 0.75s forwards cubic-bezier(0,1,.5,1); /* Safari and Chrome */
+	-o-animation:scale 0.75s forwards cubic-bezier(0,1,.5,1); /* Opera */
+}
+
+@keyframes scale
+{
+from {transform:scale(1,1);}
+to {transform:scale(1.1,1.1); }
+}
+
+@-moz-keyframes scale /* Firefox */
+{
+from {transform:scale(1,1);}
+to {transform:scale(1.1,1.1);}
+}
+
+@-webkit-keyframes scale /* Safari and Chrome */
+{
+from {transform:scale(1,1);}
+to {transform:scale(1.1,1.1);}
+}
+
+@-o-keyframes scale /* Opera */
+{
+from {transform:scale(1,1);}
+to {transform:scale(1.1,1.1);}
+}
+
+
