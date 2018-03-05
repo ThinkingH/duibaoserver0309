@@ -1,0 +1,65 @@
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+       
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Index/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:50px;">
+                    <a href="__APP__/Index/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+      
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Index/order">订单中心</a>
+                </div>
+                 <div class="t-m-bd  menu-list">
+                    <ul class="t-m-panel">
+                        <li><a href="/Intro/AboutUs" target="_blank">关于我们</a></li>
+                        <li><a href="/Help/HowDelgateTrade" target="_blank">帮助中心</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Index/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->

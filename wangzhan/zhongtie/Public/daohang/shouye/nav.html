@@ -1,0 +1,273 @@
+
+
+
+
+<!-- 导航部分 -->
+<div class="trackBox" comid="100001004" comType="1"></div>
+
+
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+       
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Login/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:50px;">
+                    <a href="__APP__/Login/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+      
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">订单中心</a>
+                </div>
+                 <div class="t-m-bd  menu-list">
+                    <ul class="t-m-panel">
+                        <li><a href="" target="_blank">关于我们</a></li>
+                        <li><a href="" target="_blank">帮助中心</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Login/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->
+
+
+
+<!-- padding-top: 15px;
+    padding-left: 30px;
+    height: 64px;
+    font-size: 28px;
+    line-height: 64px;
+    color: #000000; -->
+
+
+
+	<!-- top b -->
+	<div class="jyd-top">
+		<div class="content wrap" >
+			<!-- logo图片 全站静态碎片 -->
+						<div class="logo fl"><a><img src="__PUBLIC__/picture/logo3.png" alt=""></a></div>
+						<div class="page-title fl" style="padding-top:50px;height:20px;font-size:18px;line-height:23px;padding-left:15px;font-weight:bold;">大宗商品o2o电子商务平台</div>
+			<!-- <div class="phonenum fr"><img src="__PUBLIC__/picture/400.png" alt=""></div> -->
+			<!-- search b --> 
+			<!-- 搜索框 -->
+			
+			<!-- <div class="jyd-search fr">
+				<form id="searchForm" action="http://139.217.20.237/jydcms-search/search" method="post">
+				<div class="inputbox fl">
+					<input id="keyWord" name="keyWord" type="text" placeholder="搜索站内的新闻 、文章 、资讯等">
+					<input id="pageNo" name="pageNo" type="hidden" value="1">
+					<input id="fieldType" name="fieldType" type="hidden" value="fullText">
+					<input id="timeType" name="timeType" type="hidden" value="all">
+				</div>
+				<div class="search-btn fl">
+					<a id="searchSubmit" href="javascript:void(0)"><i class="jyd-icon fl"></i>搜索</a>
+				</div>
+				</form>
+			</div> -->
+<!-- <script language="javascript">
+
+window.jydcms = window.jydcms || {};
+(function() {
+	window.jydcms.context = {
+		//电子商务主页面地址
+		getJydDsDomain: function(){
+			return "http://www.chinaresc.com/";
+		},
+		//煤炭商城主页面地址
+		getJydCoalDsDomain: function(){
+			return "http://www.chinaresc.com";
+		},
+		//网络融资主页面地址
+		getJydLoanDomain: function(){
+			return "http://www.chinaresc.com";
+		},
+		
+	}
+})();
+
+
+//电子商务主页面地址
+var jydDsDomain = jydcms.context.getJydDsDomain();
+
+//煤炭商城主页面地址
+var jydCoalDsDomain = jydcms.context.getJydCoalDsDomain();
+
+//网络融资主页面地址
+var jydLoanDomain = jydcms.context.getJydLoanDomain();
+
+$(document).ready(function(){
+
+		/**
+		 * 提交搜索表单
+		 */
+
+document.onkeydown = function (e) {
+    e = e || event;
+    if (e.keyCode == 13) {     /* 监听键盘enter事件 */
+      var keyWord = $('#keyWord').val();
+      if(keyWord == null || keyWord.trim() == '' || keyWord == undefined){
+          alert("查询关键字不能为空!");
+          return false;
+      }
+      if(redirectOutWebsite(keyWord)){
+if(!initSearch(keyWord)){
+                return;
+            }        
+            $('#searchForm').submit();
+      }
+      return false;
+    }
+}
+
+/**
+     *  初始化查询条件
+     */
+    function initSearch(keyWord){
+        var b =  !(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g.test(keyWord));
+        if(!b){
+          alert("不能输入特殊字符!");
+        }
+        return b;
+    }
+
+    $(document).on('click','#searchSubmit',function(){
+				var keyWord = $('#keyWord').val();
+				if(keyWord == null || keyWord.trim() == '' || keyWord == undefined){
+						alert("查询关键字不能为空!");
+						return false;
+				}
+                                if(redirectOutWebsite(keyWord)){
+if(!initSearch(keyWord)){
+                return;
+            }         
+                                      $('#searchForm').submit();
+                                }
+
+	});
+
+function redirectOutWebsite(keyWord) {
+
+        var dz = new Array("电子商务", "电商", "煤炭交易");
+        var s;
+        for(s in dz){
+            if(dz[s] == keyWord){
+                window.open(jydDsDomain,'_blank');
+                return false;
+            }
+        }
+
+        var coal = new Array("煤炭价格", "煤炭行情", "港口价格", "产地价格", "坑口价格", "大客户价格", "大品牌价格");
+        for(s in coal){
+            if(coal[s] == keyWord){
+                window.open(jydCoalDsDomain,'_blank');
+                return false;
+            }
+        }
+
+        var loan = new Array("金融服务", "网络融资", "融资", "金融");
+        for(s in loan){
+            if(loan[s] == keyWord){
+                window.open(jydLoanDomain,'_blank');
+                return false;
+            }
+        }
+        
+        return true;
+    }
+});
+</script>
+ -->
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+	<!-- top e -->
+
+<!-- 右侧漂浮 floatbox b -->
+		<div class="jyd-floatbox">
+		<i class="close"></i>
+		<h2>微信扫一扫</h2>
+		<dl>
+			<dt><img src="__PUBLIC__/picture/wx.gif" alt=""></dt>
+			<dd>大宗商品供应链</dd>
+		</dl>
+	</div>
+
+
+
+<!--  -->
+	
+<!-- 导航栏 --><!--  style="background: #E23638;" -->
+		<div class="jyd-menu" style="background: #E23638;">
+		<div class="content wrap">
+			<a href="__APP__/Index/index.html" class="jyd-home" style="width: 143px;padding-left: 28px;">
+				<h2>首页</h2>
+				<p>Home Page</p>
+			</a>
+			<a href="__APP__/News/dazongmacrooil.html" target="_blank" class="jyd-dzcj">
+				<h2>大宗财经</h2> 
+				<p> 
+				<span>Block Finance</span>
+				<i class="jyd-icon fl"></i>
+				</p>
+			</a>
+			<a href="__APP__/Index/cocalcommerce.html" target="_blank" class="jyd-dzsw">
+				<h2>煤炭专区</h2>
+				<p>
+				<span>Coal Commerce</span>
+				<i class="jyd-icon fl"></i>	
+				</p>
+			</a>
+			<a href="__APP__/Index/chainfinance.html" class="jyd-wlrz" target="_blank">
+				<h2>产业链金融</h2>
+				<p>
+				<span>Industry chain finance</span>
+				<i class="jyd-icon fl"></i>
+				</p>
+			</a>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>

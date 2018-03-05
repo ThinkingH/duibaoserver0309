@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中铁国恒产业链金融首页</title>
+	<!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="Keywords" content=""/>
+	<meta name="Description" content="" />
+	
+	<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance/css/resetcss.css">
+	<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance/css/public.css">
+	<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance/css/net-finance.css">
+	<script src="__PUBLIC__/newpic/chianfinance/js/jquery-1.8.3.min.js"></script>
+	<!-- js函数引用库 jsbank.js b -->
+	<script src="__PUBLIC__/newpic/chianfinance/js/jsbank.js"></script>
+	<script src="__PUBLIC__/newpic/chianfinance/js/public.js"></script>
+	<!-- js函数引用库 e -->
+	<!-- 页面其他效果js b -->
+	<script src="__PUBLIC__/newpic/chianfinance/js/net-finance.js"></script>
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+	<!-- 页面其他效果js e -->
+	
+</head>
+<body>
+
+<!--登录成功弹出层内容 b-->
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+    
+    	 <ul class="t-BdL t-menu">
+            <li class="t-m t-m-home lkm">
+               <a href="__APP__/Weibu/huiyuan">会员入口</a>
+            </li>
+            
+             <li class="t-m t-m-home lkm">
+               <a href="http://bbs.chinaresc.com/">进入论坛</a>
+            </li>
+            
+        </ul>
+       
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Login/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:40px;">
+                    <a href="__APP__/Login/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+    
+    	 <ul class="t-BdL t-menu">
+            <li class="t-m t-m-home lkm">
+               <a href="__APP__/Weibu/huiyuan">会员入口</a>
+            </li>
+            
+             <li class="t-m t-m-home lkm">
+               <a href="http://bbs.chinaresc.com/">进入论坛</a>
+            </li>
+            
+        </ul>
+      
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            
+              <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                <php>if($fflag=='金牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/gold.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='银牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/bronze.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='铜牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/silver.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='普通会员'){
+                echo '';
+                }
+               </php>
+                    <a href="__APP__/Weibu/huiyuan">{$fflag}</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">订单中心</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                 <div class="t-m-hd">
+                    <a href="__APP__/Login/userinfo">会员中心</a>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Login/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->
+	<div class="head">
+    <div class="headNav grid-1200 clear">
+        <h1 class="logo" style="width:488px;padding-top:25px;">
+           <a href="__APP__/Index/index"><img src="__PUBLIC__/editnew/picture/logo.png" alt="中铁国恒" style="margin-bottom:-32px; width:488px; height:70px;"/></a>
+        </h1>
+       
+        <div class="ui-t-search">
+           
+        </div>
+        
+	
+		
+		<div class="t-menu lkm" >
+
+            <ul class="m-item-list" id="show-tips-items" style="margin-right: 30px;">
+                    <li class="m-item current-page-item">
+                        <a href="__APP__/Index/index" target="_self" style="font-size: 18px;">首页</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/News/dazongmacrooil.html" target="_self" style="font-size: 18px;">大宗财经</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/cocalcommerce.html" target="_self" style="font-size: 18px;">煤炭专区</a>
+                         <div class="hotbox">
+                                <i class="hot"></i>
+                            </div>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/chainfinance.html" target="_self" style="font-size: 18px;">产业链金融</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="http://www.chinaresc.com/m_chinaresc/" target="_blank" style="font-size: 18px;">查看手机版</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                   
+                   
+            </ul>
+        </div>
+    </div>
+
+
+	</div>
+	<!-- top b -->
+	<!-- <div class="jyd-top top-borbom">
+		<div class="content wrap">
+			<div class="logo fl" style="padding-top:1px;"><a href="__APP__/Index/index"><img src="__PUBLIC__/picture/logo3.png" alt=""></a></div>
+			<div class="page-title fl net" style="padding-bottom:10px;">产业链金融</div>
+			<div class="page-title fl net">产业链金融</div>
+		</div>
+	</div> -->
+	<div class="clearfix"></div>
+	<!-- top e -->
+
+	<!-- 产业链金融 b -->
+	<div class="f_qydt wrap" style="margin-top: 14px;">
+    	<div class="f_qydt_top">
+        	<div class="f_qydt_title clearfix">
+            	<div class="f_qydt_title_l fl">产业链金融<span>／Industry chain finance</span></div>
+                <div class="calendar fr f_cyl">
+	            	<span class="f_cyl_n">信息流</span>
+	            	<span class="f_cyl_n">资金流</span>
+	            	<span class="f_cyl_n">物流</span>
+                    <span class="f_cyl_n1">三流合一</span>
+		        </div>
+            </div>
+            <div class="border_blue"><div class="border_red"></div></div>
+        </div>
+        <!-- 产业链金融内容 b -->
+        <div class="f_cyjr_n">
+        	<div class="f_cyjr_up clearfix">
+            	<div class="f_cyjr_c">
+                	<a href="__APP__/Index/financepro.html?param=1#cyljr" target="_blank">
+                		<img  width="257" height="261" src="__PUBLIC__/newpic/chianfinance/picture/f_jr1.jpg"/>
+                        <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/newpic/chianfinance/picture/f_jr1_1.png"/>
+                        <div class="f_layeron"></div>
+	    				<div class="f_layer-cons">
+                        	<div class="f_cyjr_text">
+                        	<h3>特点/Character</h3>
+                            <p>利用平台优势，集合多家交易商采购需求，利用融资服务形成规模资金，统一向上游采货，形成价格优势,降低运营成本。</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="f_cyjr_c">
+                	<a href="__APP__/Index/financepro.html?param=1#cyljr" target="_blank">
+                		<img  width="257" height="261"src="__PUBLIC__/newpic/chianfinance/picture/f_jr2.jpg"/>
+                        <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/newpic/chianfinance/picture/f_jr2_2.png"/>
+                        <div class="f_layeron"></div>
+	    				<div class="f_layer-cons">
+                        	<div class="f_cyjr_text">
+                        	<h3>特点/Character</h3>
+                            <p>1、利用平台优势，集合多家上游企业销售需求，统一向指定下游销货，提升供货能力。</p>
+                            <p>2、利用融资服务，帮助上游企业提前回笼资金。</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="f_cyjr_c">
+                	<a href="__APP__/Index/financepro.html?param=1#cyljr" target="_blank">
+                		<img  width="257" height="261"src="__PUBLIC__/newpic/chianfinance/picture/f_jr3.jpg"/>
+                        <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/newpic/chianfinance/picture/f_jr3_3.png"/>
+                        <div class="f_layeron"></div>
+	    				<div class="f_layer-cons">
+                        	<div class="f_cyjr_text">
+                        	<h3>特点/Character</h3>
+                            <p>1、利用平台优势，帮助上游供货商解决货物分销问题，降低上游运营成本。</p>
+                            <p>2、致力于整合产业链，减少中间环节，提高货物周转率。</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="f_cyjr_c mr0">
+              		<img  width="257" height="261"src="__PUBLIC__/newpic/chianfinance/picture/f_jr4.jpg"/>
+                </div>
+            </div>
+            <div class="f_cyjr_down clearfix">
+            	<div class="f_cyjr_hz">
+                	<div class="f_hz_title clearfix">
+                    	<div class="f_hz_border"></div>
+                        <div class="f_hz_name">合作伙伴</div>
+                        <div class="f_hz_border"></div>
+                    </div>
+                    <div class="f_partner clearfix">
+                    	<ul>
+                        	<li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz1.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz2.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz4.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz3.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz5.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz6.jpg"/></li>
+                            <li><img width="117" height="47" src="__PUBLIC__/newpic/chianfinance/picture/f_hz7.jpg"/></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="f_cyjr_sq">
+                	<a href="" class="f_button_bj" target="_blank">金融机构申请通道</a>	
+                </div>
+            </div>
+        </div>
+        <!-- 产业链金融内容 e -->
+    </div>
+	<!-- 产业链金融 e -->
+	
+	<div class="d-quickandlogin">
+		<div class="content wrap clearfix">
+			<!-- 快速通道 b -->
+			<div class="d-quickway">
+				<div class="jyd-title">
+					<h3>快速通道</h3>
+					<p>Express Lane</p>
+				</div>
+				<div class="d-quick-links clearfix">
+					<a  href="__APP__/Index/financepro.html?param=1#cyljr" target="_blank"  style="width:240px;"><i class="icon01"></i><span>产业链金融 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=2#sqzz" target="_blank" style="width:240px;"><i class="icon02"></i><span>申请资质 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=3#sfbz" target="_blank" style="width:240px;"><i class="icon03"></i><span>收费标准 </span><em><p></p></em></a>
+					<a class="__APP__/Index/financepro.html?param=4#clzb" target="_blank" style="width:240px;"><i class="icon04"></i><span>材料准备 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=5#ywlc" target="_blank" style="width:240px;"><i class="icon05"></i><span>业务流程 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=6#jgck" target="_blank" style="width:240px;"><i class="icon06"></i><span>监管仓库 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=7#rzpz" target="_blank" style="width:240px;"><i class="icon07"></i><span>融资品种 </span><em><p></p></em></a>
+					<a href="__APP__/Index/financepro.html?param=8#cjwt" target="_blank" style="width:240px;"><i class="icon08"></i><span>常见问题 </span><em><p></p></em></a>
+				</div>
+			</div>
+			<!-- 快速通道 e -->
+
+		</div>
+	</div>
+
+	<!-- ad1 b -->
+	<div class="jyd-ad">
+		<div class="content wrap">
+			<!-- <img src="__PUBLIC__/picture/v1.jpg" alt=""> -->
+		</div>
+	</div>
+	<!-- ad1 e -->
+
+	<!-- 监管仓库 b -->
+	<div class="d-warehouse">
+		<div class="content wrap">
+	    	<div class="f_qydt_top">
+	        	<div class="f_qydt_title clearfix">
+	            	<div class="f_qydt_title_l fl">监管仓库<span>／Supervision warehouse</span></div>
+	                <div class="calendar fr f_cyl">
+			            	<span class="f_cyl_n">物流节点</span>
+			            	<span class="f_cyl_n1">网络布局</span>
+			        </div>
+	            </div>
+	            <div class="border_blue"><div class="border_red"></div></div>
+	        </div>
+			<div class="d-warehouse-con"><img src="__PUBLIC__/newpic/chianfinance/picture/warehouse.jpg" alt=""></div>
+		</div>
+	</div>
+	<!-- 监管仓库 e -->
+	
+	<!-- 融资品种 b -->
+	<div class="d-rzpz">
+		<div class="content wrap">
+	    	<div class="f_qydt_top">
+	        	<div class="f_qydt_title clearfix">
+	            	<div class="f_qydt_title_l fl">融资品种<span>／Variety of financing</span></div>
+	            </div>
+	            <div class="border_blue"><div class="border_red"></div></div>
+	        </div>
+	        <div class="d-rzpz-con clearfix">
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz01.jpg" alt=""></dt>
+	        		<dd>煤炭</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz02.jpg" alt=""></dt>
+	        		<dd>矿石</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz03.jpg" alt=""></dt>
+	        		<dd>有色</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz04.jpg" alt=""></dt>
+	        		<dd>石油</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz05.jpg" alt=""></dt>
+	        		<dd>塑料</dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz06.jpg" alt=""></dt>
+	        		<dd>橡胶</dd>
+	        	</dl>
+	        	<dl class="last-dl">
+	        		<dt><img src="__PUBLIC__/newpic/chianfinance/picture/pz07.jpg" alt=""></dt>
+	        		<dd>钢铁</dd>
+	        	</dl>
+	        </div>
+		</div>
+	</div>
+	<!-- 融资品种 e -->
+
+	<!-- footer b -->
+	<include file="./Public/daohang/shouye/footer.html" />
+	<!-- footer e -->
+
+	<!-- 返回顶部 b -->
+	<div class="gotop"></div>
+	<!-- 返回顶部 e -->
+</body>
+</html>

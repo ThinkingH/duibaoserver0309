@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$list.title}</title>
+	    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="Keywords" content="一带一路,自贸区,期货,雾霾,核电,互联网金融,石油,煤炭,铁矿石,天然气,有色金属,新能源,塑料,钢铁,大宗商品,中铁国恒"/>
+	<meta name="Description" content="中铁国恒大宗财经，是整合大宗行业信息，提供产业资讯，梳理公司报道，解读大宗数据的行业领先的大宗商品资讯平台。" />
+	<include file="./Public/daohang/dazongcaijing/yangshi.html" />
+
+<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+</head>
+<body>
+
+<include file="./Public/daohang/newdaohang/dazong.html" />
+
+
+	
+	<!-- 图文、洞察、专题 b -->
+	<div class="dz-news">
+		<div class="content wrap1 clearfix f_lc" style="background:none;width:1200px;">
+			<!-- 详情页左边 b -->
+			<div class="dz-news-l fl f_ld">
+            	<!-- up部分 b -->
+                    <div class="f_detail_content">
+                        
+						<div class="f_list_crumbs">
+												<span>
+												<a>
+												大宗财经</a></span> > 
+												<span>
+												<a>
+												宏观信息</a></span> >  
+												<span class="f_cru_col">正文</span></div>
+
+                        <!-- 文章部分 b -->
+                       
+                        <div class="f_detail_n" style="width:700px;">
+                        	<div class="f_detail_title" style="text-align:center;">{$list.title}</div>
+                            <div class="f_detail_a clearfix">
+                            	<div class="fl">   
+				<span class="f_da">{$list.contenttime}</span>
+								</div>
+								<div class="fr">
+								</div>
+                            </div>
+                            <div class="f_detail_text" style="width:700px;">
+                            {$list.content}
+							</div>
+                        </div>
+                    </div>
+              
+			</div>
+			
+			<!-- 详情页左边 e -->
+            <!-- 列表右侧b -->
+			
+            <!-- 列表右侧e -->
+		</div>
+	</div>
+	<!-- 图文、洞察、专题 e -->
+	<!-- footer b -->
+   
+   <include file="./Public/daohang/shouye/footer.html" />
+   
+   
+   
+	<!-- 返回顶部 b -->
+	<div class="gotop"></div>
+	<!-- 返回顶部 e -->
+</body>
+</html>

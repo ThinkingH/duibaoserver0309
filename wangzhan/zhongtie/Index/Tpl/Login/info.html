@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="./Public/daohang/shouye/header.html" />
+
+	<link href="__PUBLIC__/pic1/css/global.css" type="text/css" rel="stylesheet" />
+	<link href="__PUBLIC__/pic1/css/315index.css"  type="text/css"  rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/pic10/style/default_blue.css"/>
+	<!-- 用户登录的css -->
+	
+	<link href="__PUBLIC__/login/css/common.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/common_1.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/m.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/style.css"  type="text/css"  rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/showloading.css"  type="text/css"  rel="stylesheet" />
+	<script type=text/javascript src="__PUBLIC__/login/js/jquery.min.js"></script>
+ 	<link rel="stylesheet" href="__PUBLIC__/login/css/login.css"/>
+ 	
+ 	<link href="__PUBLIC__/login/css/help.css" rel="stylesheet" />
+	<link href="__PUBLIC__/login/css/richedit.css" rel="stylesheet" />
+	
+	<style>
+	
+	.yubutton {  
+		    margin: 1px 2px;  
+		    outline: none;  
+		    cursor: default;  
+		    text-align: center;  
+		    text-decoration: none;  
+		    padding: .75em 2em .8em;
+			outline: none;
+			display: inline-block;
+			*display: inline;
+			zoom: 1;
+			
+			border:0px purple\9;
+			border-collapse:collapse\9;
+			border-style:solid\9;
+			_background-color:#D5D1FF;
+		}
+		
+		.yuwhite {  
+		    color: purple;
+		    border: solid 1px #b7b7b7;  
+		    background: #fafafa;
+		    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e4e4e4));  
+		    background: -moz-linear-gradient(top,  #fafafa,  #e4e4e4);  
+		    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#e4e4e4');  
+		}
+	
+	</style>
+	
+
+<body>
+	<!-- 导航条部分 -->
+	<include file="./Public/daohang/login/qita.html" />
+	
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/logincss.html" />
+  	
+  	<script type="text/javascript">
+  	 $("document").ready(function(){
+  		 
+  		 
+  	 });
+  	</script>
+	
+	
+	
+	
+	<div class="main" style="border-top: 4px solid #ffffff; height:730px;">
+    <div class="help">
+       <!--  <div class="tip_index" style="margin-left:370px;">
+            <i class="iconfont">&#xf014a;</i>
+            	您当前位置： <a href="__APP__/Index/index">首页</a> - <a href="javascript:void(0)">订单中心</a>
+        </div> -->
+        <div class="help-side" style="margin-left:390px;">
+            <h2 style="background-color:#66b2e8;">订单中心</h2>
+            
+	<ul class="h-menu">
+	        <li class="hover">
+	                <a href="__APP__/Login/order" class="h-title show" style="background-color:#66b2e8;">我的订单</a>
+	        </li>
+	        
+	         <li class="hover">
+	                <a href="__APP__/Login/info" class="h-title show" style="background-color:#66b2e8;">资质文件上传</a>
+	        </li>
+	        
+	    
+	         <li class="hover">
+	                <a class="h-title show" style="background-color: #E0E0E0;height:300px;"></a>
+	        </li>
+	</ul>
+
+        </div>
+        
+       <!--  <div class="help-content" style="height:130px;width:900px;">
+            <div class="tit" style="width:100px;height:100px;"><img alt="" src="__PUBLIC__/login/picture/2.gif" width="100px" height="100px"></div>
+            <div><a style="padding-left:20px; padding-bottom:20px;">用户：{$username}</a></div>
+    	</div> -->
+    	
+	    	<div class="help-content" style=" margin-top:10px;width:900px;height:530px;">
+	    		<form action="__APP__/Login/upload" method="post" enctype="multipart/form-data" style="padding-top:15px;">
+	    				<br>
+	    				<input type="hidden" name="id" value="{$id}">
+	    				<div style="margin-bottom:20px;margin-left:30px;">
+	    					<span style="font-size: 16px;line-height: 26px;color:#ff0000;font-weight:300;padding-top:1px;">注:支持上传的文件格式是：('jpg', 'gif', 'png', 'jpeg'),上传的最大尺寸是：3M，根据需要上传相应的文件</span>
+	    				</div>
+	    		
+			    	<div style="margin-bottom:20px;margin-left:30px;float:left;">
+			    		
+			    			<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">1.请上传营业执照或银行开户证明:</span>
+					       	<input type="file" name="file1" id="file1">
+					       	<br>
+					       	
+					       	<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">2.请上传库存证明：</span>
+					       	<input type="file" name="file2" id="file2">
+					       	<br>
+					       	
+					       	<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">3.请上传购货发票：</span>
+					       	<input type="file" name="file3" id="file3">
+					       	<br>
+					       	
+					       	<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">4.请上传煤炭产地证明：</span>
+					       	<input type="file" name="file4" id="file4">
+					       	<br>
+					       	
+					       	<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">5.请上传质量检测报告：</span>
+					       	<input type="file" name="file5" id="file5">
+					       	<br>
+					       	
+					       	<span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;">6.请上传关单：</span>
+					       	<input type="file" name="file6" id="file6">
+					       	<br>
+					     
+						     <span style="font-size: 16px;line-height: 26px;color: #333;font-weight:300;padding-top:3px;"></span>
+					         <input type="submit" value="上传" id="submit" class="yubutton yuwhite">
+					        
+			    		
+			    	</div>
+		    	</form>
+	    			
+	    	
+			</div>
+ 
+</div>
+	
+
+	<include file="./Public/daohang/shouye/footer.html" />
+	
+	
+</body>
+</html>

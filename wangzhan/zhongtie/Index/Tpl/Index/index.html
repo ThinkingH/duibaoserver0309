@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="./Public/daohang/shouye/header.html" />
+<include file="./Public/daohang/newdaohang/hstyle.html" />
+
+<script type="text/javascript">
+	$("document").ready(function(){
+		
+		//需求发布的gundong
+		$('#top').click(function(){
+			 $body.animate({scrollTop: $('#header').offset().top}, 1000);
+			 return false;// 返回false可以避免在原链接后加上#
+			});
+		
+		
+		
+		$("#submit").click(function() {
+			
+			var xuqiu  = $("#beizhu").val();
+			var gongsi = $("#com").val();
+			var phone  = $("#tel").val();
+			$errloginuser='no';
+			$.ajax({
+			        url:"__APP__/Login/ajax_userlogin",
+			        data:{phone:'1'},
+			        type:'GET',
+			        async:false,
+			        success:function(data){
+						if(data=='error'){
+							$errloginuser = 'nopass';
+						}
+			        }
+				 });
+			if($errloginuser=='nopass'){
+				alert('请先进行登录！');
+				return false;
+			}
+			//判断该用户登录没
+			if(xuqiu=='') {
+				alert('需求不能为空');
+				return false;
+			}
+			if(gongsi=='') {
+				alert('公司名称不能为空');
+				return false;
+			}
+			if(phone.length!=11 || !$.isNumeric(phone)) {
+				alert('联系人不能为空');
+				return false;
+			}
+			
+			
+		});
+		
+		$("#loginout").click(function() {
+			/* var type='1';
+			$loginout='no';
+			 $.ajax({
+			        url:"__APP__/Index/ajax_loginout",
+			        data:{type:type},
+			        type:'GET',
+			        async:false,
+			        success:function(data){
+						if(data=='success'){
+							$loginout = 'success';
+						}
+			        }
+				 });
+			
+			if($loginout=='success'){
+				alert('用户退出成功！');
+				return true;
+			}
+			 */
+		});
+		
+	});
+	
+	</script>
+
+<body>
+	<!-- 导航条部分 -->
+	<include file="./Public/daohang/newdaohang/nav.html" />
+	
+	
+	<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+	
+	
+	<div class="clearfix"></div>
+	<!-- 轮播和客户端 e-->
+	
+	<!-- news b -->
+	<div class="jyd-news">
+		<div class="content wrap2" style="width:1160px;">
+
+
+<div class="today-news fl">
+<div class="jyd-title">
+<h3><a>今日要闻</a></h3>
+
+</div>
+
+<ul class="news-list"> 
+<li class="mr23px">
+<i style="background: #E23638;border-left: none;">宏观</i>
+<volist name="list" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+
+</volist>
+</li>
+
+<li>
+<i style="background: #E23638;border-left: none;">石油</i>
+<volist name="oil" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+</volist>
+</li>
+<li class="mr23px">
+<i style="background: #E23638;border-left: none;">能源</i>
+<volist name="nengyuan" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+</volist>
+
+</li>
+<li>
+<i style="background: #E23638;border-left: none;">钢铁</i>
+<volist name="steel" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+</volist>
+</li>
+<li class="mr23px" style="border-bottom:none;">
+<i style="background: #E23638;border-left: none;">化工</i>
+<volist name="chem" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+</volist>
+</li>
+<li style="border-bottom:none;">
+<i style="background: #E23638;border-left: none;">公司</i>
+<volist name="com" id="vo">
+<a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">{$vo.title}</a>
+</volist>
+</li>
+</li>
+</ul><div class="clearfix"></div>
+</div>
+
+
+<!-- 中铁国恒动态 b -->
+<div class="hot-news fl" style="width:410px;">
+	<div class="jyd-title f_m18">
+	<h3 style="border-bottom: 1px solid #dadada;width:445px;">热点话题</h3>
+</div>
+       <div>
+			 		
+			 		<div style="float:left;padding-left:30px;padding-right:20px;padding-top:20px;">
+					<div><a><img width="170" height="141" src="__PUBLIC__/picture/n1.png" alt=""/></a></div>
+					<div style="padding-top:10px;padding-bottom:10px;"><a>中铁国恒官网升级改版</a></div>
+					</div>	
+					
+							  
+					<div style="float:right;padding-top:20px;">
+					<div><a href="__APP__/Index/cocalcommerce.html" target="_blank"><img width="170" height="141" src="__PUBLIC__/picture/n2.png" alt=""/></a></div>
+					<div style="padding-top:10px;padding-bottom:10px;"><a href="__APP__/Index/cocalcommerce.html" target="_blank">煤炭电商平台上线</a></div>
+					</div>
+					
+					<div style="float:left;padding-left:20px;padding-right:20px;padding-top:20px;">
+					<div><a href="__APP__/Index/cocalcommerce.html" target="_blank"><img width="170" height="141" src="__PUBLIC__/picture/n3.png" alt=""/></a></div>
+					<div style="padding-top:5px;"><a href="__APP__/Index/cocalcommerce.html" target="_blank">煤炭电商平台上线</a></div>
+					</div>
+					
+					<div style="float:right;padding-top:20px;">
+					<div><a href="__APP__/News/dazongmacrooil.html" target="_blank"><img width="170" height="141" src="__PUBLIC__/picture/n4.png" alt=""/></a></div>
+					<div style="padding-top:5px;"><a href="__APP__/News/dazongmacrooil.html" target="_blank">最热门的大宗信息</a></div>
+					</div>
+					
+			 </div> 
+			
+
+	
+</div>					
+	
+          
+			<!-- hot e -->
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- news e -->
+	<!-- ad1 b -->
+	<div class="jyd-ad" style="margin:14px 0px;">
+	<div class="content wrap" style="width:1200px;">
+		
+		<a><img src='__PUBLIC__/picture/h3.jpg' width="1200px"></a>
+		<!-- <a><img src="__PUBLIC__/zhaopin/images/8.gif" width="1200px"></a> -->
+		
+	</div>
+<!--div warn="如果广告下架则把此div的注释去掉并给广告img标签加注释，反之给此div加注释" style="height:2px;width:100%;"></div-->
+</div>
+
+	<!-- ad1 e -->
+	<!-- 电商交易专区 e-commerce b -->
+	<div class="jyd-business">
+		<div class="content wrap2" style="width:1200px;">
+			<div class="f_qydt_top">
+		    	<div class="f_qydt_title clearfix">
+		        	<div class="f_qydt_title_l fl"><a>煤炭交易专区</a></div>
+		            <div class="calendar fr">
+	
+</div>
+		        </div>
+		        <div class="border_blue" style="background-color: #E23638;width:1200px;"><div class="border_red"></div></div>
+		    </div>
+		    <!-- 精品推荐 b -->
+			
+<!-- 精品推荐 b -->
+<div class="boutique">
+	<div class="jyd-title">
+		<h3>精品推荐</h3>
+		
+	</div>
+	<div class="boutique-box">
+		     <div class="item" style="padding-right:25px;"><a>
+            <img width="346" height="153" src="__PUBLIC__/picture/jinpin3.jpg" alt="">
+            <div class="layeron" style="top:120px;width:346px;"></div>
+            <div class="layer-cons" style="top: 120px;">
+                <i class="jyd-icon biao" style="top: -10px;background:none;"></i>
+                <p>中铁国恒2号<i class="jyd-icon arroe-yellow" style="background:none;"></i></p>
+                <div class="coal-cons">
+                    <div class="fl">
+                        <span>商品编号：B2016072700016</span>
+                        <span>商品交割地：曹妃甸港</span>
+                    </div>
+                    <div class="fr">
+                        <span>商品单价</span>
+                        <span class="price">415元/吨</span>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+        
+		    <div class="item" style="padding-right:25px;"><a>
+            <img width="346" height="153" src="__PUBLIC__/picture/jinpin1.jpg" alt="">
+            <div class="layeron" style="top:120px;width:346px;"></div>
+            <div class="layer-cons" style="top: 120px;">
+                <i class="jyd-icon biao" style="top: -10px;background:none;"></i>
+                <p>中铁国恒2号<i class="jyd-icon arroe-yellow" style="background:none;"></i></p>
+                <div class="coal-cons">
+                    <div class="fl">
+                        <span>商品编号：B2016072700016</span>
+                        <span>商品交割地：曹妃甸港</span>
+                    </div>
+                    <div class="fr">
+                        <span>商品单价</span>
+                        <span class="price">415元/吨</span>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+		    <div class="item" style="padding-right:25px;"><a>
+            <img width="346" height="153" src="__PUBLIC__/picture/jinpin2.jpg" alt="">
+            <div class="layeron" style="top: 120px;width:346px;"></div>
+            <div class="layer-cons" style="top: 120px;">
+                <i class="jyd-icon biao" style="top: -10px;background:none;" ></i>
+                <p>中铁国恒3号<i class="jyd-icon arroe-yellow" style="background:none;"></i></p>
+                   <div class="coal-cons">
+                    <div class="fl">
+                        <span>商品编号：B2016072700013</span>
+                        <span>商品交割地：焦炭码头</span>
+                    </div>
+                    <div class="fr">
+                        <span>商品单价</span>
+                        <span class="price">475元/吨</span>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+		</div>
+	<div class="clearfix"></div>
+</div>
+		    <!-- 精品推荐 e -->
+			<!-- 煤炭商城 b -->
+			
+<div class="coalmall fl">
+    <div class="padval">
+        <div class="jyd-title">
+            <h3>订单详情</h3>
+        </div>
+    </div>
+    <div class="marketBox_list">
+       
+        <!-- 动力煤 b -->
+        <div class="tab_list">
+            <div class="tab_list_box">
+                <div class="tempWrap" style="overflow:hidden; position:relative; width:731px"><ul style="width: 2193px; left: -731px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+
+                                            <li style="float: left; width: 731px;">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="tableInfo">
+                                <tbody>
+                                <tr class="thbox">
+                                    <td>煤种</td>
+                                    <td>数量</td>
+                                    <td>低位热值</td>
+                                    <td>全硫份</td>
+                                    <td>价格</td>
+                                   <!--  <td>货物类型</td>
+                                    <td>交易公司</td> -->
+                                    <td>交货地</td>
+                                    <td></td>
+                                </tr>
+                                     
+                                <volist name="clist" id="vo">     
+                                <tr>
+                                    <td class="td-1">{$vo.type}</td>
+                                    <td class="td-2">{$vo.shuliang}</td>
+                                    <td class="td-3">{$vo.rezhi}</td>
+                                    <td class="td-3">{$vo.liufen}</td>
+                                    <td class="td-4">{$vo.jiage}</td>
+                                    <td class="td-6">{$vo.address}</td><!-- __APP__/News/wzlist/id/11 -->
+                                    <td class="td-6"><a target="_blank" href="__APP__/Index/xiangqing/id/{$vo.id}" target="_blank">详细</a></td>
+                                </tr>
+                                </volist>
+                                
+                               </tbody>
+                            </table><div class="clearfix"></div>
+                        </li>
+                                    </ul></div>
+            </div>
+           <!--  <div class="tab_btn">
+                <ul>
+                  <li class="on">1</li>
+               </ul>
+            </div> -->
+        </div>
+        <!-- 动力煤 e -->
+        <!--喷吹煤 b -->
+        <div class="tab_list" style="display: none;">
+            <div class="tab_list_box">
+               <div class="tempWrap" style="overflow:hidden; position:relative; width:731px">
+                <ul style="width: 1462px; left: 0px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+
+                        <li style="float: left; width: 731px;">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="tableInfo">
+                                <tbody>
+                                <tr class="thbox">
+                                    <td>分类</td>
+                                    <td>煤种</td>
+                                    <td>全硫</td>
+                                    <td>灰分</td>
+                                    <td>库存（吨）</td>
+                                    <td>交割地</td>
+                                    <td>价格（元）</td>
+                                    <td></td>
+                                </tr>
+
+                             </tbody>
+                            </table>
+                            <div class="clearfix"></div>
+                       </li>
+                    </ul>
+                   </div>
+            </div>
+            
+            <!-- <div class="tab_btn">
+              <ul><li class="on">1</li></ul>
+            </div> -->
+        </div>
+        <!--喷吹煤 e -->
+        <!--焦煤 b-->
+        <div class="tab_list" style="visibility: hidden; display: none;">
+            <div class="tab_list_box">
+                <div class="tempWrap" style="overflow:hidden; position:relative; width:731px">
+                <ul style="width: 2193px; left: -731px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+
+                           <li style="float: left; width: 731px;">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="tableInfo">
+                                <tbody>
+                                <tr class="thbox">
+                                    <td>分类</td>
+                                    <td>煤种</td>
+                                    <td>粘结指数（G）</td>
+                                    <td>胶质层厚度（Y）</td>
+                                    <td>库存（吨）</td>
+                                    <td>交割地</td>
+                                    <td>价格（元）</td>
+                                    <td></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="clearfix"></div>
+                        </li>
+                 </ul>
+                </div>
+            </div>
+          
+        </div>
+        <!--焦煤 e-->
+    </div>
+</div>
+
+			<!-- 交易报价 b -->
+	<div class="tradeprice fr" style="float:left;padding-left:60px;">
+    <div class="jyd-title">
+        <h3><a>煤炭资讯</a></h3>
+    </div>
+    <div class="tradeprice-tab">
+        <div class="tradeprice-tabs-cons" ">
+            <ul class="infors" style="display: block; border-top: 2px solid #fff; padding-top:0px;">
+            <volist name="nlist" id="vo">
+				<li style="padding-bottom: 17px;"><a target="_blank" href="__APP__/News/oillist/id/{$vo.id}"><span class="atitle" style="display:inline;font-family:'Microsoft YaHei',Arial,sans-serif,'宋体';">{$vo.title}</span></a></li>
+			</volist>
+			</ul>
+          
+        </div>
+    </div>
+</div>
+			
+			<!-- 交易报价 e -->
+			<div class="clearfix"></div>
+			<!-- 煤炭商城 e -->
+		</div>
+	</div>
+	<!-- 电商交易专区 e-commerce e -->
+
+
+
+	<!-- ad2 b -->
+	<div class="jyd-ad" style="width:1200px;height:200px;margin:0 auto;margin-top:10px;padding-bottom:10px;">
+	<div class="content wrap" style="width:1200px;">		
+	<img src="__PUBLIC__/editnew/picture/1.gif" alt="" width="397px" style="float:left;height:90px;padding-right:4px;"> 
+	<img src="__PUBLIC__/editnew/picture/2.gif" alt="" width="397px" style="float:left;height:90px; padding-right:5px;">
+	<img src="__PUBLIC__/editnew/picture/3.gif" alt="" width="397px" style="float:left;height:90px;">
+	<img src="__PUBLIC__/zhaopin/images/zhaozu.png" alt="" width="1200px" style="padding-top:10px" >
+	</div>
+	
+	
+	<!--  <div class="content wrap" >
+		
+		<img src="__PUBLIC__/editnew/picture/guanyu2.png" alt="" width="500px" style="float:left;"> 
+	 </div>	 -->
+	
+	</div>
+
+
+
+	<!-- ad2 e -->
+
+	<!-- 产业链金融 b -->
+<div class="f_qydt wrap" style="width:1200px;">
+   <div class="f_qydt_top">
+	<div class="f_qydt_title clearfix">
+		<div class="f_qydt_title_l fl">
+			<a>产业链金融</a>
+		</div>
+		<div class="calendar fr f_cyl">
+			<span class="f_cyl_n">煤炭
+			</span> <span class="f_cyl_n">石油
+			</span> <span class="f_cyl_n">化学
+			</span> <span class="f_cyl_n1">钢铁
+			</span>
+		</div>
+	</div>
+	<div class="border_blue" style="background-color: #E23638;width:1200px;">
+		<div class="border_red"></div>
+	</div>
+</div>
+
+	        <!-- 产业链金融内容 b -->
+   <div class="f_cyjr_n">
+	<div class="f_cyjr_up clearfix">
+    	
+    	<div class="f_cyjr_c" style="padding-left:10px;padding-right:20px;">
+        	<a href="__APP__/Index/chainfinance.html" target="_blank">
+        		
+        		<img  width="257" height="261" src="__PUBLIC__/picture/m4.png"/>
+                <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/picture/f_jr1_1.png"/>
+                <div class="f_layeron"></div>
+				<div class="f_layer-cons">
+                	<div class="f_cyjr_text">
+                	<h3>特点/Character</h3>
+                    <p>利用平台优势，集合多家交易商采购需求，利用融资服务形成规模资金，统一向上游采货，形成价格优势,降低运营成本。</p>
+                    
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="f_cyjr_c" style="padding-right:15px;">
+        	<a href="__APP__/Index/chainfinance.html" target="_blank">
+        		<img  width="257" height="261"src="__PUBLIC__/picture/m3.png"/>
+               <!--  <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/picture/f_jr2_2.png"/> -->
+               <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/picture/f_jr2_2.png"/>
+                <div class="f_layeron"></div>
+	<div class="f_layer-cons">
+                	<div class="f_cyjr_text">
+                	<h3>特点/Character</h3>
+                    <p>1、利用平台优势，集合多家上游企业销售需求，统一向指定下游销货，提升供货能力。</p>
+                    <p>2、利用融资服务，帮助上游企业提前回笼资金。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="f_cyjr_c" style="padding-right:15px;">
+        	<a href="__APP__/Index/chainfinance.html" target="_blank">
+        		<!-- <img  width="257" height="261"src="__PUBLIC__/picture/f_jr3.jpg"/> -->
+        		<img  width="257" height="261"src="__PUBLIC__/picture/m2.png"/>
+                <img  class="f_cyjr_o" width="144" height="144"src="__PUBLIC__/picture/f_jr3_3.png"/>
+                <div class="f_layeron"></div>
+	<div class="f_layer-cons">
+                	<div class="f_cyjr_text">
+                	<h3>特点/Character</h3>
+                    <p>1、利用平台优势，帮助上游供货商解决货物分销问题，降低上游运营成本。</p>
+                    <p>2、致力于整合产业链，减少中间环节，提高货物周转率。</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="f_cyjr_c mr0" >
+        	<a>
+        		<img  width="257" height="261"src="__PUBLIC__/picture/f_jr4.png"/>
+            </a>
+        </div>
+    </div>
+   
+</div>
+	        <!-- 产业链金融内容 e -->
+	    </div>
+		<!-- 产业链金融 e -->
+	<div class="jyd-ad" >
+	 <div class="content wrap" style="width:1200px;  " >
+		<!-- <a><img src="__PUBLIC__/zhaopin/images/8.gif" alt="" width="1200px"></a> -->
+	 <a><img src="__PUBLIC__/picture/h1.jpg" alt="" width="1200px"></a>
+	</div>
+	
+	</div>
+	<!-- ad3 b -->
+   <!-- <div class="f_ad4" style="width:1200px;">
+        <a><img width="1200" height="88" src="__PUBLIC__/picture/h5.jpg"/></a>
+</div> -->
+	<!-- ad3 e -->
+	<!-- 企业动态 b -->
+    <div class="f_qydt wrap" style="width:1200px;margin-top:10px;">
+    	<div class="f_qydt_top">
+	<div class="f_qydt_title clearfix">
+    	<div class="f_qydt_title_l fl"><a>关于中铁国恒</a></div>
+    </div>
+    <div class="border_blue" style="background-color: #E23638;width:1200px;"><div class="border_red"></div></div>
+</div>
+    	<div class="f_qydt_down clearfix" style="height:280px;border-bottom:1px solid #DCDADB;">
+            <div class="f_qydt_new fl">
+		
+        	<!-- 中铁国恒新闻 b -->
+				<div class="fnew_n clearfix">
+                	<div class="fnew_main fl" style="padding-top:0;">
+      		 <div class="fnew_main_down">
+	    	
+	    	
+	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	</div>
+                        <div class="fnew_border"></div>
+                    </div>
+                    
+                    
+                	<div class="fnew_main fr" style="padding-top:0;">
+               <div class="fnew_main_down">
+       
+	    	    <p>
+		  
+	    	    	</div>
+
+                        <div class="fnew_border"></div>
+                    </div>
+                    
+                	<div class="fnew_main fl">
+                    	<div class="fnew_main_up clearfix">
+                        	<div class="fnew_img fl">
+                        	<a><img width="337" height="120" src="__PUBLIC__/editnew/picture/guanyu2.png"/></a>
+                        	</div>
+                        </div>
+                        
+                  <div class="fnew_main_down" style="font-size:14px;">
+	    	   <volist name="zoilq" id="vo">
+	    	  <p>  	    	    	    	    	    	    	    	    	    	    	    	    	    		<p>
+		    <a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">
+                   {$vo.title}
+            </a>
+			</p>
+			</volist>
+	    </div>
+
+           </div>
+                	
+                	<div class="fnew_main fr">
+                    	<div class="fnew_main_up clearfix">
+                        	<div class="fnew_img fl"><a href="" target="_blank">
+                        	<img width="337" height="120" src="__PUBLIC__/editnew/picture/guanyu1.png"/></a></div>
+                        </div>
+                        
+       <div class="fnew_main_down" style="font-size:14px;">
+	    	<volist name="zoils" id="vo">
+	    	<p style="font-size:18px;">	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    	    		<p>
+		    <a href="__APP__/News/oillist/id/{$vo.id}" target="_blank">
+                 {$vo.title}
+            </a>
+			</p>
+			</volist>
+	   </div>
+
+     </div>
+ </div>
+		 <!-- 中铁国恒新闻 e -->		
+	</div>
+		<!-- 中铁国恒动态 b -->					
+	<div class="f_qydt_dt fl" style="width:400px;">
+		<div class="jyd-title f_marl531" style="width:440px;">
+			<h3><a>中铁国恒动态</a></h3>
+		</div>
+		<div class="fdt_n clearfix">
+			 		
+			 		<div class="fdt_main fl" style="padding-left:30px;padding-right:40px;">
+					
+					<div class="fdt_img"><a href="" target="_blank">
+					<img width="180" height="141" src="__PUBLIC__/picture/n2.png" alt=""/></a>
+					</div>
+					<div class="fdt_text" style="padding-top:30px;">
+					<a href="" target="_blank">煤炭最新信息</a>
+					</div>
+					
+					</div>	
+					
+							  
+					<div class="fdt_main fl">
+					<div class="fdt_img"><a href="" target="_blank">
+					<img width="180" height="141" src="__PUBLIC__/picture/n4.png" alt=""/></a></div>
+					<div class="fdt_text" style="padding-top:30px;"><a href="" target="_blank">煤炭电商平台上线</a></div>
+					</div>
+		</div>
+	</div>
+	
+
+	</div>
+	
+    </div>
+	
+	<div class="f_ad4" style="padding-left:-70px;padding-right:110px;padding-bottom:10px;">
+	<!-- <a href="__APP__/Weibu/zhaopin" target="_blank"><img width="1200" height="88" src="__PUBLIC__/picture/h1.jpg"/></a> -->
+	<a href="__APP__/Weibu/zhaopin" target="_blank"><img src="__PUBLIC__/zhaopin/images/8.gif" width="1200px"></a>
+	</div>
+
+	<!-- footer b -->
+   <include file="./Public/daohang/shouye/footer.html" />
+	<!-- 返回顶部 e -->
+	
+</body>
+</html>

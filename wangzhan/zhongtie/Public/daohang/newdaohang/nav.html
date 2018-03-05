@@ -1,0 +1,273 @@
+
+
+
+
+<!-- 导航部分 -->
+<div class="trackBox" comid="100001004" comType="1"></div>
+
+
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear" style="padding-right:-300px;">
+    
+    	 <ul class="t-BdL t-menu">
+            <li class="t-m t-m-home lkm">
+               <a href="__APP__/Weibu/huiyuan">会员入口</a>
+            </li>
+            
+             <li class="t-m t-m-home lkm">
+               <a href="http://bbs.chinaresc.com/">进入论坛</a>
+            </li>
+        </ul>
+       
+        <ul class="t-BdR t-menu">
+        
+            
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Login/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-10px;">
+                    <a href="__APP__/Login/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+    
+    	 <ul class="t-BdL t-menu">
+            <li class="t-m t-m-home lkm">
+               <a href="__APP__/Weibu/huiyuan">会员入口</a>
+            </li>
+            <li class="t-m t-m-home lkm">
+               <a href="http://bbs.chinaresc.com/">进入论坛</a>
+            </li>
+        </ul>
+      
+        <ul class="t-BdR t-menu">
+        	
+            
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                <php>if($fflag=='金牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/gold.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='银牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/bronze.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='铜牌会员'){
+                	echo '<img  width="30" height="30" src="__PUBLIC__/zhaopin/images/silver.png" style="float:left;padding-top:5px;"/>';
+                }else if($fflag=='普通会员'){
+                echo '';
+                }
+               </php>
+                    <a href="__APP__/Weibu/huiyuan">{$fflag}</a>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">我的订单</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">会员中心</a>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Login/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->
+	
+	<!-- top b -->
+	
+	<div class="head">
+    <div class="headNav grid-1200">
+        <h1 class="logo">
+            <a href="__APP__/Index/index"><img src="__PUBLIC__/editnew/picture/logo.png" alt="中铁国恒" style="margin-top:10px;height:73px;width:510px;"/></a>
+        </h1>
+      
+        <div class="ui-t-search">
+           
+        </div>
+        
+	
+		
+		<div class="t-menu lkm" >
+
+            <ul class="m-item-list" id="show-tips-items" style="margin-right: -15px;">
+                    <li class="m-item current-page-item">
+                        <a href="__APP__/Index/index" target="_self" style="font-size: 18px;">首页</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/News/dazongmacrooil.html" target="_self" style="font-size: 18px;">大宗财经</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/cocalcommerce.html" target="_self" style="font-size: 18px;">煤炭专区</a>
+                         <div class="hotbox">
+                                <i class="hot"></i>
+                            </div>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/chainfinance.html" target="_self" style="font-size: 18px;">产业链金融</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="http://120.27.34.239:8008/"  target="_black" style="font-size: 18px;">中铁金融</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="http://www.chinaresc.com/m_chinaresc/" target="_blank" style="font-size: 18px;">查看手机版</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                   
+                   
+            </ul>
+        </div>
+    </div>
+
+
+	</div>
+
+
+	
+	<div class="main">
+    <div class="ui-showcase">
+        <div class="cat-box">
+     
+<!-- position: absolute;
+    left: -32px;
+    top: 0;
+    width: 31px;
+    height: 31px;
+    background: url(../images/close.jpg) no-repeat center #ffffff;
+ 
+    cursor: pointer; -->
+<div class="cat-zm">
+
+<div class="zm-help" style="background: url('__PUBLIC__/editnew/images/bg_s.png') left top repeat;height:340px; ">
+    <div class="hd">
+        <h2>中铁国恒找货助手</h2>
+    </div>
+<form action="__APP__/Index/index"  id="form0" method="post">  
+  <div class="bd">
+        <textarea id="EntrustContent" id="beizhu" name="comment" class="wt-textarea jq_watermark" style="height:80px;" placeholder="写下您的真实需求！包括<span>需求内容</span>、<span>联系人</span>、<span>联系电话</span>等，收到后我们会立即给您回电确认。"></textarea>
+    </div>
+    <div class="bd" style="height:60px;padding-top:15px;">
+        <input placeholder="&nbsp;请输入公司名称" type="text" id="com" name="company" style="width:220px;height:40px;">
+    </div>
+    
+     <div class="bd">
+        <input placeholder="&nbsp;请输入联系电话" type="text" id="tel" name="phone" style="width:220px;height:40px;">
+    </div>
+    <div class="fd" style="padding-top:10px;">
+        <input class="am-btn am-btn-primary" type="submit" name="submit" id="submit" value="提交">
+    </div>
+</form>
+
+<i class="close"></i>
+
+
+</div>
+
+
+</div>
+</div>
+
+
+<div class="fullSlide">
+    <div class="bd">
+        <ul>
+                <li style="background-color: #0581E1;">
+                    <a  style="padding-left:370px;">
+                        <img src="__PUBLIC__/editnew/picture/1.png" style="width:1200px; height:353px;" />
+                    </a>
+                </li>
+                <li style="background-color: #58A3F2 ">
+                    <a  style="padding-left:370px;"       >
+
+                        <img src="__PUBLIC__/editnew/picture/2.png" style="width:1200px; height:353px;" />
+                    </a>
+                </li>
+                <li style="background-color: #1B83B9">
+                    <a style="padding-left:370px;"   >
+
+                        <img src="__PUBLIC__/editnew/picture/3.png"  style="width:1200px; height:353px;" />
+                    </a>
+                </li>
+                <li style="background-color: #2F68B7">
+                    <a style="padding-left:370px;"      >
+
+                        <img src="__PUBLIC__/editnew/picture/4.png" style="width:1200px; height:353px;" />
+                    </a>
+                </li>
+
+            
+        </ul>
+    </div>
+    <div class="hd"><ul></ul></div>
+   
+</div>
+</div>
+	
+</div>
+	
+	
+	<div class="clearfix"></div>
+	<!-- top e -->
+
+<!-- 右侧漂浮 floatbox b -->
+		<div class="jyd-floatbox" style="right:84%;">
+		<i class="close" style="left:135px;"></i>
+		<h2>微信扫一扫</h2>
+		<dl>
+			<dt><img src="__PUBLIC__/picture/wx.gif" alt=""></dt>
+			<dd>大宗商品供应链</dd>
+		</dl>
+	</div>
+
+
+
+
+	
+
+
+	<div class="clearfix"></div>

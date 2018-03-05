@@ -1,0 +1,391 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>煤炭商城-中铁国恒大宗-全方位O2O电子商务</title>
+    <meta name="description" content="中国大宗产品电子商务领导品牌，为大宗行业客户与市场提供现货交易、互联网金融、内参资讯等全方位O2O电子商务解决方案。">
+    <meta name="keywords" content="现货交易、互联网金融、内参资讯、全方位O2O、电子商务">
+    
+
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- easyui 控件 -->
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/jquery-1.8.0.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/jquery.easyui.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/easyui-lang-zh_cn.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/publicutil.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/lanrenzhijia.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/jquery.md5.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/layer.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/html5.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="__PUBLIC__/newpic/chianfinance1/js/jquery.superslide.2.1.1.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/icon.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/easyui.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/bootstrap.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/common1.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/bootstrap-ie6.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/ie.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/index.css" type="text/css">
+		<link rel="stylesheet" href="__PUBLIC__/newpic/chianfinance1/css/coal.css" type="text/css">
+		
+		<include file="./Public/daohang/shouye/header.html" />
+		<include file="./Public/daohang/newdaohang/hstyle.html" />
+	 <STYLE type="text/css">
+	.item1 {
+	}
+	div.xx{overflow:hidden; position: relative; background-color:rgb(27, 79, 162);}
+	div.t_bb{height:40px;}
+	div.xx h5{position:absolute ; bottom: 0; left: 0; width: 100%;padding:0;margin:0;height:56px;line-height:31px;cursor:pointer;background:rgb(27, 79, 162); text-align:center; color:#000;}
+	</STYLE>
+        
+  <!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />      
+</head>
+
+<body>
+  	
+
+<include file="./Public/daohang/newdaohang/qitacoal.html" />
+
+
+
+  	<input type="hidden" id="st" name="st" value="null" />	
+  <!-- 	<form action="#jump" method="post" id="f1" name="f1"> -->
+  	<input type="hidden" name="url"/>
+	<div class="formcoal_steam">
+	    <div class="formcoal_steam_box">
+	        <div class="p_steam_box p_steamone">
+	            <p class="p1"><span>交割库:</span></p>
+	            <p class="p2">
+	            <a class="item item1"  href="#jump">全部</a>
+	            
+			  		<a class="item " href="#jump">北储库 </a>
+			  	
+			  		<a class="item " href="#jump">曹妃甸港 </a>
+			  	
+			  		<a class="item " href="#jump">江阴码头 </a>
+			  	
+			  		<a class="item " href="#jump">扬子江码头 </a>
+			  	
+			  		<a class="item " href="#jump">华达码头 </a>
+			  	
+			  		<a class="item " href="#jump">焦炭码头 </a>
+			  	
+			  		<a class="item " href="#jump">长达码头 </a>
+			  	
+			  		<a class="item " href="#jump">长宏港 </a>
+			  	
+			  		<a class="item " href="#jump">靖江太和库 </a>
+			  	
+			  		<a class="item " href="#jump">枝城港1-18号码头 </a>
+			  	
+			  		<a class="item " href="#jump">高港库 </a>
+			  	
+			  		<a class="item " href="#jump">永安码头 </a>
+			  	
+			  		<a class="item " href="#jump">杨湾码头 </a>
+			  	
+			  		<a class="item " href="#jump">天辰港 </a>
+			  	
+			  		<a class="item " href="#jump">泰富码头 </a>
+			  	
+			  		<a class="item " href="#jump">京唐港开滦码头 </a>
+			  	
+			  		<a class="item " href="#jump">京唐港3640码头 </a>
+			  	
+	            </p>
+	        </div>
+	        
+	        <div class="p_steam_box p_steamone">
+	            <p class="p1"><span>品类:</span>
+	            <p class="p2">
+			  		
+			  		<a class="item ahover" href="javascript:;">动力煤</a>
+			  		
+			  		<a class="item " href="javascript:;">喷吹煤</a>
+			  		
+			  		<a class="item " href="javascript:;">焦煤</a>
+			  			            
+	            </p></p>
+	        </div>
+            <div class="p_steam_box xx" style="margin:0px auto; height:151px;">
+	        
+	        
+	        
+	        	
+	        <div class="p_steam_box p_steamone t_bb" catCode="1">
+	            <p class="p1"><span>发热量:</span></p>
+	            <p class="p2">
+	            	<a class="item " href="javascript:;">全部</a>
+		            
+		            <a class="item " href="javascript:;">&le;4900kcal </a>
+		            
+		            <a class="item " href="javascript:;">4900-5400kcal </a>
+		            
+		            <a class="item " href="javascript:;">5400-5700kcal </a>
+		            
+		            <a class="item " href="javascript:;">&gt;5700kcal </a>
+		            
+		            <a class="item " href="javascript:;">4300kcal </a>
+		            
+		            <a class="item " href="javascript:;">4500kcal </a>
+		            
+		            <a class="item " href="javascript:;">4600kcal </a>
+		            
+		            <a class="item " href="javascript:;">4800kcal </a>
+		            
+		            <a class="item " href="javascript:;">4900kcal </a>
+		            
+		            <a class="item " href="javascript:;">5000kcal </a>
+		            
+		            <a class="item " href="javascript:;">5200kcal </a>
+		            
+		            <a class="item " href="javascript:;">5500kcal </a>
+		            
+		            <a class="item " href="javascript:;">5800kcal </a>
+		            
+		            <a class="item " href="javascript:;" >4800kcal&le;4900kcal </a>
+		            
+		            <a class="item " href="javascript:;">5700kcal </a>
+		            
+	            </p>
+	        </div>
+	        
+	        
+	        
+	        	
+	        <div class="p_steam_box p_steamone t_bb" catCode="1">
+	            <p class="p1"><span>全水:</span></p>
+	            <p class="p2">
+	            	<a class="item " href="javascript:;">全部</a>
+		            
+		            <a class="item " href="javascript:;">&lt;10% </a>
+		            
+		            <a class="item " href="javascript:;">10%-15% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;15% </a>
+		            
+		            <a class="item " href="javascript:;">16%-18% </a>
+		            
+		            <a class="item " href="javascript:;">&lt;16% </a>
+		            
+		            <a class="item " href="javascript:;">&le;13% </a>
+		            
+		            <a class="item " href="javascript:;">&le;19% </a>
+		            
+		            <a class="item " href="javascript:;">&lt;13% </a>
+		            
+	            </p>
+	        </div>
+	        
+	        
+	        
+	        	
+	        <div class="p_steam_box p_steamone t_bb" catCode="1">
+	            <p class="p1"><span>全硫:</span></p>
+	            <p class="p2">
+	            	<a class="item " href="javascript:;">全部</a>
+		            
+		            <a class="item " href="javascript:;">0.4%-0.6% </a>
+		            
+		            <a class="item " href="javascript:;">0.6%-0.8% </a>
+		            
+		            <a class="item " href="javascript:;">0.8%-1% </a>
+		            
+		            <a class="item " href="javascript:;">1%-1.5% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;1.5% </a>
+		            
+		            <a class="item " href="javascript:;">&lt;0.8% </a>
+		            
+		            <a class="item " href="javascript:;">0.4% </a>
+		            
+		            <a class="item " href="javascript:;">&le;0.5% </a>
+		            
+		            <a class="item " href="javascript:;">0.6% </a>
+		            
+		            <a class="item " href="javascript:;">0.8% </a>
+		            
+		            <a class="item " href="javascript:;">1.0% </a>
+		            
+	            </p>
+	        </div>
+	        
+	        
+	        
+	        	
+	        <div class="p_steam_box p_steamone t_bb" catCode="1">
+	            <p class="p1"><span>灰分:</span></p>
+	            <p class="p2">
+	            	<a class="item " part="custom[3].catCustomCode=&custom[3].catCustomValue=" href="javascript:;">全部</a>
+		            
+		            <a class="item " href="javascript:;">&lt;12% </a>
+		            
+		            <a class="item " href="javascript:;">&le;25% </a>
+		            
+		            <a class="item " href="javascript:;">&le;35% </a>
+		            
+		            <a class="item " href="javascript:;">&le;20% </a>
+		            
+		            <a class="item " href="javascript:;">&le;30% </a>
+		            
+		            <a class="item " href="javascript:;">&lt;20% </a>
+		            
+		            <a class="item " href="javascript:;">&le;12% </a>
+		            
+		            <a class="item " href="javascript:;">&le;15% </a>
+		            
+		            <a class="item " href="javascript:;" part="custom[3].catCustomCode=4&custom[3].catCustomValue=12-14">12-14 </a>
+		            
+		            <a class="item " href="javascript:;">&le;38% </a>
+		            
+		            <a class="item " href="javascript:;">&le;6.5% </a>
+		            
+		            <a class="item " href="javascript:;">&le;13% </a>
+		            
+		            <a class="item " href="javascript:;">&lt;23% </a>
+		            
+		            <a class="item " href="javascript:;">&le;28% </a>
+		            
+	            </p>
+	        </div>
+	        
+	        
+	        
+	        	
+	        <div class="p_steam_box p_steamone t_bb" catCode="1">
+	            <p class="p1"><span>挥发分:</span></p>
+	            <p class="p2">
+	            	<a class="item " part="custom[4].catCustomCode=&custom[4].catCustomValue=" href="javascript:;">全部</a>
+		            
+		            <a class="item " href="javascript:;">21-32% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;28% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;30% </a>
+		            
+		            <a class="item " href="javascript:;">25-30% </a>
+		            
+		            <a class="item " href="javascript:;">23-25% </a>
+		            
+		            <a class="item " href="javascript:;">18-28% </a>
+		            
+		            <a class="item " href="javascript:;">28-32% </a>
+		            
+		            <a class="item " href="javascript:;">&ge;23% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;27% </a>
+		            
+		            <a class="item " href="javascript:;">&gt;25% </a>
+		            
+	            </p>
+	        </div>
+	        
+	        
+	        
+           <h5><span class="on fr" style="position: relative;width:79px; display:block;text-align: left;text-indent:12px;margin:25px 12px 0px auto;font-size:16px;font-weight: normal;color:#1F519F;border-radius: 8px;background-color:#fdbd4d;">
+                              展开</span><i id="sq1png" style="position: absolute;display: block;width:17px;height:9px;right: 22px;bottom:9px;background: url(images/sq1.png) no-repeat;">
+                              </i></h5>
+            </div>
+	    </div>
+      <script type="text/javascript">
+$(document).ready(function(){
+  var xxhd_on = ($(".t_bb").outerHeight()+10)*($(".t_bb").size())+56+'px';
+  var xxhd_off = ($(".t_bb").height()+10)*2+56+'px';
+  $(".xx").on("click",".on",function(){
+    var bbh=$(".xx>.t_bb");
+    var bbhLen=bbh.size();
+    var subHei=56;
+    for(var i=0;i<bbhLen;i++){
+      subHei += (bbh.eq(i).outerHeight()) + 10;
+    }
+    $(".xx").animate({height:subHei});
+    $(this).removeClass("on").addClass("off").text("收起");
+   $(this).next().css('background','url(../image/zk1.png) no-repeat');
+  });
+  $(".xx").on("click",".off",function(){
+    var bbh=$(".xx>.t_bb");
+    var bbhLen=bbh.size();
+    var nowXxHei = $('.formcoal_steam_box>.xx').outerHeight();
+    $(".xx").animate({height:(nowXxHei-(bbhLen-2)*50)+'px'});
+    $(this).removeClass("off").addClass("on").text("展开");
+    $(this).next().css('background','url(images/sq1.png) no-repeat');
+  });
+})
+</script>
+	</div>
+	
+	<div class="coal_main_ul" style="display: none;">
+	    <ul>
+	        <li><span></span><a href="#coal_tab1">动力煤</a></li>
+	        <li><span></span><a href="#coal_tab2">炼焦煤</a></li>
+	        <li><span></span><a href="#coal_tab3">无烟煤</a></li>
+	    </ul>
+	</div>
+	<!--main-->
+	<div class="main_steam" id="jump">
+    	<div class="f_tj_title clearfix">
+            <div class="f_tj_a fl f_tj_a01">今日基准价<p></div>
+            
+            <dl>
+                <dt>动力煤/4500kcal</dt>
+                 <dd>5000吨 </dd>
+            </dl>
+            
+            <dl>
+                <dt>动力煤/5500kcal</dt>
+                 <dd>6000吨 </dd>
+            </dl>
+            
+            <dl>
+                <dt>动力煤/5000kcal</dt>
+                <dd>3950吨 </dd>
+            </dl>
+            
+    	</div>
+	    <table class="coal_tab" id="coal_tab1" name="jump">
+	        <tr>
+	                    <th>商品名称</th>
+			            <th>发热量</th>
+			            <th>数量</th>
+			            <th>硫分</th>
+			            <th>灰分</th>
+			            <th>水分</th>
+			            <th>交货地</th>
+			            <!-- <th>操作</th> -->
+	        </tr>
+		 	
+	 		<volist name="list" id="vo">
+	        <tr class="main_steam_box_odd" style="">
+	            <td offerNo="B2016072700012" title="中铁国恒4号#4">{$vo.m_type}</td>
+	            <td>{$vo.m_diweirezhi}</td>
+	            <td>{$vo.m_shuliang}</td>
+	            <td>{$vo.c_quanliufen}</td>
+	            <td>{$vo.c_huifen}</td>
+	            <td>{$vo.c_quanshuifen}</td>
+	            <td>{$vo.m_jiaohuodi}</td>
+	            
+	        </tr>
+	  		</volist>
+	      
+	  			        
+	    </table>
+	
+	    <div class="main_steam_footer">
+	            <div class="main_steam_footer_box">
+
+	            </div>
+	        </div>
+	
+	</div>
+	<!--main end-->
+	
+	
+<include file="./Public/daohang/cocalcommerce/footer.html" />
+
+
+	
+
+  </body>
+</html>

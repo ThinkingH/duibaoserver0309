@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+   <include file="./Public/daohang/shouye/header.html" />
+  <include file="./Public/daohang/cocalcommerce/header.html" />
+  <include file="./Public/daohang/newdaohang/hstyle.html" />
+<!-- 登录的样式-->
+	<include file="./Public/daohang/login/style.html" />
+<script type="text/javascript">
+	$("document").ready(function(){
+		
+		//需求发布的gundong
+		$('#top').click(function(){
+			 $body.animate({scrollTop: $('#header').offset().top}, 1000);
+			 return false;// 返回false可以避免在原链接后加上#
+			});
+		
+		
+		
+		$("#submit").click(function() {
+			
+			var xuqiu  = $("#beizhu").val();
+			var gongsi = $("#com").val();
+			var phone  = $("#tel").val();
+			$errloginuser='no';
+			$.ajax({
+			        url:"__APP__/Login/ajax_userlogin",
+			        data:{phone:'1'},
+			        type:'GET',
+			        async:false,
+			        success:function(data){
+						if(data=='error'){
+							$errloginuser = 'nopass';
+						}
+			        }
+				 });
+			if($errloginuser=='nopass'){
+				alert('请先进行登录！');
+				return false;
+			}
+			//判断该用户登录没
+			if(xuqiu=='') {
+				alert('需求不能为空');
+				return false;
+			}
+			if(gongsi=='') {
+				alert('公司名称不能为空');
+				return false;
+			}
+			if(phone.length!=11 || !$.isNumeric(phone)) {
+				alert('联系人不能为空');
+				return false;
+			}
+			
+			
+		});
+		
+		$("#loginout").click(function() {
+			/* var type='1';
+			$loginout='no';
+			 $.ajax({
+			        url:"__APP__/Index/ajax_loginout",
+			        data:{type:type},
+			        type:'GET',
+			        async:false,
+			        success:function(data){
+						if(data=='success'){
+							$loginout = 'success';
+						}
+			        }
+				 });
+			
+			if($loginout=='success'){
+				alert('用户退出成功！');
+				return true;
+			}
+			 */
+		});
+		
+	});
+	
+	</script>
+
+<body>
+
+
+<include file="./Public/daohang/newdaohang/coalnav.html" />
+
+<!--focus start-->
+ <!-- <div class="focus" id="focus" style="height:0px;"> -->
+   <!-- <div class="search_main"> -->
+   <include file="./Public/daohang/cocalcommerce/command.html" />
+    
+    
+
+
+<!--main-->
+<div class="mainBox">
+    <div class="phbox">
+        <div class="ph_box">
+            <p><a class="roa" style="display: none;" topage="1" href="javascript:;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/dataup.png"/>换</a></p>
+            <div class="phboxCon">
+		 		
+                <div class="phboxCon_pic" >
+                	<img src='__PUBLIC__/newpic/meitanzhuanqu/picture/3e82ac2c-90ed-4bd6-8097-b38088715432.jpg' width="355" height="158" style="width:355px; height:158px;">
+                    
+                    <div class="phboxCon_pic_con_bg"></div>
+                    <div class="phboxCon_pic_con">
+
+                        <p><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/seal.jpg"/></p>
+                        <a href="#">
+                        <h3><span><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/icon6.png"/></span><em title="中铁国恒4号#4">中铁国恒4号</em></h3>
+                        <dl>
+                            <dd>商品编号：B2016072700012<br> 商品交割地：<em title="焦炭码头">焦炭码头</em></dd>
+                            <dt><p>商品单价 <span>415元／吨</span></p></dt>
+                        </dl>
+                        </a>
+                    </div>
+                </div>			  	
+		  		
+                <div class="phboxCon_pic" >
+                	<img src='__PUBLIC__/newpic/meitanzhuanqu/picture/af0639e1-6c8f-4eb3-87d2-98e8446905a6.jpg' width="355" height="158" style="width:355px; height:158px;">
+                    
+                    <div class="phboxCon_pic_con_bg"></div>
+                    <div class="phboxCon_pic_con">
+
+                        <p><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/seal.jpg"/></p>
+                        <a href="#">
+                        <h3><span><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/icon6.png"/></span><em title="中铁国恒4号#1">中铁国恒4号</em></h3>
+                        <dl>
+                            <dd>商品编号：B2016072700016<br> 商品交割地：<em title="曹妃甸港">曹妃甸港</em></dd>
+                            <dt><p>商品单价 <span>415元／吨</span></p></dt>
+                        </dl>
+                        </a>
+                    </div>
+                </div>			  	
+		  		
+                <div class="phboxCon_pic" style="margin-right:0;">
+                	<img src='__PUBLIC__/newpic/meitanzhuanqu/picture/eb7bd3fd-e93c-4a21-937e-cc9e45946343.jpg' width="355" height="158" style="width:355px; height:158px;">
+                    
+                    <div class="phboxCon_pic_con_bg"></div>
+                    <div class="phboxCon_pic_con">
+
+                        <p><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/seal.jpg"/></p>
+                        <a href="#">
+                        <h3><span><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/icon6.png"/></span><em title="中铁国恒1号">中铁国恒1号</em></h3>
+                        <dl>
+                            <dd>商品编号：B2016072700013<br> 商品交割地：<em title="焦炭码头">焦炭码头</em></dd>
+                            <dt><p>商品单价 <span>475元／吨</span></p></dt>
+                        </dl>
+                        </a>
+                    </div>
+                </div>			  	
+		  		            
+            </div>
+        </div>
+    </div>
+    
+    <div class="f_tj_title clearfix">
+    <div class="f_tj_a fl f_tj_a01">今日基准价<p>?<span>当前环渤海动力煤价格指数为基础的秦皇岛港离岸价格</span></p></div>
+            
+            <dl>
+                <dt>动力煤/4500kcal</dt>
+                <dd>5000吨 </dd>
+            </dl>
+            
+            <dl>
+                <dt>动力煤/5500kcal</dt>
+                <dd>6000吨 </dd>
+            </dl>
+            
+            <dl>
+                <dt>动力煤/5000kcal</dt>
+                <dd>3950吨 </dd>
+            </dl>
+     </div>
+       
+             <div class="market_dynamic">
+                <div class="marketBox f1 sealbox"  style="width:100%;">
+                    <h3 style="height: auto;margin-top: 0;">
+                    <img style="margin-right: 10px;" src="__PUBLIC__/newpic/meitanzhuanqu/picture/page3.png">
+                    <em><a>煤炭商城</a></em>
+                    <img src="__PUBLIC__/newpic/meitanzhuanqu/picture/xian3.jpg" class="xianbg"><div style="height: 6px">
+                    </div>
+                    </h3>
+                    
+                    <div class="marketBox_list" style="height:400px;">
+                       
+                        <div style="height:10px;"></div>
+                        
+                        <!-- 动力煤 -->
+                        <div class="tab_list">
+                            <div class="tab_list_box">
+                            	<ul>
+                                
+                                	<li>
+	                                <table width="100%" class="tableInfo tableInfo2">
+	                                    <tr class="odd thbox">
+	                                        <td>煤种</td>
+		                                    <td>数量</td>
+		                                     <td>硫分</td>
+		                                    <td>低位热值</td>
+		                                    <td>价格（元）</td>
+		                                    <td>交货地</td>
+		                                    <td></td>
+	                                    </tr>
+	                                    
+                                		 <volist name="clist" id="vo">   
+	                                    <tr class="even">
+	                                        <td class="td-1">{$vo.type}</td>
+		                                    <td class="td-2">{$vo.shuliang}吨</td>
+		                                     <td class="td-5">{$vo.liufen}</td>
+		                                    <td class="td-3">{$vo.rezhi}</td>
+		                                    <td class="td-4">{$vo.jiage}</td>
+		                                    <td class="td-6">{$vo.address}</td><!-- __APP__/News/wzlist/id/11 -->
+		                                    <td class="td-6"><a target="_blank" href="__APP__/Index/coalxiangqing/id/{$vo.id}" target="_blank">详细</a></td>
+	                                    </tr>
+                                		 </volist>
+	                                </table>
+	                                </li>
+                                
+                                </ul>
+                            </div>
+                            <div class="tab_btn">
+                            <ul></ul>
+                            </div>
+                        </div>
+                        
+                        <!--无烟煤 -->
+                        <div class="tab_list" style="visibility: hidden;">
+                            <div class="tab_list_box" >
+                            	<ul>
+                                
+                                </ul>
+                            </div>
+                            <div class="tab_btn">
+                            		<ul></ul>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!--焦煤 -->
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dynamicBox f1 freeBox" style="margin: 0px auto 0px auto;float: none; display:none;">
+             <h3 style="height: auto;margin-top: 0;"><img style="margin-right: 10px;" src="__PUBLIC__/newpic/meitanzhuanqu/picture/page4.png">
+             <em><a href="javascript:;">供求信息</a></em><img src="picture/xian3.jpg" class="xianbg"><div style="height: 6px"></div>
+             </h3>
+                <div class="freeBox_con">
+                    <div class="freeBoxCon">
+	                  <div class="freebox_dl ff clearfix"></div>
+                    </div>
+                    <p>
+                   <span class="orangBtn2"></span>
+                   	</p>
+                </div>
+            </div>
+            
+            
+        <div class="lanBox">
+        <div class="bannerBox1"><a><img src="__PUBLIC__/editnew/picture/coal.png"></a></div>
+        <div class="market_dynamic2">
+        <div class="marketBox f1">
+            <h3 style="height: auto;margin-top: 0;">
+            <img style="margin-right: 10px;" src="__PUBLIC__/newpic/meitanzhuanqu/picture/page1.png"><em>
+            <a>现货行情</a></em>
+            <img src="__PUBLIC__/newpic/meitanzhuanqu/picture/xian1.jpg" class="xianbg"><div style="height: 6px"></div></h3>
+            <div class="marketBox_list">
+                <div class="box1">
+                <div class="tabBox_con" style="display: block;">
+                    <div class="tabBox" style="display: block;">
+                        <table width="100%" class="tableInfo">
+                            <tr class="odd thbox">
+								<td>港口</td>
+                                <td>品类</td>
+                                <td>发热量</td>
+                                <td>本期价格</td>
+                                <td>上期价格</td>
+                                <td>去年同期</td>
+                            </tr>
+                            <volist name="xlist" id="vo">
+	                            <tr class="even">
+	                                <td class="td-2">{$vo.gangkou}</td>
+	                                <td class="td-3">{$vo.type}</td>
+	                                <td class="td-4">{$vo.fareliang}</td>
+	                                <td class="td-4">{$vo.nowprice}</td>
+	                                <td class="td-5">{$vo.lastprice}</td>
+	                                <td class="td-5">{$vo.oldprice}</td>
+	                            </tr>  
+                            </volist>
+                           <!--  <tr class="even">
+                                <td class="td-2">黄骅港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5500</td>
+                                <td class="td-4">420-430</td>
+                                <td class="td-5">415-425</td>
+                                <td class="td-5">430-440</td>
+                            </tr>  
+                            
+                            <tr class="odd">
+                                <td class="td-2">黄骅港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5000</td>
+                                <td class="td-4">380-390</td>
+                                <td class="td-5">375-385</td>
+                                <td class="td-5">360-370</td>
+                            </tr>  
+                            
+                            <tr class="even">
+                                <td class="td-2">黄骅港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">4500</td>
+                                <td class="td-4">340-350</td>
+                                <td class="td-5">340-350</td>
+                                <td class="td-5">330-340</td>
+                            </tr>  
+                            
+                            <tr class="odd">
+                                <td class="td-2">国投京唐港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5800</td>
+                                <td class="td-4">450-460</td>
+                                <td class="td-5">440-450</td>
+                                <td class="td-5">465-475</td>
+                            </tr>  
+                            
+                            <tr class="even">
+                                <td class="td-2">曹妃甸港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5800</td>
+                                <td class="td-4">450-460</td>
+                                <td class="td-5">440-450</td>
+                                <td class="td-5">465-475</td>
+                            </tr>  
+                            
+                            <tr class="odd">
+                                <td class="td-2">国投京唐港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5500</td>
+                                <td class="td-4">430-440</td>
+                                <td class="td-5">415-425</td>
+                                <td class="td-5">405-415</td>
+                            </tr>  
+                            
+                            <tr class="even">
+                                <td class="td-2">曹妃甸港</td>
+                                <td class="td-3">动力煤</td>
+                                <td class="td-4">5500</td>
+                                <td class="td-4">425-435</td>
+                                <td class="td-5">415-425</td>
+                                <td class="td-5">405-415</td>
+                            </tr>   -->
+                        </table>
+                    </div>
+                   
+                </div>                
+                </div>
+            </div>
+         
+        </div>
+        <div class="dynamicBox f1 freeBox2" style="height:460px;">
+            <h3 style="margin-top: 0;margin-bottom:2px;height:auto;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/page2.png" style="margin-left:2px;margin-right: 8px"><em><a href="#">行业动态</a></em>
+            <img src="__PUBLIC__/newpic/meitanzhuanqu/picture/xian2.jpg" class="xianbg"><div style="height: 6px"></div></h3>
+            
+	            <volist name="rlist" id="vo">
+	            <a href="__APP__/News/oillist/id/{$vo.id}">
+	                <dl>
+	                    <dd>{$vo.ttitle}</dd>
+	                </dl>
+	            </a>
+            </volist>
+	           
+	           
+            
+        </div>
+    </div>
+    </div>
+   
+    <div class="lanBox">
+        <div class="releaseBox">
+            <h3 style="height:auto;margin-top: 12px"><img style="margin-right: 10px" src="__PUBLIC__/newpic/meitanzhuanqu/picture/page6.png"><em><a>商品发布</a></em><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/xian3.jpg" class="xianbg"><div style="height: 10px"></div></h3>
+            <div class="releaseCon">
+                <ul>
+                    <li class="releaseCon_li_one"><a href="javascript:;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/pic6.jpg"></a><a href="javascript:;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/pic7.jpg"></a><a href="javascript:;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/pic8.jpg"></a><a href="javascript:;"><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/pic9.jpg"></a></li>
+                    <li class="releaseCon_li_two" style="height:375px;">
+                        <dl>
+                            <dt style="padding-left:30px;">
+                            	<img src="__PUBLIC__/newpic/meitanzhuanqu/picture/userpic.jpg">
+                            
+                            </dt>
+                            <dd>个人中心</dd>
+                        </dl>
+                        <a href="__APP__/Login/login">立即登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="servicesBox">
+        <h3 style="height:auto;margin-top: 12px"><img style="margin-right: 10px" src="__PUBLIC__/newpic/meitanzhuanqu/picture/page7.png"><em><a href="#">金融服务</a></em>
+        <img src="__PUBLIC__/newpic/meitanzhuanqu/picture/xian3.jpg" class="xianbg"><div style="height: 10px"></div></h3>
+        <div class="servicesCon">
+            <div class="servicesBoxCon">
+                <dl>
+                    <dt><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/page8.jpg"></dt>
+                    <dd>
+                        仓单融资
+                        <span style="margin-top:5px;">存货至制定仓库形成仓单</span>
+                        <span>质押仓单获得贷款</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/page9.jpg"></dt>
+                    <dd>
+                        订单融资
+                        <span style="margin-top:5px;">支持货款并汇入监管账户</span>
+                        <span>供货商货权移交</span>
+                        <span>融资主体质押支付货款</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/page10.jpg"></dt>
+                    <dd>
+                        预付款融资
+                        <span style="margin-top:5px;">支付货款先行支付供货商</span>
+                        <span>供货商收款发货指定仓库</span>
+                        <span>供货商承担退款回购责任</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="__PUBLIC__/newpic/meitanzhuanqu/picture/page11.jpg"></dt>
+                    <dd>
+                        应收账款融资
+                        <span style="margin-top:5px;">赊销形成应收账款</span>
+                        <span>应收账款质押金融机构</span>
+                        <span>获得融资支持</span>
+                    </dd>
+                </dl>
+            </div>
+           <!--  <div class="applyBox">
+                <a href="__APP__/Cocal/cocalfinance.html" class="applyBtn">立即申请</a>
+            </div> -->
+        </div>
+    </div>
+</div>
+<input type="hidden" name="pareURL" value="" id="pareURL"/>
+<!--main end-->
+
+<include file="./Public/daohang/cocalcommerce/footer.html" />
+
+
+</body>
+</html>

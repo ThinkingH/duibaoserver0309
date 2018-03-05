@@ -1,0 +1,499 @@
+﻿@charset "utf-8";
+.adbar{
+	position:relative;
+}
+/*.adbar span{
+	position:absolute;
+	 width:227px;
+	height:55px;
+	top:25px;
+	left:615px;
+	z-index:10;
+	cursor:pointer;
+}
+.adbar span a{
+	 width:227px;
+	height:35px;
+	display:block;
+	background-color:#003581;
+	text-decoration:underline;
+	padding-top:20px;
+	color:#fff;
+	border-radius:4px;
+	text-align:center;
+}
+.adbar span a:hover{
+	 width:227px;
+	height:35px;
+	display:block;
+	background-color:#0c6ad4;
+	text-decoration:underline;
+	color:#fff;
+	border-radius:4px;
+	text-align:center;
+	padding-top:20px;
+}
+.adbar span a i{
+	font-size:12px;
+	display:inline-block;
+	line-height:1px;
+}
+.adbar span a b{
+	font-size:26px;
+	display:inline-block;
+	line-height:1px;
+}
+.fborderbtm-1px{
+	width: 217px;
+	height: 1px;
+	background: #fff;
+}*/
+.adbspan{position:absolute;
+	 width:230px;
+	height:55px;
+	top:25px;
+	left:615px;
+	z-index:10;
+	cursor:pointer;
+}
+
+.adbspan a{
+	height:35px;
+	display:block;
+	text-decoration:none;
+	background-color:#003581;
+	color:#fff;
+	border-radius:4px;
+	padding:20px 10px 0px;
+}
+.adbspan a:hover{
+	background-color:#0c6ad4;
+}
+.adbspan a span.en{
+	font-size:12px;
+	line-height: 1;
+}
+.adbspan a span.ch{
+	font-size:26px;
+	line-height: 1;
+	font-weight:bold;
+}
+.fborderbtm-1px{
+	width: 207px;
+	height: 1px;
+	background: #fff;
+}
+/* 大宗财经 focus b */
+
+.dz-focus{
+	margin: 14px auto;
+}
+#dz-container{
+	position: relative;
+	width: 1100px;
+	height: 350px;
+	overflow: hidden;
+}
+#dz-container img{
+	width: 1100px;
+	height: 350px;
+}
+#dz-list{
+	position: absolute;
+	height: 350px;
+	left: 0;
+	z-index: 1;
+}
+#dz-list img{
+	float: left;
+}
+#dz-buttons{
+	position: absolute;
+	height: 5px;
+	/*width: 93px;*/
+	z-index: 2;
+	bottom: 20px;
+	right: 10px;
+}
+#dz-buttons span{
+	cursor: pointer;
+	float: left;
+	display: block;
+	margin-right:9px;
+	width: 22px;
+	height: 5px;
+	background: #a1a4a9;
+}
+#dz-buttons .on{
+	background: #ffffff;
+}
+.arrow{
+	cursor: pointer;
+	display: none;
+	line-height: 39px;
+	text-align: center;
+	font-size: 36px;
+	font-weight: 600;
+	position: absolute;
+	top: 180px;
+	color: #fff;
+	padding: 5px;
+	z-index: 2;
+}
+.arrow:hover{
+	background-color: rgba(0,0,0,.7);
+}
+/*#container:hover .arrow{
+	display: block;
+}*/
+#dz-prev{
+	left: 20px;
+}
+#dz-next{
+	right: 20px;
+}
+.dz-imgbox{
+	position: relative;
+	width: 1100px;
+	float: left;
+}
+.dz-imgbox p,
+.dz-textbox{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.dz-imgbox p{
+	padding-left: 26px;
+	color:#ffffff;
+	font-size: 16px;
+	line-height: 50px;
+}
+.dz-textbox{
+	height: 50px;
+	background: #000000;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+/* 大宗财经 focus e */
+
+/* 图文新闻列表 b */
+.dz-news .content{
+	width: 1098px;
+	border:1px solid #dadada;
+}
+.dz-news-l{
+	width: 700px;
+	padding: 0 14px 0 17px;
+	/*border-right: 1px solid #dadada;*/
+}
+.dz-news-l li{
+	padding: 24px 0;
+	border-bottom: 1px solid #dadada;
+}
+.dz-news-l li.noborder{
+	border:none;
+}
+.dz-news-l li>a{
+	display: block;
+}
+.dz-news-l li h2:hover{
+	color: #053982;
+}
+.dz-news-l li h2{
+	padding-top: 5px;
+	margin-bottom: 12px;
+	font-size: 18px;
+	color: #000000;
+}
+.dz-news-l li p{
+	font-size: 14px;
+	line-height: 24px;
+	color: #6e6e6e;
+}
+
+.imgbox{
+	position: relative;
+	margin-right: 26px;
+	width: 178px;
+	height: 150px;
+	text-align: center;
+	overflow: hidden;
+}
+.imgbox>img{
+	position: absolute;
+	top: 0;
+	height: 150px;
+}
+.imgboxw{
+	position: relative;
+	width: 333px;
+	height: 156px;
+	text-align: center;
+	overflow: hidden;
+}
+.imgboxw>img{
+	position: absolute;
+	width: 333px;
+	left: 0;
+}
+
+.dz-news-l li p b{
+	color:#c40000;
+}
+.dz-news-stats{
+	padding-top: 18px;
+	font-size: 12px;
+}
+.dz-news-stats span{
+	line-height: 24px;
+	color: #999999;
+}
+.dz-news-stats a{
+	color: #00a0e9;
+	border:1px solid #00a0e9;
+	border-radius: 5px;
+    font-size: 12px;
+    line-height: 23px;
+    height: 23px;
+	width:52px;
+	text-align:center;
+}
+.dz-news-stats a:hover{
+	color: #ffffff;
+	background: #00a0e9;
+}
+/* 图文新闻列表 e */
+
+/* 专题 b */
+.dz-news-r{
+	width: 334px;
+	padding: 30px 16px 0;
+}
+.dz-news-r .dz-hotwords{
+	padding-bottom: 20px;
+}
+.dz-news-r .dz-hotwords.noborder{
+	border:none;
+}
+.dz-subject{
+	padding-bottom: 30px;
+	border-bottom: 1px solid #dadada;
+}
+.dz-subject-cell{
+	position: relative;
+	margin-top: 26px;
+}
+.dz-subject-cell p{
+	margin-top: 20px;
+	font-size: 16px;
+	color: #3d3d3d;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.dz-subject-cell span{
+	display: block;
+	margin-top: 30px;
+	font-size: 14px;
+	line-height:24px;
+}
+.dz-subject-cell span:hover,
+.dz-subject-cell p:hover{
+	color: #053982
+}
+.dz-stats{
+	margin-top: 30px;
+}
+.dz-stats i{
+	color: #999999;
+	font-size: 12px;
+}
+.dz-stats a{
+	font-size: 12px;
+	color: #b62e28;
+}
+/* 专题 e */
+
+/* 洞察 b */
+.dz-see{
+	padding-top: 30px;
+}
+.dz-see li{
+	position: relative;
+	padding: 30px 0 30px 18px;
+	border-bottom: 1px solid #dadada;
+}
+.dz-see li i{
+	position: absolute;
+	left: 0;
+	top: 38px;
+	width: 6px;
+	height: 6px;
+	background: #dadada;
+	border-radius: 6px;
+}
+.dz-see li a{
+	width: 314px;
+	color: #3d3d3d;
+	font-size: 16px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: block;
+}
+.dz-see li a:hover{
+	color:#053982;
+}
+.dz-see li.noborder{
+	border: none;
+}
+/* 洞察 e */
+
+/* 大宗产业 b */
+.dz-business{
+	margin: 14px 0;
+}
+.dz-business .content{
+	width: 1098px;
+	border:1px solid #dadada;
+}
+.dz-bus-focus{
+	padding: 32px 17px 0;
+	border-bottom: 1px solid #dadada;
+	background: #ffffff;
+}
+.dz-classify{
+	position: relative;
+	padding: 36px 0 30px;
+}
+.show-box{
+	position: relative;
+	width: 899px;
+	height:134px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.show-cells-box{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.show-cells-box li{
+	text-align: center;
+	float: left;
+	padding-right: 60px;
+}
+.show-cells-box p{
+	padding-top: 13px;
+	font-size: 16px;
+	color: #000000;
+	font-weight: bold;
+}
+.dz-classify>a{
+	position: absolute;
+	top: 54px;
+	display: block;
+	width: 29px;
+	height: 64px;
+}
+.s-left-btn{
+	left: 0;
+	background: url(../images/dz_29.png) no-repeat;
+}
+.s-right-btn{
+	right: 0;
+	background: url(../images/dz_32.png) no-repeat;
+}
+/* 大宗产业 e */
+
+/* 行业动态 b */
+.adbar img{
+	width: 1100px;
+}
+.dz-news-part{
+	border:1px solid #dadada;
+}
+.news-p-tab{
+	margin-top: 30px;
+	border-bottom: 2px solid #b62e28;
+}
+.news-p-tab li{
+	padding: 0 17px 9px;
+	margin-right: 20px;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	border-bottom: 3px solid #ffffff;
+	cursor: pointer;
+}
+.news-p-tab li a{
+	color: #b62e28;
+}
+.news-p-tab li:hover{
+	border-bottom: 3px solid #b62e28;
+}
+.f_list_fl{
+	padding-top: 30px;
+	height: 32px;
+	font-size:16px;
+}
+.f_list_fl li{
+	float:left;
+	height:29px;
+	line-height:29px;
+	padding:0;
+	border-bottom:2px solid #FFBD3F;
+	margin-right:18px;
+	text-align:center;
+	}
+.f_list_fl li.f_lg{
+	width:54px;
+	background-color:#FFBD3F;
+	color:#fff;
+}
+.f_list_fl li.f_lg a{
+	color:#fff;
+}
+.f_list_fl li.f_lf{
+	width:37px;
+	color:#000;
+}	
+/* 行业动态 e */
+
+/* 友情链接 b */
+.dz-mylinks{
+	margin: 14px 0;
+}
+.dz-mylinks .content{
+	width: 1064px;
+	border:1px solid #dadada;
+	padding: 32px 17px;
+}
+.mylinks-box{
+	margin-right: -18px;
+	overflow: hidden;
+}
+.mylinks-box li{
+	margin:18px 17px 0 0;
+	float: left;
+	border:1px solid #dadada;
+	border-radius: 5px;
+}
+.mylinks-box li:hover{
+	border:1px solid #00a0e9;
+}
+.mylinks-box li img{
+	border-radius: 5px;
+}
+.btn-showall{
+	width: 50px;
+	margin: 36px auto 0;
+	font-size: 12px;
+	color: #000000;
+	background: url(../images/dz_107.jpg) no-repeat center right;
+	cursor: pointer;
+	display: none;
+}
+/* 友情链接 e */

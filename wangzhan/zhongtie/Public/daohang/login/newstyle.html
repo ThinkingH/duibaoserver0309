@@ -1,0 +1,154 @@
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <link href="__PUBLIC__/login/css/showloading.css" rel="stylesheet" />
+    <link href="__PUBLIC__/login/css/common.css" rel="stylesheet" />
+    <link href="__PUBLIC__/login/css/style.css" rel="stylesheet"/>
+     <link rel="stylesheet" href="__PUBLIC__/login/css/login.css"/>
+    
+    
+     <div class="chrometips chromeTip" style="display:none;">
+        <a href="javascript:void(0);" class="btntips-close" id="chromeTipCloseBtn">×</a>
+        <div class="inner-chrometips">
+            <p class="chrm-word2">
+                您使用 Internet Explorer 版本过低，在本页面的显示效果可能有差异。建议您升级到
+                <a href="http://www.microsoft.com/china/windows/internet-explorer/" target="_blank" rel="nofollow">Internet Explorer 8</a>以上或者以下浏览器：
+                <a href="http://www.mozillaonline.com/" rel="nofollow">Firefox</a> 
+                <a href="http://www.google.com/chrome/?hl=zh-CN" rel="nofollow">Chrome</a> 
+                <a href="http://www.apple.com.cn/safari/" rel="nofollow">Safari</a> 
+                <a href="http://www.operachina.com/" rel="nofollow">Opera</a>
+            </p>
+        </div>
+    </div>
+    <!-- 导航部分 -->
+<div class="trackBox" comid="100001004" comType="1"></div>
+
+
+<php>if($username==''){</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+       
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:8px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:20px;">
+                    <a href="__APP__/Login/login">登录</a>
+                </div>
+            </li>
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:50px;">
+                    <a href="__APP__/Login/register">注册</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div> 
+	<php>}else{</php>
+	<div class="top-bar">
+    <div class="top-Bd grid-1200 clear">
+      
+        <ul class="t-BdR t-menu">
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:-15px;">
+                    <a href="__APP__/Index/index">首页</a>
+                </div>
+            </li>
+            <li class="t-m lkm t-m-app ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:0px;">
+                    <a href="#" style="color:#FF7300">欢迎来到中铁国恒！{$username}</a>
+                </div>
+            </li>
+            
+             <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd">
+                    <a href="__APP__/Login/order">订单中心</a>
+                </div>
+                 <div class="t-m-bd  menu-list">
+                    <ul class="t-m-panel">
+                        <li><a href="" target="_blank">关于我们</a></li>
+                        <li><a href="" target="_blank">帮助中心</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+            
+            <li class="t-m lkm t-m-center ui-deg180" data-type="mhover">
+                <div class="t-m-hd" style="margin-right:120px;">
+                    <a href="__APP__/Login/loginout" onclick="if (confirm('确定要退出吗？')) return true; else return false;" style="color:#FF7300" id="loginout">退出</a>
+                </div>
+            </li>
+           
+        </ul>
+    </div>
+</div>
+<php>}</php>
+	<!-- 用户登录完成 -->
+	<div class="head">
+    <div class="headNav grid-1200 clear">
+        <h1 class="logo" style="width:488px;padding-top:25px;">
+           <a href="__APP__/Index/index"><img src="__PUBLIC__/editnew/picture/logo.png" alt="中铁国恒" style="margin-bottom:-32px; width:488px; height:70px;"/></a>
+        </h1>
+       
+        <div class="ui-t-search">
+           
+        </div>
+        
+	
+		
+		<div class="t-menu lkm" >
+
+            <ul class="m-item-list" id="show-tips-items" >
+                    <li class="m-item current-page-item">
+                        <a href="__APP__/Index/index.html" target="_self" style="font-size: 18px;">首页</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/News/dazongmacrooil.html" target="_self" style="font-size: 18px;">大宗财经</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/cocalcommerce.html" target="_self" style="font-size: 18px;">煤炭专区</a>
+                         <div class="hotbox">
+                                <i class="hot"></i>
+                            </div>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="__APP__/Index/chainfinance.html" target="_self" style="font-size: 18px;">产业链金融</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                    <li class="m-item ">
+                        <a href="http://www.chinaresc.com/m_chinaresc/" target="_blank" style="font-size: 18px;">查看手机版</a>
+                        <i class="m-b"></i>                        
+                    </li>
+                   
+                   
+            </ul>
+        </div>
+    </div>
+	</div>
+	
+	
+</div>
+	
+</div>
+	
+	
+
+
+	<div class="clearfix"></div>
+    
