@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/Js/datexxx/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	
+	$(".mainTables>tbody>tr>td").hover(function(){
+		$(this).parent().children().addClass('yu_mourse_stop_change');
+	},function(){
+		$(this).parent().children().removeClass('yu_mourse_stop_change');
+	});
+	
+	/* //数据添加确认
+	$("#fabu_check").click(function() {
+		
+		if(confirm("您确认要发布该条数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+	});  */
+	
+	/* //数据添加确认
+	$("#del").click(function() {
+		
+		if(confirm("您确认要删除这条数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+	});  
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+	<tr height="28"><td>
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;中铁数据查询&nbsp;#&nbsp;证件的审核</b></font></td></tr>
+  	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td></td></tr>
+</table>
+
+
+<br/>
+
+<div>
+	<div style="float:left;">
+	
+	<a><img src="{$list['businesslicence']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">1.营业执照或银行开户证明</span>
+	</div>
+	
+	<div style="float:left;margin-left:10px;">
+	<a><img src="{$list['buybill']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">2.购货发票</span>
+	</div>
+	
+	<div style="float:left;margin-left:10px;">
+	<a><img src="{$list['coalzhengming']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">3.煤炭产地证明</span>
+	</div>
+	
+	<div style="clear:both; float:left;margin-right:20px;margin-top:20px;">
+	<a><img src="{$list['qualityreporter']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">4.质量检测报告</span>
+	</div>
+	
+	<div style="float:left;margin-top:20px;margin-right:20px;">
+	<a><img src="{$list['danzi']}"  style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">5.库存证明(入库单或提货单)</span>
+	</div>
+	
+	<div style="float:left;margin-top:20px;">
+	<a><img src="{$list['danzi']}"  style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">6.关单</span>
+	</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<br/><br/>
+
+<center>{$page}</center>
+
+<br/><br/><br/><br/><br/><br/>
+
+</body>
+
+</html>

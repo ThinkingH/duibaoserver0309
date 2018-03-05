@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	$("#submit").click(function(){
+
+		var mailtolist = $("#mailtolist").val();
+		
+		if (mailtolist != '') {
+		
+			var mailarr = mailtolist.split(",");
+			//alert(mailarr);
+			var panduan = 'ok';
+			$.each(mailarr, function(name, value){
+			
+				var reg = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+				if (!reg.test(value)) {
+					name = name + 1;
+					alert('系统检测到您填写的邮箱数据存在错误，请修改后再次提交，错误编号：' + name);
+					panduan = 'no';
+				}
+				
+			});
+			
+			if (panduan == 'no') {
+				return false;
+			}
+			
+		}
+		
+		if(confirm("您确认要修改邮件通知列表吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+		
+	});
+});
+
+
+</script>
+</head>
+
+<table cellspacing=0 cellpadding=0 width="100%" align=center border=0 style="margin-left:0px;margin-top:0px;">
+	<tr height="28"><td>
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;系统管理&nbsp;#&nbsp;邮件通知列表修改</b></font></td></tr>
+	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td></td></tr>
+</table>
+
+<body>
+	
+
+<br/>
+<font size="+2" color="purple"><b>&nbsp;欢迎来到邮件通知列表变动页面</b></font>
+<br/><br/><br/>
+<form action="__APP__/Root/mailto_ww" method="post">
+	<font color="orange" size="-1">
+		多个邮箱列表在填写时请使用英文逗号【,】进行分隔。同时为避免出错，请不要输入回车空格等字符<br/>
+		注：此邮箱通知列表主要用于配合定时触发页面使用<br/>
+		例：123@qq.com,456@qq.com,789@qq.com<br/>
+	</font>
+	<textarea name="mailtolist" id="mailtolist" cols="130" rows="5" >{$mailto_show}</textarea>
+	
+	<br/><br/>
+	
+	<input type="submit" name="submit" id="submit" class="yubutton yuwhite" value="提交修改" />
+	
+</form>
+
+
+<br/><br/>
+
+<font color="blue" size="+1">
+	<b>邮件通知列表浏览：</b><br/><br/>
+</font>
+<table width="600px" class="mainTablea">
+
+
+<foreach name="arrmaillist" item="vo">
+	<tr><td><b>{$vo}</b></td></tr>
+</foreach>
+
+</table>
+
+<br/><br/><br/><br/>
+End!
+
+</body>
+</html>
+
+
