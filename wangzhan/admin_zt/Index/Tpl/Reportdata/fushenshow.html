@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<load href="__PUBLIC__/Css/admin.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/themain.js"></script>
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	 //数据添加确认
+	$("#update_submit").click(function() {
+		
+		if(confirm("您确认要审核通过该条数据吗？")) {
+			//alert('ok');
+		}else {
+			return false;
+		}
+	});  
+		
+});
+
+
+</script>
+</head>
+
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" >
+	<tr height="28"><td>
+		<font size="-1" ><b>当前位置&nbsp;#&nbsp;中铁数据查询&nbsp;#&nbsp;订单信息审核&nbsp;#&nbsp;订单信息的复审</b></font></td></tr>
+	<tr><td bgcolor="#b1ceef" height="1"></td></tr>
+	<tr height="20"><td></td></tr>
+</table>
+
+<br/>
+
+<a href="__APP__/Reportdata/index{$yuurl}" class="yubutton yuwhite">返回主页面</a>
+<br/><br/><br/>
+
+
+
+<table class="mainTabled">
+	
+	<tr>
+		<td width="200" align="right">编号:</td>
+		<td width="800">
+			<b>{$list['id']}</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">审核状态:</td>
+		<td width="800">
+			<b>{$list['flag']}</b>
+		</td>
+	</tr>
+	<tr>
+		<td width="200" align="right">公司:</td>
+		<td width="800">
+		<b>
+		{$list['company']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">电话:</td>
+		<td width="800">
+		<b>
+		{$list['phone']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">上家类型:</td>
+		<td width="800">
+		<b>
+			{$list['shangjiatype']}
+		</b>
+		</td>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">产品名称:</td>
+		<td width="800">
+		<b>
+			{$list['name']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">价格:</td>
+		<td width="800">
+		<b>
+			{$list['price']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">数量:</td>
+		<td width="800">
+		<b>
+			{$list['shuliang']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">交货地:</td>
+		<td width="800">
+		<b>
+			{$list['address']}
+		</b>
+		</td>
+	</tr>
+	
+	
+	
+	<tr>
+		<td width="200" align="right">配送方式:</td>
+		<td width="800">
+		<b>
+			{$list['sendtype']}
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">提交时间:</td>
+		<td width="800">
+		<b>
+			<b>{$list['tijiao_time']}</b>
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">审核发布时间:</td>
+		<td width="800">
+		<b>
+			<b>{$list['createtime']}</b>
+		</b>
+		</td>
+	</tr>
+	
+	<tr>
+		<td width="200" align="right">备注:</td>
+		<td width="800">
+		<b>
+		{$list['comment']}
+		</b>
+		</td>
+	</tr>
+	
+</table>
+<br/><br/>
+
+<!--***************************  -->
+<php>if($list['filecheck']=='9'){</php>
+<p>没有证件上传！<p>
+<php>}else{</php>
+<div>
+<h2>上传的文件</h2>
+	
+	<php> if($list['businesslicence']!=''){</php>
+		<div style="float:left;">
+		<a><img src="{$list['businesslicence0']}" style="width:300px;height:300px;"></a><br><br>
+		<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">营业执照或银行开户证明</span>
+			<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+			<input type="hidden" name="id" value="$list['id']" />
+			<input type="hidden" name="lurl" value="{$list['businesslicence']}" />
+			<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+			</form>
+		</div>
+	<php>}</php>
+	
+	
+	<php> if($list['buybill']!=''){</php>
+	<div style="float:left;margin-left:10px;">
+	<a><img src="{$list['buybill0']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">购货发票</span>
+		<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+		<input type="hidden" name="id" value="$list['id']" />
+		<input type="hidden" name="lurl" value="{$list['buybill']}" />
+		<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+		</form>
+	</div>
+	<php>}</php>
+	
+	<php>if($list['coalzhengming']!=''){</php>
+	<div style="float:left;margin-left:10px;">
+	<a><img src="{$list['coalzhengming0']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">煤炭产地证明</span>
+		<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+		<input type="hidden" name="id" value="$list['id']" />
+		<input type="hidden" name="lurl" value="{$list['coalzhengming']}" />
+		<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+		</form>
+	</div>
+	<php>}</php>
+	
+	<php>if($list['qualityreporter']!=''){</php>
+	<div style="clear:both; float:left;margin-right:20px;margin-top:20px;">
+	<a><img src="{$list['qualityreporter0']}" style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">质量检测报告</span>
+		<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+		<input type="hidden" name="id" value="$list['id']" />
+		<input type="hidden" name="lurl" value="{$list['qualityreporter']}" />
+		<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+		</form>
+	</div>
+	<php>}</php>
+	
+	<php>if($list['tihuodan']!=''){</php>
+	<div style="float:left;margin-top:20px;margin-right:20px;">
+	<a><img src="{$list['tihuodan0']}"  style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">库存证明(入库单或提货单)</span>
+		<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+		<input type="hidden" name="id" value="$list['id']" />
+		<input type="hidden" name="lurl" value="{$list['tihuodan']}" />
+		<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+		</form>
+	</div>
+	<php>}</php>
+	
+	<php>if($list['danzi']!=''){</php>
+	<div style="float:left;margin-top:20px;">
+	<a><img src="{$list['danzi0']}"  style="width:300px;height:300px;"></a><br><br>
+	<span style="font-size:16px;line-height:26px;color:#333;font-weight:300;padding-top:30px;clear: none;">关单</span>
+		<form action="__APP__/Reportdata/picfile_download" method="post" style="margin:0px">
+		<input type="hidden" name="id" value="$list['id']" />
+		<input type="hidden" name="lurl" value="{$list['danzi']}" />
+		<input type="submit" class="yubuttonss yuwhite" name="first_check" value="下载" />
+		</form>
+	</div>
+	<php>}</php>
+</div>
+<!-- ********************** -->
+<php>}</php>
+
+<div style="clear:both;"></div>
+<br><br>
+<table>
+<tr>
+
+<td>
+<form action="__APP__/Reportdata/fushendata{$yuurl}" method="post">
+<input type="hidden" name="id" value="{$list['id']}" />
+<input type="submit" id="update_submit" class="yubutton yuwhite" name="update_submit"  value="确认复审" />
+</form>
+</td>
+
+
+<td>
+<form action="__APP__/Reportdata/zuofeidata{$yuurl}" method="post">
+<input type="hidden" name="id" value="{$list['id']}" />
+<input type="submit" id="zuofei_submit" class="yubutton yuwhite" name="zuofei" value="作废" />
+</form>
+</td>
+
+
+</tr>
+</table>
+<!-- </form> -->
+
+<br/><br/><br/><br/><br/><br/>
+End!
+
+</body>
+
+</html>

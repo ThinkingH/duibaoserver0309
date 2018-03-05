@@ -1,0 +1,410 @@
+﻿body {
+	margin: 0px
+}
+p {
+	margin: 0px
+}
+body {
+	color: #000; background-color: #F5FFF5
+}
+body {
+	font-size: 12px; line-height: 150%; font-family: "Verdana", "arial", "Helvetica", "sans-serif"
+}
+table {
+	font-size: 12px; line-height: 150%; font-family: "Verdana", "arial", "Helvetica", "sans-serif"
+}
+input {
+	font-size: 12px; font-family: "Verdana", "arial", "Helvetica", "sans-serif"
+}
+select {
+	font-size: 12px; font-family: "Verdana", "arial", "Helvetica", "sans-serif"
+}
+textarea {
+	font-size: 12px; font-family: "Verdana", "arial", "Helvetica", "sans-serif"
+}
+a:link {
+	color: #000088; text-decoration: none
+}
+a:visited {
+	color: #000088; text-decoration: none
+}
+a:hover {
+	color: #FF6600; text-decoration: underline
+}
+a.menuChild:link {
+	color: #036; text-decoration: none
+}
+a.menuChild:visited {
+	color: #036; text-decoration: none
+}
+a.menuChild:hover {
+	color: #f60; text-decoration: underline
+}
+a.menuParent:link {
+	color: #000; text-decoration: none
+}
+a.menuParent:visited {
+	color: #000; text-decoration: none
+}
+a.menuParent:hover {
+	color: #f60; text-decoration: none
+}
+table.position {
+	width: 100%
+}
+tr.position {
+	height: 25px; background-color: #f4f7fc
+}
+td.position {
+	BORDER-RIGHT: #adceff 1px solid; padding-left: 20px; BORDER-BOTTOM: #adceff 1px solid
+}
+table.listTable {
+	width: 98%; background-color: #b1ceee
+}
+tr.listHeaderTr {
+	font-weight: bold; height: 25px; background-color: #ebf4fd; text-align: center
+}
+tr.listTr {
+	height: 25px; background-color: #fff; text-align: center
+}
+tr.listalternatingTr {
+	height: 25px; background-color: #fffdf0; text-align: center
+}
+tr.listFooterTr {
+	height: 30px; background-color: #ebf4fd; text-align: center
+}
+table.editTable {
+	width: 98%; background-color: #b1ceee
+}
+tr.editHeaderTr {
+	height: 25px; background-color: #ebf4fd
+}
+td.editHeaderTd {
+	padding-left: 50px; font-weight: bold
+}
+tr.editTr {
+	height: 30px
+}
+td.editLeftTd {
+	width: 150px; background-color: #fffdf0; text-align: center
+}
+td.editRightTd {
+	padding-left: 10px; background-color: #fff
+}
+tr.editFooterTr {
+	height: 40px; background-color: #ebf4fd
+}
+td.editFooterTd {
+	padding-left: 150px
+}
+
+/***************************************************************/
+/*----------------此分割线以下为该html框架之外的页面布局参数------------------*/
+/***************************************************************/
+/*
+ * 主要针对含有头部、中间、底部、和右侧或左侧的表格数据
+ */
+.mainTables {
+	margin:1px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	table-layout:fixed;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.mainTables tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+.mainTables tr td {
+	margin:0px;
+	padding:4px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+.mainTables thead tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	/* background-color:#7DFF7D; */
+	background-color:#89CA24;
+	height:40px;
+}
+.mainTables tbody tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#E6FFE6;
+}
+.mainTables tbody tr th {
+	margin:0px;
+	padding:4px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#C3FFC3;
+	text-align:left;
+	font-weight:normal;
+}
+.mainTables tfoot tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#C3FFC3;
+}
+
+/*********************************************************************/
+/*
+ * 与mainTables基本相同，不同点：此类只有顶部配置
+ * 所以，凡是由子数据与父数据组成的表格(即由后台代码自定义背景色)，均由此类作为标识
+ */
+.mainTablex {
+	margin:1px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	table-layout:fixed;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.mainTablex tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+.mainTablex tr td {
+	margin:0px;
+	padding:4px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+.mainTablex thead tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#7DFF7D;
+	height:40px;
+}
+
+/*********************************************************************/
+/*
+ * mainTabled主要用于整体的纯色顶部查询表单
+ */
+.mainTabled {
+	margin:1px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	table-layout:fixed;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.mainTabled tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#E6FFE6;
+}
+.mainTabled tr td {
+	margin:0px;
+	padding:4px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+
+/*********************************************************************/
+/*
+ * mainTablea主要用于jquery动态添加生成和只需要表格格式需要自己定义表格颜色的表格
+ * 他与mainTabled的主要区别在于，内边距和外边距的设置
+ */
+.mainTablea {
+	/*margin:1px;
+	padding:0px;*/
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	table-layout:fixed;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.mainTablea tr {
+	margin:0px;
+	padding:0px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+	background-color:#E6FFE6;
+}
+.mainTablea tr td {
+	margin:0px;
+	padding:7px;
+	border:1px purple;
+	font-size:12px;
+	border-collapse:collapse;
+	border-style:solid;
+}
+
+
+
+/* white 按钮颜色布局 */
+
+.yuwhite {  
+    color: purple;
+    border: solid 1px #b7b7b7;  
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e4e4e4));  
+    background: -moz-linear-gradient(top,  #fafafa,  #e4e4e4);  
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#e4e4e4');  
+}
+.yuwhite:hover {  
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#d2d2d2));  
+    background: -moz-linear-gradient(top,  #fafafa,  #d2d2d2);  
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#d2d2d2');  
+}  
+.yuwhite:active {  
+    color: #828282;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e4e4e4), to(#fafafa));  
+    background: -moz-linear-gradient(top,  #e4e4e4,  #fafafa);  
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#fafafa');  
+}  
+.yuwhite:disabled {
+	color:grey;
+    border: solid 1px #b7b7b7;  
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e4e4e4));  
+    background: -moz-linear-gradient(top,  #fafafa,  #e4e4e4);  
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#e4e4e4');  
+}
+
+
+
+.yubutton {  
+    margin: 1px 2px;  
+    outline: none;  
+    cursor: default;  
+    text-align: center;  
+    text-decoration: none;  
+    padding: .75em 2em .8em;
+	outline: none;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	
+	border:0px purple\9;
+	border-collapse:collapse\9;
+	border-style:solid\9;
+	_background-color:#D5D1FF;
+}
+.yubutton:hover {  
+    text-decoration: none;
+	color:black;
+	_background-color:#E8FAFF;
+}  
+.yubutton:active {  
+    position: relative;  
+    top: 1px;
+}
+.yubutton:disabled {
+	color:grey;
+}
+
+
+.yubuttons {
+	margin:1px 2px; 
+	padding:.29em .8em .35em .8em;
+	border:0px purple\9;
+	border-collapse:collapse\9;
+	border-style:solid\9;
+	_background-color:#D5D1FF;
+}
+.yubuttons:hover {  
+    text-decoration: none;
+	color:black;
+	_background-color:#E8FAFF;
+}  
+.yubuttons:active {  
+    position: relative;  
+    top: 1px;
+}
+.yubuttons:disabled {
+	color:grey;
+}
+
+.yubuttonss {
+	margin:1px 2px; 
+	padding:.18em .4em .22em .4em;
+	border:0px purple\9;
+	border-collapse:collapse\9;
+	border-style:solid\9;
+	_background-color:#D5D1FF;
+}
+.yubuttonss:hover {  
+    text-decoration: none;
+	color:black;
+	_background-color:#E8FAFF;
+}  
+.yubuttonss:active {  
+    position: relative;  
+    top: 1px;
+}
+.yubuttonss:disabled {
+	color:grey;
+}
+
+/*每月分量和sp代码省份管理页面的背景颜色类*/
+.yu_commandlimit_color {
+	background-color:#BEBEFF;
+}
+/*每月分量和sp代码省份管理页面的背景颜色类_删除标记的深灰色*/
+.yu_commandlimit_del_color {
+	background-color:#AAAAAA;
+}
+
+/*针对Relationview页面中的选中变色，单独编写的背景颜色改变类*/
+.yu_Relationview_select_change {
+	background-color:#FFFFD7;
+}
+
+/*鼠标停留在某表格的td上时，修改该行的背景颜色*/
+.yu_mourse_stop_change {
+	background-color:#C8F5C8;
+}
