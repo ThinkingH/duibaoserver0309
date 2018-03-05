@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+   <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+   <style type="text/css">
+       a:hover { text-decoration:none;}
+    </style>
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商户管理</a></li>    
+			        <li><a href="__APP__/User/userinfo" target="main_x">商户信息</a></li>    
+			        <li><a>商户信息查看</a></li>          
+				</ol>
+			</div>
+            <div id="page-inner">
+               <div class="row">
+			      <div class="col-sm-12">
+			        <div class="panel panel-default">
+			            <div class="pull-right">
+			                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+			            </div>
+			            <div class="panel-heading">
+			                <h3 class="panel-title"><i class="fa fa-list"></i>修改商户信息</h3>
+			            </div>
+			            <div class="panel-body">
+			                    <table class="table table-bordered">
+			                    <tbody>
+			                    <tr>
+			                        <td class="col-sm-2">商户编号:</td>
+			                        <td >{$list['id']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>审核状态：</td>
+			                        <td>{$list['checkstatus']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>联系人:</td>
+			                        <td>{$list['lianxiren']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>联系方式:</td>
+			                        <td>
+			                             {$list['phone']}
+			                        </td>
+			                    </tr>
+			                    <tr>
+			                        <td>邮箱:</td>
+			                        <td>
+			                            {$list['email']}
+			                        </td>
+			                    </tr>
+			                    <tr>
+			                        <td>公司名称:</td>
+			                        <td>
+			                           {$list['company']}
+			                        </td>
+			                    </tr>
+			                    <tr>
+			                        <td>公司地址:</td>
+			                        <td>{$list['address']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>自提地址:</td>
+			                        <td>{$list['zitiaddress']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>营业执照:</td>
+			                        <td><img alt="" src="{$list['bussinelicence1']}" width="200"></td>
+			                    </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+			        </div>
+			 	  </div> 
+    		</div>    
+           
+        <div class="row">
+	      <div class="col-sm-12">
+	        <div class="panel panel-default">
+	            <div class="panel-heading">
+	                <h3 class="panel-title"><i class="fa fa-list"></i>审核信息</h3>
+	            </div>
+	            <div class="panel-body">
+	                    <table class="table table-bordered">
+	                    <tbody>
+	                    <tr>
+	                        <td class="col-sm-2">审核说明:</td>
+	                        <td>{$list['remark']}</td>
+	                    </tr>
+	                    </tbody>
+	                </table>
+	            </div>
+	        </div>
+	 	  </div> 
+    </div>   
+        
+        
+            </div>
+        </div>
+
+
+</body>
+</html>

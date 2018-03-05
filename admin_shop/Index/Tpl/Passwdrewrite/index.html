@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+   <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+   <script type="text/javascript">
+$("document").ready(function(){
+	
+	$('#passwd').keyup(function(e) {
+		var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+		var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+		var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+		if (false == enoughRegex.test($(this).val())) {
+			$('#passstrength').html('<font color="red">字符太少</font>');
+		} else if (strongRegex.test($(this).val())) {
+			$('#passstrength').className = 'ok';
+			$('#passstrength').html('<font color="purple">超级强壮!</font>');
+		} else if (mediumRegex.test($(this).val())) {
+			$('#passstrength').className = 'alert';
+			$('#passstrength').html('<font color="blue">强壮!</font>');
+		} else {
+			$('#passstrength').className = 'error';
+			$('#passstrength').html('<font color="red">太弱!<red>');
+		}
+		return true;
+	});
+	
+	$('#repasswd').keyup(function(e) {
+		var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+		var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+		var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+		if (false == enoughRegex.test($(this).val())) {
+			$('#passstrengthx').html('<font color="red">字符太少</font>');
+		} else if (strongRegex.test($(this).val())) {
+			$('#passstrengthx').className = 'ok';
+			$('#passstrengthx').html('<font color="purple">超级强壮!</font>');
+		} else if (mediumRegex.test($(this).val())) {
+			$('#passstrengthx').className = 'alert';
+			$('#passstrengthx').html('<font color="blue">强壮!</font>');
+		} else {
+			$('#passstrengthx').className = 'error';
+			$('#passstrengthx').html('<font color="red">太弱!<red>');
+		}
+		return true;
+	});
+	
+	$("#submit").click(function(){
+		var passwd    = $("#passwd").val();
+		var repasswd  = $("#repasswd").val();
+		var oldpasswd = $("#oldpasswd").val();
+		
+		if(oldpasswd=='') {
+			alert('原密码不能为空');
+			return false;
+		}else if(passwd=='' || repasswd=='') {
+			alert('新密码不能为空');
+			return false;
+		}else {
+			if(passwd!=repasswd) {
+				alert('两次密码不一致');
+				return false;
+			}else {
+				if(confirm('确定要修改密码吗？')) {
+					
+				}else {
+					return false;
+				}
+			}
+		}
+		
+	});
+	
+});
+
+
+</script>
+
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px;">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">用户密码修改</h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info" style="border-color: #ddd;">
+                        <div class="panel-heading" style="background-color: #f5f5f5;border-color: #ddd;width:100%;color:#333">
+                          用户密码修改
+                        </div>
+                        <div class="panel-body">
+                            <form action="__APP__/Passwdrewrite/rewritepasswd{$yuurl}" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label><font size="-1" color="red">*</font>商户账号:</label>
+                                         {$list['username']}
+                                        </div>
+                                        <div class="form-group">
+                                            <label><font size="-1" color="red">*</font>请输入原始密码：</label>
+                                           <input type="password" name="oldpasswd" id="oldpasswd"  class="form-control" style="width:400px;">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>请输入新密码:</label>
+                                             <input type="password" name="passwd" id="passwd" class="form-control" style="width:400px;">
+                                        </div>
+                                  
+                                 
+                                        <div class="form-group">
+                                            <label>请在次输入新密码::</label>
+                                           <input type="password" name="repassword" id="repassword"  class="form-control" style="width:400px;">
+                                        </div>
+                                        
+                                        <input type="submit" id="uupdate_submit" class="btn btn-primary" name="submit" style="" value="确认修改" />
+                                    </form>
+                                    
+                            </div>
+                        </div>
+                            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+</body>
+</html>

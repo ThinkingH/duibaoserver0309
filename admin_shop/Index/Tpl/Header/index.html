@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+</head>
+
+
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header" >
+                <a class="navbar-brand"  style="width:170px;" href="index.html">兑宝商户后台</a>
+            </div>
+
+            <div class="header-right">
+                <a href="__APP__/Main/index?{$ruser}" target="main_x" class="btn btn-primary" ><b>用户名：{$username} </b></a>
+                <a onclick="if (confirm('确定要退出吗？')) return true; else return false;" href="__APP__/Login/logout?{$ruser}" target="_top" class="btn btn-danger" title="Logout">退出</a>
+
+            </div>
+        </nav>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+    <style type="text/css">
+       a:hover { text-decoration:none;}
+    </style>
+    
+     <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$(".edit_submit").click(function(){
+			
+			if(confirm("您确认要进行该操作吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商户管理</a></li>    
+			        <li><a>第三方网址</a></li>    
+				</ol>
+			</div>
+			
+            <div id="page-inner">
+                <!-- /. ROW  -->
+              
+            <div class="row">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                    
+                    	<div class="panel-heading" style="height:50px;">
+                            <div class="row navbar-form" style="margin-top:-1px;">
+			                <button type="submit" onclick="location.href='{:U('User/shopstoreshow')}'"  class="btn btn-primary pull-right"><i class="fa fa-plus"></i>添加网址</button>
+			                </div>
+                        </div>
+                      
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>店铺名称</th>
+                                            <th>店铺logo</th>
+                                            <th>经营类型</th>
+                                            <th>店铺链接</th>
+                                            <!-- <th>审核说明</th> -->
+                                            <th>操作</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="list" id="vo" empty="没有对应数据" >
+                                        <tr>
+                                            <td>{$vo.id}</td>
+                                            <td>{$vo.shopname}</td>
+                                            <td><img alt="" src="{$vo.shoplogo}" width="50"></td>
+                                            <td>{$vo.shoptype}</td>
+                                            <td>{$vo.shopurl}</td>
+                                            <td>
+                                            	<form action="__APP__/User/shopstoreshow{$yuurl}" method="get" style="margin:0px">
+												<input type="hidden" name="id" value="{$vo.id}" />
+												<input type="submit" class="btn btn-danger" name="edit_submit" value="编辑" />
+												</form>
+											</td>
+                                            <td>
+                                            	<form action="__APP__/User/delshopstore{$yuurl}" method="get" style="margin:0px">
+												<input type="hidden" name="id" value="{$vo.id}" />
+												<input type="submit" class="btn btn-danger edit_submit" name="edit_submit" id="edit_submit" value="删除" />
+												</form>
+											</td>
+                                        </tr>
+                                        </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End  Kitchen Sink -->
+                </div>
+               
+            </div>
+        
+            </div>
+        </div>
+</body>
+</html>

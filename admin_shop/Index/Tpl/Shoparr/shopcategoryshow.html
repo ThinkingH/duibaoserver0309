@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+   <!--  <link href="__PUBLIC__/css/custom.css" rel="stylesheet" /> -->
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    
+    <script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+   <script language="javascript" type="text/javascript" src="__PUBLIC__/js/global.js"></script>
+    
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$("#submit_name").click(function(){
+			
+			if(confirm("您确认要进行该操作吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商品管理</a></li>    
+			        <li><a href="__APP__/Shoparr/shopcategory">商品分类</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+                <!-- /. ROW  -->
+       <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 商品分类</h3>
+                </div>
+                <div class="panel-body">
+                    <!-- /.box-header -->
+                        <form action="{:U('Shoparr/addEditCategory')}" method="post" class="form-horizontal" id="category_form">
+                        <div class="box-body">                         
+                                <div class="form-group">
+                                     <label class="col-sm-2 control-label">分类名称</label>
+                                     <div class="col-sm-3">
+                                        <input type="text" placeholder="名称" class="form-control " name="name" value="{$goods_category_info.name}" >
+                                        <span class="help-inline" style="color:#F00; display:none;" id="err_name"></span>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label0 class="control-label col-sm-2">上级分类</label0>
+
+                                    <div class="col-sm-3">
+                                        <select name="parent_id_1" id="parent_id_1" onchange="get_category(this.value,'parent_id_2','0');" class="small form-control">
+	                                        <option value="0">顶级分类</option>
+                                            <foreach name="data" item="v" >                                            
+                                                <option value="{$v[id]}">{$v[level]}级分类&nbsp;{$v[name]}</option>
+                                            </foreach>                                            
+										</select>
+                                    </div>                                    
+                                   <!--  <div class="col-sm-3">
+                                      <select name="parent_id_2" id="parent_id_2"  class="small form-control">
+                                        <option value="0">请选择商品分类</option>
+                                      </select>  
+                                    </div>                  -->                     
+                                </div>
+                                
+                               <div class="form-group">
+                                    <label class="control-label col-sm-2">显示排序</label>
+                                    <div class="col-sm-1">
+                                        <input type="text" placeholder="50" class="form-control large" name="sort_order" value="{$goods_category_info.sort_order}"/>
+                                        <span class="help-inline" style="color:#F00; display:none;" id="err_sort_order"></span>
+                                    </div>
+                                </div>
+								        								                                                               
+                        <div class="box-footer">                        	
+                            <input type="hidden" name="id" value="{$goods_category_info.id}">                           
+                        	<button type="reset" class="btn btn-primary pull-left"><i class="icon-ok"></i>重填  </button>  
+                        	<input type="submit" name="submit_name"  class="btn btn-primary pull-right" id="submit_name">
+                        	                     	                 
+                        </div> 
+                        </form>
+                </div>
+                
+            </div>
+        </div>   
+    </section>
+          
+        <center>{$page}</center>
+   </div>
+ </div>
+
+<script>  
+    
+/** 以下是编辑时默认选中某个商品分类*/
+$(document).ready(function(){
+	
+	<if condition="$level_cat['2'] gt 0">	
+		 // 如果当前是二级分类就让一级父id默认选中
+		 $("#parent_id_1").val('{$level_cat[1]}'); 
+		 get_category('{$level_cat[1]}','parent_id_2','0');		 
+	</if>	
+	
+	<if condition="$level_cat['3'] gt 0">
+		 // 如果当前是三级分类就一级和二级父id默认 都选中
+		 $("#parent_id_1").val('{$level_cat[1]}');		 	
+		 get_category('{$level_cat[1]}','parent_id_2','{$level_cat[2]}');	
+	</if>	
+});
+
+/**
+ * 获取多级联动的商品分类 get_category(this.value,'parent_id_2','0')
+ */
+function get_category(id,next,select_id){
+    var url = '__APP__/get_category&parent_id='+ id;
+    $.ajax({
+        type : "GET",
+        url  : url,
+        error: function(request) {
+            alert("服务器繁忙, 请联系管理员!");
+            return;
+        },
+        success: function(v) {
+			v = "<option value='0'>请选择商品分类</option>" + v;
+            $('#'+next).empty().html(v);
+			(select_id > 0) && $('#'+next).val(select_id);//默认选中
+        }
+    });
+}
+ 
+</script>
+
+</body>
+</html>

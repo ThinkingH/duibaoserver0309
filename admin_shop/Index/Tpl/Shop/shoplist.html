@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+     <script src="__PUBLIC__/js/bootstrap.js"></script>
+    <script src="__PUBLIC__/js/jquery.metisMenu.js"></script>
+    <script src="__PUBLIC__/js/layer/layer.js"></script>
+    <style type="text/css">
+    a:hover{text-decoration:none;}
+    </style>
+    
+    <script type="text/javascript">
+    
+    $("document").ready(function(){
+    	
+		$(".delete_submit").click(function(){
+			
+			if(confirm("您确认要删除此条数据吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+		
+	    
+	
+	}); 
+</script>
+<script type="text/javascript">
+
+//修改指定表的指定字段值changeTableVal('shop_product','id','{$vo.id}','onsales',this)
+function changeTableVal(table,id_name,id_value,field,obj){
+		var src = "";
+		 if($(obj).attr('src').indexOf("cancel.png") > 0 ){          
+			   src = '__PUBLIC__/img/yes.png';
+				var value = 1;
+				
+		 }else{                    
+			   src = '__PUBLIC__/img/cancel.png';
+				var value = 2;
+		 }                                                 
+		
+		 $.ajax({
+				type: "GET",
+				async: false,
+				url: "__APP__/Shop/changeTableVal",
+				data: "id_value="+id_value+"&value="+value,
+				success: function(data){
+					if(data=='3'){
+						layer.alert('商品未审核不可以上架', {icon: 2});
+						//alert('商品未审核不可以上架');
+					}else if(data=='1'){
+						layer.alert('商品上架成功', {icon: 2});
+						//alert('商品上架成功');
+						$(obj).attr('src',src); 
+					}else if(data=='2'){
+						layer.alert('商品下架成功', {icon: 2});
+						//alert('商品下架成功');
+						$(obj).attr('src',src); 
+					}else if(data=='error'){
+						layer.alert('系统错误', {icon: 2});
+					}
+				}
+			});
+}
+
+
+</script>
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+	             <div class="breadcrumbs" id="breadcrumbs" >
+					<ol class="breadcrumb" style="background-color:#FFFFFF;">
+				        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+				        <li><a>商品管理</a></li>    
+				        <li><a>商品列表</a></li>    
+					</ol>
+				</div>
+            <div id="page-inner">
+                <div class="row">
+                </div>
+                <!-- /. ROW  -->
+                 <div class="navbar navbar-default" style="background-color: #f5f5f5;border: 1px solid #ddd; border-radius: 4px;  min-height: 50px;">
+	              <form action="__APP__/Shop/shoplist{$yuurl}" id="search-form2" class="navbar-form form-inline" method="get"  style="padding:10px;">
+	              	
+	              	<div class="form-group">
+		                    <select name="checkstatus" id="checkstatus" class="form-control">
+							{$optioncheckarr}
+							</select>
+                    </div>
+                    
+	              	<div class="form-group">
+		                    <select name="is_on_sale" id="is_on_sale" class="form-control">
+							{$optiononsalearr}
+							</select>
+                    </div>
+	                
+	                
+	                <div class="form-group" >
+	                  <div class="input-group">
+	                    <input type="text" name="good_name" value="{$good_name}" placeholder="商品名称"  class="form-control">
+	                  </div>
+	                </div>  
+	                             
+	               
+	                <!-- <div class="form-group" >
+	                  <div class="input-group">
+	                    <input type="text" name="orderno" value="{$orderno}" placeholder="订单编号"  class="form-control">
+	                  </div>
+	                </div>             -->   
+	                <!--排序规则-->
+	                <input type="submit" class="btn btn-primary" value="查询" >
+	              </form>
+             </div>
+              
+            <div class="row">
+                <div class="col-md-12">
+                  <!--   Kitchen Sink -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            商品列表展示
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td style="text-align:center;width:5%;">商品编号</td>
+											<td style="text-align:center;width:5%;">审核状态</td>
+											<!-- <td style="text-align:center;width:7%;">是否上架</td> -->
+											<!-- <td style="text-align:center;width:10%;">渠道编号</td> -->
+											<td style="text-align:center;width:12%">商品名称</td>
+											<!-- <td style="text-align:center;width:7%;">货号</td> -->
+											<!-- <td style="text-align:center;width:10%;">分类</td> -->
+											<td style="text-align:center;width:5%;">价格(元)</td>
+											<td style="text-align:center;width:5%;">兑换积分(分)</td>
+											<td style="text-align:center;width:5%;">支付方式</td>
+											<td style="text-align:center;width:5%;">领取方式</td>
+											<td style="text-align:center;width:5%;">库存</td>
+											<!-- <td style="text-align:center;width:5%;">每日最大库存</td>
+											<td style="text-align:center;width:5%;">用户每日兑换最大次数</td>
+											<td style="text-align:center; width:5%;">用户每月兑换最大次数</td> -->
+											<td style="text-align:center;width:5%;">商品排序</td>
+											<td style="text-align:center;width:5%;">主图展示</td>
+											<td style="text-align:center;width:5%;">上架</td>
+											
+											
+											
+											<td style="text-align:center;width:5%;">商品操作</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <volist name="list" id="vo" empty="没有对应数据" >
+                                        <tr>
+                                            <td>{$vo.id}</td>
+                                            <td>{$vo.status}</td>
+                                             <!--  <td>{$vo.onsaless}</td> -->
+                                            <!-- <td>{$vo.siteid}</td> -->
+                                            
+                                            <td>{$vo.name}</td>
+                                          <!--   <td>{$vo.goods_sn}</td> -->
+                                           <!--  <td>{$vo.typeidchild}</td> -->
+                                             <td>{$vo.price}</td>
+                                             <td>{$vo.score}</td>
+                                            <td>{$vo.feetype}</td>
+                                            <td>{$vo.pickup}</td>
+                                            <td>{$vo.kucun}</td>
+                                            <!-- <td>{$vo.daymax}</td>
+                                            <td>{$vo.userdaymax}</td>
+                                            <td>{$vo.usermonthmax}</td> -->
+                                            <td>{$vo.orderbyid}</td>
+                                            <td><img alt="" src="{$vo.mainpic}" width="100px"></td>
+                                            <td class="text-center"> 
+                                            <php>if($vo['onsales']=='1'){</php>                       
+                                             <img width="20" height="20" src="__PUBLIC__/img/yes.png" onclick="changeTableVal('shop_product','id','{$vo.id}','onsales',this)">
+                                             <php>}else if($vo['onsales']=='2'){</php>
+                                             <img width="20" height="20" src="__PUBLIC__/img/cancel.png" onclick="changeTableVal('shop_product','id','{$vo.id}','onsales',this)">
+                                             <php>}</php>
+                                            </td>
+                                            <td>
+                                            	<table>
+                                            	<tr><td>
+                                            	<php>if($vo['tpl']=='1'){</php><!-- 流量商品 -->
+                                            	<form action="__APP__/Shop/shopedit_liuliang{$yuurl}" method="post" style="margin:0px">
+                                            	<php>}else{</php>
+                                            	<form action="__APP__/Shop/shopedit{$yuurl}" method="post" style="margin:0px">
+                                            	<php>}</php>
+												<input type="hidden" name="id" value="{$vo.id}" />
+												<input type="submit" class="btn btn-danger" name="edit_submit" value="编辑" />
+												</form>
+												
+                                            	</td><td>
+                                            	<form action="__APP__/Shop/deletedata{$yuurl}" method="post" style="margin:10px">
+												<input type="hidden" name="id" value="{$vo.id}" />
+												<input type="submit" class="btn btn-danger delete_submit" name="delete_submit"  value="删除" />
+												</form>
+                                            	</td></tr>
+                                            	</table>
+												
+											</td>
+                                        </tr>
+                                        </volist>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        <center>{$page}</center>
+            </div>
+        </div>
+    
+
+
+</body>
+</html>

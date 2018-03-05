@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+   <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+   <style type="text/css">
+       a:hover { text-decoration:none;}
+    </style>
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$("#uupdate_submit").click(function(){
+			
+			var shopname = $("#shopname").val();
+			var shoptype  = $("#shoptype").val();
+			var shopurl  = $("#shopurl").val();
+			
+			if(shopname==''){
+				alert('店铺名称不能为空!');
+				return false;
+			}
+			if(shoptype==''){
+				alert('经营类型不能为空!');
+				return false;
+			}
+			
+			if(shopurl==''){
+				alert('店铺链接不能为空!');
+				return false;
+			}
+			
+			if(confirm("您确认要进行该操作吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+    
+</head>
+<body>
+        <div id="page-wrapper" style="margin: 0px;width:100%;">
+           <div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商户管理</a></li>    
+			        <li><a href="__APP__/User/shopstore" target="main_x">第三方网址</a></li>    
+			        <li><a>第三方网址编辑</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+                <!-- /. ROW  -->
+                <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                        
+                <div class="row">
+			      <div class="col-sm-12">
+			        <div class="panel panel-default">
+			            <div class="pull-right">
+			                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+			            </div>
+			            <div class="panel-heading">
+			                <h3 class="panel-title"><i class="fa fa-list"></i>修改第三方网址</h3>
+			            </div>
+			            <div class="panel-body">
+			            	<form action="__APP__/User/shopstoredata{$yuurl}" method="post" enctype="multipart/form-data"  >
+			            	<input type="hidden" name="id" value="{$list['id']}" />
+			                    <table class="table table-bordered">
+			                    <tbody>
+			                    <tr>
+			                        <td class="col-sm-2">商户编号:</td>
+			                        <td >{$list['id']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>店铺名称:</td>
+			                       <td><input class="form-control" type="text" name="shopname" id="storename" value="{$list['shopname']}" style="width:40%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>经营类型:</td>
+			                        <td><textarea rows="" cols="" class="form-control" name="shoptype" style="width:40%">{$list['shoptype']}</textarea></td>
+			                    </tr>
+			                    <tr>
+			                        <td>店铺链接:</td>
+			                        <td><textarea rows="" cols="" class="form-control" name="shopurl" style="width:40%">{$list['shopurl']}</textarea></td>
+			                    </tr>
+			                    <tr>
+			                        <td>店铺logo:</td>
+			                        <td><input type="file" name="shoplogo" class="form-control" id="shoplogo" style="width:30%;" onchange="preview(this)">
+			                        <div id="preview" style="position:relative; top:5px; left:10px;"><img alt="" src="{$list['shoplogo']}" width="200"></div> 
+			                        </td>
+			                    </tr>
+			                   
+			                    <tr>
+			                    <td></td>
+			                    <td> <input type="submit" id="uupdate_submit" class="btn btn-primary" name="uupdate_submit" style="margin15px 0px 0px 10px;" value="确认修改" /></td>
+			                    </tr>
+			                    </tbody>
+			                </table>
+			                </form>
+			            </div>
+			        </div>
+			 	  </div> 
+    		  </div>    
+                      
+           </div>
+       </div>
+          </div>
+        </div>
+       <!--图片预览  -->
+   <script src="__PUBLIC__/js/picview.js"></script>      
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+   
+	<script type="text/javascript" src="__PUBLIC__/datejs/jquery.min.js"></script>
+	<load href="../../Xheditor/xheditor-1.1.14-zh-cn.min.js" />
+	
+	<script type="text/javascript">
+	$(pageInit);
+	function pageInit()
+	{
+		$('#changecontent').xheditor({tools:'Source,|,Cut,Copy,Paste,Pastetext,|,Align,List,Outdent,Indent,|,Blocktag,Fontface,FontSize,|,Bold,Italic,Underline,Strikethrough,|,FontColor,BackColor,|,Emot,Table,Removeformat,Link,Unlink,|,Source,Preview,SelectAll,Hr,|,|,Img,|,|',upImgUrl:"../../Xheditor/demos/upload.php",upImgExt:"jpg,jpeg,gif,png"});
+	}
+	function submitForm(){$('#frmDemo').submit();}
+	</script>
+
+	<script type="text/javascript">
+	$("document").ready(function(){
+		
+		$("#uupdate_submit").click(function(){
+			
+			var name          = $("#name").val();
+			var goods_sn      = $("#goods_sn").val();
+		  	var mtype         = $("#mtype").val();
+		  	var type          = $("#type").val();
+		  	var typeid        = $("#typeid").val();
+		  	var miaoshu  = $("#miaoshu").val();
+		  	var feetype  = $("#feetype").val();
+		  	
+		  	
+		  	if(name==''){
+		  		alert("商品名称不能为空！");
+		  		return false;
+		  	}
+		  	
+		  	if(goods_sn==''){
+		  		alert("商品编号不能为空！");
+		  		return false;
+		  	}
+		  	
+		  	if(mtype==''){
+		  		alert("商品类型不能为空！");
+		  		return false;
+		  	}
+		  	
+		  	if(type==''){
+		  		alert("商品分类不能为空！");
+		  		return false;
+		  	}
+		  	
+		  	if(typeid==''){
+		  		alert("商品子分类不能为空！");
+		  		return false;
+		  	}
+		  	
+		  	/* if(miaoshu==''){
+		  		alert("商品描述不能为空！");
+		  		return false;
+		  	} */
+		  	if(feetype==''){
+		  		alert("商品支付方式不能为空！");
+		  		return false;
+		  	}
+		  	
+		});
+		
+	});
+	</script>
+	
+	 <script type="text/javascript"> 
+	   function getData()  
+	   {  
+	       var pid = $("#type").val();  
+	       
+	       $.ajax({          
+	           // url:"__APP__/Shop/ajax_munu"+Math.random(),  
+	            url:"__APP__/Shop/ajax_munu",  
+	            data:{'pid': pid},  
+	            type : "post",    
+	            cache : false,    
+	            dataType : "json",   
+	             error:function(data){  
+	               alert('error');  
+	            },  
+	            success:function(data){  
+	            if(data!="0"){  
+	               var categoryId = document.getElementById('typeid');  
+	               //清空数组  
+	               categoryId.length = 0;  
+	               for(var i=0;i<data.length;i++){  
+	                    var xValue=data[i].id;    
+	                    var xText=data[i].name;    
+	                    var option=new Option(xText,xValue);    
+	                    categoryId.add(option);    
+	               }  
+	             }else{  
+	                var categoryId = document.getElementById('typeid');  
+	                categoryId.length = 0;  
+	             }  
+	          }  
+	      });  
+	   }  
+</script> 
+   
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px; width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a href="__APP__/Shop/beforeshopadd" target="main_x">商品发布</a></li>    
+			        <li><a>虚拟商品发布</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+                <!-- /. ROW  -->
+                <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+               <div class="panel panel-info" style="border-color: #ddd;"  >
+                        <div class="panel-heading" style="background-color: #f5f5f5;border-color: #ddd;width:100%;color:#000;" >
+                                                            虚拟商品发布
+                        </div>
+                        
+                        <div class="panel-body">
+			            	<form action="__APP__/Shop/shopaddata{$yuurl}" method="post" enctype="multipart/form-data" onsubmit="return checkUserUpdate(this);" >
+			            	<input type="hidden" name="stype" value="xuni" />
+			                    <table class="table table-bordered">
+			                    <tbody>
+			                    <tr>
+			                        <td>商户名称:</td>
+			                       <td><input class="form-control" type="text" name="name" id="name" style="width:20%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>商品货号:</td>
+			                        <td><input class="form-control" type="text" name="goods_sn" id="goods_sn"  value="" style="width:20%"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>商品类型:</td>
+			                        <td>
+									 <select name="mtype" id="mtype" >
+									 <option value="1">虚拟商品</option>
+									  <option value="2">实物商品</option>
+									</select>
+									<select name="type" id="type"  onchange="getData()" >
+									<option value="">请选择商品子分类</option>
+									 {$optiontype}
+									</select>			
+									<select name="typeid" id="typeid" >
+									<option value="">请选择商品子分类</option>
+									 {$optionchildtype}
+									</select>			
+								</td>
+			                    </tr>
+			                   
+			                    <tr>
+			                        <td>商品积分价格（分）:</td>
+			                        <td><input type="text" name="score" id="score" class="form-control" value="0" style="width:10%"></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <td>商品价格（元）:</td>
+			                        <td><input type="text" name="price" id="price" class="form-control" value="0" style="width:10%"></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <td>商品支付方式:</td>
+			                        <td>
+			                         <select name="feetype" id="feetype" >
+										<option value='1'>积分</option>
+										<option value='2'>金额</option>
+										<option value='3'>积分金额混合</option>
+										<option value='4'>免费（vip）</option>
+										<option value='5'>免费（抽奖）</option>
+									</select>
+			                        </td>
+			                    </tr>
+			                    
+			                     <tr>
+                                    <td>是否包邮:</td>
+                                    <td>
+				                                        自提:<input type="radio"  value="1" name="pickup" checked="checked"/> 
+				                                        包邮:<input type="radio"  value="2" name="pickup" /> 
+				                    </td>
+                                </tr>                     
+			                     <tr>
+                                    <td>生成秘钥类型:</td>
+                                    <td>
+				                    <select name="miyao_type" id="miyao_type" >
+										<option value='1'>单秘钥</option>
+										<option value='2'>多秘钥</option>
+										<option value='3'>二维码</option>
+									</select>
+				                    </td>
+                                </tr> 
+                                
+                                <tr>
+                                    <td>秘钥发放时间:</td>
+				                    <td>
+				                                        即时发放:<input type="radio"  value="1" name="fafang_type" checked="checked"/> 
+				                                        后台发放:<input type="radio"  value="2" name="fafang_type" /> 
+				                    </td>
+                                </tr>    
+                                
+                                 <tr>
+			                        <td>卡密有效期:</td>
+			                        <td><input type="text" name="youxiaoqi" id="youxiaoqi" class="form-control" value="0" style="width:10%"></td>
+			                    </tr>                                     
+			                    
+			                     <tr>
+			                        <td>商品主图:</td>
+			                        <td><input type="file" name="mainpic" id="mainpic"></td>
+			                    </tr>
+			                     <tr>
+			                        <td>商品详情图1:</td>
+			                        <td><input type="file" name="showpic1" id="showpic1"></td>
+			                    </tr>
+			                     <tr>
+			                        <td>商品详情图2:</td>
+			                        <td><input type="file" name="showpic2" id="showpic2"></td>
+			                    </tr>
+			                     <tr>
+			                        <td>商品详情图3:</td>
+			                        <td><input type="file" name="showpic3" id="showpic3"></td>
+			                    </tr>
+			                     <tr>
+			                        <td>商品描述:</td>
+			                        <td><textarea rows="5" cols="200" name="miaoshu" id="miaoshu" style="width:600px;" class="form-control"></textarea></td>
+			                    </tr>
+			                    
+			                     <tr>
+			                        <td>商品库存:</td>
+			                        <td><input type="text" name="kucun" id="kucun" class="form-control" value="100" style="width:10%;"></td>
+			                    </tr>
+			                    
+			                     <tr>
+			                        <td>每日允许最大库存:</td>
+			                        <td><input type="text" name="daymax" id="daymax" class="form-control" value="100" style="width:10%;"></td>
+			                    </tr>
+			                    
+			                    
+			                     <tr>
+			                        <td>允许用户每日兑换最大次数:</td>
+			                        <td> <input type="text" name="userdaymax" id="userdaymax" class="form-control" value="100" style="width:10%;"></td>
+			                    </tr>
+			                    
+			                     <tr>
+			                        <td>允许用户每月兑换最大次数:</td>
+			                        <td><input type="text" name="usermonthmax" id="usermonthmax" class="form-control" value="100" style="width:10%;"></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <td>允许用户终身兑换最大次数:</td>
+			                        <td> <input type="text" name="userallmax" id="userallmax" class="form-control" value="100" style="width:10%;"></td>
+			                    </tr>
+			                     <tr>
+			                        <td>视频链接:</td>
+			                        <td> <textarea rows="5" cols="200" name="video_url" id="video_url" style="width:600px;" class="form-control"></textarea></td>
+			                    </tr>
+			                     <tr>
+			                        <td>抽奖链接:</td>
+			                        <td> <textarea rows="5" cols="200" name="prize_url" id="prize_url" style="width:600px;" class="form-control"></textarea></td>
+			                    </tr>
+			                    <tr>
+			                        <td>备注:</td>
+			                        <td> <textarea rows="5" cols="200" name="remark" id="remark" style="width:600px;" class="form-control"></textarea></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <td>商品详情页:</td>
+			                        <td><textarea id="changecontent" name="goods_content" rows="32" cols="100" class="form-control" style="width:80%;" ></textarea></td>
+			                    </tr>
+			                    
+			                    <tr>
+			                    <td></td>
+			                    <td><input type="submit" id="uupdate_submit" class="btn btn-primary" name="uupdate_submit"  value="确认添加" /></td>
+			                    </tr>
+			                    
+			                    
+			                    </tbody>
+			                </table>
+			                </form>
+			            </div>
+                        </div>
+                   </div>
+        </div>
+        
+            </div>
+        </div>
+        
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兑宝商户后台</title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+   <!--  <link href="__PUBLIC__/css/custom.css" rel="stylesheet" /> -->
+    <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+    
+    <script type="text/javascript">
+	$("document").ready(function(){
+	
+		$("#uupdate_submit").click(function(){
+			
+			var name   = $("#attr_name").val();
+	    	var type  = $("#type").val();
+	    	var attr_values = $("#attr_values").val();
+	    	var flag = $("#flag").val();
+	    	
+	    	
+	    	
+	    	if(name==''){
+	    		alert('属性名称不能为空！');
+	    		return false;
+	    	}
+	    	
+	    	if(type==''){
+	    		alert('商品类型不能为空！');
+	    		return false;
+	    	}
+	    	
+	    	if(attr_values==''){
+	    		alert('属性值不能为空！');
+	    		return false;
+	    	}
+			
+			if(confirm("您确认要进行该操作吗？")) {
+				
+			}else {
+				return false;
+			}
+		});
+	
+	});
+</script>
+
+<script>
+// 判断输入框是否为空
+function checkgoodsTypeName(){
+	var name = $("#addEditGoodsTypeForm").find("input[name='attr_name']").val();
+    if($.trim(name) == '')
+	{
+		$("#err_name").show();
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+
+
+</head>
+<body>
+       
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	<div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>商品管理</a></li>    
+			        <li><a href="__APP__/Shoparr/shopattribute">商品属性</a></li>    
+				</ol>
+			</div>
+            <div id="page-inner">
+                <!-- /. ROW  -->
+               
+       <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 商品属性</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_tongyong" data-toggle="tab">商品属性</a></li>
+                    </ul>
+                    <!--表单数据-->
+                    <form action="__APP__/Shoparr/attributedata" method="post" id="addEditGoodsTypeForm" onsubmit="return checkgoodsTypeName();">   
+                     <input type="hidden" name="id" value="{$list.id}" />                 
+                        <!--通用信息-->
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">
+                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td>属性名称:</td>
+                                    <td>
+                                        <input type="text" value="{$list.attr_name}" name="attr_name" id="attr_name"/>
+                                        <span id="err_name" style="color:#F00; display:none;">属性名称不能为空!!</span>                                        
+                                    </td>
+                                </tr> 
+                                                               
+                                <tr>
+                                    <td>商品分类:</td>
+                                    <td>
+										<select name="type" id="type">
+											{$optiontype}
+										</select>
+									</td>
+                                </tr> 
+                                
+                                <tr>
+                                    <td>属性值:</td>
+                                    <td>
+										<textarea rows="15" cols="100" name="attr_values"  id="attr_values">{$list.attr_values}</textarea>
+										<font size="-1" color="red">*一行一个属性值</font>
+									</td>
+                                </tr>  
+                                
+                                 <tr>
+                                    <td>是否开启:</td>
+                                    <td>
+										<select name="flag" id="flag">
+											{$optionflag}
+										</select>
+									</td>
+                                </tr> 
+                                                               
+                                </tbody>                                
+                                </table>
+                        </div>                           
+                    </div>              
+                    <div class="pull-right">
+                        <!-- <button class="btn btn-primary" title="" data-toggle="tooltip" type="submit" data-original-title="保存"><i class="fa fa-save"></i></button> -->
+                        <input type="submit" id="uupdate_submit" class="btn btn-primary" name="uupdate_submit" style="margin:15px 0px 0px 10px;" value="确认修改" />
+                    </div>
+			    </form>
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+          
+        <center>{$page}</center>
+   </div>
+ </div>
+
+
+</body>
+</html>

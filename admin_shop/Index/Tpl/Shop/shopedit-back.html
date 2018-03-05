@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd html 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<link href="__PUBLIC__/admin/css/bootstrap.min.css" rel="stylesheet" />
+<link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/admin.main.css" />
+
+<script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+<load href="../../Xheditor/xheditor-1.1.14-zh-cn.min.js" />
+<style type="text/css">
+textarea {
+    width:100%;
+    }
+</style>
+<script type="text/javascript">
+$(pageInit);
+function pageInit()
+{
+	$('#changecontent').xheditor({tools:'Source,|,Cut,Copy,Paste,Pastetext,|,Align,List,Outdent,Indent,|,Blocktag,Fontface,FontSize,|,Bold,Italic,Underline,Strikethrough,|,FontColor,BackColor,|,Emot,Table,Removeformat,Link,Unlink,|,Source,Preview,SelectAll,Hr,|,|,Img,|,|',upImgUrl:"../../Xheditor/demos/upload.php",upImgExt:"jpg,jpeg,gif,png"});
+}
+function submitForm(){$('#frmDemo').submit();}
+</script>
+
+<script type="text/javascript">
+$("document").ready(function(){
+	
+	$("#uupdate_submit").click(function(){
+		
+	  	
+	});
+	
+});
+</script>
+</head>
+
+<body class="fixed-top">
+
+	<div class="p10 m10">
+	
+		<div class="portlet">
+			<div class="portlet-title">
+				<a href="__APP__/Main/index"><h4><i class="icon-reorder"></i>管理系统-></h4></a><a href="__APP__/Shop/shoplist"><span class="h5 cur">商品管理-></span></a><a href="__APP__/Shop/shopedit"><span class="h5 cur">商品编辑</span></a>
+			</div>
+		</div>
+		
+		<div class="tab-pane" id="hj_c">
+		
+		<div class="panel-heading">
+         <h3 class="panel-title"><i class="fa fa-list"></i></h3>
+        </div>
+        
+        <form action="__APP__/Shop/shopeditdata{$yuurl}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$list['id']}" />
+			<table class="table table-hover table-bordered text-center">
+				<tr>
+					<td width="200" align="right">商户名称</td>
+					<td>
+						<input type="text" name="name" id="name" size="100" maxlength="100" style="width:40%;" value="{$list['name']}">
+					</td>
+				</tr>
+			
+				<tr>
+					<td width="200" align="right">商品货号</td>
+					<td>
+						<input type="text" name="goods_sn" id="goods_sn" size="50" maxlength="50" class="form-control" value="{$list['goods_sn']}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品类型:</td>
+					<td>
+						<select name="mtype" id="mtype" >
+						{$optionxushitype}
+						</select>
+						
+						<select name="type" id="type" >
+						{$optiontype}
+						</select>
+						
+						<select name="typeid" id="typeid" >
+						{$optionchildtype}
+						</select>
+						
+					</td>
+		
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品金额价格（元）:</td>
+					<td>
+					<input type="text" name="price" id="price" size="30" maxlength="30" value="{$list['price']}">
+					<font size="-1" color="red"></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品积分价格（分）:</td>
+					<td>
+					<input type="text" name="score" id="score" size="30" maxlength="30" value="{$list['score']}" >
+					<font size="-1" color="red"></font>
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td width="200" align="right">上传商品图片:</td>
+					<td>
+					<input type="file" name="mainpic" id="mainpic">
+					&nbsp;&nbsp;<font color="red" size="-1"></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品详细页图1:</td>
+					<td>
+					<input type="file" name="showpic1" id="showpic1">
+					&nbsp;&nbsp;<font color="red" size="-1"></font>
+					</td>
+				</tr>
+	
+				<tr>
+					<td width="200" align="right">商品详细页图2:</td>
+					<td>
+					<input type="file" name="showpic2" id="showpic2">
+					&nbsp;&nbsp;<font color="red" size="-1"></font>
+					</td>
+				</tr>
+	
+				<tr>
+					<td width="200" align="right">商品详细页图3:</td>
+					<td>
+					<input type="file" name="showpic3" id="showpic3">
+					&nbsp;&nbsp;<font color="red" size="-1"></font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品描述：</td>
+					<td width="800">
+						<textarea rows="5" cols="200" name="miaoshu" id="miaoshu" style="width:600px;">{$list['miaoshu']}</textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品支付方式:</td>
+					<td>
+						<select name="feetype" id="feetype" >
+						{$optionfeetype}
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品领取方式:</td>
+					<td>
+						<select name="pickup" id="pickup" >
+						{$optionpickup}
+						</select>
+						
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td width="200" align="right">商品库存:</td>
+					<td><input type="text" name="kucun" id="kucun" size="20" maxlength="20" value="{$list['kucun']}" ></td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">每日允许最大库存:</td>
+					<td>
+					<input type="text" name="daymax" id="daymax" size="20" maxlength="20" value="{$list['daymax']}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">允许用户每日兑换最大次数:</td>
+					<td>
+					<input type="text" name="userdaymax" id="userdaymax" size="20" maxlength="20" value="{$list['userdaymax']}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">允许用户每月兑换最大次数:</td>
+					<td>
+					<input type="text" name="usermonthmax" id="usermonthmax" size="20" maxlength="20" value="{$list['usermonthmax']}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">允许用户终身兑换最大次数:</td>
+					<td>
+					<input type="text" name="userallmax" id="userallmax" size="20" maxlength="20" value="{$list['userallmax']}">
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">排序:</td>
+					<td>
+					<input type="text" name="orderbyid" id="orderbyid" size="10" maxlength="10" value="{$list['orderbyid']}" >
+					<font size="-1" color="red">*按倒序排序</font>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">备注:</td>
+					<td>
+					<!-- <input type="text" name="statusmsg" id="statusmsg" size="100" maxlength="100"  style="width:50%;> -->
+					<textarea rows="5" cols="200" name="remark" id="remark" style="width:600px;color:red;">{$list['remark']}</textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right">商品详情页:</td>
+					<td width="800" >
+						<textarea id="changecontent" name="xiangqing" rows="32" cols="120" ></textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td width="200" align="right"><font color="red">*</font>审核反馈:</td>
+					<td>
+					<font color="red">{$list['statusmsg']}</font>
+					<!-- <input type="text" name="statusmsg" id="statusmsg" size="100" maxlength="100"  style="width:50%;> -->
+					<!-- <textarea rows="5" cols="200" name="statusmsg" id="statusmsg" style="width:600px;color:red;">{$list['statusmsg']}</textarea> -->
+					</td>
+				</tr>
+				
+			</table>
+		
+			<input type="submit" id="uupdate_submit" class="btn btn-primary" name="uupdate_submit" style="margin15px 0px 0px 10px;" value="确认修改" />
+			
+		</form>
+		
+		</div>
+		
+		
+	
+	</div>
+	
+	
+	
+</body>
+
+</html>

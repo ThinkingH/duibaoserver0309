@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <link href="__PUBLIC__/css/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/font-awesome.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/basic.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet" />
+   <link href="__PUBLIC__/css/font.css" rel="stylesheet"  type='text/css'/>
+   <script src="__PUBLIC__/js/jquery-1.10.2.js"></script>
+   <script type="text/javascript">
+	$("document").ready(function(){
+		
+		$("#uupdate_submit").click(function(){
+			
+			var kerstr = $("#keystr").val();
+			
+			if(kerstr==''){
+				alert('兑换码不能为空！');
+				return false;
+			}
+			
+			if(confirm("您确认要核销该数据吗？")) {
+			}else {
+				return false;
+			}
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+        <div id="page-wrapper" style="margin:0px;width:100%;">
+        	 <div class="breadcrumbs" id="breadcrumbs" >
+				<ol class="breadcrumb" style="background-color:#FFFFFF;">
+			        <li><a href="__APP__/Main/index" target="main_x" ><i class="fa fa-home"></i>&nbsp;&nbsp;后台首页</a></li>
+			        <li><a>订单管理</a></li>    
+			        <li><a href="__APP__/Order/index" target="main_x">虚拟订单</a></li>    
+			        <li><a>虚拟订单兑换</a></li>    
+				</ol>
+			</div>
+        
+        	 <div id="page-inner">
+                <!-- /. ROW  -->
+                <div class="row">
+			      <div class="col-sm-12">
+			        <div class="panel panel-default">
+			            <div class="pull-right">
+			                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+			            </div>
+			            <div class="panel-heading">
+			                <h3 class="panel-title"><i class="fa fa-list"></i>虚拟订单兑换</h3>
+			            </div>
+			            <div class="panel-body">
+			            	<form action="__APP__/Order/hexiaodata{$yuurl}" method="post" enctype="multipart/form-data" onsubmit="return checkUserUpdate(this);" >
+			            	<input type="hidden" name="id" value="{$list['id']}" />
+			                    <table class="table table-bordered">
+			                    <tbody>
+			                    <tr>
+			                        <td>商户编号:</td>
+			                        <td >{$list['id']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>商品名称：</td>
+			                        <td>{$list['name']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>商品数量:</td>
+			                       <td>{$list['productnum']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>订单号:</td>
+			                        <td>{$list['orderno']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>创建时间:</td>
+			                        <td>{$list['order_createtime']}</td>
+			                    </tr>
+			                    
+			                    <tr>
+			                        <td>兑换码:</td>
+			                        <td>{$list['keystr']}</td>
+			                    </tr>
+			                    <tr>
+			                        <td>密码:</td>
+			                        <td>{$list['passwd']}</td>
+			                    </tr>
+			                    
+			                     <tr>
+			                        <td>备注:</td>
+			                        <td>{$list['remark']}</td>
+			                    </tr>
+			                    </tbody>
+			                </table>
+			                </form>
+			            </div>
+			        </div>
+			 	  </div> 
+    		</div>    
+            </div>
+            
+        </div>
+        
+</body>
+</html>
