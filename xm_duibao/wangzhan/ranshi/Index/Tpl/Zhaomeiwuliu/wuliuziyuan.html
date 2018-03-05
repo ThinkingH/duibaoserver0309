@@ -1,0 +1,91 @@
+<include file="./Public/Template/header.html" />
+
+<body data-spm="7791109" class="index">
+
+<include file="./Public/Template/daohang.html" />
+<div class="parallax parallax-4" data-spm="5" >
+	<section>
+	<div class="container">
+		<div class="row">
+			<div class="m-t-10"></div>
+		</div>
+		<div class="row ">			
+			<div class="col-md-3 box">
+				<ul class="hm_minimenu">
+					<h3 style="text-indent: 25px;">
+						找煤物流
+					</h3>
+					 
+					 <li class="{$huowuziyuan}" >
+								<a  href="__APP__/Zhaomeiwuliu/huowuziyuan">
+								 货源信息<i class="glyphicon glyphicon-send pull-right"></i>
+								</a>
+							</li>
+						
+					        <li  class="{$wuliuziyuan}">
+								<a  href="__APP__/Zhaomeiwuliu/wuliuziyuan">
+								 物流运力 <i class="glyphicon glyphicon-send pull-right"></i>
+								</a>
+							</li>
+							
+					 		
+							<li  class="{$hezuo}">
+								<a  href="__APP__/Zhaomeiwuliu/hezuo">
+								 我要合作 <i class="glyphicon glyphicon-send pull-right"></i>
+								</a>
+							</li>
+							
+				</ul>
+			</div>			
+			<div class="col-md-12 box" style="width:900px;">
+						<div class="list_content_title clearfix">
+						 <div class="list_title fl" style="font-size:16px;">物流列表</div>
+					   </div>
+					   
+						<div class="table-responsive p-b-30" style="overflow-x: initial;">
+						<table class="table table-hover xhzy_table">
+							<thead>
+								<tr>
+									<th style="width:110px;">船名</th>
+									<th style="width:110px;">类型</th>
+									<th style="width:110px;">空船港</th>
+									<th style="width:110px;">待卸货物</th>
+									<th style="width:70px;">吨位</th>
+									
+								</tr>
+							</thead>
+							
+							<volist name='list' id='vo'>
+							<tbody style="border-top:1px solid #e5e5e5;">
+							
+							<tr>
+									<td style="font-size:14px;">{$vo.w_chuanming}</td>					
+									<td style="font-size:14px;">{$vo.w_type} </td>
+									<td style="font-size:14px;">{$vo.w_kongchuangang}</td>
+									<td style="font-size:14px;">{$vo.w_daixiehuowu}</td>
+									<td style="font-size:14px;">{$vo.w_dunwei}</td>
+						                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               			<!-- <td>2016-01-25</td> -->
+								</tr>
+							
+							</tbody>
+							</volist>
+							
+						</table>
+					   </div>
+						<!--  分页显示-->
+						<nav class="pager">
+						
+						
+							<div class="current"> {$page}</div> 
+							
+							  </div>						
+						</nav>
+						
+					
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+</body>
+<include file="./Public/Template/foot1.html" />

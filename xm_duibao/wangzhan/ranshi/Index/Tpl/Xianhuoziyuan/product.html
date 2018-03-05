@@ -1,0 +1,84 @@
+
+<include file="./Public/Template/header.html" />
+
+<body data-spm="7791109" class="index">
+
+<include file="./Public/Template/daohang.html" />
+  
+  <div class="parallax parallax-4" data-spm="5" >
+
+	<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="hm_search">
+						
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12 box">
+						<div class="list_content_title clearfix">
+						 <div class="list_title fl"><span class="fcolor_0 green-text">现货资源</span>列表</div>
+					   </div>
+						<div class="table-responsive p-b-30" style="overflow-x: initial;">
+						<table class="table table-hover xhzy_table">
+							<thead>
+								<tr>
+									<th>类型</th>
+									<th>品种</th>
+									<th>低位热值</th>
+									<th>收到基硫份</th>
+									<th>数量（吨）</th>
+									<th>价格（元/吨）</th>
+									<th>交货地</th>
+									 <th style="width:20px;"></th>
+									<th>热线</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							<volist name="list" id="vo">
+							<tr>
+									<td>{$vo.m_name}</td>					
+                                    <td>{$vo.m_type} </td>
+									<td>{$vo.m_diweirezhi}</td>
+									<td>0.23%</td>
+									<td>{$vo.m_shuliang}</td>
+									<td>{$vo.m_jiage}</td>
+									<td>{$vo.m_jiaohuodi}</td>
+									<td>
+										<div class="company">
+											<p class="gs"> </p>
+											<div class="company_div" style="display: none;">
+												<p></p>
+												
+											</div>
+										</div>
+									</td>
+									<td>******</td>
+									<td><a href="__APP__/Xianhuoziyuan/chakanxiangqing/id/{$vo.id}" class="btn btn-success btn-xs">详情</a></td>
+								</tr>
+								</volist>
+
+								
+								
+							</tbody>
+						</table>
+						</div>
+						
+						<nav class="pager">
+						
+						
+							<div class="current"> {$page}</div> 
+							
+							  </div>						
+							  </nav>
+					</div>
+				</div>
+				
+				
+				
+			</div>
+</section>
+</body>
+<include file="./Public/Template/foot1.html" />

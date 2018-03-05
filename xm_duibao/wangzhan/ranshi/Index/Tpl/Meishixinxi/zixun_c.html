@@ -1,0 +1,49 @@
+<include file="./Public/Template/header.html" />
+
+<body data-spm="7791109" class="index">
+
+<include file="./Public/Template/daohang.html" />
+
+<div class="parallax parallax-4" data-spm="5" >
+<div class="container">
+		<div class="container">
+		<div class="row">
+			<div class="m-t-10"></div>
+		</div>
+		<div class="row ">			
+			
+			<div class="col-md-9 box" style="width:1200px;">
+				<div class="panel panel-default hz-content">
+					<div class="panel-heading">
+						<div class="panel-title">企业新闻</div>
+					</div>
+					<div class="panel-body">
+						<div style="margin-left:0;margin-right:0;padding-bottom: 15px;border-bottom: 1px dashed #ccc;margin-bottom: 20px;">
+							<div class="text-center">
+								<h2 style="font-family:'微软雅黑',Helvetica,Arial,sans-serif; font-size:20px;">{$list_s.name}</h2>
+								
+							</div>
+							<div class="text-center">
+								<small>{$list_s.writeuser}</small>
+								<div style="float: right;display: inline;">
+									<!-- JiaThis Button BEGIN -->
+									<div class="jiathis_style">
+										<span class="jiathis_txt">{$list_s.sendtime}</span>
+										
+									</div>
+							</div>
+						</div>
+						<div style="height: auto;">
+						{$list_s.content}
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+	</div>
+</div>
+</body>
+<include file="./Public/Template/foot1.html" />

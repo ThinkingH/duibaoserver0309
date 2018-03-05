@@ -1,0 +1,47 @@
+<include file="./Public/Template/header.html" />
+
+<body data-spm="7791109" class="index">
+
+<include file="./Public/Template/daohang.html" />
+
+<div class="parallax parallax-4" data-spm="5" >
+<div class="container">
+		<div class="row">
+			<div class="m-t-10"></div>
+		</div>
+		<div class="row ">			
+			<div class="col-md-3 box">
+				
+			</div>			
+			<div class="col-md-9 box" style="text-align:center; width:1200px;">
+				<div class="panel panel-default hz-content">
+					<div class="panel-heading">
+						<div class="panel-title" style="text-align:left;">煤市资讯</div>
+					</div>
+					<volist name='list' id='vo'>
+					<div class="panel-body" style="text-align:left;">
+						<div class="media">
+							<div class="media-body">
+								<a href="__APP__/Meishixinxi/hangqing_c/id/{$vo.id}" >  <h4 class="media-heading" style="font-family:'微软雅黑',Helvetica,Arial,sans-serif; font-size:16px;">{$vo.name}</h4> 
+								<div class='li-time' style="text-align:right;">{$vo.sendtime}</div></a>
+							</div>
+						</div>
+					</div>
+				  <div class="bord-dashed pt10 mb20"></div>
+				  </volist>
+					     						
+						<nav class="pager">
+						  <div> 
+						  {$page}
+						 
+						  </div>
+						</nav>
+					 </div>
+			    </div>
+			
+		</div>
+		
+	</div>
+</div>
+</body>
+<include file="./Public/Template/foot1.html" />

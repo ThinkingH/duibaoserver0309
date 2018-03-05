@@ -1,0 +1,10 @@
+document.writeln("<dl class=\"foot_list\">");
+document.writeln("<dt>");
+document.writeln("<i class=\"fa fa-question-circle\"></i> ");document.writeln("常见问题</dt>");
+document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/119/classid/44\">");
+document.writeln("注册流程");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/109/classid/44\">");
+document.writeln("无法登陆/忘记密码");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"/index.php/Home/Article/readnews/articleid/110/classid/44\">");
+document.writeln("修改账户信息");
+document.writeln("</a></dd>");document.writeln("</dl>");

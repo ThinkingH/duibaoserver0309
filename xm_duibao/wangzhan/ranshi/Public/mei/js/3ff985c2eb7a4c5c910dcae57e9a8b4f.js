@@ -1,0 +1,10 @@
+document.writeln("<dl class=\"foot_list\">");
+document.writeln("<dt>");
+document.writeln("<i class=\"fa fa-shopping-cart\"></i> ");document.writeln("我要买煤炭</dt>");
+document.writeln("<dd><a href=\"\">");
+document.writeln("如何自己找货");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"\">");
+document.writeln("如何委托交易");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"\">");
+document.writeln("如何查看购单状态");
+document.writeln("</a></dd>");document.writeln("</dl>");

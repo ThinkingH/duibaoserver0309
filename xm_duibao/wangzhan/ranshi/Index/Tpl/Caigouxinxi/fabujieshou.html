@@ -1,0 +1,221 @@
+<include file="./Public/Template/header.html" />
+<head>
+<!-- <script > 
+	function noreg2(){
+		if($('#comment').val()==''){
+			//$('#comment').focus();
+			$('#messagetips').html('<font style=\"color:#a94442\">请根据提示内容填写</font>').show(300).delay(3000).hide(300);
+			return false;
+		}
+		if($('#company_cn').val()==''){
+			$('#company_cn').focus();
+			$('#messagetips').html('<font style=\"color:#a94442\">请输入公司名称</font>').show(300).delay(3000).hide(300);
+			return false;
+		}
+		if($('#mobile').val()==''){
+			$('#mobile').focus();
+			$('#messagetips').html('<font style=\"color:#a94442\">请输入手机号</font>').show(300).delay(3000).hide(300);
+			return false;
+		}
+		$("#tips_button").attr("disabled","disabled");
+		$("#tips_button").addClass("disabled");
+		//$("#button").removeClass("btn btn-signin");
+		$("#tips_button").html("等待<div class='typing_loader'></div>");
+		var json_req = {
+			comment: $('#comment').val(),	
+			company: $('#company_cn').val(),	
+			mobile: $('#mobile').val()
+		};
+		$.ajax({
+			type: "post",
+			url: "index.php/Caigouxinxi/fabujieshou" + Math.random(),
+			data: json_req,
+			dataType: "json",//返回json格式的数据
+			success: function(data, state) {	
+				$('#messagetips').html('');				
+				$('#messagetips').html('<div id=\"notice-me\" class=\"has-success\" style=\"padding: 0 ;\"><label style=\"margin: 0 ;\" class=\"control-label\" for=\"inputError\"><i class=\"fa fa-check-circle-o\"></i> <span >'+data.info+'</span></label></div>');
+						
+				if(data.status){					
+						
+					
+					var count = 2;
+					var countdown = setInterval(CountDown, 1000);
+					function CountDown() {
+						$('#messagetips').html('');				
+						$('#messagetips').html('<div id=\"notice-me\" class=\"has-success\" style=\"padding: 0 ;\"><label style=\"margin: 0 ;\" class=\"control-label\" for=\"inputError\"><i class=\"fa fa-check-circle-o\"></i> <span >'+data.info+',' + count + '秒后跳转</span></label></div>');
+						if (count == 0) {
+							window.location.href=data.url;
+							clearInterval(countdown);
+						}
+						count--;
+					}
+					
+				}else{					
+					$('#messagetips').html('');
+					$('#messagetips').html('<div id=\"notice-me\" class=\"has-error\" style=\"padding: 0 ;\"><label class=\"control-label\" style=\"margin: 0 ;\" for=\"inputError\"><i class=\"fa fa-times-circle-o\"></i> <span >'+data.info+'</span></label></div>').show(300).delay(3000).hide(300);
+					$("#tips_button").removeAttr("disabled","disabled");
+					$("#tips_button").removeClass("disabled");
+					$("#tips_button").html("立即发布");
+				}
+			},
+			error: function() {
+				$('#messagetips').html('');
+				$('#messagetips').html('<div id=\"notice-me\" class=\"has-error\" style=\"padding: 0 ;\"><label style=\"margin: 0 ;\" class=\"control-label\" for=\"inputError\"><i class=\"fa fa-times-circle-o\"></i> <span >网络错误!</span></label></div>').show(300).delay(3000).hide(300);
+				$("#tips_button").removeAttr("disabled","disabled");
+				$("#tips_button").removeClass("disabled");
+				$("#tips_button").html("立即发布");
+			},
+			complete: function() {
+				$("#tips_button").removeAttr("disabled","disabled");
+				$("#tips_button").removeClass("disabled");
+				$("#tips_button").html("立即发布");
+			}
+		});
+		return false;
+	}
+
+</script> -->
+</head>
+
+<body>
+<include file="./Public/Template/daohang.html" />
+   <div class="parallax parallax-4" data-spm="5" >
+  
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hm_search">
+					<div class="hm_search_top">
+						<h2>撮合交易流程</h2>
+					</div>
+					<div class="hm_search_breed">
+						<div class="col-md-12">
+							<div class="col-md-3 col-xs-4 noreg_pro">
+								<div class="col-md-5">
+								<div class="project_img">
+									<img src="__PUBLIC__/mei/picture/noreg_1.png">
+								</div>
+								</div>
+								<div class="col-md-7">
+								<div class="header"><i>1</i> 发布采购</div>
+								<div class="project_features">
+									通过网页、电话或QQ发布采购需求给我们
+								</div>
+								</div>
+							</div>
+							<div class="col-md-1 noreg_pro2 hidden-sm hidden-xs">
+								<img src="__PUBLIC__/mei/picture/noreg_2.png">
+							</div>
+							<div class="col-md-4 col-xs-4 noreg_pro">
+								<div class="col-md-5">
+								<div class="project_img">
+									<img src="__PUBLIC__/mei/picture/noreg_3.png">
+								</div>
+								</div>
+								<div class="col-md-7">
+								<div class="header"><i>2</i> 选择资源</div>
+								<div class="project_features">
+									我们为您选择货物，您来选择最合适的资源
+								</div>
+								</div>
+							</div>
+							<div class="col-md-1 noreg_pro2 hidden-sm hidden-xs">
+								<img src="__PUBLIC__/mei/picture/noreg_2.png">
+							</div>
+							<div class="col-md-3 col-xs-4 noreg_pro">
+								<div class="col-md-5">
+								<div class="project_img">
+									<img src="__PUBLIC__/mei/picture/noreg_4.png">
+								</div>
+								</div>
+								<div class="col-md-7">
+								<div class="header"><i>3</i> 完成交易</div>
+								<div class="project_features">
+									敲定合作方，完成货物，货款交收
+								</div>
+								</div>
+							</div>
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default well">
+					<div class="panel-heading">
+						<div class="panel-title panel_reg_title" style="text-align: left">您的委托采购内容</div>								
+					</div>
+					<div class="panel-body panel_reg_body">
+						<form method="post" onsubmit="return noreg2();">
+							<div class="col-md-12">
+								<div class="col-md-6">
+									<div class="input-group mb_15">
+										<span class="input-group-addon">
+											<i class="fa fa-building-o"></i>
+										</span>
+										<input class="form-control" placeholder="请输入公司名称" type="text" id="company_cn" name="company"  value="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="input-group mb_15">
+										<span class="input-group-addon">
+											<i class="fa fa-phone"></i>
+										</span>
+										<input class="form-control" placeholder="请输入手机号" type="text" id="mobile" name="phone"   value="">
+									</div>
+								</div>
+							</div>
+							<div class="form-group mb_5 plr-10">	
+								<textarea class="form-control noreg_con" rows="5" name="comment" id="comment" placeholder="写下您真实、准确的采购或供应需求！包括煤种、指标、数量、价格，我们收到后会尽快与您联系并免费帮您找到最好的货。"></textarea>
+							</div>
+							
+							
+							<!-- <div class="text-center" style="line-height:30px;"><i class="fa fa-info-circle text-warning"></i> 确认您发的采购信息真实无误，否则不能发布！谢谢！</div> -->
+							<div class="text-center" style="height:30px;"><div id="messagetips"></div></div>
+							<ul class="nav phone_ul"> 
+								<li class="phone_ul_li1">客服电话<br>400-****-***</li>
+								<li class="phone_ul_li2"><button name="fabu" id="submit" type="submit" class="btn btn-warning btn_send">立即发布</button></li>
+							</ul>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+   </div>
+   
+   <script type="text/javascript">
+		$("document").ready(function(){
+			
+			$("#submit").click(function() {
+				
+				var xuqiu  = $("#comment").val();
+				var gongsi = $("#company_cn").val();
+				var phone  = $("#mobile").val();
+				
+				if(xuqiu=='') {
+					alert('需求不能为空');
+					return false;
+				}
+				if(gongsi=='') {
+					alert('公司名称不能为空');
+					return false;
+				}
+				if(phone=='') {
+					alert('联系人不能为空');
+					return false;
+				}
+				
+				
+			});
+			
+			
+		});
+		</script>
+   </body>
+
+<include file="./Public/Template/foot1.html" />

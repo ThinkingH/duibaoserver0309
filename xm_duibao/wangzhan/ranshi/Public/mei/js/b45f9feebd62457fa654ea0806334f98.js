@@ -1,0 +1,10 @@
+document.writeln("<dl class=\"foot_list\">");
+document.writeln("<dt>");
+document.writeln("<i class=\"fa fa-group\"></i> ");document.writeln("关于我们</dt>");
+document.writeln("<dd><a href=\"\">");
+document.writeln("公司介绍");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"\">");
+document.writeln("商标保护");
+document.writeln("</a></dd>");document.writeln("<dd><a href=\"\">");
+document.writeln("关注我们微信号");
+document.writeln("</a></dd>");document.writeln("</dl>");
