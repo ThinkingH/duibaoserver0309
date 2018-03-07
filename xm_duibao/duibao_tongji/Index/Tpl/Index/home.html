@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/free/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/font-Awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/stylesheet/home.css?v=1.0">
+    <!--[if lte IE 8]>
+    <script src="__PUBLIC__/libs/flot/excanvas.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row summary">
+        <div class="col-sm-3">
+            <div>
+                <span>
+                    <i class="fa fa-users fa-fw"></i>
+                </span>
+                <div>
+                    <p>0</p>
+                    <p>用户数量(总数)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div>
+                <span>
+                    <i class="fa fa-paper-plane fa-fw"></i>
+                </span>
+                <div>
+                    <p>0</p>
+                    <p>活跃用户(日活)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div>
+                <span class="fa fa-briefcase fa-fw"></span>
+                <div>
+                    <p>0</p>
+                    <p>启动次数(总数)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div>
+                <span class="fa fa-download fa-fw"></span>
+                <div>
+                    <p>0</p>
+                    <p>下载次数(总数)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row weekly">
+        <div class="col-sm-9">
+            <div class="weekly-header">
+                <h3 class="weekly-title">七日概述</h3>
+                <p class="weekly-describe">期间：0000年00月00日 - 0000年00月00日</p>
+            </div>
+            <div class="flot-placeholder">
+                <div id="placeholder" style="width:100%;height:300px;"></div>
+            </div>
+        </div>
+        <div class="col-sm-3 proportion">
+            <div class="col-xs-12 ratio">
+                0月0日-0月0日
+                <br>
+                各环节比例
+            </div>
+            <div class="col-xs-12">
+                <span class="number">0</span>
+                <span class="percentage">
+                   <span class="lnr lnr-chevron-down text-danger"></span>
+                    0％
+                </span>
+                <span class="info-label">新增用户</span>
+            </div>
+            <div class="col-xs-12">
+                <span class="number">0</span>
+                <span class="percentage">
+                   <span class="lnr lnr-chevron-up text-success"></span>
+                    0％
+                </span>
+                <span class="info-label">活跃用户</span>
+            </div>
+            <div class="col-xs-12">
+                <span class="number">0</span>
+                <span class="percentage">
+                   <span class="lnr lnr-chevron-up text-success"></span>
+                    0％
+                </span>
+                <span class="info-label">启动次数</span>
+            </div>
+            <div class="col-xs-12">
+                <span class="number">0</span>
+                <span class="percentage">
+                   <span class="lnr lnr-chevron-down text-danger"></span>
+                    0％
+                </span>
+                <span class="info-label">下载次数</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__PUBLIC__/libs/jquery/jquery-1.12.4.min.js"></script>
+<script src="__PUBLIC__/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/libs/layer/layer.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.min.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.resize.min.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.tooltip.min.js"></script>
+<script src="__PUBLIC__/javascript/home.js?v=1.0"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+@charset "UTF-8";
+body {
+    background-color: #EEEEEE;
+}
+
+.summary {
+    padding-top: 15px;
+}
+
+.summary > div {
+    margin-bottom: 20px;
+}
+
+.summary > div > div {
+    background-color: #fff;
+    height: 80px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.summary > div > div > span {
+    float: left;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #0081c2;
+}
+
+.summary > div > div > div {
+    float: right;
+}
+
+.summary > div > div > div > p:first-child {
+    font-size: 28px;
+    margin: auto;
+    text-align: right;
+}
+
+.summary > div > div > div > p:last-child {
+    font-size: 12px;
+    color: #979898;
+    margin: auto;
+    text-align: right;
+}
+
+.weekly {
+}
+
+.weekly > .col-sm-9 {
+    margin-bottom: 20px;
+}
+
+.weekly > .col-sm-9 > .weekly-header {
+    border-radius: 5px 5px 0 0;
+    background-color: #fff;
+    padding: 20px 20px 0 20px;
+}
+
+.weekly > .col-sm-9 > .weekly-header > h3 {
+    margin: auto auto 14px auto;
+}
+
+.weekly > .col-sm-9 > .weekly-header > p {
+    margin: auto;
+}
+
+.weekly > .col-sm-9 > .flot-placeholder {
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.weekly > .col-sm-3 {
+    height: 420px;
+    margin-bottom: 20px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12 {
+    color: #676a6d;
+    font-weight: 300;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12 > .number {
+    font-size: 35px;
+    float: left;
+    margin-bottom: -25px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12:first-child {
+    height: 60px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12:last-child {
+    margin-bottom: auto;
+}
+
+.weekly > .col-sm-3 > .col-xs-12.ratio {
+    text-align: center;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12 > .percentage {
+    float: right;
+    line-height: 25px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12 > .percentage > span {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.weekly > .col-sm-3 > .col-xs-12 > .info-label {
+    float: right;
+    line-height: 25px;
+    font-size: 14px;
+    width: 100%;
+    text-align: right;
+}
