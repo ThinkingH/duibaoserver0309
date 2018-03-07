@@ -1,0 +1,19 @@
+﻿ *{padding:0px;margin:0px;}
+        .pop {  display: none;  width: 290px; height:342px;
+           min-height: 470px;  max-height: 750px;  
+           position: absolute;  top: 0;  left: 0;  bottom: 0;  right: 0; 
+           margin: auto;  padding: 25px;  z-index: 130; 
+           border-radius: 8px; 
+         }
+        .pop2 {  display: none;  width: 290px; height:342px;
+           min-height: 470px;  max-height: 750px;  
+           position: absolute;  top: 0;  left: 0;  bottom: 0;  right: 0; 
+           margin: auto;  padding: 25px;  z-index: 130; 
+           border-radius: 8px; 
+        }
+        .popimg{position:absolute;top:43%;  left:120px;}
+        .pop-top span{  float: right;  cursor: pointer;  font-weight: bold; display:black;position:relative; top:30px; right:15px;}
+        .pop-content-left{  float: left;  }
+        .bgPop{  display: none;  position: absolute;  z-index: 129;  left: 0;  top: 0;  width: 100%;  height: 100%;  background: rgba(0,0,0,.2);  }
+       .btnstyle {width:200px;height:50px; background-color: yellow;  color: #000;  cursor:pointer;
+                 position:absolute;top:54%;  left:71px; }
