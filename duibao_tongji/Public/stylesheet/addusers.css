@@ -1,0 +1,164 @@
+@charset "UTF-8";
+body {
+    background-color: #EEEEEE;
+}
+
+.flot-win {
+    padding-top: 15px;
+}
+
+.flot-win > div {
+    margin-bottom: 20px;
+}
+
+.flot-win > div > ul.flot-header {
+    background-color: #fff;
+    list-style: none;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.flot-win > div > ul.flot-header > li {
+    float: left;
+    margin: 10px;
+}
+
+.flot-win > div > ul.flot-header > li > input {
+    width: 190px;
+    height: 35px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #e5e6e7;
+    color: #333;
+    outline: none;
+    text-align: center;
+}
+
+.flot-win > div > ul.flot-header > li > input::-webkit-input-placeholder {
+    color: #979898;
+}
+
+.flot-win > div > ul.flot-header > li > input:-moz-placeholder {
+    color: #979898;
+}
+
+.flot-win > div > ul.flot-header > li > input::-moz-placeholder {
+    color: #979898;
+}
+
+.flot-win > div > ul.flot-header > li > input:-ms-input-placeholder {
+    color: #979898;
+}
+
+.flot-win > div > ul.flot-header > li > input:focus {
+    border-color: #1ab394;
+    outline: none;
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown {
+
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown > .dropdown-toggle {
+    border-radius: 0;
+    border: 1px solid #e5e6e7;
+    box-shadow: none;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    text-align: center;
+    width: 190px;
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown > .dropdown-toggle[data-id="0"] {
+    color: #979898;
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown.open > .dropdown-toggle:focus,
+.flot-win > div > ul.flot-header > li > .dropdown.open > .dropdown-toggle:hover {
+    background-color: #fff;
+    border-color: #1ab394;
+    outline: none;
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown.open > .dropdown-toggle:focus {
+    border-color: #1ab394;
+    outline: none;
+}
+
+.flot-win > div > ul.flot-header > li > .dropdown > .dropdown-menu {
+    width: 190px;
+    border-color: #1ab394;
+    border-radius: 0;
+    max-height: 250px;
+    overflow: auto;
+}
+
+.flot-win > div > div.flot-header {
+    border-radius: 5px 5px 0 0;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.flot-win > div > div.flot-header > h3 {
+    margin: auto;
+}
+
+.flot-win > div > div.flot-placeholder {
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    background-color: #FFF;
+}
+
+.table-win {
+    padding: 15px 0;
+    color: #676a6d;
+}
+
+.table-win > div > .panel > .panel-heading > .panel-title > .panel-title > .pull-right > a {
+    cursor: pointer;
+}
+
+.table-win > div > .panel > .panel-heading > .panel-title > .pull-right > a.arrows > i:before {
+    content: "\f106";
+}
+
+.table-win > div > .panel > .panel-heading > .panel-title > .pull-right > a.collapsed > i:before {
+    content: "\f107";
+}
+
+.normal > div > .panel > .panel-collapse > .panel-body {
+    padding: 10px 15px;
+}
+
+.table-win > div > .panel > .panel-collapse > .panel-body > .table {
+    margin: auto;
+}
+
+.table-win > div > .panel > .panel-collapse > .panel-body > .table > tbody > tr > td > .label {
+    font-weight: normal;
+    padding: .3em;
+}
+
+.table-win > div > .panel > .panel-footer {
+    padding: 5px 15px;
+    height: 41px;
+}
+
+.table-win > div > .panel > .panel-footer > .btn-primary {
+    border-radius: 2px;
+    padding: 4px 15px;
+    background-color: #00AAFF;
+    border-color: #00a0f0;
+}
+
+.table-win > div > .panel > .panel-footer > .panel-note {
+    line-height: 30px;
+}
+
+.calendar {
+    border-color: #1ab394;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>主页</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/free/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/stylesheet/index.css?v=1.0">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="sidebar-menu">
+    <div class="menu-header">兑宝<span> -- 数据统计</span></div>
+    <ul class="nav" id="accordion">
+        <li class="panel">
+            <a data-href="__APP__/Index/home">
+                <span class="lnr lnr-home"></span>
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="panel">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false">
+                <span class="lnr lnr-layers"></span>
+                <span>用户分析</span>
+            </a>
+            <ul class="collapse" id="collapse1">
+                <li>
+                    <a data-href="__APP__/User/addusers">
+                        <span>新增用户</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-href="#">
+                        <span>活跃用户</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-href="#">
+                        <span>启动次数</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="main-content ishide">
+    <div class="content-header">
+        <ul class="content-nav">
+            <li class="menu-iocn"><span class="lnr lnr-menu"></span></li>
+            <li class="operation logout"><span class="lnr lnr-exit"></span><i>退出</i></li>
+            <li class="operation user"><span class="lnr lnr-license"></span><i>{$username}</i></li>
+        </ul>
+    </div>
+    <div class="content-iframe">
+        <iframe id="mian_iframe" frameborder="0"></iframe>
+    </div>
+</div>
+<script src="__PUBLIC__/libs/jquery/jquery-1.12.4.min.js"></script>
+<script src="__PUBLIC__/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/libs/layer/layer.js"></script>
+<script src="__PUBLIC__/javascript/navigator.js"></script>
+<script src="__PUBLIC__/javascript/index.js?v=1.0"></script>
+</body>
+</html>

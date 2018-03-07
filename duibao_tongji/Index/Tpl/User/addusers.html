@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/libs/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="__PUBLIC__/libs/free/style.css">-->
+    <link rel="stylesheet" href="__PUBLIC__/libs/font-Awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/lyz.calendar/css/lyz.calendar.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/mobliedate/css/date.css">
+    <link rel="stylesheet" href="__PUBLIC__/stylesheet/addusers.css?v=1.0">
+    <!--[if lte IE 8]>
+    <script src="__PUBLIC__/libs/flot/excanvas.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row flot-win">
+        <div class="col-sm-12">
+            <ul class="flot-header">
+                <li>
+                    <input type="text" id="BeginDate" placeholder="开始时间">
+                </li>
+                <li>
+                    <input type="text" id="EndDate" placeholder="结束时间">
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="channel"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-id="0">
+                            所有渠道
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="channel">
+                            <li><a href="#" data-id="0">所有渠道</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="version"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-id="0">
+                            所有版本
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="version">
+                            <li><a href="#" data-id="0">所有版本</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-sm-12">
+            <div class="flot-header">
+                <h3>新增用户趋势<span id="date-time" style="font-size:14px;color:#333;"></span></h3>
+            </div>
+            <div class="flot-placeholder">
+                <div id="placeholder" style="width:100%;height:300px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row table-win">
+        <div class="col-sm-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        新增用户明细
+                        <div class="pull-right">
+                            <a data-toggle="collapse" data-parent="#recentPurchase"
+                               href="#activity1" class="arrows"><i class="fa fa-fw"></i>
+                            </a>
+                        </div>
+                    </h3>
+                </div>
+                <div id="activity1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>日期</th>
+                                <th>新增用户</th>
+                                <th>新增用户占比</th>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>0</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>0</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>0</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>0</td>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>0</td>
+                                <td>0%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span class="panel-note pull-left"><i class="fa fa-clock-o fa-fw"></i>过去24小时</span>
+                    <a href="#" class="btn btn-primary pull-right">更多明细</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        新增用户来源
+                        <div class="pull-right">
+                            <a data-toggle="collapse" data-parent="#recentPurchase"
+                               href="#activity2" class="arrows"><i class="fa fa-fw"></i>
+                            </a>
+                        </div>
+                    </h3>
+                </div>
+                <div id="activity2" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>日期</th>
+                                <th>昵称</th>
+                                <th>手机号</th>
+                                <th>渠道</th>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>未知</td>
+                                <td>XXXXXXXXXXX</td>
+                                <td>未知</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>未知</td>
+                                <td>XXXXXXXXXXX</td>
+                                <td>未知</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>未知</td>
+                                <td>XXXXXXXXXXX</td>
+                                <td>未知</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>未知</td>
+                                <td>XXXXXXXXXXX</td>
+                                <td>未知</td>
+                            </tr>
+                            <tr>
+                                <td>0000-00-00</td>
+                                <td>未知</td>
+                                <td>XXXXXXXXXXX</td>
+                                <td>未知</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span class="panel-note pull-left"><i class="fa fa-clock-o fa-fw"></i>过去24小时</span>
+                    <a href="#" class="btn btn-primary pull-right">更多详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 日期容器 -->
+<div id="datePlugin"></div>
+<script src="__PUBLIC__/libs/jquery/jquery-1.12.4.min.js"></script>
+<script src="__PUBLIC__/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/libs/layer/layer.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.min.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.resize.min.js"></script>
+<script src="__PUBLIC__/libs/flot/jquery.flot.tooltip.min.js"></script>
+<script src="__PUBLIC__/libs/lyz.calendar/js/lyz.calendar.js"></script>
+<script src="__PUBLIC__/libs/mobliedate/js/date.js"></script>
+<script src="__PUBLIC__/libs/mobliedate/js/iscroll_date.js"></script>
+<script src="__PUBLIC__/javascript/navigator.js"></script>
+<script src="__PUBLIC__/javascript/addusers.js?v=1.0"></script>
+</body>
+</html>
